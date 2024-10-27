@@ -135,7 +135,7 @@
 
     <!-- Navigation Bar -->
     <div class="navbar">
-        <a href="#home">Home</a>
+        <a href="#home">Home controller</a>
         <a href="#paketBimbel">Paket Bimbel</a>
         <a href="#siswa">Siswa</a>
         <a href="#guru">Guru</a>
