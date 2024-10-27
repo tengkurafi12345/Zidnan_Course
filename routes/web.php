@@ -14,7 +14,7 @@ Route::get('/home', function () {
 });
 
 // Halaman home dengan controller
-Route::get('/home-controller', [HomeController::class, 'index'])->name('home.index');
+Route::get('/home-controller', [HomeController::class, 'index'])->name('index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
