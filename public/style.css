@@ -114,3 +114,36 @@
             text-align: center;
             margin-top: 40px;
         }
+        .course-container2 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .course-package2 {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            text-align: left;
+        }
+        .course-package2:hover {
+            transform: translateY(-5px);
+        }
+        .course-package2 h2 {
+            font-size: 1.5em;
+            color: #b500fd;
+            margin-bottom: 10px;
+        }
+        .course-package2 p {
+            color: #515052;
+            margin: 8px 0;
+        }
+        .course-package2 img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }

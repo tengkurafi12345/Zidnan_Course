@@ -4,138 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zidnan Bimbel - Home</title>
+    <title>Zidnan Bimbel</title>
     <link rel="stylesheet" href="{{ asset('style.css') }}">
-    {{-- <style>
-        /* Gaya Umum */
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            background-color: #f5f5f5;
-        }
-
-        h1,
-        h2,
-        p {
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Navigation Bar */
-        .navbar {
-            background-color: #b500fd;
-            padding: 15px 0;
-            text-align: center;
-        }
-
-        .navbar a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .navbar a:hover {
-            color: #f5f5f5;
-            text-decoration: underline;
-        }
-
-        /* Header */
-        header {
-            background-color: #7400a1;
-            padding: 20px;
-            text-align: center;
-            color: white;
-        }
-
-        /* Kontainer Utama */
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-            text-align: center;
-        }
-
-        /* Judul */
-        .container h1 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        /* Kontainer Paket Bimbel */
-        .course-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .course-package {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 20px;
-            width: 300px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            text-align: left;
-        }
-
-        .course-package:hover {
-            transform: translateY(-5px);
-        }
-
-        .course-package h2 {
-            font-size: 1.5em;
-            color: #b500fd;
-            margin-bottom: 10px;
-        }
-
-        .course-package p {
-            color: #515052;
-            margin: 8px 0;
-        }
-
-        .course-package img {
-            max-width: 100%;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-
-        .course-package button {
-            background-color: #7400a1;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1em;
-            transition: background-color 0.3s ease;
-        }
-
-        .course-package button:hover {
-            background-color: #b500fd;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #b500fd;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            margin-top: 40px;
-        }
-    </style> --}}
 </head>
 
 <body>
 
     <!-- Navigation Bar -->
     <div class="navbar">
-        <a href="#home">Home controller</a>
+        <a href="#home">Home</a>
         <a href="#paketBimbel">Paket Bimbel</a>
         <a href="#siswa">Siswa</a>
         <a href="#guru">Guru</a>
@@ -164,7 +41,13 @@
                 <p>Harga: Rp300,000/bulan</p>
                 <button onclick="redirectToWhatsApp('Paket Matematika Dasar')">Daftar</button>
             </div>
-
+            <div class="course-package">
+                <img src="{{ asset('img/fisika.jpg')}}" alt="Paket Fisika SMA">
+                <h2>Paket Fisika SMA</h2>
+                <p>Untuk siswa SMA</p>
+                <p>Harga: Rp350,000/bulan</p>
+                <button onclick="redirectToWhatsApp('Paket Fisika SMA')">Daftar</button>
+            </div>
             <div class="course-package">
                 <img src="{{ asset('img/b.inggris.jpg')}}" alt="Paket Bahasa Inggris">
                 <h2>Paket Bahasa Inggris</h2>
@@ -173,13 +56,54 @@
                 <button onclick="redirectToWhatsApp('Paket Bahasa Inggris')">Daftar</button>
             </div>
 
-            <div class="course-package">
-                <img src="{{ asset('img/fisika.jpg')}}" alt="Paket Fisika SMA">
-                <h2>Paket Fisika SMA</h2>
-                <p>Untuk siswa SMA</p>
-                <p>Harga: Rp350,000/bulan</p>
-                <button onclick="redirectToWhatsApp('Paket Fisika SMA')">Daftar</button>
+
+            <div class="course-container2">
+                <div class="course-package2">
+                    <img src="{{ asset('img/matematika.jpg')}}" alt="Paket Matematika Dasar">
+                    <h3>Mulai langkah sukses belajar Matematika dari dasar!</h3>
+                    <h4><b>Keunggulan Paket:</b></h4>
+                    <p><b>* Materi Terstruktur: Pembahasan konsep dasar hingga soal latihan yang disusun sistematis, memudahkan siswa memahami Matematika secara bertahap.</b></p>
+                    <br>
+                    <p><b>* Tutor Berpengalaman: Didukung oleh pengajar profesional yang siap membantu menjawab setiap pertanyaan.</b></p>
+                    <br>
+                    <p><b>* Latihan Soal Intensif: Tersedia soal dan kuis yang bervariasi untuk meningkatkan pemahaman dan kemampuan siswa.</b></p>
+                    <br>
+                    <p><b>* Metode Belajar Interaktif: Kelas yang didesain untuk mengajak siswa aktif dan menyukai Matematika.</b></p>
+                    <br>
+                    <p><b>Yuk, gabung sekarang dan buat Matematika lebih mudah!</b></p>
+                </div>
+
+                <div class="course-package2">
+                    <img src="{{ asset('img/fisika.jpg')}}" alt="Paket Fisika SMA">
+                    <h3>Mulai langkah sukses belajar Matematika dari dasar!</h3>
+                    <h4><b>Keunggulan Paket:</b></h4>
+                    <p><b>* Materi Terstruktur: Pembahasan konsep dasar hingga soal latihan yang disusun sistematis, memudahkan siswa memahami Matematika secara bertahap.</b></p>
+                    <br>
+                    <p><b>* Tutor Berpengalaman: Didukung oleh pengajar profesional yang siap membantu menjawab setiap pertanyaan.</b></p>
+                    <br>
+                    <p><b>* Latihan Soal Intensif: Tersedia soal dan kuis yang bervariasi untuk meningkatkan pemahaman dan kemampuan siswa.</b></p>
+                    <br>
+                    <p><b>* Metode Belajar Interaktif: Kelas yang didesain untuk mengajak siswa aktif dan menyukai Matematika.</b></p>
+                    <br>
+                    <p><b>Yuk, gabung sekarang dan buat Matematika lebih mudah!</b></p>
+                </div>
+
+                <div class="course-package2">
+                    <img src="{{ asset('img/b.inggris.jpg')}}" alt="Paket Bahasa Inggris">
+                    <h3>Mulai langkah sukses belajar Matematika dari dasar!</h3>
+                    <h4><b>Keunggulan Paket:</b></h4>
+                    <p><b>* Materi Terstruktur: Pembahasan konsep dasar hingga soal latihan yang disusun sistematis, memudahkan siswa memahami Matematika secara bertahap.</b></p>
+                    <br>
+                    <p><b>* Tutor Berpengalaman: Didukung oleh pengajar profesional yang siap membantu menjawab setiap pertanyaan.</b></p>
+                    <br>
+                    <p><b>* Latihan Soal Intensif: Tersedia soal dan kuis yang bervariasi untuk meningkatkan pemahaman dan kemampuan siswa.</b></p>
+                    <br>
+                    <p><b>* Metode Belajar Interaktif: Kelas yang didesain untuk mengajak siswa aktif dan menyukai Matematika.</b></p>
+                    <br>
+                    <p><b>Yuk, gabung sekarang dan buat Matematika lebih mudah!</b></p>
+                </div>
             </div>
+
         </div>
     </div>
 
