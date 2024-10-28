@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zidnan Bimbel - Home</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <style>
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
+    {{-- <style>
         /* Gaya Umum */
         body {
             font-family: 'Arial', sans-serif;
@@ -128,7 +128,7 @@
             text-align: center;
             margin-top: 40px;
         }
-    </style>
+    </style> --}}
 </head>
 
 <body>
@@ -158,7 +158,7 @@
         <!-- Daftar Paket Bimbel -->
         <div class="course-container">
             <div class="course-package">
-                <img src="matematika.jpg" alt="Paket Matematika Dasar">
+                <img src="{{ asset('img/matematika.jpg') }}" alt="Paket Matematika Dasar">
                 <h2>Paket Matematika Dasar</h2>
                 <p>Untuk siswa SD - SMP</p>
                 <p>Harga: Rp300,000/bulan</p>
@@ -166,7 +166,7 @@
             </div>
 
             <div class="course-package">
-                <img src="b.inggris.jpg" alt="Paket Bahasa Inggris">
+                <img src="{{ asset('img/b.inggris.jpg')}}" alt="Paket Bahasa Inggris">
                 <h2>Paket Bahasa Inggris</h2>
                 <p>Untuk semua tingkat</p>
                 <p>Harga: Rp400,000/bulan</p>
@@ -174,7 +174,7 @@
             </div>
 
             <div class="course-package">
-                <img src="fisika.jpg" alt="Paket Fisika SMA">
+                <img src="{{ asset('img/fisika.jpg')}}" alt="Paket Fisika SMA">
                 <h2>Paket Fisika SMA</h2>
                 <p>Untuk siswa SMA</p>
                 <p>Harga: Rp350,000/bulan</p>
@@ -188,7 +188,7 @@
         <p>&copy; 2024 Zidnan Bimbel. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="{{ asset('script.js') }}"></script>
 </body>
 
 </html>
