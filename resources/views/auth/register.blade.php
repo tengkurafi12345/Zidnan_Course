@@ -25,7 +25,7 @@
         <div class="card" style="width: 25rem;">
             <div class="card-body">
                 <h2 class="text-center">Register</h2>
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('register') }}">
                     @csrf
                     <!-- Name -->
                     <div class="mb-3 mt-3">
