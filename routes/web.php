@@ -4,27 +4,31 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+/**
+ * Routing Untuk Halaman Depan
+ */
+// Home
 Route::get('/', function () {
-    return view('welcome');
+    return view('Frontend.index');
 });
-
-// Halaman home tanpa controller
-Route::get('/home', function () {
-    return view('index');
-});
-
-// Halaman home dengan controller
-Route::get('/home-controller', [HomeController::class, 'index'])->name('index');
-
-//routing untuk halaman depan
+// Paket Bimbel
 Route::get('/course', function () {
     return view('Frontend.course');
 });
+// Siswa
 
+
+
+
+/**
+ * Routing Untuk Halaman Dashboard
+ */
+// Dashboard
 Route::get('/dashboard', function () {
     return view('backend.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Profile
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
