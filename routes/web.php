@@ -16,6 +16,11 @@ Route::get('/home', function () {
 // Halaman home dengan controller
 Route::get('/home-controller', [HomeController::class, 'index'])->name('index');
 
+//routing untuk halaman depan
+Route::get('/course', function () {
+    return view('Frontend.course');
+});
+
 Route::get('/dashboard', function () {
     return view('backend.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
