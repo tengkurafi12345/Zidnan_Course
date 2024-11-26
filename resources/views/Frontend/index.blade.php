@@ -1,40 +1,10 @@
-<!DOCTYPE html>
-<html lang="id">
+{{-- Ambil dari layout main  --}}
+@extends('layouts.main')
+{{-- Membuat title untuk judul halaman --}}
+@section('title', 'Home')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zidnan Bimbel</title>
-    <link rel="stylesheet" href="{{ asset('style.css') }}">
-</head>
-
-<body>
-    <!-- Navigation Bar -->
-    <div class="navbar">
-        <div class="nav-links">
-            <a href="/">Home</a>
-            <a href="/course">Course</a>
-            <a href="#siswa">Siswa</a>
-            <a href="#guru">Guru</a>
-            <a href="#blog">Blog</a>
-            <a href="#Testimonial">Testimonial</a>
-            <a href="#Buku & Media">Buku & Media</a>
-        </div>
-        <div class="auth-links">
-            @if (Route::has('login'))
-                @auth
-                    <a href="{{ url('/dashboard') }}">Dashboard</a>
-                @else
-                    <a href="{{ route('login') }}">Log in</a>
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}">Register</a>
-                    @endif
-                @endauth
-            @endif
-        </div>
-    </div>
-
-
+{{-- Membuat Bagian untuk konten --}}
+@section('content')
     <!-- Header -->
     <header>
         <h1>Selamat Datang di Zidnan Bimbel</h1>
@@ -132,13 +102,4 @@
 
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Zidnan Bimbel. All rights reserved.</p>
-    </footer>
-
-    <script src="{{ asset('script.js') }}"></script>
-</body>
-
-</html>
+@endsection

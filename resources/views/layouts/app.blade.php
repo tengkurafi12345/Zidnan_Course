@@ -23,7 +23,7 @@
 
 <body>
     {{-- Navigation --}}
-    @include('layouts.navigation')
+    @include('layouts.sidebar')
 
     {{-- Section Content --}}
     @yield('content')

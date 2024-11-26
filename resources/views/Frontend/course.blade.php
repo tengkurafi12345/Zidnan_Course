@@ -1,46 +1,11 @@
-<!DOCTYPE html>
-<html lang="id">
+@extends('layouts.main')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zidnan Bimbel</title>
-    <link rel="stylesheet" href="{{ asset('style.css') }}">
-</head>
+@section('title', 'Course')
 
-<body>
-    <!-- Navigation Bar -->
-    <div class="navbar">
-        <div class="nav-links">
-            <a href="/">Home</a>
-            <a href="/course">Course</a>
-            <a href="#siswa">Siswa</a>
-            <a href="#guru">Guru</a>
-            <a href="#blog">Blog</a>
-            <a href="#Testimonial">Testimonial</a>
-            <a href="#Buku & Media">Buku & Media</a>
-        </div>
-        <div class="auth-links">
-            @if (Route::has('login'))
-                @auth
-                    <a href="{{ url('/dashboard') }}">Dashboard</a>
-                @else
-                    <a href="{{ route('login') }}">Log in</a>
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}">Register</a>
-                    @endif
-                @endauth
-            @endif
-        </div>
-    </div>
-
-
-    <!-- Header -->
+@section('content')
     <header>
-        <h1>Selamat Datang di Zidnan Bimbel</h1>
-        <p>Temukan paket bimbel terbaik sesuai kebutuhan Anda</p>
+        <h1>Halaman Course</h1>
     </header>
-
     <!-- Content -->
     <!---------- Daftar Paket Bimbel ------->
     <div class="course-container">
@@ -80,8 +45,7 @@
             <button onclick="redirectToWhatsApp('Paket Calistung')">Gabung Sekarang!</button>
         </div>
         <div class="course-package">
-            <img src="{{ asset('img/mapel.jpg') }}" alt="Gambar Paket Mapel Islam / Umum"
-                title="Paket Mapel Islam / Umum">
+            <img src="{{ asset('img/mapel.jpg') }}" alt="Gambar Paket Mapel Islam / Umum" title="Paket Mapel Islam / Umum">
             <h2>Paket Mapel Islam / Umum</h2>
             <p>Kombinasi pelajaran agama Islam dan pelajaran umum lainnya.</p>
             <p>Harga: Rp600.000/bulan</p>
@@ -95,14 +59,4 @@
             <button onclick="redirectToWhatsApp('Paket Tahfidz')">Gabung Sekarang!</button>
         </div>
     </div>
-
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Zidnan Bimbel. All rights reserved.</p>
-    </footer>
-
-    <script src="{{ asset('script.js') }}"></script>
-</body>
-
-</html>
+@endsection
