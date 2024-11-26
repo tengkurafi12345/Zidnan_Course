@@ -1233,10 +1233,17 @@ section{
 }
 
 .form-container{
-   min-height: calc(100vh - 20rem);
    display: flex;
    align-items: center;
    justify-content: center;
+}
+
+.form-container-profile {
+    min-height: calc(60vh - 20rem);
+}
+
+.form-container-password{
+    min-height: calc(100vh - 20rem);
 }
 
 .form-container form{

@@ -19,7 +19,7 @@
                 <h3 class="name">{{ Auth::user()->name }}</h3>
                 <p class="role">{{ Auth::user()->email }}</p>
             @endauth
-            <a href="profile.html" class="btn">view profile</a>
+            <a href="{{ route('profile.edit') }}" class="btn">view profile</a>
             <!-- Logout -->
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
@@ -40,7 +40,7 @@
         <img src="{{ asset('assets/image/BE/Zidnan.jpg') }}" class="image" alt="">
         <h3 class="name">Rumah Tahfidz</h3>
         <p class="role">& Course</p>
-        <a href="profile.html" class="btn">view profile</a>
+        <a href="{{ route('profile.edit') }}" class="btn">view profile</a>
     </div>
 
     <nav class="navbar">
