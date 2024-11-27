@@ -2,7 +2,7 @@
     <div class="nav-links">
         <a href="/">Utama</a>
         <a href="{{ route('kursus') }}">Kursus</a>
-        <a href="#siswa">Siswa</a>
+        <a href="{{ route('siswa') }}">Siswa</a>
         <a href="{{ route('guru') }}">Pengajar</a>
         <a href="{{ route('testimoni') }}">Testimonial</a>
     </div>
