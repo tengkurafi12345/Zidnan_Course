@@ -4,7 +4,7 @@
         <a href="{{ route('kursus') }}">Kursus</a>
         <a href="#siswa">Siswa</a>
         <a href="{{ route('guru') }}">Pengajar</a>
-        <a href="#Testimonial">Testimonial</a>
+        <a href="{{ route('testimoni') }}">Testimonial</a>
     </div>
     <div class="auth-links">
         @if (Route::has('login'))
