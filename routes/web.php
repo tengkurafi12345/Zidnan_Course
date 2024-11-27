@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\CourseController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -17,9 +17,6 @@ Route::get('/course-fe', function () {
     return view('Frontend.course');
 });
 // Siswa
-
-
-
 
 /**
  * Routing Untuk Halaman Dashboard
@@ -42,6 +39,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/course/{course}', [CourseController::class,'edit'])->name('course.edit');
     Route::put('/course/{course}', [CourseController::class, 'update'])->name('course.update');
     Route::delete('/course/{course}/delete', [CourseController::class, 'destroy'])->name('course.destroy');
+    // Teacher
+    Route::get('/teacher', [TeacherController::class, 'index'])->name('teacher.index');
+    Route::get('/teacher/create', [TeacherController::class, 'create'])->name('teacher.create');
+    Route::post('/teacher', [TeacherController::class, 'store'])->name('teacher.store');
+    Route::get('/teacher/{teacher}', [TeacherController::class, 'edit'])->name('teacher.edit');
+    Route::put('/teacher/{teacher}', [TeacherController::class, 'update'])->name('teacher.update');
+    Route::delete('/teacher/{teacher}/delete', [TeacherController::class, 'destroy'])->name('teacher.destroy');
+
 });
 
 require __DIR__.'/auth.php';

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Gender;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 class TeacherController extends Controller
 {
@@ -12,7 +15,9 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        //
+        $teachers = Teacher::all()->sortByDesc('created_at');
+
+        return view('Backend.Teacher.index', compact('teachers'));
     }
 
     /**
@@ -20,7 +25,8 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        $genders = Gender::cases();
+        return view('Backend.Teacher.create', compact('genders'));
     }
 
     /**
@@ -28,15 +34,34 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'address' => 'required|string|max:255',
+            'gender' => [
+                'required',
+                Rule::in(Gender::cases()),
+            ],
+            'role' => 'required|string|max:255',
+            'bio' => 'nullable|string|max:255',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Teacher $teacher)
-    {
-        //
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $validatedData = $validator->validated();
+
+
+        Teacher::create($validatedData);
+
+        return redirect()
+            ->route('teacher.index') // Arahkan ke halaman index
+            ->with('success', 'Guru berhasil dibuat.');
     }
 
     /**
@@ -58,8 +83,14 @@ class TeacherController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Teacher $teacher)
+    public function destroy($id)
     {
-        //
+        $teacher = Teacher::findOrFail($id);
+
+        $teacher->delete();
+
+        return redirect()
+            ->route('teacher.index')
+            ->with('success', 'Guru berhasil dihapus.');
     }
 }

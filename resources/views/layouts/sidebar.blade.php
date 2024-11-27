@@ -47,7 +47,7 @@
         <a href="{{ route('dashboard') }}"><i class="fas fa-home"></i><span>home</span></a>
         {{-- <a href="about.html"><i class="fas fa-question"></i><span>about</span></a> --}}
         <a href="{{ route('course.index') }}"><i class="fas fa-graduation-cap"></i><span>courses</span></a>
-        <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>teachers</span></a>
+        <a href="{{ route('teacher.index') }}"><i class="fas fa-chalkboard-user"></i><span>teachers</span></a>
         <a href="contact.html"><i class="fas fa-headset"></i><span>contact us</span></a>
     </nav>
 </div>

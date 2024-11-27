@@ -23,8 +23,8 @@ return new class extends Migration
             $table->boolean('is_active')->default(false);
             $table->timestamps();
 
-            $table->foreign('teacher_id')->references('id')->on('teachers');
-            $table->foreign('category_id')->references('id')->on('category_courses');
+            $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('category_courses')->onDelete('cascade');
         });
     }
 

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Course')
+@section('title', 'Teachers')
 
 @section('css')
     <style>
@@ -157,10 +157,10 @@
     <section class="courses">
         <div class="flex-container">
             <div class="">
-                <h1 class="heading">Our Courses</h1>
+                <h1 class="heading">Our Teacher</h1>
             </div>
             <div class="">
-                <a href="{{ route('course.create') }}" class="btn btn-info">Tambah Course</a>
+                <a href="{{ route('teacher.create') }}" class="btn btn-info">Tambah Guru</a>
             </div>
         </div>
 
@@ -177,45 +177,33 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Kode</th>
                         <th>Nama</th>
-                        <th>Harga</th>
-                        <th>Deskripsi</th>
-                        <th>Batas Maksimal</th>
-                        <th>Tanggal Dibuat</th>
-                        <th>Tanggal Diperbarui</th>
-                        <th>Pengajar</th>
-                        <th>Kategori</th>
-                        <th>Aktif</th>
+                        <th>Email</th>
+                        <th>No. Telpon</th>
+                        <th>Alamat</th>
+                        <th>Gender</th>
+                        <th>Peran</th>
+                        <th>Bio</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- Loop through courses --}}
-                    @forelse($courses as $course)
+                    {{-- Loop through Teachers --}}
+                    @forelse($teachers as $teacher)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $course->code }}</td>
-                            <td>{{ $course->name }}</td>
-                            <td>Rp.{{ number_format($course->price, 0, ',', '.') }}</td>
-                            <td>{{ \Illuminate\Support\Str::limit($course->description, 50) }}</td>
-                            <td>{{ $course->estimate_time }}</td>
-                            <td>{{ $course->updated_at->format('d-m-Y') }}</td>
-                            <td>{{ $course->created_at->format('d-m-Y') }}</td>
-                            <td>{{ $course->teacher->name }}</td>
-                            <td>{{ $course->category->name }}</td>
-                            <td>
-                                @if ($course->is_active == 1)
-                                    <span class="badge badge-success">Active</span>
-                                @else
-                                    <span class="badge badge-danger">Inactive</span>
-                                @endif
-                            </td>
+                            <td>{{ $teacher->name }}</td>
+                            <td>{{ $teacher->email }}</td>
+                            <td>{{ $teacher->phone }}</td>
+                            <td>{{ $teacher->address }}</td>
+                            <td>{{ $teacher->gender }}</td>
+                            <td>{{ $teacher->role }}</td>
+                            <td>{{ \Illuminate\Support\Str::limit($teacher->bio, 50) }}</td>
                             <td>
                                 <div class="action-buttons">
-                                    {{-- <a href="{{ route('course.edit', $course->id) }}"
+                                    {{-- <a href="{{ route('teacher.edit', $teacher->id) }}"
                                         class="btn btn-sm btn-warning" >Edit</a> --}}
-                                    <form action="{{ route('course.destroy', $course->id) }}" method="POST"
+                                    <form action="{{ route('teacher.destroy', $teacher->id) }}" method="POST"
                                         style="display: inline-block;">
                                         @csrf
                                         @method('DELETE')
@@ -227,7 +215,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6" class="text-center">No courses available.</td>
+                            <td colspan="10" class="text-center">No Teacher available.</td>
                         </tr>
                     @endforelse
                 </tbody>
