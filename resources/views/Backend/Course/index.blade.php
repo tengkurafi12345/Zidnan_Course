@@ -197,13 +197,13 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $course->code }}</td>
                             <td>{{ $course->name }}</td>
-                            <td>{{ $course->price }}</td>
-                            <td>{{ $course->description }}</td>
+                            <td>Rp.{{ number_format($course->price, 0, ',', '.') }}</td>
+                            <td>{{ \Illuminate\Support\Str::limit($course->description, 50) }}</td>
                             <td>{{ $course->estimate_time }}</td>
                             <td>{{ $course->updated_at->format('d-m-Y') }}</td>
                             <td>{{ $course->created_at->format('d-m-Y') }}</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $course->teacher->name }}</td>
+                            <td>{{ $course->category->name }}</td>
                             <td>
                                 @if ($course->is_active == 1)
                                     <span class="badge badge-success">Active</span>
