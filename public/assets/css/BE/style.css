@@ -1232,10 +1232,11 @@ section{
    color:var(--black);
 }
 
-.form-container{
-   display: flex;
-   align-items: center;
-   justify-content: center;
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* Memastikan elemen di dalam form-container ditata secara vertikal */
 }
 
 .form-container-profile {

@@ -19,7 +19,7 @@
     <!-- bootstrap 5.3.3 -->
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> --}}
 
-
+    @yield('css')
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -37,6 +37,19 @@
 
     <!-- custom js file link  -->
     <script src="{{ asset('assets/js/script.js') }}"></script>
+
+    <script>
+        // Mendapatkan semua elemen alert dengan close button
+        var closeBtns = document.getElementsByClassName("closebtn");
+
+        // Menambahkan event listener pada setiap close button
+        for (var i = 0; i < closeBtns.length; i++) {
+            closeBtns[i].onclick = function() {
+                var alert = this.parentElement;
+                alert.style.display = "none"; // Menyembunyikan alert saat tanda silang diklik
+            }
+        }
+    </script>
 </body>
 
 </html>

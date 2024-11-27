@@ -48,27 +48,28 @@
             </div>
         @endif
 
-        <form action="{{ route('course.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('course.update', $course->id) }}" method="PUT" enctype="multipart/form-data">
             @csrf
-            <h3>Create Course</h3>
+            <h3>Edit Course</h3>
 
             <p>Code</p>
             <input type="text" name="code" placeholder="enter your current code" class="box"
-                value="{{ old('code') }}">
+                value="{{ $course->code ?? old('code') }}">
 
             <p>Name</p>
             <input type="text" name="name" placeholder="enter your old text" class="box"
-                value="{{ old('name') }}">
+                value="{{ $course->name ?? old('name') }}">
 
             <p>Price</p>
             <input type="number" name="price" placeholder="confirm your new text" class="box"
-                value="{{ old('price') }}">
+                value="{{ $course->price ?? old('price') }}">
 
             <p>Description</p>
-            <textarea name="description" placeholder="write your description" class="box">{{ old('description') }}</textarea>
+            <textarea name="description" placeholder="write your description" class="box">{{ $course->description ?? old('description') }}</textarea>
 
             <p>Estimate Time </p>
-            <input type="datetime-local" name="estimate_time" class="box" value="{{ old('estimate_time') }}">
+            <input type="datetime-local" name="estimate_time" class="box"
+                value="{{ $course->estimate_time ?? old('estimate_time') }}">
 
             <p>Category </p>
             <select name="category_id" id="select">
@@ -83,7 +84,7 @@
             <input type="hidden" name="is_active" value="0">
             <input type="checkbox" name="is_active" value="1" {{ old('is_active', 0) ? 'checked' : '' }}>
 
-            <input type="submit" value="Create Course" class="btn">
+            <input type="submit" value="Update Course" class="btn">
         </form>
     </section>
 @endsection

@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Course extends Model
 {
-    use SoftDeletes;
-
     protected $table = 'courses';
 
     protected $fillable = [
@@ -20,8 +18,6 @@ class Course extends Model
         'is_active',
         'category_id'
     ];
-
-    protected $dates = ['deleted_at'];
 
     public function category()
     {
