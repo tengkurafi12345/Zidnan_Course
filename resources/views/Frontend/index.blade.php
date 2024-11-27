@@ -41,7 +41,7 @@
             </div>
 
 
-            <div class="course-container2">
+            {{-- <div class="course-container2">
                 <div class="course-package2">
                     <img src="{{ asset('img/matematika.jpg') }}" alt="Paket Matematika Dasar">
                     <h3>Mulai langkah sukses belajar Matematika dari dasar!</h3>
@@ -98,7 +98,7 @@
                     <br>
                     <p><b>Yuk, gabung sekarang dan buat Matematika lebih mudah!</b></p>
                 </div>
-            </div>
+            </div> --}}
 
         </div>
     </div>
