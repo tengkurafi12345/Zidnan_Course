@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\Main\KursusController;
+use App\Http\Controllers\Main\GuruController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
@@ -13,9 +15,9 @@ Route::get('/', function () {
     return view('Frontend.index');
 });
 // Paket Bimbel
-Route::get('/course-fe', function () {
-    return view('Frontend.course');
-});
+Route::get('/kursus', [KursusController::class, 'index'])->name('kursus');
+
+Route::get('/guru', [GuruController::class, 'index'])->name('guru');
 // Siswa
 
 /**
