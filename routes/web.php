@@ -1,11 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
-use App\Http\Controllers\Main\KursusController;
-use App\Http\Controllers\Main\GuruController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Main\GuruController;
+use App\Http\Controllers\Main\SiswaController;
+use App\Http\Controllers\Main\KursusController;
+use App\Http\Controllers\Main\TestimonialController;
 
 /**
  * Routing Untuk Halaman Depan
@@ -16,8 +18,9 @@ Route::get('/', function () {
 });
 // Paket Bimbel
 Route::get('/kursus', [KursusController::class, 'index'])->name('kursus');
-
 Route::get('/guru', [GuruController::class, 'index'])->name('guru');
+Route::get('/testimoni', [TestimonialController::class, 'index'])->name('testimoni');
+Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
 // Siswa
 
 /**

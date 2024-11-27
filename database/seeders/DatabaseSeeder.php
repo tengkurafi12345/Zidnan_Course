@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             CategoryCourseSeeder::class,
             TeacherSeeder::class,
             CourseSeeder::class,
+            TestimonialSeeder::class,
+            StudentSeeder::class,
         ]);
 
         User::factory()->create([
