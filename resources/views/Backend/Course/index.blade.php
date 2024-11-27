@@ -4,8 +4,14 @@
 
 @section('content')
     <section class="courses">
-        <h1 class="heading">Our Courses</h1>
-            {{-- <a href="" class="btn btn-info">Tambah Course</a> --}}
+        <div class="flex-container">
+            <div class="">
+                <h1 class="heading">Our Courses</h1>
+            </div>
+            <div class="">
+                <a href="{{ route('course.create') }}" class="btn btn-info">Tambah Course</a>
+            </div>
+        </div>
         <div class="box-container">
             <div class="box">
                 <div class="tutor">

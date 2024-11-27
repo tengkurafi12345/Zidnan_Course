@@ -1280,6 +1280,10 @@ section{
    margin: 1rem 0;
 }
 
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
 
 
 
