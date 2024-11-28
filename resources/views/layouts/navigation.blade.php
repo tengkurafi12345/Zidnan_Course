@@ -1,9 +1,9 @@
 <div class="navbar">
     <div class="nav-links">
-        <a href="/">Utama</a>
-        <a href="{{ route('kursus') }}">Kursus</a>
-        <a href="{{ route('siswa') }}">Siswa</a>
-        <a href="{{ route('guru') }}">Pengajar</a>
+        <a href="/">Home</a>
+        <a href="{{ route('kursus') }}">Course</a>
+        <a href="{{ route('siswa') }}">Student</a>
+        <a href="{{ route('guru') }}">Teacher</a>
         <a href="{{ route('testimoni') }}">Testimonial</a>
     </div>
     <div class="auth-links">
