@@ -6,7 +6,7 @@
         <a href="{{ route('guru') }}">Pengajar</a>
         <a href="{{ route('testimoni') }}">Testimonial</a>
     </div>
-    <div class="auth-links">
+    {{-- <div class="auth-links">
         @if (Route::has('login'))
             @auth
                 <a href="{{ url('/dashboard') }}">Dashboard</a>
@@ -17,5 +17,5 @@
                 @endif
             @endauth
         @endif
-    </div>
+    </div> --}}
 </div>
