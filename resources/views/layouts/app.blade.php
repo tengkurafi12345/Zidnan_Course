@@ -31,7 +31,11 @@
     {{-- Section Content --}}
     @yield('content')
 
+
     <footer class="footer">
+        <div style="position:absolute;bottom:0px;right:0px;">
+            version 1.0
+        </div>
         &copy; Zidnan (Rumah Tahfidz & Course)</span> | all rights reserved!
     </footer>
 
