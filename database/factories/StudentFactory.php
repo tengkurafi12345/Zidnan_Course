@@ -17,12 +17,22 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->email(),
-            'phone' => $this->faker->phoneNumber(),
-            'address' => $this->faker->address(),
+            'name' => $this->faker->name,
+            'registration_number' => $this->faker->unique()->numerify('REG-#####'),
+            'birth_date' => $this->faker->date,
+            'birth_place' => $this->faker->city(),
             'gender' => $this->faker->randomElement(['male', 'female']),
-            'degree' => $this->faker->randomElement(['TK', 'SD', 'MI', 'SMP', 'MTS', 'SMA', 'MA', 'MADIN']),
+            'age' => $this->faker->numberBetween(6, 18),
+            'class_status' => $this->faker->randomElement(['Active', 'Inactive']),
+            'school_name' => $this->faker->company,
+            'address' => $this->faker->address,
+            'district' => $this->faker->city,
+            'phone_number' => $this->faker->phoneNumber,
+            'blood_type' => $this->faker->randomElement(['A', 'B', 'AB', 'O']),
+            'father_name' => $this->faker->name('male'),
+            'mother_name' => $this->faker->name('female'),
+            'father_occupation' => $this->faker->jobTitle,
+            'mother_occupation' => $this->faker->jobTitle,
         ];
     }
 }

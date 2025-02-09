@@ -45,8 +45,10 @@
 
     <nav class="navbar">
         <a href="{{ route('dashboard') }}"><i class="fas fa-home"></i><span>Dashboard</span></a>
-        <a href="{{ route('packet.index') }}"><i class="fas fa-graduation-cap"></i><span>Paket</span></a>
+        <a href="{{ route('packet.index') }}"><i class="fas fa-sitemap"></i><span>Paket</span></a>
+        <a href="{{ route('packet.index') }}"><i class="fas fa-table"></i><span>Program</span></a>
         <a href="{{ route('teacher.index') }}"><i class="fas fa-chalkboard-user"></i><span>Guru</span></a>
+        <a href="{{ route('student.index') }}"><i class="fas fa-child"></i><span>Siswa</span></a>
         <a href="contact.html"><i class="fas fa-headset"></i><span>contact us</span></a>
     </nav>
 </div>

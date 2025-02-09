@@ -38,9 +38,4 @@ class Teacher extends Model
             'gender' => Gender::class,
         ];
     }
-
-    public function courses()
-    {
-        return $this->belongsToMany(Course::class, 'course_teacher', 'teacher_id', 'course_id');
-    }
 }

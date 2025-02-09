@@ -223,7 +223,6 @@ section{
    width: 10rem;
    border-radius: 50%;
    object-fit: contain;
-   margin-bottom: 1rem;
 }
 
 .header .flex .profile .name{
@@ -243,14 +242,17 @@ section{
    display: none;
 }
 
-.side-bar{
-   position: fixed;
-   top: 0; left: 0;
-   width: 30rem;
-   background-color: var(--white);
-   height: 100vh;
-   border-right: var(--border);
-   z-index: 1200;
+.side-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30rem;
+    height: 100vh;
+    background-color: var(--white);
+    border-right: var(--border);
+    overflow-y: auto; /* Tambahkan ini untuk scroll */
+    scrollbar-width: thin; /* Opsional: Menyesuaikan scrollbar */
+    scrollbar-color: #888 transparent;
 }
 
 .side-bar #close-btn{
