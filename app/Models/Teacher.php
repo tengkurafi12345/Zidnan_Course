@@ -11,7 +11,21 @@ class Teacher extends Model
     use HasFactory;
 
     protected $table = 'teachers';
-    protected $fillable = ['name', 'email', 'phone', 'address', 'gender', 'birthday', 'birthplace', 'domicile', 'status', 'start_joining', 'bio'];
+    protected $fillable = [
+        'name',
+        'email',
+        'phone',
+        'address',
+        'gender',
+        'birthday',
+        'birthplace',
+        'domicile',
+        'status',
+        'start_joining',
+        'bio',
+        'created_at',
+        'updated_at',
+    ];
 
     /**
      * Write code on Method

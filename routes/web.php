@@ -8,6 +8,7 @@ use App\Http\Controllers\Main\GuruController;
 use App\Http\Controllers\Main\SiswaController;
 use App\Http\Controllers\Main\KursusController;
 use App\Http\Controllers\Main\TestimonialController;
+use App\Http\Controllers\PacketController;
 
 /**
  * Routing Untuk Halaman Depan
@@ -51,6 +52,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/teacher/{teacher}', [TeacherController::class, 'edit'])->name('teacher.edit');
     Route::patch('/teacher/{teacher}', [TeacherController::class, 'update'])->name('teacher.update');
     Route::delete('/teacher/{teacher}/delete', [TeacherController::class, 'destroy'])->name('teacher.destroy');
+
+    // Packet
+    Route::get('/packet', [PacketController::class, 'index'])->name('packet.index');
+    Route::get('/packet/create', [PacketController::class, 'create'])->name('packet.create');
+    Route::post('/packet', [PacketController::class, 'store'])->name('packet.store');
+    Route::get('/packet/{packet}', [PacketController::class, 'edit'])->name('packet.edit');
+    Route::patch('/packet/{packet}', [PacketController::class, 'update'])->name('packet.update');
+    Route::delete('/packet/{packet}/delete', [PacketController::class, 'destroy'])->name('packet.destroy');
 
 });
 
