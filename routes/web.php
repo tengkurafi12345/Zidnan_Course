@@ -7,6 +7,7 @@ use App\Http\Controllers\Main\GuruController;
 use App\Http\Controllers\Main\SiswaController;
 use App\Http\Controllers\Main\KursusController;
 use App\Http\Controllers\Main\TestimonialController;
+use App\Http\Controllers\PacketCombinationController;
 use App\Http\Controllers\PacketController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\StudentController;
@@ -72,6 +73,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/student/{student}', [StudentController::class, 'edit'])->name('student.edit');
     Route::patch('/student/{student}', [StudentController::class, 'update'])->name('student.update');
     Route::delete('/student/{student}/delete', [StudentController::class, 'destroy'])->name('student.destroy');
+
+     // Packet Combination
+     Route::get('/packet-combination', [PacketCombinationController::class, 'index'])->name('packet.combination.index');
+     Route::get('/packet-combination/create', [PacketCombinationController::class, 'create'])->name('packet.combination.create');
+     Route::post('/packet-combination', [PacketCombinationController::class, 'store'])->name('packet.combination.store');
+     Route::get('/packet-combination/{packetCombination}', [PacketCombinationController::class, 'edit'])->name('packet.combination.edit');
+     Route::patch('/packet-combination/{packetCombination}', [PacketCombinationController::class, 'update'])->name('packet.combination.update');
+     Route::delete('/packet-combination/{packetCombination}/delete', [PacketCombinationController::class, 'destroy'])->name('packet.combination.destroy');
+
 
      // Teacher Placement
      Route::get('/teacher-placement', [TeacherPlacementController::class, 'index'])->name('teacher.placement.index');

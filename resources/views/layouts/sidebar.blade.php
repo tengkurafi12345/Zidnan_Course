@@ -49,6 +49,7 @@
         <a href="{{ route('program.index') }}"><i class="fas fa-table"></i><span>Program</span></a>
         <a href="{{ route('teacher.index') }}"><i class="fas fa-chalkboard-user"></i><span>Guru</span></a>
         <a href="{{ route('student.index') }}"><i class="fas fa-child"></i><span>Siswa</span></a>
+        <a href="{{ route('packet.combination.index') }}"><i class="fas fa-boxes-packing"></i><span>Paket Kombinasi</span></a>
         <a href="{{ route('teacher.placement.index') }}"><i class="fas fa-person-chalkboard"></i><span>Penempatan Guru</span></a>
     </nav>
 </div>

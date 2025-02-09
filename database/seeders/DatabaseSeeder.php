@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             PacketCombinationSeeder::class,
             TeacherSeeder::class,
             StudentSeeder::class,
-            TeacherPlacementSeeder::class,
+            // TeacherPlacementSeeder::class,
             TestimonialSeeder::class,
         ]);
 
