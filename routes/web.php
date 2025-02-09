@@ -8,6 +8,7 @@ use App\Http\Controllers\Main\SiswaController;
 use App\Http\Controllers\Main\KursusController;
 use App\Http\Controllers\Main\TestimonialController;
 use App\Http\Controllers\PacketController;
+use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\StudentController;
 
 /**
@@ -46,6 +47,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/packet/{packet}', [PacketController::class, 'edit'])->name('packet.edit');
     Route::patch('/packet/{packet}', [PacketController::class, 'update'])->name('packet.update');
     Route::delete('/packet/{packet}/delete', [PacketController::class, 'destroy'])->name('packet.destroy');
+
+    // Program
+    Route::get('/program', [ProgramController::class, 'index'])->name('program.index');
+    Route::get('/program/create', [ProgramController::class, 'create'])->name('program.create');
+    Route::post('/program', [ProgramController::class, 'store'])->name('program.store');
+    Route::get('/program/{program}', [ProgramController::class, 'edit'])->name('program.edit');
+    Route::patch('/program/{program}', [ProgramController::class, 'update'])->name('program.update');
+    Route::delete('/program/{program}/delete', [ProgramController::class, 'destroy'])->name('program.destroy');
 
     // Teacher
     Route::get('/teacher', [TeacherController::class, 'index'])->name('teacher.index');

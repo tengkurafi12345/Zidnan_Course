@@ -32,7 +32,7 @@
     @yield('content')
 
     <footer class="footer">
-        &copy; Rumah Tahfidz @ 2024 by <span>Zidnan_Course.</span> | all rights reserved!
+        &copy; Zidnan (Rumah Tahfidz & Course)</span> | all rights reserved!
     </footer>
 
     <!-- custom js file link  -->
