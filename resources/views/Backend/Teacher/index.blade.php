@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Teachers')
+@section('title', 'Daftar Guru')
 
 @section('css')
     <style>
@@ -157,7 +157,7 @@
     <section class="courses">
         <div class="flex-container">
             <div class="">
-                <h1 class="heading">Our Teacher</h1>
+                <h1 class="heading">Daftar Guru</h1>
             </div>
             <div class="">
                 <a href="{{ route('teacher.create') }}" class="btn btn-info">Tambah Guru</a>

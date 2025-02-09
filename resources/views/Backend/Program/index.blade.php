@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Teachers')
+@section('title', 'Daftar Program')
 
 @section('css')
     <style>

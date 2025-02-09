@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Teacher Create')
+@section('title', 'Edit Guru')
 @section('css')
     <style>
         /* Styling untuk alert */
@@ -50,7 +50,8 @@
 
         <form action="{{ route('teacher.update', $teacher->id) }}" method="post" enctype="multipart/form-data">
             @csrf
-            @method('PUT')            <h3>Edit Guru</h3>
+            @method('PUT')
+            <h3>Edit Guru</h3>
 
             <p>Nama</p>
             <input type="text" name="name" placeholder="enter your old text" class="box"

@@ -44,7 +44,7 @@ html::-webkit-scrollbar-thumb{
 
 body{
    background-color: var(--light-bg);
-   padding-left: 30rem;
+   padding-left: 25rem;
 }
 
 body.dark{
@@ -246,7 +246,7 @@ section{
     position: fixed;
     top: 0;
     left: 0;
-    width: 30rem;
+    width: 25rem;
     height: 100vh;
     background-color: var(--white);
     border-right: var(--border);
@@ -279,12 +279,12 @@ section{
 }
 
 .side-bar .profile{
-   text-align: start;
+   text-align: center;
 }
 
 .side-bar .profile .image{
    height: 8rem;
-   width: 30rem;
+   width: 10rem;
    border-radius: 50%;
    object-fit: contain;
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Paket')
+@section('title', 'Edit Program')
 @section('css')
     <style>
         /* Styling untuk alert */

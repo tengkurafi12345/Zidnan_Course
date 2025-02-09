@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Teacher Create')
+@section('title', 'Edit Siswa')
 @section('css')
     <style>
         /* Styling untuk alert */
