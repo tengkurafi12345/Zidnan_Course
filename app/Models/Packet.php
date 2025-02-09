@@ -24,5 +24,9 @@ class Packet extends Model
         'updated_at'
     ];
 
+    public function packetCombinations()
+    {
+        return $this->hasMany(PacketCombination::class, 'packet_id');
+    }
 
 }
