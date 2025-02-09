@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('code')->unique();
             $table->string('name');
+            $table->float('meeting_times')->default(8);
             $table->string('description');
             $table->timestamps();
         });

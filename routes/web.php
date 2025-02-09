@@ -10,6 +10,7 @@ use App\Http\Controllers\Main\TestimonialController;
 use App\Http\Controllers\PacketController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherPlacementController;
 
 /**
  * Routing Untuk Halaman Depan
@@ -71,6 +72,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/student/{student}', [StudentController::class, 'edit'])->name('student.edit');
     Route::patch('/student/{student}', [StudentController::class, 'update'])->name('student.update');
     Route::delete('/student/{student}/delete', [StudentController::class, 'destroy'])->name('student.destroy');
+
+     // Teacher Placement
+     Route::get('/teacher-placement', [TeacherPlacementController::class, 'index'])->name('teacher.placement.index');
+     Route::get('/teacher-placement/create', [TeacherPlacementController::class, 'create'])->name('teacher.placement.create');
+     Route::post('/teacher-placement', [TeacherPlacementController::class, 'store'])->name('teacher.placement.store');
+     Route::get('/teacher-placement/{teacherPlacements}', [TeacherPlacementController::class, 'edit'])->name('teacher.placement.edit');
+     Route::patch('/teacher-placement/{teacherPlacements}', [TeacherPlacementController::class, 'update'])->name('teacher.placement.update');
+     Route::delete('/teacher-placement/{teacherPlacements}/delete', [TeacherPlacementController::class, 'destroy'])->name('teacher.placement.destroy');
 
 
 });
