@@ -182,8 +182,9 @@
                         <th>No. Telpon</th>
                         <th>Alamat</th>
                         <th>Gender</th>
-                        <th>Peran</th>
-                        <th>Bio</th>
+                        <th>Domisili</th>
+                        <th>Mulai Bergabung</th>
+                        <th>Status</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -196,13 +197,22 @@
                             <td>{{ $teacher->email }}</td>
                             <td>{{ $teacher->phone }}</td>
                             <td>{{ $teacher->address }}</td>
-                            <td>{{ $teacher->gender }}</td>
-                            <td>{{ $teacher->role }}</td>
-                            <td>{{ \Illuminate\Support\Str::limit($teacher->bio, 50) }}</td>
+                            <td>
+                                {{ $teacher->gender }}
+                            </td>
+                            <td>{{ $teacher->domicile }}</td>
+                            <td>{{ $teacher->start_joining }}</td>
+                            <td>
+                                @if ($teacher->status == 1)
+                                <p class="badge badge-success">Aktif</p>
+                                @else
+                                <p class="badge badge-danger">Tidak Aktif</p>
+                                @endif
+                            </td>
                             <td>
                                 <div class="action-buttons">
-                                    {{-- <a href="{{ route('teacher.edit', $teacher->id) }}"
-                                        class="btn btn-sm btn-warning" >Edit</a> --}}
+                                    <a href="{{ route('teacher.edit', $teacher->id) }}"
+                                        class="btn btn-sm btn-warning" >Edit</a>
                                     <form action="{{ route('teacher.destroy', $teacher->id) }}" method="POST"
                                         style="display: inline-block;">
                                         @csrf

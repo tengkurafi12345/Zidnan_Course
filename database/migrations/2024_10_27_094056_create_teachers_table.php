@@ -18,7 +18,11 @@ return new class extends Migration
             $table->string('phone');
             $table->string('address');
             $table->string('gender');
-            $table->string('role');
+            $table->date('birthday');
+            $table->string('birthplace');
+            $table->string('domicile');
+            $table->boolean('status')->default('0');
+            $table->date('start_joining');
             $table->text('bio');
             $table->timestamps();
         });

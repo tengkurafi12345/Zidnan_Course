@@ -49,7 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/teacher/create', [TeacherController::class, 'create'])->name('teacher.create');
     Route::post('/teacher', [TeacherController::class, 'store'])->name('teacher.store');
     Route::get('/teacher/{teacher}', [TeacherController::class, 'edit'])->name('teacher.edit');
-    Route::put('/teacher/{teacher}', [TeacherController::class, 'update'])->name('teacher.update');
+    Route::patch('/teacher/{teacher}', [TeacherController::class, 'update'])->name('teacher.update');
     Route::delete('/teacher/{teacher}/delete', [TeacherController::class, 'destroy'])->name('teacher.destroy');
 
 });

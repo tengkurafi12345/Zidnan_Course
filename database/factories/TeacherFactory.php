@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use App\Models\Teacher;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,7 +21,11 @@ class TeacherFactory extends Factory
             'phone' => $this->faker->phoneNumber,
             'address' => $this->faker->address,
             'gender' => $this->faker->randomElement(['male', 'female']),
-            'role' => $this->faker->randomElement(['instructor', 'assistant']),
+            'birthday' => $this->faker->date,
+            'birthplace' => $this->faker->city,
+            'domicile' => $this->faker->city,
+            'status' => $this->faker->boolean,
+            'start_joining' => Carbon::now()->subYears(rand(1, 10)),
             'bio' => $this->faker->paragraph,
         ];
     }

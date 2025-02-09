@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Enums\Gender;
+use App\Http\Requests\StoreTeacherRequest;
+use App\Http\Requests\UpdateTeacherRequest;
 use App\Models\Teacher;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Validator;
 
 class TeacherController extends Controller
 {
@@ -32,31 +31,11 @@ class TeacherController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTeacherRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'email' => 'required|email',
-            'phone' => 'required',
-            'address' => 'required|string|max:255',
-            'gender' => [
-                'required',
-                Rule::in(Gender::cases()),
-            ],
-            'role' => 'required|string|max:255',
-            'bio' => 'nullable|string|max:255',
-        ]);
+        $validatedData = $request->validated();
 
-        if ($validator->fails()) {
-            return redirect()
-                ->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-
-        $validatedData = $validator->validated();
-
-
+        $validatedData['status'] = 1;
         Teacher::create($validatedData);
 
         return redirect()
@@ -69,28 +48,41 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        //
+        $teacher = Teacher::find($teacher->id);
+        $genders = Gender::cases();
+
+        return view('Backend.Teacher.edit', compact('teacher', 'genders'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Teacher $teacher)
+    public function update(UpdateTeacherRequest $request, Teacher $teacher)
     {
-        //
+        $validatedData = $request->validated();
+
+        try {
+            $teacher->update($validatedData);
+            return redirect()->route('teacher.index')
+                ->with('success', 'Data guru berhasil diperbarui!');
+        } catch (\Exception $e) {
+            return redirect()->route('teacher.edit', $teacher->id)
+                ->with('error', 'Terjadi kesalahan saat memperbarui data.');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Teacher $teacher)
     {
-        $teacher = Teacher::findOrFail($id);
-
-        $teacher->delete();
-
-        return redirect()
-            ->route('teacher.index')
-            ->with('success', 'Guru berhasil dihapus.');
+        try {
+            $teacher->delete();
+            return redirect()->route('teacher.index')
+                ->with('success', 'Data guru berhasil dihapus!');
+        } catch (\Exception $e) {
+            return redirect()->route('teacher.index')
+                ->with('error', 'Terjadi kesalahan saat menghapus data.');
+        }
     }
 }

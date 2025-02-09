@@ -66,8 +66,8 @@
             <p>Alamat</p>
             <input type="text" name="address" id="" value="{{ old('address') }}" class="box">
 
-            <p>Peran</p>
-            <input type="text" name="role" class="box" value="{{ old('role') }}">
+            <p>Domisili</p>
+            <input type="text" name="domicile" class="box" value="{{ old('domicile') }}">
 
             <p>Jenis Kelamin </p>
             <select name="gender" id="select">
@@ -76,6 +76,15 @@
                     <option value="{{ $gender->value }}" >{{ $gender->name }}</option>
                 @endforeach
             </select>
+            <p>Tempat Lahir</p>
+            <input type="text" name="birthplace" class="box" value="{{ old('birthplace') }}">
+
+            <p>Tanggal Lahir</p>
+            <input type="date" name="birthday" class="box" value="{{ old('birthday') }}">
+
+            <p>Mulai Bergabung</p>
+            <input type="date" name="start_joining" class="box" value="{{ old('start_joining') }}">
+
             <p>Bio</p>
             <textarea name="bio" placeholder="write your bio" class="box">{{ old('bio') }}</textarea>
 
