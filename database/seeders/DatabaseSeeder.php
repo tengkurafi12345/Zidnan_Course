@@ -20,8 +20,9 @@ class DatabaseSeeder extends Seeder
             ProgramSeeder::class,
             PacketCombinationSeeder::class,
             TeacherSeeder::class,
-            TestimonialSeeder::class,
             StudentSeeder::class,
+            TeacherPlacementSeeder::class,
+            TestimonialSeeder::class,
         ]);
 
         User::factory()->create([
