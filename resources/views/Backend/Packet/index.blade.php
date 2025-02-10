@@ -180,7 +180,6 @@
                         <th>Kode</th>
                         <th>Nama</th>
                         <th>Tingkatan Kelas</th>
-                        <th>Harga</th>
                         <th>Tanggal Mulai</th>
                         <th>Tanggal Berakhir</th>
                         <th>Status</th>
@@ -194,7 +193,6 @@
                             <td>{{ $packet->code  }}</td>
                             <td>{{ $packet->name }}</td>
                             <td>{{ $packet->class_level }}</td>
-                            <td>{{ "Rp." . number_format($packet->price, 0, ',', '.') }}</td>
                             <td>{{ $packet->start_date }}</td>
                             <td>{{ $packet->end_date }}</td>
                             <td>

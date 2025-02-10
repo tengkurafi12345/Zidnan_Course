@@ -15,7 +15,6 @@ class Packet extends Model
         'code',
         'name',
         'class_level',
-        'price',
         'status',
         'description',
         'start_date',

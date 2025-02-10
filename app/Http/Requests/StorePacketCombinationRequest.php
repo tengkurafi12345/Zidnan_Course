@@ -24,6 +24,7 @@ class StorePacketCombinationRequest extends FormRequest
         return [
             'packet_id' => 'required|exists:packets,id',
             'program_id' => 'required|exists:programs,id',
+            'price' => 'required|numeric',
         ];
     }
 }

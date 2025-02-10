@@ -20,7 +20,6 @@ class PacketFactory extends Factory
             'code' => $this->faker->title(),
             'name' => $this->faker->name(),
             'description' => $this->faker->text(),
-            'price' => $this->faker->randomFloat(2, 100),
             'status' => $this->faker->boolean,
             'class_level' => $this->faker->numberBetween(1, 10),
             'start_date' => $this->faker->date(),

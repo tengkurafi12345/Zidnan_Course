@@ -64,9 +64,6 @@
             <p>Tingkatan Kelas</p>
             <input type="text" name="class_level" class="box" value="{{ old('class_level', $packet->class_level) }}">
 
-            <p>Harga</p>
-            <input type="number" name="price" id="" value="{{ old('price', $packet->price) }}" class="box">
-
             <p>Tanggal Mulai</p>
             <input type="date" name="start_date" class="box" value="{{ old('start_date', $packet->start_date) }}">
 

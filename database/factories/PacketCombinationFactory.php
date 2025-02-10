@@ -21,6 +21,7 @@ class PacketCombinationFactory extends Factory
         return [
             'packet_id' => Packet::factory(),
             'program_id' => Program::factory(),
+            'price' => $this->faker->randomFloat(2, 100),
         ];
     }
 }

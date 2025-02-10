@@ -191,7 +191,7 @@
                             <td>{{ $packetCombination->packet->name  }}</td>
                             <td>{{ $packetCombination->program->name }}</td>
                             <td>{{ $packetCombination->program->meeting_times }}</td>
-                            <td>{{ "Rp." . number_format($packetCombination->packet->price, 0, ',', '.') }}</td>
+                            <td>{{ "Rp." . number_format($packetCombination->price, 0, ',', '.') }}</td>
                             <td>
                                 <div class="action-buttons">
                                     {{-- <a href="{{ route('packet.combination.edit', $packetCombination->id) }}"

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('class_level');
-            $table->string('price');
             $table->boolean('status')->default('1');
             $table->date('start_date');
             $table->date('end_date');

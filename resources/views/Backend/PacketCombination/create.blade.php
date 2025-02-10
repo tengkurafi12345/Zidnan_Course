@@ -68,6 +68,9 @@
                 @endforeach
             </select>
 
+            <p>Harga</p>
+            <input type="number" name="price" id="" value="{{ old('price') }}" class="box">
+
             <input type="submit" value="Buat Paket" class="btn">
         </form>
     </section>

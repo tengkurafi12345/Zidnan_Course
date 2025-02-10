@@ -25,7 +25,6 @@ class StorePacketRequest extends FormRequest
             'code' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'class_level' => 'required|string',
-            'price' => 'required|numeric',
             'start_date' => 'required|date_format:Y-m-d',
             'end_date' => 'required|date_format:Y-m-d',
             'description' => 'required|string|max:255',
