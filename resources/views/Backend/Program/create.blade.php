@@ -60,10 +60,14 @@
             <input type="text" name="name" placeholder="enter your old text" class="box"
                 value="{{ old('name') }}">
 
+            <p>Jumlah Pertemuan</p>
+            <input type="text" name="meeting_times" placeholder="enter your old text" class="box"
+                value="{{ old('meeting_times') }}">
+
             <p>Deskripsi</p>
             <input type="text" name="description" class="box" value="{{ old('description') }}">
 
-            <input type="submit" value="Buat Paket" class="btn">
+            <input type="submit" value="Buat Program" class="btn">
         </form>
     </section>
 @endsection

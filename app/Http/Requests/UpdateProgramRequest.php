@@ -24,6 +24,7 @@ class UpdateProgramRequest extends FormRequest
         return [
             'code' => 'required|string|max:255',
             'name' => 'required|string|max:255',
+            'meeting_times' => 'required|string|max:255',
             'description' => 'required|string|max:255',
         ];
     }

@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Main;
 
-use App\Models\Course;
-use App\Models\PacketCombination;
 use App\Http\Controllers\Controller;
+use App\Models\PacketCombination;
 
-class KursusController extends Controller
+class MainController extends Controller
 {
     public function index()
     {
+        // susunananya paket kombinasi terdiri dari 1 paket banyak program
+        // dan 1 paket banyak materi
         $packetCombinations = PacketCombination::all();
 
-        // $courses = Course::orderBy('id', 'asc')->limit(10)->get();
         return view('Frontend.kursus', compact('packetCombinations'));
     }
 }

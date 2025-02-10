@@ -51,7 +51,7 @@
         <form action="{{ route('program.update', $program->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
-            <h3>Edit Paket</h3>
+            <h3>Edit Program</h3>
 
             <p>Kode</p>
             <input type="text" name="code" placeholder="enter your code" class="box"
@@ -61,10 +61,14 @@
             <input type="text" name="name" placeholder="enter your old text" class="box"
                 value="{{ old('name', $program->name) }}">
 
+            <p>Jumlah Pertemuan</p>
+            <input type="text" name="meeting_times" placeholder="enter your old text" class="box"
+                value="{{ old('meeting_times', $program->meeting_times) }}">
+
             <p>Deskripsi</p>
             <input type="text" name="description" class="box" value="{{ old('description', $program->description) }}">
 
-            <input type="submit" value="Update Paket" class="btn">
+            <input type="submit" value="Update Program" class="btn">
         </form>
     </section>
 @endsection

@@ -16,11 +16,11 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         $this->call([
-            PacketSeeder::class,
-            ProgramSeeder::class,
-            PacketCombinationSeeder::class,
-            TeacherSeeder::class,
-            StudentSeeder::class,
+            // PacketSeeder::class,
+            // ProgramSeeder::class,
+            // PacketCombinationSeeder::class,
+            // TeacherSeeder::class,
+            // StudentSeeder::class,
             // TeacherPlacementSeeder::class,
             TestimonialSeeder::class,
         ]);

@@ -160,7 +160,7 @@
                 <h1 class="heading">Daftar Program</h1>
             </div>
             <div class="">
-                <a href="{{ route('program.create') }}" class="btn btn-info">Tambah Paket</a>
+                <a href="{{ route('program.create') }}" class="btn btn-info">Tambah Program</a>
             </div>
         </div>
 
@@ -179,6 +179,7 @@
                         <th>No</th>
                         <th>Kode</th>
                         <th>Nama</th>
+                        <th>Jumlah Pertemuan</th>
                         <th>Deskripsi</th>
                         <th>Aksi</th>
                     </tr>
@@ -189,6 +190,7 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $program->code  }}</td>
                             <td>{{ $program->name }}</td>
+                            <td>{{ $program->meeting_times }}</td>
                             <td>{{ $program->description }}</td>
                             <td>
                                 <div class="action-buttons">
