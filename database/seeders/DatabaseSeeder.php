@@ -20,16 +20,17 @@ class DatabaseSeeder extends Seeder
             // PacketSeeder::class,
             // ProgramSeeder::class,
             // PacketCombinationSeeder::class,
-            TeacherSeeder::class,
+            // TeacherSeeder::class,
             // StudentSeeder::class,
             // TeacherPlacementSeeder::class,
             UserSeeder::class,
-            TestimonialSeeder::class,
+            // TestimonialSeeder::class,
         ]);
 
-        // User::factory()->create([
+        // $admin = User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        // $admin->assignRole('admin');
     }
 }
