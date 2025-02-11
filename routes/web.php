@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherController;
@@ -17,10 +18,11 @@ use App\Http\Controllers\TeacherPlacementController;
  * Routing Untuk Halaman Depan
  */
 // Home
-Route::get('/', function () {
-    return view('Frontend.index');
-});
+// Route::get('/', function () {
+//     return view('Frontend.index');
+// });
 // Paket Bimbel
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/kursus', [KursusController::class, 'index'])->name('kursus');
 Route::get('/guru', [GuruController::class, 'index'])->name('guru');
 Route::get('/testimoni', [TestimonialController::class, 'index'])->name('testimoni');

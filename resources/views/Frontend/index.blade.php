@@ -19,67 +19,65 @@
         <!-- Daftar Paket Bimbel -->
         <div class="course-container">
             <div class="course-package">
-                <img src="{{ asset('img/matematika.jpg') }}" alt="Paket Matematika Dasar">
-                <h2>Paket Matematika Dasar</h2>
-                <p>Untuk siswa SD - SMP</p>
-                <p>Harga: Rp300,000/bulan</p>
+                <img src="{{ asset('img/brand/bimbel.png') }}" alt="Paket Matematika Dasar">
+                <h2>Bimbel Zidnan</h2>
+                <p>Untuk siswa TK - SMA</p>
+                <p>Start From: Rp.135,000/8x</p>
                 <button onclick="redirectToWhatsApp('Paket Matematika Dasar')">Daftar</button>
             </div>
             <div class="course-package">
-                <img src="{{ asset('img/fisika.jpg') }}" alt="Paket Fisika SMA">
-                <h2>Paket Fisika SMA</h2>
-                <p>Untuk siswa SMA</p>
-                <p>Harga: Rp350,000/bulan</p>
+                <img src="{{ asset('img/brand/privat.png') }}" alt="Paket Fisika SMA">
+                <h2>Zidnan Course</h2>
+                <p>Untuk siswa TK - SMA</p>
+                <p>Start From: Rp.225,000/8x</p>
                 <button onclick="redirectToWhatsApp('Paket Fisika SMA')">Daftar</button>
             </div>
             <div class="course-package">
-                <img src="{{ asset('img/b-jawa.jpg') }}" alt="Paket Bahasa Jawa" style="height: 200px">
-                <h2>Paket Bahasa Jawa</h2>
-                <p>Untuk semua tingkat</p>
-                <p>Harga: Rp400,000/bulan</p>
+                <img src="{{ asset('img/brand/perusahan-mengaji.png') }}" alt="Paket Bahasa Jawa">
+                <h2>Perusahaan Mengaji</h2>
+                <p>Untuk umur 19 keatas</p>
+                <p>Start From: Rp.320,000/8x</p>
                 <button onclick="redirectToWhatsApp('Paket Bahasa Jawa')">Daftar</button>
             </div>
 
             <div class="course-package">
-                <img src="{{ asset('img/calistung.jpg') }}" alt="Paket calistung">
-                <h2>Paket Calistung</h2>
-                <p>Untuk siswa SD - SMP</p>
-                <p>Harga: Rp300,000/bulan</p>
+                <img src="{{ asset('img/brand/santri-weekend.png') }}" alt="Paket calistung">
+                <h2>Santri Weekend</h2>
+                <p>Untuk Umum</p>
+                <p>Start From: Rp.100,000/8x</p>
                 <button onclick="redirectToWhatsApp('Paket Calistung')">Daftar</button>
-            </div>
-            <div class="course-package">
-                <img src="{{ asset('img/fisika.jpg') }}" alt="Paket Bahasa Inggris SD">
-                <h2>Paket Bahasa Inggris SD</h2>
-                <p>Untuk siswa SD</p>
-                <p>Harga: Rp350,000/bulan</p>
-                <button onclick="redirectToWhatsApp('Paket Bahasa Inggris SD')">Daftar</button>
-            </div>
-            <div class="course-package">
-                <img src="{{ asset('img/b.inggris.jpg') }}" alt="Paket Bahasa Indonesia">
-                <h2>Paket Bahasa Indonesia</h2>
-                <p>Untuk semua tingkat</p>
-                <p>Harga: Rp400,000/bulan</p>
-                <button onclick="redirectToWhatsApp('Paket Bahasa Indonesia')">Daftar</button>
             </div>
         </div>
     </div>
 
     <!-- Konten Siswa -->
+    {{-- TODO: Berisikan Konten Siswa Berprestasi --}}
     <section class="testimonial-section">
         <h2>Daftar Siswa</h2>
         <div class="testimonial-container">
+            @foreach ($students as $student)
             <div class="testimonial-item">
-                <img src="{{ asset('img/siswa-1.jpg') }}" alt="Foto Instruktur" class="testimonial-img">
+                <img src="{{ asset('img/siswa-2.jpg') }}" alt="Foto Instruktur" class="testimonial-img">
                 <div class="container" style="text-align: left">
-                    <h4><b>Nama: Siswa 1</b></h4>
-                    <p>No Telpon: 082934928432843</p>
-                    <p>Email: test1@gmail.com</p>
-                    <p>Kelas: VII </p>
-                    <p>Jenis Kelamin: Laki-laki</p>
+                    <h4><b>{{ $student->name }}</b></h4>
+                    <p>Kelas: {{ $student->class_status }} </p>
+                    @if ($student->gender === App\Enums\Gender::MALE)
+                        <p>Jenis Kelamin : Laki-laki</p>
+                    @else
+                        <p>Jenis Kelamin : Perempuan</p>
+                    @endif
+                    <p>Sekolah : {{ $student->school_name }}</p>
+                    <p>Alamat : {{ $student->address }}</p>
+                    <p>Prestasi:</p>
+                    <ul>
+                        <li></li>
+                    </ul>
                     <br>
                 </div>
             </div>
-            <div class="testimonial-item">
+            @endforeach
+
+            {{-- <div class="testimonial-item">
                 <img src="{{ asset('img/siswa-2.jpg') }}" alt="Foto Instruktur" class="testimonial-img">
                 <div class="container" style="text-align: left">
                     <h4><b>Nama: Siswa 1</b></h4>
@@ -100,7 +98,7 @@
                     <p>Jenis Kelamin: Laki-laki</p>
                     <br>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section>
 
@@ -111,20 +109,29 @@
             <div class="testimonial-item">
                 <img src="{{ asset('img/guru1.jpg') }}" alt="Foto Instruktur" class="testimonial-img">
                 <h3>Dr. Greg Harvey</h3>
-                <h4>instructor</h4>
-                <p>"Aut laborum molestiae nobis hic in et. Maxime ut occaecati et veniam aliquid officiis doloremque. Provident vitae consequatur et qui recusandae similique qui. Iusto rerum voluptatum libero nihil."</p>
+                <h4>Pendidikan Terakhir</h4>
+                <p>Usia</p>
+                <p>Mulai Bergabung</p>
+                <p>Alamat</p>
+                <p>Spesialis</p>
             </div>
             <div class="testimonial-item">
                 <img src="{{ asset('img/guru2.jpg') }}" alt="Foto Instruktur" class="testimonial-img">
                 <h3>Justina Corwin DDS</h3>
-                <h4>instructor</h4>
-                <p>"Soluta maxime dicta tempore esse molestias. Est et repudiandae quisquam velit."</p>
+                <h4>Pendidikan Terakhir</h4>
+                <p>Usia</p>
+                <p>Mulai Bergabung</p>
+                <p>Alamat</p>
+                <p>Spesialis</p>
             </div>
             <div class="testimonial-item">
                 <img src="{{ asset('img/guru3.jpg') }}" alt="Foto Instruktur" class="testimonial-img">
                 <h3>Lilyan Buckridge</h3>
-                <h4>instructor</h4>
-                <p>"Ut doloribus quo omnis at est corporis. Dolor est est labore."</p>
+                <h4>Pendidikan Terakhir</h4>
+                <p>Usia</p>
+                <p>Mulai Bergabung</p>
+                <p>Alamat</p>
+                <p>Spesialis</p>
             </div>
         </div>
     </section>
@@ -184,8 +191,8 @@
     <div class="map-container">
         <h3>Lokasi Kami</h3>
         <div class="map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.452109610725!2d112.74189821520582!3d-7.721132179127303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e783040a78ab87f%3A0x67b37711d45f2d21!2sKejapanan%2C%20Kec.%20Gempol%2C%20Kabupaten%20Pasuruan%2C%20Jawa%20Timur%2C%20Indonesia!5e0!3m2!1sen!2sus!4v1698459819052!5m2!1sen!2sus"
-                width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.022233119031!2d112.68333367381861!3d-7.57255459244165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7df62835bffa1%3A0x16129116217ffc6d!2sZidnan%20(Bimbel%20%26%20Course)!5e0!3m2!1sen!2sid!4v1739207515847!5m2!1sen!2sid" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
         </div>
     </div>
 @endsection
