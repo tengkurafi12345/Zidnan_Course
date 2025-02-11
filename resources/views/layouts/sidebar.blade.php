@@ -56,10 +56,10 @@
         </div>
         <a href="{{ route('packet.combination.index') }}"><i class="fas fa-boxes-packing"></i><span>Paket Kombinasi</span></a>
         <a href="{{ route('teacher.placement.index') }}"><i class="fas fa-person-chalkboard"></i><span>Penempatan Guru</span></a>
-        <a href="{{ route('student.index') }}"><i class="fas fa-child"></i><span>Siswa Berprestasi</span></a>
+        {{-- <a href="{{ route('student.index') }}"><i class="fas fa-child"></i><span>Siswa Berprestasi</span></a>
         <a href="{{ route('teacher.placement.index') }}"><i class="fas fa-person-chalkboard"></i><span>Promo</span></a>
         <a href="{{ route('teacher.placement.index') }}"><i class="fas fa-person-chalkboard"></i><span>Lowongan</span></a>
-        <a href="{{ route('teacher.placement.index') }}"><i class="fas fa-person-chalkboard"></i><span>Kritik & Saran</span></a>
+        <a href="{{ route('teacher.placement.index') }}"><i class="fas fa-person-chalkboard"></i><span>Kritik & Saran</span></a> --}}
     @elseif (auth()->user()->hasRole('teacher'))
         {{-- <span class="nav-line">Absensi</span> --}}
         <a href="{{ route('meeting.setup.index') }}"><i class="fa-solid fa-clipboard-list"></i><span>Pengaturan Absensi</span></a>

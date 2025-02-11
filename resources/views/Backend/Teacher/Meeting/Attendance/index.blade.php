@@ -230,14 +230,14 @@
                                     class="btn btn-warning"><i class="fas fa-pen"></i></a>
                                 @endif
                             <td style="width: 6rem">
-                                @if ($meeting->attendance_status == 'Present')
+                                @if ($meeting->attendance_status == 'Hadir')
                                     <span class="badge text-bg-primary">Hadir</span>
-                                @elseif ($meeting->attendance_status == 'Absent')
+                                @elseif ($meeting->attendance_status == 'Tidak Hadir')
                                     <span class="badge text-bg-danger">Tidak Hadir</span>
-                                @elseif ($meeting->attendance_status == 'Late')
+                                @elseif ($meeting->attendance_status == 'Terlambat')
                                     <span class="badge text-bg-warning">Terlambat</span>
-                                @elseif ($meeting->attendance_status == 'Cancelled')
-                                    <span class="badge text-bg-secondary">Dibatalkan</span>
+                                @elseif ($meeting->attendance_status == 'Kurang')
+                                    <span class="badge text-bg-secondary">Kurang</span>
                                 @else
                                     <span class="badge text-bg-secondary">Belum</span>
                                 @endif
