@@ -57,6 +57,7 @@ class TeacherPlacementController extends Controller
         $meetings = [];
         for ($i = 0; $i < $meetingTimes; $i++) {
             $meetings[] = [
+                'id' => Str::uuid()->toString(),
                 'code' => Str::random(10),
                 'teacher_placement_id' => $placement->id,
                 'scheduled_start_time' => null,

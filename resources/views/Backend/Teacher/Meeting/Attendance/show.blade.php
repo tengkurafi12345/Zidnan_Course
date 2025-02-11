@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Guru')
+@section('title', 'Show')
 @section('css')
     <style>
         /* Styling untuk alert */
@@ -52,24 +52,21 @@
         <form action="{{ route('meeting.setup.update', $teacherPlacement->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
-            <h3 class="mb-5">Pengaturan Waktu Pertemuan</h3>
-
             {{-- <h3>Edit Guru</h3> --}}
-            <p class="fs-5 p-0 m-0 ">Nama Paket: {{ $teacherPlacement->packetCombination->packet->name }}</p>
-            <p class="fs-5 p-0 m-0">Nama Program: {{ $teacherPlacement->packetCombination->program->name }}</p>
-            <p class="fs-5 p-0 m-0">Nama Siswa: {{ $teacherPlacement->student->name }} - {{  $teacherPlacement->student->class_status  }}</p>
+            <p>Nama Paket: {{ $teacherPlacement->packetCombination->packet->name }}</p>
+            <p>Nama Program: {{ $teacherPlacement->packetCombination->program->name }}</p>
+            <p>Nama Siswa: {{ $teacherPlacement->student->name }} - {{  $teacherPlacement->student->class_status  }}</p>
 
-            <hr>
-            <span >Detail Pertemuan (Waktu yang dijadwalkan):</span>
+            <span>Detail Pertemuan:</span>
 
             @php
                 $no = 1;
             @endphp
             {{-- Looping untuk setiap pertemuan --}}
             @foreach ($teacherPlacement->meetings as $key => $meeting)
-                <div class="row mt-2">
+                <div class="row">
                     <div class="col-md-2">
-                        <p class="fs-5 p-0 m-0">Ke-{{ $key + 1 }}</p>
+                        <p>Ke-{{ $key + 1 }}</p>
                     </div>
                     <div class="col-md-4">
                         <div class="mb-3">
@@ -86,11 +83,7 @@
                 </div>
             @endforeach
 
-            <div class="row">
-                <div class="col">
-                    <input type="submit" value="Update Guru" class="btn btn-primary">
-                </div>
-            </div>
+            <input type="submit" value="Update Guru" class="btn">
         </form>
     </section>
 @endsection

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Pengaturan Pertemuan')
+@section('title', 'Absensi Pertemuan')
 
 @section('css')
     <style>
@@ -157,13 +157,37 @@
     <section class="courses">
         <div class="flex-container">
             <div class="">
-                <h1 class="heading">Pengaturan Absensi</h1>
+                <h1 class="heading">Absensi Pertemuan</h1>
             </div>
             {{-- <div class="">
                 <a href="{{ route('teacher.create') }}" class="btn btn-info">Tambah Guru</a>
             </div> --}}
         </div>
 
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="{{ route('meeting.attendance.index') }}" method="GET">
+                            <p>Pilih Paket:</p>
+                            <select class="form-select" name="teacher_placement_id"
+                                onchange="this.form.submit()">
+                                <option value="">Semua Paket</option>
+                                @foreach ($teacherPlacements as $teacherPlacement)
+                                    <option value="{{ $teacherPlacement->id }}"
+                                        {{ $selectedPlacementId == $teacherPlacement->id ? 'selected' : '' }}>
+                                        {{ $teacherPlacement->packetCombination->packet->name }} |
+                                        {{ $teacherPlacement->packetCombination->program->name }} -
+                                        {{ $teacherPlacement->packetCombination->program->meeting_times }}x |
+                                        {{ $teacherPlacement->student->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Flash Notification -->
         @if (session('success'))
             <div class="alert alert-success">
@@ -177,32 +201,54 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Paket</th>
-                        <th>Program</th>
-                        <th>Siswa</th>
+                        <th>Kode</th>
+                        <th>Waktu Penjadwalan</th>
+                        <th>Waktu Presensi</th>
+                        <th>Laporan Harian</th>
+                        <th>Status</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($teacherPlacements as $teacherPlacement)
+                    @forelse($meetings as $meeting)
                         <tr>
                             <td style="width: 5rem">{{ $loop->iteration }}</td>
-                            <td>{{ $teacherPlacement->packetCombination->packet->name }}</td>
+                            <td>{{ $meeting->code }}</td>
                             <td>
-                                {{ $teacherPlacement->packetCombination->program->name }}
-                                <span class="badge badge-danger">{{ $teacherPlacement->packetCombination->program->meeting_times }} kali</span>
-
+                                Mulai: {{ $meeting->scheduled_start_time ? \Carbon\Carbon::parse($meeting->scheduled_start_time)->translatedFormat('l, d-m-Y H:i:s') : '' }} <br>
+                                Berakhir: {{ $meeting->scheduled_end_time ? \Carbon\Carbon::parse($meeting->scheduled_end_time)->translatedFormat('l, d-m-Y H:i:s') : '' }}
                             </td>
-                            <td>{{ $teacherPlacement->student->name }}</td>
+                            <td>
+                                Mulai: {{ $meeting->actual_start_time ? \Carbon\Carbon::parse($meeting->actual_start_time)->translatedFormat('l, d-m-Y H:i:s') : '' }} <br>
+                                Berakhir: {{ $meeting->actual_end_time ? \Carbon\Carbon::parse($meeting->actual_end_time)->translatedFormat('l, d-m-Y H:i:s') : '' }}
+                            </td>
+                            <td>
+                                @if ($meeting->daily_report)
+                                 {{ $meeting->daily_report }}</td>
+                                @else
+                                 <a href="{{ route('meeting.attendance.edit', $meeting->id) }}"
+                                    class="btn btn-warning"><i class="fas fa-pen"></i></a>
+                                @endif
+                            <td style="width: 6rem">
+                                @if ($meeting->attendance_status == 'Present')
+                                    <span class="badge text-bg-primary">Hadir</span>
+                                @elseif ($meeting->attendance_status == 'Absent')
+                                    <span class="badge text-bg-danger">Tidak Hadir</span>
+                                @elseif ($meeting->attendance_status == 'Late')
+                                    <span class="badge text-bg-warning">Terlambat</span>
+                                @elseif ($meeting->attendance_status == 'Cancelled')
+                                    <span class="badge text-bg-secondary">Dibatalkan</span>
+                                @else
+                                    <span class="badge text-bg-secondary">Belum</span>
+                                @endif
+                            </td>
                             <td style="width: 5rem">
                                 <div class="row">
-                                    {{-- <div class="col">
-                                        <a href="{{ route('meeting.setup.show', $teacherPlacement->id) }}"
-                                            class="btn btn-primary mb-1"><i class="fas fa-eye"></i></a>
-                                    </div> --}}
-                                    <div class="col">
-                                        <a href="{{ route('meeting.setup.edit', $teacherPlacement->id) }}"
-                                            class="btn btn-warning"><i class="fas fa-pen"></i></a>
+                                    <div class="col mb-2">
+                                        <a href="{{ route('meeting.attendance.masuk', $meeting->id) }}" class="btn btn-primary">Masuk</a>
+                                    </div>
+                                    <div class="col mb-2">
+                                        <a href="{{ route('meeting.attendance.keluar', $meeting->id) }}" class="btn btn-primary">Keluar</a>
                                     </div>
                                 </div>
                             </td>

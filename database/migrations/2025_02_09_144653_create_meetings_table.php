@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('meetings', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->uuid('teacher_placement_id');
             $table->string('code', 50)->unique();
             $table->timestamp('scheduled_start_time')->nullable();
             $table->timestamp('scheduled_end_time')->nullable();
             $table->timestamp('actual_start_time')->nullable();
             $table->timestamp('actual_end_time')->nullable();
-            $table->enum('attendance_status', ['Present', 'Absent', 'Late', 'Cancelled'])->nullable();
+            $table->enum('attendance_status', ['Hadir', 'Tidak Hadir', 'Terlambat', 'Kurang'])->nullable();
             $table->string('location', 255)->nullable();
             $table->text('daily_report')->nullable();
             $table->timestamps();

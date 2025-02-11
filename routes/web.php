@@ -113,11 +113,14 @@ Route::middleware(['auth', 'role:teacher'])->group(function () {
 
     // meeting attendance
     Route::get('/meeting-attendance', [MeetingAttendanceController::class, 'index'])->name('meeting.attendance.index');
+    Route::get('/meeting-attendance/{meeting}', [MeetingAttendanceController::class, 'show'])->name('meeting.attendance.show');
     Route::get('/meeting-attendance/create', [MeetingAttendanceController::class, 'create'])->name('meeting.attendance.create');
     Route::post('/meeting-attendance', [MeetingAttendanceController::class, 'store'])->name('meeting.attendance.store');
-    Route::get('/meeting-attendance/{teacherPlacement}', [MeetingAttendanceController::class, 'edit'])->name('meeting.attendance.edit');
-    Route::patch('/meeting-attendance/{teacherPlacement}', [MeetingAttendanceController::class, 'update'])->name('meeting.attendance.update');
-    Route::delete('/meeting-attendance/{teacherPlacement}/delete', [MeetingAttendanceController::class, 'destroy'])->name('meeting.attendance.destroy');
+    Route::get('/meeting-attendance/{meeting}/edit', [MeetingAttendanceController::class, 'edit'])->name('meeting.attendance.edit');
+    Route::patch('/meeting-attendance/{meeting}', [MeetingAttendanceController::class, 'update'])->name('meeting.attendance.update');
+    Route::delete('/meeting-attendance/{meeting}/delete', [MeetingAttendanceController::class, 'destroy'])->name('meeting.attendance.destroy');
+    Route::get('/meeting/attendance/masuk/{meeting}', [MeetingAttendanceController::class, 'masuk'])->name('meeting.attendance.masuk');
+    Route::get('/meeting/attendance/keluar/{meeting}', [MeetingAttendanceController::class, 'keluar'])->name('meeting.attendance.keluar');
 });
 
 require __DIR__.'/auth.php';
