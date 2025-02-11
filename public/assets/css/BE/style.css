@@ -59,6 +59,9 @@ body.active{
    padding-left: 0;
 }
 
+body a {
+    text-decoration: none;
+}
 section{
    padding:2rem;
    margin: 0 auto;
@@ -77,7 +80,7 @@ section{
 .inline-btn,
 .inline-option-btn,
 .inline-delete-btn,
-.btn,
+.btn-info,
 .delete-btn,
 .option-btn{
    border-radius: .5rem;
@@ -90,7 +93,7 @@ section{
    margin-top: 1rem;
 }
 
-.btn,
+.btn-info,
 .delete-btn,
 .option-btn{
    display: block;
@@ -302,10 +305,15 @@ section{
    color: var(--light-color);
 }
 
+.side-bar .navbar {
+    display: block;
+}
+
 .side-bar .navbar a{
    display: block;
    padding: 2rem;
    font-size: 1.6rem;
+   text-decoration: none;
 }
 
 .side-bar .navbar a i{
@@ -314,6 +322,10 @@ section{
    transition: .2s linear;
 }
 
+.side-bar .navbar .navbar-child {
+    font-size: 1.4rem;
+    margin-left: 2rem;
+}
 .side-bar .navbar a span{
    color:var(--light-color);
 }
@@ -325,6 +337,13 @@ section{
 .side-bar .navbar a:hover i{
    margin-right: 2.5rem;
 }
+/*
+.side-bar .navbar span.nav-line {
+    margin-left: 2rem;
+    font-size: 1.4rem;
+    color: var(--main-color);
+    font-style: italic;
+} */
 
 .side-bar.active{
    left: -30rem;

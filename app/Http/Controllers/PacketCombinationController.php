@@ -16,7 +16,7 @@ class PacketCombinationController extends Controller
     public function index()
     {
         $packetCombinations = PacketCombination::all()->sortByDesc('created_at');
-        return view('Backend.PacketCombination.index', compact('packetCombinations'));
+        return view('Backend.Admin.PacketCombination.index', compact('packetCombinations'));
     }
 
     /**
@@ -26,7 +26,7 @@ class PacketCombinationController extends Controller
     {
         $packets = Packet::all();
         $programs = Program::all();
-        return view('Backend.PacketCombination.create', compact(['packets', 'programs']));
+        return view('Backend.Admin.PacketCombination.create', compact(['packets', 'programs']));
     }
 
     /**

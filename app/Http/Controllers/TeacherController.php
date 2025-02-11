@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Enums\Gender;
+use App\Models\Teacher;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
-use App\Models\Teacher;
 
 class TeacherController extends Controller
 {
@@ -16,7 +19,7 @@ class TeacherController extends Controller
     {
         $teachers = Teacher::all()->sortByDesc('created_at');
 
-        return view('Backend.Teacher.index', compact('teachers'));
+        return view('Backend.Admin.Teacher.index', compact('teachers'));
     }
 
     /**
@@ -25,7 +28,7 @@ class TeacherController extends Controller
     public function create()
     {
         $genders = Gender::cases();
-        return view('Backend.Teacher.create', compact('genders'));
+        return view('Backend.Admin.Teacher.create', compact('genders'));
     }
 
     /**
@@ -36,7 +39,18 @@ class TeacherController extends Controller
         $validatedData = $request->validated();
 
         $validatedData['status'] = 1;
+
         Teacher::create($validatedData);
+
+        $teacherRole = Role::firstOrCreate(['name' => 'teacher']);
+        $user = User::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'], // Email unik
+            'password' => Hash::make('password'), // Password default
+        ]);
+
+        // Tetapkan role teacher ke user
+        $user->assignRole($teacherRole);
 
         return redirect()
             ->route('teacher.index') // Arahkan ke halaman index
@@ -51,7 +65,7 @@ class TeacherController extends Controller
         $teacher = Teacher::find($teacher->id);
         $genders = Gender::cases();
 
-        return view('Backend.Teacher.edit', compact('teacher', 'genders'));
+        return view('Backend.Admin.Teacher.edit', compact('teacher', 'genders'));
     }
 
     /**

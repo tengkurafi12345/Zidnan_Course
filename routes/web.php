@@ -8,6 +8,8 @@ use App\Http\Controllers\Main\GuruController;
 use App\Http\Controllers\Main\SiswaController;
 use App\Http\Controllers\Main\KursusController;
 use App\Http\Controllers\Main\TestimonialController;
+use App\Http\Controllers\MeetingAttendanceController;
+use App\Http\Controllers\MeetingSetupController;
 use App\Http\Controllers\PacketCombinationController;
 use App\Http\Controllers\PacketController;
 use App\Http\Controllers\ProgramController;
@@ -33,17 +35,20 @@ Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
  * Routing Untuk Halaman Dashboard
  */
 // Dashboard
-Route::get('/dashboard', function () {
-    return view('backend.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('backend.dashboard');
+    })->name('dashboard');
 
-// Profile
-Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.password');
 
+});
+
+// Admin
+Route::middleware(['auth', 'role:admin'])->group(function () {
     // Packet
     Route::get('/packet', [PacketController::class, 'index'])->name('packet.index');
     Route::get('/packet/create', [PacketController::class, 'create'])->name('packet.create');
@@ -76,24 +81,43 @@ Route::middleware('auth')->group(function () {
     Route::patch('/student/{student}', [StudentController::class, 'update'])->name('student.update');
     Route::delete('/student/{student}/delete', [StudentController::class, 'destroy'])->name('student.destroy');
 
-     // Packet Combination
-     Route::get('/packet-combination', [PacketCombinationController::class, 'index'])->name('packet.combination.index');
-     Route::get('/packet-combination/create', [PacketCombinationController::class, 'create'])->name('packet.combination.create');
-     Route::post('/packet-combination', [PacketCombinationController::class, 'store'])->name('packet.combination.store');
-     Route::get('/packet-combination/{packetCombination}', [PacketCombinationController::class, 'edit'])->name('packet.combination.edit');
-     Route::patch('/packet-combination/{packetCombination}', [PacketCombinationController::class, 'update'])->name('packet.combination.update');
-     Route::delete('/packet-combination/{packetCombination}/delete', [PacketCombinationController::class, 'destroy'])->name('packet.combination.destroy');
-
+    // Packet Combination
+    Route::get('/packet-combination', [PacketCombinationController::class, 'index'])->name('packet.combination.index');
+    Route::get('/packet-combination/create', [PacketCombinationController::class, 'create'])->name('packet.combination.create');
+    Route::post('/packet-combination', [PacketCombinationController::class, 'store'])->name('packet.combination.store');
+    Route::get('/packet-combination/{packetCombination}', [PacketCombinationController::class, 'edit'])->name('packet.combination.edit');
+    Route::patch('/packet-combination/{packetCombination}', [PacketCombinationController::class, 'update'])->name('packet.combination.update');
+    Route::delete('/packet-combination/{packetCombination}/delete', [PacketCombinationController::class, 'destroy'])->name('packet.combination.destroy');
 
      // Teacher Placement
-     Route::get('/teacher-placement', [TeacherPlacementController::class, 'index'])->name('teacher.placement.index');
-     Route::get('/teacher-placement/create', [TeacherPlacementController::class, 'create'])->name('teacher.placement.create');
-     Route::post('/teacher-placement', [TeacherPlacementController::class, 'store'])->name('teacher.placement.store');
-     Route::get('/teacher-placement/{teacherPlacements}', [TeacherPlacementController::class, 'edit'])->name('teacher.placement.edit');
-     Route::patch('/teacher-placement/{teacherPlacements}', [TeacherPlacementController::class, 'update'])->name('teacher.placement.update');
-     Route::delete('/teacher-placement/{teacherPlacements}/delete', [TeacherPlacementController::class, 'destroy'])->name('teacher.placement.destroy');
+    Route::get('/teacher-placement', [TeacherPlacementController::class, 'index'])->name('teacher.placement.index');
+    Route::get('/teacher-placement/create', [TeacherPlacementController::class, 'create'])->name('teacher.placement.create');
+    Route::post('/teacher-placement', [TeacherPlacementController::class, 'store'])->name('teacher.placement.store');
+    Route::get('/teacher-placement/{teacherPlacements}', [TeacherPlacementController::class, 'edit'])->name('teacher.placement.edit');
+    Route::patch('/teacher-placement/{teacherPlacements}', [TeacherPlacementController::class, 'update'])->name('teacher.placement.update');
+    Route::delete('/teacher-placement/{teacherPlacements}/delete', [TeacherPlacementController::class, 'destroy'])->name('teacher.placement.destroy');
 
 
+});
+
+// Guru
+Route::middleware(['auth', 'role:teacher'])->group(function () {
+    // meeting setup
+    Route::get('/meeting-setup', [MeetingSetupController::class, 'index'])->name('meeting.setup.index');
+    Route::get('/meeting-setup/{teacherPlacement}', [MeetingSetupController::class, 'show'])->name('meeting.setup.show');
+    Route::get('/meeting-setup/create', [MeetingSetupController::class, 'create'])->name('meeting.setup.create');
+    Route::post('/meeting-setup', [MeetingSetupController::class, 'store'])->name('meeting.setup.store');
+    Route::get('/meeting-setup/{teacherPlacement}/edit', [MeetingSetupController::class, 'edit'])->name('meeting.setup.edit');
+    Route::patch('/meeting-setup/{teacherPlacement}', [MeetingSetupController::class, 'update'])->name('meeting.setup.update');
+    Route::delete('/meeting-setup/{teacherPlacement}/delete', [MeetingSetupController::class, 'destroy'])->name('meeting.setup.destroy');
+
+    // meeting attendance
+    Route::get('/meeting-attendance', [MeetingAttendanceController::class, 'index'])->name('meeting.attendance.index');
+    Route::get('/meeting-attendance/create', [MeetingAttendanceController::class, 'create'])->name('meeting.attendance.create');
+    Route::post('/meeting-attendance', [MeetingAttendanceController::class, 'store'])->name('meeting.attendance.store');
+    Route::get('/meeting-attendance/{teacherPlacement}', [MeetingAttendanceController::class, 'edit'])->name('meeting.attendance.edit');
+    Route::patch('/meeting-attendance/{teacherPlacement}', [MeetingAttendanceController::class, 'update'])->name('meeting.attendance.update');
+    Route::delete('/meeting-attendance/{teacherPlacement}/delete', [MeetingAttendanceController::class, 'destroy'])->name('meeting.attendance.destroy');
 });
 
 require __DIR__.'/auth.php';

@@ -19,7 +19,7 @@ class TeacherPlacementController extends Controller
     {
         $teacherPlacements = TeacherPlacement::all()->sortByDesc('created_at');
 
-        return view('Backend.TeacherPlacement.index', compact('teacherPlacements'));
+        return view('Backend.Admin.TeacherPlacement.index', compact('teacherPlacements'));
     }
 
     /**
@@ -31,7 +31,7 @@ class TeacherPlacementController extends Controller
         $teachers = Teacher::all();
         $students = Student::all();
 
-        return view('Backend.TeacherPlacement.create', compact(['packetCombinations', 'teachers', 'students']));
+        return view('Backend.Admin.TeacherPlacement.create', compact(['packetCombinations', 'teachers', 'students']));
     }
 
     /**

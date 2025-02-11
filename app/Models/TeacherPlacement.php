@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TeacherPlacement extends Model
 {
@@ -30,5 +31,15 @@ class TeacherPlacement extends Model
     public function packetCombination()
     {
         return $this->belongsTo(PacketCombination::class, 'packet_combination_id');
+    }
+
+    /**
+     * Get all of the meetings for the TeacherPlacement
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function meetings(): HasMany
+    {
+        return $this->hasMany(Meeting::class);
     }
 }

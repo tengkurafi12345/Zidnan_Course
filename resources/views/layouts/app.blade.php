@@ -15,9 +15,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" type="image/x-icon">
     <!-- custom css file link  -->
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap-5.3.3-dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/BE/style.css') }}">
     <!-- bootstrap 5.3.3 -->
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> --}}
 
     @yield('css')
     <!-- Scripts -->
@@ -41,6 +41,7 @@
 
     <!-- custom js file link  -->
     <script src="{{ asset('assets/js/script.js') }}"></script>
+    <script src="{{ asset('assets/bootstrap-5.3.3-dist/js/bootstrap.min.js') }}"></script>
 
     <script>
         // Mendapatkan semua elemen alert dengan close button
@@ -53,6 +54,27 @@
                 alert.style.display = "none"; // Menyembunyikan alert saat tanda silang diklik
             }
         }
+
+
+        // Navbar Collapse
+        document.addEventListener("DOMContentLoaded", function() {
+            let masterDataToggle = document.querySelector("[href='#collapseExample']");
+            let masterDataIcon = document.getElementById("masterDataIcon");
+
+            console.log(masterDataToggle);
+
+            masterDataToggle.addEventListener("click", function() {
+                setTimeout(() => {
+                    if (document.getElementById("collapseExample").classList.contains("show")) {
+                        masterDataIcon.classList.remove("fas fa-sort-down");
+                        masterDataIcon.classList.add("fas fa-sort-up");
+                    } else {
+                        masterDataIcon.classList.remove("fas fa-sort-up");
+                        masterDataIcon.classList.add("fas fa-sort-down");
+                    }
+                }, 300);
+            });
+        });
     </script>
 </body>
 

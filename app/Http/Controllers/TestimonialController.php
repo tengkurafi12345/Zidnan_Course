@@ -27,7 +27,7 @@ class TestimonialController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTestimonialRequest $request)
+    public function store( $request)
     {
         //
     }
@@ -51,7 +51,7 @@ class TestimonialController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTestimonialRequest $request, Testimonial $testimonial)
+    public function update( $request, Testimonial $testimonial)
     {
         //
     }

@@ -15,7 +15,7 @@ class PacketController extends Controller
     {
         $packets = Packet::all()->sortByDesc('created_at');
 
-        return view('Backend.packet.index', compact('packets'));
+        return view('Backend.Admin.packet.index', compact('packets'));
     }
 
     /**
@@ -23,7 +23,7 @@ class PacketController extends Controller
      */
     public function create()
     {
-        return view('Backend.packet.create');
+        return view('Backend.Admin.packet.create');
     }
 
     /**
@@ -54,7 +54,7 @@ class PacketController extends Controller
      */
     public function edit(Packet $packet)
     {
-        return view('Backend.Packet.edit', compact('packet'));
+        return view('Backend.Admin.Packet.edit', compact('packet'));
     }
 
     /**

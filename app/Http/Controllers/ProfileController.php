@@ -16,7 +16,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('Backend.Profile.index', [
+        return view('Backend.Admin.Profile.index', [
             'user' => $request->user(),
         ]);
     }
@@ -26,7 +26,7 @@ class ProfileController extends Controller
      */
     public function changePassword(): View
     {
-        return view('Backend.Profile.password');
+        return view('Backend.Admin.Profile.password');
     }
 
     /**

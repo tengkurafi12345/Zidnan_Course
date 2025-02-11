@@ -15,7 +15,7 @@ class ProgramController extends Controller
     {
         $programs = Program::all()->sortByDesc('created_at');
 
-        return view('Backend.Program.index', compact('programs'));
+        return view('Backend.Admin.Program.index', compact('programs'));
     }
 
     /**
@@ -23,7 +23,7 @@ class ProgramController extends Controller
      */
     public function create()
     {
-        return view('Backend.Program.create');
+        return view('Backend.Admin.Program.create');
     }
 
     /**
@@ -54,7 +54,7 @@ class ProgramController extends Controller
      */
     public function edit(Program $program)
     {
-        return view('Backend.Program.edit', compact('program'));
+        return view('Backend.Admin.Program.edit', compact('program'));
     }
 
     /**

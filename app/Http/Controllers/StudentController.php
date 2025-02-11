@@ -16,7 +16,7 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::all()->sortByDesc('created_at');
-        return view('Backend.Student.index', compact('students'));
+        return view('Backend.Admin.Student.index', compact('students'));
     }
 
     /**
@@ -26,7 +26,7 @@ class StudentController extends Controller
     {
         $genders = Gender::cases();
 
-        return view('Backend.Student.create', compact('genders'));
+        return view('Backend.Admin.Student.create', compact('genders'));
     }
 
     /**
@@ -59,7 +59,7 @@ class StudentController extends Controller
     {
         $genders = Gender::cases();
 
-        return view('Backend.student.edit', compact('student', 'genders'));
+        return view('Backend.Admin.student.edit', compact('student', 'genders'));
     }
 
     /**
