@@ -29,6 +29,9 @@ Route::get('/kursus', [KursusController::class, 'index'])->name('kursus');
 Route::get('/guru', [GuruController::class, 'index'])->name('guru');
 Route::get('/testimoni', [TestimonialController::class, 'index'])->name('testimoni');
 Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
+
+Route::get('/pendaftaran-guru', [GuruController::class, 'form'])->name('pendaftaran.guru.form');
+Route::post('/pendaftaran-guru', [GuruController::class, 'store'])->name('pendaftaran.guru.store');
 // Siswa
 
 /**
@@ -37,7 +40,7 @@ Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
 // Dashboard
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
-        return view('backend.dashboard');
+        return view('Backend.dashboard');
     })->name('dashboard');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
