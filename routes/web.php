@@ -14,6 +14,7 @@ use App\Http\Controllers\PacketCombinationController;
 use App\Http\Controllers\PacketController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherAttendanceController;
 use App\Http\Controllers\TeacherPlacementController;
 
 /**
@@ -96,10 +97,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/teacher-placement', [TeacherPlacementController::class, 'index'])->name('teacher.placement.index');
     Route::get('/teacher-placement/create', [TeacherPlacementController::class, 'create'])->name('teacher.placement.create');
     Route::post('/teacher-placement', [TeacherPlacementController::class, 'store'])->name('teacher.placement.store');
-    Route::get('/teacher-placement/{teacherPlacements}', [TeacherPlacementController::class, 'edit'])->name('teacher.placement.edit');
-    Route::patch('/teacher-placement/{teacherPlacements}', [TeacherPlacementController::class, 'update'])->name('teacher.placement.update');
-    Route::delete('/teacher-placement/{teacherPlacements}/delete', [TeacherPlacementController::class, 'destroy'])->name('teacher.placement.destroy');
+    Route::get('/teacher-placement/{teacherPlacement}', [TeacherPlacementController::class, 'edit'])->name('teacher.placement.edit');
+    Route::patch('/teacher-placement/{teacherPlacement}', [TeacherPlacementController::class, 'update'])->name('teacher.placement.update');
+    Route::delete('/teacher-placement/{teacherPlacement}/delete', [TeacherPlacementController::class, 'destroy'])->name('teacher.placement.destroy');
 
+    Route::get('/teacher-meeting-attendance', [TeacherAttendanceController::class, 'index'])->name('teacher.meeting.attendance.index');
+    Route::get('/teacher-meeting-attendance/{teacherPlacement}', [TeacherAttendanceController::class, 'show'])->name('teacher.meeting.attendance.show');
 
 });
 

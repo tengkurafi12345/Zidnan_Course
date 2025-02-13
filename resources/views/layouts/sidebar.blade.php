@@ -56,6 +56,8 @@
         </div>
         <a href="{{ route('packet.combination.index') }}"><i class="fas fa-boxes-packing"></i><span>Paket Kombinasi</span></a>
         <a href="{{ route('teacher.placement.index') }}"><i class="fas fa-person-chalkboard"></i><span>Penempatan Guru</span></a>
+        <a href="{{ route('teacher.meeting.attendance.index') }}"><i class="fas fa-clipboard-user"></i><span>Absensi Guru</span></a>
+
         {{-- <a href="{{ route('student.index') }}"><i class="fas fa-child"></i><span>Siswa Berprestasi</span></a>
         <a href="{{ route('teacher.placement.index') }}"><i class="fas fa-person-chalkboard"></i><span>Promo</span></a>
         <a href="{{ route('teacher.placement.index') }}"><i class="fas fa-person-chalkboard"></i><span>Lowongan</span></a>
