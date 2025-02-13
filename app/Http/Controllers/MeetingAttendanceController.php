@@ -75,7 +75,7 @@ class MeetingAttendanceController extends Controller
 
     public function masuk(Meeting $meeting)
     {
-        $meeting->actual_start_time = Carbon::now(); // Waktu saat ini
+        $meeting->actual_start_time = Carbon::now()->setTimezone('Asia/Jakarta'); // Waktu saat ini
         $meeting->attendance_status = $this->tentukanStatusAbsensi($meeting); // Set status
         $meeting->save();
 
@@ -85,7 +85,7 @@ class MeetingAttendanceController extends Controller
 
     public function keluar(Meeting $meeting)
     {
-        $meeting->actual_end_time = Carbon::now(); // Waktu saat ini
+        $meeting->actual_end_time = Carbon::now()->setTimezone('Asia/Jakarta'); // Waktu saat ini
         $meeting->attendance_status = $this->tentukanStatusAbsensi($meeting); // Set status
         $meeting->save();
 

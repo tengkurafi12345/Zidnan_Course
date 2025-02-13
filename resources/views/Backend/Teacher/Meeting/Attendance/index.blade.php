@@ -229,26 +229,47 @@
                                  <a href="{{ route('meeting.attendance.edit', $meeting->id) }}"
                                     class="btn btn-warning"><i class="fas fa-pen"></i></a>
                                 @endif
-                            <td style="width: 6rem">
-                                @if ($meeting->attendance_status == 'Hadir')
-                                    <span class="badge text-bg-primary">Hadir</span>
-                                @elseif ($meeting->attendance_status == 'Tidak Hadir')
-                                    <span class="badge text-bg-danger">Tidak Hadir</span>
-                                @elseif ($meeting->attendance_status == 'Terlambat')
-                                    <span class="badge text-bg-warning">Terlambat</span>
-                                @elseif ($meeting->attendance_status == 'Kurang')
-                                    <span class="badge text-bg-secondary">Kurang</span>
-                                @else
-                                    <span class="badge text-bg-secondary">Belum</span>
-                                @endif
-                            </td>
+                                <td style="width: 6rem">
+                                    @php
+                                        $status = 'Belum'; // Status default
+                                        $statusClass = 'secondary'; // Warna default
+
+                                        if ($meeting->actual_start_time) {
+                                            $scheduledStart = \Carbon\Carbon::parse($meeting->scheduled_start_time);
+                                            $actualStart = \Carbon\Carbon::parse($meeting->actual_start_time);
+
+                                            $diffInMinutes = $scheduledStart->diffInMinutes($actualStart);
+
+                                            if ($diffInMinutes <= 5 && $diffInMinutes >= -5) {
+                                                $status = 'Tepat Waktu';
+                                                $statusClass = 'success'; // Hijau
+                                            } elseif ($actualStart->gt($scheduledStart)) {
+                                                $status = 'Mundur';
+                                                $statusClass = 'warning'; // Kuning
+                                            } else {
+                                                $status = 'Kurang';
+                                                $statusClass = 'danger'; // Merah
+                                            }
+                                        }
+
+                                        if ($meeting->attendance_status == 'Hangus') {
+                                            $status = 'Hangus';
+                                            $statusClass = 'secondary'; // Abu-abu
+                                        }
+                                    @endphp
+                                    <span class="badge text-bg-{{ $statusClass }}">{{ $status }}</span>
+                                </td>
                             <td style="width: 5rem">
                                 <div class="row">
                                     <div class="col mb-2">
-                                        <a href="{{ route('meeting.attendance.masuk', $meeting->id) }}" class="btn btn-primary">Masuk</a>
+                                        <a href="{{ route('meeting.attendance.masuk', $meeting->id) }}" class="btn btn-primary {{ $meeting->actual_start_time ? 'disabled' : '' }}" {{ $meeting->actual_start_time ? 'disabled' : '' }}>
+                                            {{ $meeting->actual_start_time ? 'Sudah' : 'Masuk' }}
+                                        </a>
                                     </div>
                                     <div class="col mb-2">
-                                        <a href="{{ route('meeting.attendance.keluar', $meeting->id) }}" class="btn btn-primary">Keluar</a>
+                                        <a href="{{ route('meeting.attendance.keluar', $meeting->id) }}" class="btn btn-primary {{ $meeting->actual_end_time ? 'disabled' : '' }}" {{ $meeting->actual_end_time ? 'disabled' : '' }}>
+                                            {{ $meeting->actual_end_time ? 'Sudah' : 'Keluar' }}
+                                        </a>
                                     </div>
                                 </div>
                             </td>

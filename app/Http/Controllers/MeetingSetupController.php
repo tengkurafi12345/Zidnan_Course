@@ -43,10 +43,11 @@ class MeetingSetupController extends Controller
      */
     public function update(Request $request, TeacherPlacement $teacherPlacement)
     {
+        // dd($request->all());
         // Validasi input
         $request->validate([
-            'meetings.*.scheduled_start_time' => 'required|date',
-            'meetings.*.scheduled_end_time' => 'required|date|after:meetings.*.scheduled_start_time',
+            'meetings.*.scheduled_start_time' => 'nullable',
+            'meetings.*.scheduled_end_time' => 'nullable',
         ]);
 
         // Loop melalui data pertemuan yang dikirimkan

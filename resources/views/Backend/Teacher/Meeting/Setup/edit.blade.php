@@ -74,13 +74,13 @@
                     <div class="col-md-4">
                         <div class="mb-3">
                             <label for="scheduled_start_time_{{ $key }}" class="form-label">Waktu Mulai:</label>
-                            <input class="form-control" type="date" id="scheduled_start_time_{{ $key }}" name="meetings[{{ $key }}][scheduled_start_time]" value="{{ \Carbon\Carbon::parse($meeting->scheduled_start_time)->format('d/m/Y') }}" required>
+                            <input class="form-control" type="datetime-local" id="scheduled_start_time_{{ $key }}" name="meetings[{{ $key }}][scheduled_start_time]" value="{{ \Carbon\Carbon::parse($meeting->scheduled_start_time)->format('d/m/Y') }}">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="mb-3">
                             <label for="scheduled_end_time_{{ $key }}" class="form-label">Waktu Berakhir:</label>
-                            <input class="form-control" type="date" id="scheduled_end_time_{{ $key }}" name="meetings[{{ $key }}][scheduled_end_time]" value="{{ \Carbon\Carbon::parse($meeting->scheduled_end_time)->format('d/m/Y') }}" required>
+                            <input class="form-control" type="datetime-local" id="scheduled_end_time_{{ $key }}" name="meetings[{{ $key }}][scheduled_end_time]" value="{{ \Carbon\Carbon::parse($meeting->scheduled_end_time)->format('d/m/Y') }}">
                         </div>
                     </div>
                 </div>

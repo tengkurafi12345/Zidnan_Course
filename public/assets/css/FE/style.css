@@ -74,6 +74,23 @@ header {
     gap: 20px;
 }
 
+.course-container .border-purple {
+    border: 1px solid #6a1b9a;
+}
+
+.course-container .btn-purple {
+    background-color: #6a1b9a;
+    color: white;
+    border-radius: 0%;
+    padding: 10px 20px;
+}
+
+.course-container .fixed-image {
+    width: 100%;
+    height: 200px; /* Sesuaikan tinggi gambar */
+    object-fit: cover;
+}
+
 .course-package {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -174,16 +191,20 @@ footer {
 
 /* Testimonial Sections */
 .testimonial-section {
-    padding: 50px 20px;
+    padding: 100px 20px;
     text-align: center;
     background-color: white;
-    margin-bottom: 30px;
+    margin-bottom: 2px;
 }
 
 .testimonial-section h2 {
     font-size: 2rem;
     color: #6a1b9a;
     margin-bottom: 20px;
+}
+
+.testimonial-section.bg-purple {
+    background-color: #6a1b9a;
 }
 
 /* Testimonial Container */
