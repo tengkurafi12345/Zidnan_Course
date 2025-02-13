@@ -165,9 +165,9 @@
         <!-- button back -->
         <div class="container text-start">
             <div class="row row-cols-1 row-cols-lg-4 g-2 g-lg-5">
-              <div class="col">
-                <a href="{{ route('teacher.meeting.attendance.index') }}" class="btn btn-lg btn-primary">Kembali</a>
-              </div>
+                <div class="col">
+                    <a href="{{ route('teacher.meeting.attendance.index') }}" class="btn btn-lg btn-primary">Kembali</a>
+                </div>
             </div>
         </div>
 
@@ -198,46 +198,61 @@
                             <td style="width: 5rem">{{ $loop->iteration }}</td>
                             <td>{{ $meeting->code }}</td>
                             <td>
-                                Mulai: {{ $meeting->scheduled_start_time ? \Carbon\Carbon::parse($meeting->scheduled_start_time)->translatedFormat('l, d-m-Y H:i:s') : '' }} <br>
-                                Berakhir: {{ $meeting->scheduled_end_time ? \Carbon\Carbon::parse($meeting->scheduled_end_time)->translatedFormat('l, d-m-Y H:i:s') : '' }}
+                                <div class="row">
+                                    <div class="col-3 col-sm-2 fw-bold">Mulai:</div>
+                                    <div class="col-9 col-sm-10">{{ $meeting->scheduled_start_time ? \Carbon\Carbon::parse($meeting->scheduled_start_time)->locale('id')->translatedFormat('l, d-m-Y H:i:s') : '' }}</div>
+                                </div>
+                                <div class="row mt-1">
+                                    <div class="col-3 col-sm-2 fw-bold">Berakhir:</div>
+                                    <div class="col-9 col-sm-10">{{ $meeting->scheduled_end_time ? \Carbon\Carbon::parse($meeting->scheduled_end_time)->locale('id')->translatedFormat('l, d-m-Y H:i:s') : '' }}</div>
+                                </div>
                             </td>
                             <td>
-                                Mulai: {{ $meeting->actual_start_time ? \Carbon\Carbon::parse($meeting->actual_start_time)->translatedFormat('l, d-m-Y H:i:s') : '' }} <br>
-                                Berakhir: {{ $meeting->actual_end_time ? \Carbon\Carbon::parse($meeting->actual_end_time)->translatedFormat('l, d-m-Y H:i:s') : '' }}
+                                <div class="row">
+                                    <div class="col-3 col-sm-2 fw-bold">Mulai:</div>
+                                    <div class="col-9 col-sm-10">{{ $meeting->actual_start_time ? \Carbon\Carbon::parse($meeting->actual_start_time)->locale('id')->translatedFormat('l, d-m-Y H:i:s') : '' }}</div>
+                                </div>
+                                <div class="row mt-1">
+                                    <div class="col-3 col-sm-2 fw-bold">Berakhir:</div>
+                                    <div class="col-9 col-sm-10">{{ $meeting->actual_end_time ? \Carbon\Carbon::parse($meeting->actual_end_time)->locale('id')->translatedFormat('l, d-m-Y H:i:s') : '' }}</div>
+                                </div>
                             </td>
                             <td>
-                                 {{ $meeting->daily_report ?? '-'}}
+                                {{ $meeting->daily_report ?? '-' }}
                             </td>
-                                <td style="width: 6rem">
-                                    @php
-                                        $status = 'Belum'; // Status default
-                                        $statusClass = 'secondary'; // Warna default
+                            <td style="width: 6rem">
+                                @php
+                                    $status = 'Belum'; // Status default
+                                    $statusClass = 'secondary'; // Warna default
 
-                                        if ($meeting->actual_start_time) {
-                                            $scheduledStart = \Carbon\Carbon::parse($meeting->scheduled_start_time);
-                                            $actualStart = \Carbon\Carbon::parse($meeting->actual_start_time);
+                                    if ($meeting->actual_start_time && $meeting->actual_end_time) {
+                                        $scheduledStart = \Carbon\Carbon::parse($meeting->scheduled_start_time);
+                                        $scheduledEnd = \Carbon\Carbon::parse($meeting->scheduled_end_time);
+                                        $actualStart = \Carbon\Carbon::parse($meeting->actual_start_time);
+                                        $actualEnd = \Carbon\Carbon::parse($meeting->actual_end_time);
 
-                                            $diffInMinutes = $scheduledStart->diffInMinutes($actualStart);
+                                        $scheduledDuration = $scheduledEnd->diffInMinutes($scheduledStart);
+                                        $actualDuration = $actualEnd->diffInMinutes($actualStart);
 
-                                            if ($diffInMinutes <= 5 && $diffInMinutes >= -5) {
-                                                $status = 'Tepat Waktu';
-                                                $statusClass = 'success'; // Hijau
-                                            } elseif ($actualStart->gt($scheduledStart)) {
-                                                $status = 'Mundur';
-                                                $statusClass = 'warning'; // Kuning
-                                            } else {
-                                                $status = 'Kurang';
-                                                $statusClass = 'danger'; // Merah
-                                            }
+                                        if ($actualStart->eq($scheduledStart) && $actualEnd->eq($scheduledEnd)) {
+                                            $status = 'Hadir';
+                                            $statusClass = 'success'; // Hijau
+                                        } elseif ($actualDuration < $scheduledDuration) {
+                                            $status = 'Kurang';
+                                            $statusClass = 'danger'; // Merah
+                                        } elseif ($actualStart->gt($scheduledStart)) {
+                                            $status = 'Mundur';
+                                            $statusClass = 'warning'; // Kuning
                                         }
+                                    }
 
-                                        if ($meeting->attendance_status == 'Hangus') {
-                                            $status = 'Hangus';
-                                            $statusClass = 'secondary'; // Abu-abu
-                                        }
-                                    @endphp
-                                    <span class="badge text-bg-{{ $statusClass }}">{{ $status }}</span>
-                                </td>
+                                    if ($meeting->attendance_status == 'Hangus') {
+                                        $status = 'Hangus';
+                                        $statusClass = 'secondary'; // Abu-abu
+                                    }
+                                @endphp
+                                <span class="badge text-bg-{{ $statusClass }}">{{ $status }}</span>
+                            </td>
                             <td style="width: 5rem">
 
                             </td>

@@ -76,7 +76,6 @@ class MeetingAttendanceController extends Controller
     public function masuk(Meeting $meeting)
     {
         $meeting->actual_start_time = Carbon::now()->setTimezone('Asia/Jakarta'); // Waktu saat ini
-        $meeting->attendance_status = $this->tentukanStatusAbsensi($meeting); // Set status
         $meeting->save();
 
         return redirect()->route('meeting.attendance.index')
@@ -96,23 +95,27 @@ class MeetingAttendanceController extends Controller
     // TODO: Masih perlu didiskusikan lagi
     private function tentukanStatusAbsensi(Meeting $meeting)
     {
-        if (!$meeting->actual_start_time) {
-            return 'Tidak Hadir';
+        if (!$meeting->actual_start_time || !$meeting->actual_end_time) {
+            return 'Belum';
         }
 
         $scheduledStart = Carbon::parse($meeting->scheduled_start_time);
+        $scheduledEnd = Carbon::parse($meeting->scheduled_end_time);
         $actualStart = Carbon::parse($meeting->actual_start_time);
+        $actualEnd = Carbon::parse($meeting->actual_end_time);
 
-        // Hitung selisih waktu dalam menit
-        $diffInMinutes = $actualStart->diffInMinutes($scheduledStart);
+        $scheduledDuration = $scheduledEnd->diffInMinutes($scheduledStart);
+        $actualDuration = $actualEnd->diffInMinutes($actualStart);
 
-        if ($actualStart->equalTo($scheduledStart)) {
+        if ($actualStart->eq($scheduledStart) && $actualEnd->eq($scheduledEnd)) {
             return 'Hadir';
-        } elseif ($actualStart->greaterThan($scheduledStart)) {
-            return 'Terlambat';
-        } else {
+        } elseif ($actualDuration < $scheduledDuration) {
             return 'Kurang';
+        } elseif ($actualStart->gt($scheduledStart)) {
+            return 'Mundur';
         }
-    }
 
+        // Jika tidak memenuhi kondisi di atas, kembalikan status default
+        return 'Belum';
+    }
 }
