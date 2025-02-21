@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePacketCombinationRequest;
+use App\Http\Requests\UpdatePacketCombinationRequest;
 use App\Models\Packet;
 use App\Models\PacketCombination;
 use App\Models\Program;
@@ -56,15 +57,27 @@ class PacketCombinationController extends Controller
      */
     public function edit(PacketCombination $packetCombination)
     {
-        //
+        $packets = Packet::all();
+        $programs = Program::all();
+
+        return view('Backend.Admin.PacketCombination.edit', compact(['packets', 'programs', 'packetCombination']));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, PacketCombination $packetCombination)
+    public function update(UpdatePacketCombinationRequest $request, PacketCombination $packetCombination)
     {
-        //
+        $validatedData = $request->validated();
+
+        try {
+            $packetCombination->update($validatedData);
+            return redirect()->route('packet.combination.index')
+                ->with('success', 'Data paket kombinasi berhasil diperbarui!');
+        } catch (\Exception $e) {
+            return redirect()->route('packet.combination.edit', $packetCombination->id)
+                ->with('error', 'Terjadi kesalahan saat memperbarui data.');
+        }
     }
 
     /**

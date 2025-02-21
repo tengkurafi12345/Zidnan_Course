@@ -7,9 +7,159 @@
 @section('content')
     <!-- Header -->
     <header>
-        <h1>Selamat Datang di Zidnan Bimbel</h1>
-        <p>Temukan paket bimbel terbaik sesuai kebutuhan Anda</p>
+        <h1 class="mb-5">🎓 Zidnan: Solusi Terbaik untuk Belajar Privat!</h1>
+        <p>🚀 Mulai perjalanan belajarmu sekarang! </p>
+        <p class="mb-3">📲 Klik tombol di bawah untuk chat langsung dengan kami!</p>
+        <button type="button" onclick="redirectToWhatsApp()" class="btn btn-success px-5 py-3 fs-4"><i
+                class="fab fa-whatsapp"></i> Gabung Sekarang</button>
+        <p class="mt-1">💸 Dapatkan harga mulai dari Rp.135.000</p>
+
+
+        <div class="container-fluid mt-5">
+            <div class="row g-1"> <!-- Mengurangi jarak antar kolom -->
+                <div class="col-sm-4 text-center">
+                    <svg class="bd-placeholder-img rounded-circle" width="80" height="80"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                    </svg>
+                    <h2 class="fw-normal">Heading</h2>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <svg class="bd-placeholder-img rounded-circle" width="80" height="80"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                    </svg>
+                    <h2 class="fw-normal">Heading</h2>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <svg class="bd-placeholder-img rounded-circle" width="80" height="80"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                    </svg>
+                    <h2 class="fw-normal">Heading</h2>
+                </div>
+            </div>
+        </div>
     </header>
+
+    {{-- Section Alasan kenapa harus zidnan --}}
+    <div class="container px-4 py-5" id="hanging-icons">
+        <div class="text-center">
+            <p class="pb-2">Alasan</p>
+            <h2 class="pb-2 fw-bold">Kenapa Harus Zidnan</h2>
+        </div>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+            <div class="col d-flex align-items-start">
+                <div
+                    class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                    <svg class="bi" width="1em" height="1em">
+                        <use xlink:href="#toggles2"></use>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="fs-2 text-body-emphasis">Featured title</h3>
+                    <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence
+                        and probably just keep going until we run out of words.</p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                <div
+                    class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                    <svg class="bi" width="1em" height="1em">
+                        <use xlink:href="#cpu-fill"></use>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="fs-2 text-body-emphasis">Featured title</h3>
+                    <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence
+                        and probably just keep going until we run out of words.</p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                <div
+                    class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                    <svg class="bi" width="1em" height="1em">
+                        <use xlink:href="#tools"></use>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="fs-2 text-body-emphasis">Featured title</h3>
+                    <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence
+                        and probably just keep going until we run out of words.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Konten Alasan -->
+    <section class="testimonial-section">
+        <div class="text-center">
+            <p class="pb-2">Alasan</p>
+            <h2 class="pb-2 fw-bold">Kenapa Harus Zidnan</h2>
+        </div>
+        <div class="container mt-4">
+            <div class="row g-3"> <!-- Mengurangi jarak antar card -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="card h-100"> <!-- Tinggi rata semua card -->
+                        <div class="card-body">
+                            <h5 class="card-title">Card 1</h5>
+                            <p class="card-text">Isi kosong atau sesuaikan nanti.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Card 2</h5>
+                            <p class="card-text">Isi kosong atau sesuaikan nanti.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Card 3</h5>
+                            <p class="card-text">Isi kosong atau sesuaikan nanti.</p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+    {{-- Paket Private --}}
+    <div class="container mt-5 px-4 py-5">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="card">
+                   <div class="card-body">
+                        <p>Foto</p>
+                   </div>
+                </div>
+            </div>
+            <div class="col-md-5 ">
+                <div class="text-start">
+                    <p class="pb-2">Alasan</p>
+                    <h2 class="pb-2 fw-bold">Kenapa Harus Zidnan</h2>
+                    <p class="pb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. A itaque, alias reprehenderit magni, et eius sit voluptatem explicabo libero odio, quasi facere. Ratione cum non eveniet natus quis incidunt, voluptatem, aliquid laboriosam rerum aliquam harum. Necessitatibus, sed ex ullam iure vel accusantium aspernatur commodi deserunt cupiditate architecto</p>
+                    <ul >
+                        <li>An item</li>
+                        <li>A second item</li>
+                        <li>A third item</li>
+                        <li>A fourth item</li>
+                        <li>And a fifth one</li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <!-- Konten Utama -->
     <div class="testimonial-section " id="home">
@@ -31,7 +181,9 @@
                                     <p>Start From: Rp.135,000/8x</p>
                                 </div>
                                 <div class="d-grid gap-2 mt-2">
-                                    <a href="/kursus" class="btn btn-purple rounded-bottom-1">Daftar</a>
+                                    <button type="button" onclick="redirectToWhatsApp()"
+                                        class="btn btn-purple rounded-bottom-1"><i class="fab fa-whatsapp"></i>
+                                        Daftar</button>
                                 </div>
                             </div>
                         </div>
@@ -47,7 +199,9 @@
                                     <p>Start From: Rp.225,000/8x</p>
                                 </div>
                                 <div class="d-grid gap-2 mt-2">
-                                    <a href="/kursus" class="btn btn-purple rounded-bottom-1">Daftar</a>
+                                    <button type="button" onclick="redirectToWhatsApp()"
+                                        class="btn btn-purple rounded-bottom-1"><i class="fab fa-whatsapp"></i>
+                                        Daftar</button>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +218,9 @@
                                     <p>Start From: Rp.320,000/8x</p>
                                 </div>
                                 <div class="d-grid gap-2 mt-2">
-                                    <a href="/kursus" class="btn btn-purple rounded-bottom-1">Daftar</a>
+                                    <button type="button" onclick="redirectToWhatsApp()"
+                                        class="btn btn-purple rounded-bottom-1"><i class="fab fa-whatsapp"></i>
+                                        Daftar</button>
                                 </div>
                             </div>
                         </div>
@@ -81,7 +237,9 @@
                                     <p>Start From: Rp.100,000/8x</p>
                                 </div>
                                 <div class="d-grid gap-2 mt-2">
-                                    <a href="/kursus" class="btn btn-purple rounded-bottom-1">Daftar</a>
+                                    <button type="button" onclick="redirectToWhatsApp()"
+                                        class="btn btn-purple rounded-bottom-1"><i class="fab fa-whatsapp"></i>
+                                        Daftar</button>
                                 </div>
                             </div>
                         </div>
@@ -91,14 +249,6 @@
         </div>
     </div>
 
-    <section class="testimonial-section gap-2 bg-purple text-white">
-        <h1 class="mb-5">🎓 Zidnan: Solusi Terbaik untuk Belajar Privat!</h1>
-        <p>🚀 Mulai perjalanan belajarmu sekarang! </p>
-        <p class="mb-3">📲 Klik tombol di bawah untuk chat langsung dengan kami!</p>
-        <button type="button" onclick="redirectToWhatsApp()" class="btn btn-success px-5 py-3 fs-4"><i
-                class="fab fa-whatsapp"></i> Gabung Sekarang</button>
-        <p class="mt-1">💸 Dapatkan harga mulai dari Rp.135.000</p>
-    </section>
 
     <!-- Konten Siswa -->
     {{-- TODO: Berisikan Konten Siswa Berprestasi --}}
@@ -187,57 +337,7 @@
     </section>
 
 
-    <!-- Konten Testimoni -->
-    <section class="testimonial-section">
-        <h2>Testimoni</h2>
-        <div class="testimonial-slider">
-            <div class="testimonial-item">
-                <p>"Dolore et sed dolore provident natus. Corrupti est enim fugit dicta eligendi"</p>
-                <h3>Bulah Corwin</h3>
-                <span>Sebagai : Environmental Engineering Technician <br> di North Lesly</span>
-            </div>
-            <div class="testimonial-item">
-                <p>"Qui quo laborum ut necessitatibus non dignissimos. Aut sit ad quasi fugit aut perferendis fugit"</p>
-                <h3>Ms. Shirley Romaguera V</h3>
-                <span>Sebagai : Forest Fire Inspector <br> di South Sonia</span>
-            </div>
-            <div class="testimonial-item">
-                <p>"Dolorem non natus provident dolorem. Magnam dolor possimus id quis"</p>
-                <h3>Cali Keebler I</h3>
-                <span>Sebagai : Forest Fire Inspector <br> di South Sonia</span>
-            </div>
-            <div class="testimonial-item">
-                <p>"Dolore et sed dolore provident natus. Corrupti est enim fugit dicta eligendi"</p>
-                <h3>Bulah Corwin</h3>
-                <span>Sebagai : Environmental Engineering Technician <br> di North Lesly</span>
-            </div>
-            <div class="testimonial-item">
-                <p>"Qui quo laborum ut necessitatibus non dignissimos. Aut sit ad quasi fugit aut perferendis fugit"</p>
-                <h3>Ms. Shirley Romaguera V</h3>
-                <span>Sebagai : Forest Fire Inspector <br> di South Sonia</span>
-            </div>
-            <div class="testimonial-item">
-                <p>"Dolorem non natus provident dolorem. Magnam dolor possimus id quis"</p>
-                <h3>Cali Keebler I</h3>
-                <span>Sebagai : Forest Fire Inspector <br> di South Sonia</span>
-            </div>
-            <div class="testimonial-item">
-                <p>"Dolore et sed dolore provident natus. Corrupti est enim fugit dicta eligendi"</p>
-                <h3>Bulah Corwin</h3>
-                <span>Sebagai : Environmental Engineering Technician <br> di North Lesly</span>
-            </div>
-            <div class="testimonial-item">
-                <p>"Qui quo laborum ut necessitatibus non dignissimos. Aut sit ad quasi fugit aut perferendis fugit"</p>
-                <h3>Ms. Shirley Romaguera V</h3>
-                <span>Sebagai : Forest Fire Inspector <br> di South Sonia</span>
-            </div>
-            <div class="testimonial-item">
-                <p>"Dolorem non natus provident dolorem. Magnam dolor possimus id quis"</p>
-                <h3>Cali Keebler I</h3>
-                <span>Sebagai : Forest Fire Inspector <br> di South Sonia</span>
-            </div>
-        </div>
-    </section>
+
 
     <div class="map-container">
         <h3>Lokasi Kami</h3>
@@ -249,4 +349,16 @@
 
         </div>
     </div>
+
+    <section class="testimonial-section mb-0" style="display: none">
+        <p>
+            'les private bahasa inggris''
+            'guru les private''
+            'les privat matematika''
+            'les calistung''
+            'jasa les privat''
+            'kursus private''
+            'les private matematika''
+        </p>
+    </section>
 @endsection

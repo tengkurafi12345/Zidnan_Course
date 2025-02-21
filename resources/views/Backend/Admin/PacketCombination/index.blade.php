@@ -194,8 +194,8 @@
                             <td>{{ "Rp." . number_format($packetCombination->price, 0, ',', '.') }}</td>
                             <td>
                                 <div class="action-buttons">
-                                    {{-- <a href="{{ route('packet.combination.edit', $packetCombination->id) }}"
-                                        class="btn btn-sm btn-warning" >Edit</a> --}}
+                                    <a href="{{ route('packet.combination.edit', $packetCombination->id) }}"
+                                        class="btn btn-sm btn-warning" >Edit</a>
                                     <form action="{{ route('packet.combination.destroy', $packetCombination->id) }}" method="POST"
                                         style="display: inline-block;">
                                         @csrf

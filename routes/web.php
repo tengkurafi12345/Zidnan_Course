@@ -16,6 +16,7 @@ use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherAttendanceController;
 use App\Http\Controllers\TeacherPlacementController;
+use Illuminate\Support\Facades\Http;
 
 /**
  * Routing Untuk Halaman Depan
@@ -34,6 +35,21 @@ Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
 Route::get('/pendaftaran-guru', [GuruController::class, 'form'])->name('pendaftaran.guru.form');
 Route::post('/pendaftaran-guru', [GuruController::class, 'store'])->name('pendaftaran.guru.store');
 // Siswa
+
+
+
+// Test send wa
+Route::get('/send-wa', function () {
+
+    $response = Http::withHeaders([
+        'Authorization' => 'BGvVTFueiRAj5cZbUSJm',
+    ])->post('https://api.fonnte.com/send', [
+        'target' => '082127236220',
+        'message' => 'test message',
+    ]);
+
+    dd(json_decode($response, true));
+});
 
 /**
  * Routing Untuk Halaman Dashboard

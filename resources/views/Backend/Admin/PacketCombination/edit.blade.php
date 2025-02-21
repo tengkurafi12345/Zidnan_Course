@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Program')
+@section('title', 'Tambah Program')
 @section('css')
     <style>
         /* Styling untuk alert */
@@ -48,23 +48,39 @@
             </div>
         @endif
 
-        <form action="{{ route('program.update', $program->id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('packet.combination.update', $packetCombination->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
-            <h3>Edit Paket</h3>
+            <h3>Tambah Paket Kombinasi</h3>
 
-            <p>Kode</p>
-            <input type="text" name="code" placeholder="enter your code" class="box"
-                value="{{ old('code', $program->code) }}">
+            <p>Nama Paket</p>
+            <select name="packet_id" id="select">
+                @foreach ($packets as $packet)
+                    @if ($packet === $packetCombination->packet)
+                        <option value="{{ $packet->id }}" selected> {{ $packet->code }} - {{ $packet->name }}</option>
+                    @endif
+                    <option value="{{ $packet->id }}" >{{ $packet->code }} - {{ $packet->name }}</option>
+                @endforeach
+            </select>
 
-            <p>Nama</p>
-            <input type="text" name="name" placeholder="enter your old text" class="box"
-                value="{{ old('name', $program->name) }}">
+            <p>Nama Program</p>
+            <select name="program_id" id="select">
+                @foreach ($programs as $program)
+                    @if ($program === $packetCombination->program)
+                    <option value="{{ $program->id }}" selected>{{ $program->name }} - {{ $program->meeting_times }}Kali</option>
+                    @endif
+                    <option value="{{ $program->id }}" >{{ $program->name }} - {{ $program->meeting_times }}Kali</option>
+                @endforeach
+            </select>
 
-            <p>Deskripsi</p>
-            <input type="text" name="description" class="box" value="{{ old('description', $program->description) }}">
+            <p>Harga</p>
+            <input type="number" name="price" id="" value="{{ old('price', $packetCombination->price) }}" class="box">
 
-            <input type="submit" value="Update Paket" class="btn">
+            <div class="row mt-4">
+                <div class="col">
+                    <input type="submit" value="Simpan" class="btn btn-lg btn-primary">
+                </div>
+            </div>
         </form>
     </section>
 @endsection

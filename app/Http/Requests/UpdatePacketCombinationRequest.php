@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdatePacketCombinationRequest extends FormRequest
@@ -22,7 +23,19 @@ class UpdatePacketCombinationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'packet_id' => [
+                'required',
+                'exists:packets,id',
+            ],
+            'program_id' => [
+                'required',
+                'exists:programs,id',
+                Rule::unique('packet_combinations')
+                ->where('packet_id', $this->packet_id)
+                ->where('program_id', $this->program_id)
+                ->ignore($this->route('packet_combination'))
+            ],
+            'price' => 'required|numeric',
         ];
     }
 }

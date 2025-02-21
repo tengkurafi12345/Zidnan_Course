@@ -53,14 +53,14 @@
             <h3>Penempatan Guru</h3>
 
             <p>Nama Paket Kombinasi</p>
-            <select name="packet_combination_id" id="select">
+            <select name="packet_combination_id" id="select" class="form-select">
                     <option value="">--Please choose an option--</option>
                     @foreach ($packetCombinations as $packetCombination)
                         <option value="{{ $packetCombination->id }}" >{{ $packetCombination->packet->name }} - {{ $packetCombination->program->name }} ({{ $packetCombination->program->meeting_times }} Kali)</option>
                     @endforeach
                 </select>
             <p>Nama Guru</p>
-            <select name="teacher_id" id="select">
+            <select name="teacher_id" id="select" class="form-select">
                 <option value="">--Please choose an option--</option>
                 @foreach ($teachers as $teacher)
                     <option value="{{ $teacher->id }}" >{{ $teacher->name }}</option>
@@ -68,14 +68,18 @@
             </select>
 
             <p>Nama Siswa </p>
-            <select name="student_id" id="select">
+            <select name="student_id" id="select" class="form-select">
                 <option value="">--Please choose an option--</option>
                 @foreach ($students as $student)
                     <option value="{{ $student->id }}" >{{ $student->name }}</option>
                 @endforeach
             </select>
 
-            <input type="submit" value="Simpan" class="btn">
+            <div class="row mt-5">
+                <div class="col">
+                    <input type="submit" value="Simpan" class="btn btn-lg btn-primary">
+                </div>
+            </div>
         </form>
     </section>
 @endsection
