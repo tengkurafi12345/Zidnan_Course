@@ -1,22 +1,23 @@
 <?php
 
-use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PacketController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\Main\GuruController;
 use App\Http\Controllers\Main\SiswaController;
 use App\Http\Controllers\Main\KursusController;
-use App\Http\Controllers\Main\TestimonialController;
-use App\Http\Controllers\MeetingAttendanceController;
 use App\Http\Controllers\MeetingSetupController;
-use App\Http\Controllers\PacketCombinationController;
-use App\Http\Controllers\PacketController;
-use App\Http\Controllers\ProgramController;
-use App\Http\Controllers\StudentController;
-use App\Http\Controllers\TeacherAttendanceController;
+use App\Http\Controllers\Main\TestimonialController;
 use App\Http\Controllers\TeacherPlacementController;
-use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\MeetingAttendanceController;
+use App\Http\Controllers\PacketCombinationController;
+use App\Http\Controllers\TeacherAttendanceController;
 
 /**
  * Routing Untuk Halaman Depan
@@ -27,6 +28,8 @@ use Illuminate\Support\Facades\Http;
 // });
 // Paket Bimbel
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/mengaji', [HomeController::class, 'mengaji'])->name('mengaji');
+
 Route::get('/kursus', [KursusController::class, 'index'])->name('kursus');
 Route::get('/guru', [GuruController::class, 'index'])->name('guru');
 Route::get('/testimoni', [TestimonialController::class, 'index'])->name('testimoni');
@@ -144,5 +147,20 @@ Route::middleware(['auth', 'role:teacher'])->group(function () {
     Route::get('/meeting/attendance/masuk/{meeting}', [MeetingAttendanceController::class, 'masuk'])->name('meeting.attendance.masuk');
     Route::get('/meeting/attendance/keluar/{meeting}', [MeetingAttendanceController::class, 'keluar'])->name('meeting.attendance.keluar');
 });
+
+
+/**
+ * Routing for artisan
+ */
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
+});
+
+Route::get('/artisan-optimize', function() {
+    Artisan::call('optimize');
+    return "Platform is optimize";
+});
+
 
 require __DIR__.'/auth.php';
