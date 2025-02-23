@@ -14,7 +14,7 @@
         <p>Siswa TK - SMA dan UMUM</p>
         <h1 class="mb-1 fredoka"> Terdaftar di Bimbel Zidnan</h1>
         <p>Les Privat dan Bimbel Eksklusif.</p>
-        <p>Santri weekend & Perusahaan mengaji</p>
+        <p>Santri weekend dan Perusahaan mengaji</p>
         <p>Dari guru terbaik untuk Indonesia lebih cerah</p>
         <p>Siap mendampingi anda belajar</p>
         <button type="button" onclick="redirectToWhatsApp()" class="btn btn-success px-5 py-3 fs-4 mt-2 mb-3"><i
