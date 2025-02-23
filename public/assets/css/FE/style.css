@@ -25,7 +25,6 @@ p {
 }
 
 .bg-purple {
-    /* warna dasar */
     background-color: #d42acc;
 }
 
@@ -84,14 +83,20 @@ h2 {
 
 /* Navigation Bar */
 .navbar {
-    display: flex;
     background-color: #d42acc;
-    text-align: center;
-    border-bottom: #000000 solid 1px;
-    position: sticky;
-    top: 0;
-    z-index: 9;
-    padding: 0;
+    color: white !important;
+}
+
+.navbar a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    color: #ddd;
+    text-decoration: none;
 }
 
 .nav-links {
@@ -103,7 +108,7 @@ h2 {
 .auth-links {
     margin-left: auto;
 }
-
+/*
 .navbar a {
     color: white;
     margin: 0 15px;
@@ -114,13 +119,16 @@ h2 {
 .navbar a:hover {
     color: white;
     text-decoration: none;
-}
+} */
 
 /* Header */
 header {
-    padding-top: 20px;
+    padding-top: 6rem;
     padding-bottom: 50px;
-    background-color: white;
+    background-image: url(../../../img/bg-utama.png);
+    background-size: cover; /* Menyesuaikan ukuran asli gambar */
+    background-repeat: no-repeat; /* Mencegah gambar diulang */
+    background-position: center; /* Menempatkan gambar di tengah */
     text-align: center;
     color: black;
     height: auto;
