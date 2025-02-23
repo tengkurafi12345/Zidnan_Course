@@ -14,10 +14,78 @@ p {
     padding: 0;
 }
 
+/* Font Google */
+.fredoka {
+    font-family: "Fredoka", serif;
+}
+
+/* Custom Color */
+.text-purple {
+    color: #d42acc;
+}
+
+.bg-purple {
+    /* warna dasar */
+    background-color: #d42acc;
+}
+
+.btn-purple {
+    background-color: #6a1b9a;
+    color: white;
+    border-radius: 0%;
+    padding: 10px 20px;
+}
+
+.btn-violet {
+    background-color: #d42acc;
+    color: white;
+    border-radius: 0%;
+    padding: 10px 20px;
+}
+
+.border-purple {
+    border: 1px solid #6a1b9a;
+}
+
+.border-bottom-purple {
+    border-bottom: 1px solid #dee2e6 ;
+    border-color:#d42acc !important;
+    border-radius: 10% 30%
+}
+
+/* Custom Circle */
+.circle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px; /* Mengurangi jarak antar ikon dan teks */
+}
+
+.circle {
+    width: 80px;
+    height: 80px;
+    background-color: var(--circle-color, #f0f0f0); /* Warna lingkaran bisa dikustom */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px; /* Pusatkan dan beri jarak */
+}
+
+.circle i {
+    font-size: 32px; /* Ukuran ikon */
+    color: #333; /* Warna ikon */
+}
+
+h2 {
+    font-size: 18px;
+}
+
 /* Navigation Bar */
 .navbar {
     display: flex;
-    background-color: white;
+    background-color: #d42acc;
     text-align: center;
     border-bottom: #000000 solid 1px;
     position: sticky;
@@ -37,24 +105,25 @@ p {
 }
 
 .navbar a {
-    color: #b500fd;
+    color: white;
     margin: 0 15px;
     text-decoration: none;
     font-weight: bold;
 }
 
 .navbar a:hover {
-    color: #733b77;
+    color: white;
     text-decoration: none;
 }
 
 /* Header */
 header {
-    padding-top: 80px;
-    background-color: #993dbe;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    background-color: white;
     text-align: center;
-    color: white;
-    height:600px;
+    color: black;
+    height: auto;
 }
 
 /* Kontainer Utama */
@@ -78,15 +147,20 @@ header {
     gap: 20px;
 }
 
-.course-container .border-purple {
-    border: 1px solid #6a1b9a;
+/* Card Favorit lebih tinggi */
+.course-container .favorite-card {
+    min-height: 500px; /* Bisa diubah sesuai kebutuhan */
 }
 
-.course-container .btn-purple {
+.course-container .border-purple-favorite {
+    border: 4px solid #6a1b9a;
+}
+
+.course-container .bg-purple {
+    border: 1px solid #6a1b9a;
+    border-radius: 0;
     background-color: #6a1b9a;
     color: white;
-    border-radius: 0%;
-    padding: 10px 20px;
 }
 
 .course-container .fixed-image {
@@ -147,9 +221,9 @@ header {
 
 /* Footer */
 footer {
-    background-color: #b500fd;
+    background-color: #d42acc;
     color: white;
-    padding: 20px;
+    padding: 30px 0px;
     text-align: center;
 }
 
@@ -194,7 +268,7 @@ footer {
 
 /* Testimonial Sections */
 .testimonial-section {
-    padding: 100px 20px;
+    padding: 100px 6rem;
     text-align: center;
     background-color: white;
     margin-bottom: 2px;
@@ -308,17 +382,44 @@ footer {
 .card-siswa:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
-
+/*
 .container {
     padding: 2px 16px;
-}
+} */
 
+.container-fluid {
+    width: 100%;
+    padding-right: 6rem;
+    padding-left: 6rem;
+    margin-right: auto;
+    margin-left: auto;
+}
 /* Google Map */
 .map-container {
-    margin: 40px;
+    padding: 100px 6rem;
+    text-align: center;
+    background-color: #f5f5f5;
+    margin-bottom: 2px;
 }
 
 .map-container iframe {
-    border: 0;
+    padding: 20px;
+    border: 1px solid #ddd;
     border-radius: 8px;
+}
+
+
+/* Jika layar lebih kecil dari 992px (md) atau 768px (sm), ubah padding */
+@media (max-width: 991.98px) { /* Untuk md dan lebih kecil */
+    .container-fluid, .testimonial-section {
+        padding-right: 100px;
+        padding-left: 100px;
+    }
+}
+
+@media (max-width: 767.98px) { /* Untuk sm dan lebih kecil */
+    .container-fluid, .testimonial-section {
+        padding-right: 50px; /* Opsional: Bisa dikurangi lebih kecil */
+        padding-left: 50px;
+    }
 }

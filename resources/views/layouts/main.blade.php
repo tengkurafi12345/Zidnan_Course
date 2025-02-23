@@ -13,6 +13,11 @@
     <!-- custom css link  -->
     <link rel="stylesheet" href="{{ asset('assets/bootstrap-5.3.3-dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/FE/style.css') }}">
+
+    <!-- Font Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -40,9 +45,10 @@
                         / /><br /></a><br /></span><br /></span><br />
         <div class="clear"></div><br />
     </div> --}}
+
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Zidnan Bimbel. All rights reserved.</p>
+        <p>&copy; 2025 Zidnan Group. All rights reserved.</p>
     </footer>
 
     <script src="{{ asset('assets/bootstrap-5.3.3-dist/js/bootstrap.min.js') }}"></script>
@@ -56,6 +62,28 @@
             closeBtns[i].onclick = function() {
                 var alert = this.parentElement;
                 alert.style.display = "none"; // Menyembunyikan alert saat tanda silang diklik
+            }
+        }
+
+        // Number Counter Animated
+        let upto = 0;
+        let step = 5; // Tambahkan angka per iterasi
+        let counts = setInterval(updated, 10); // Interval tetap 10 ms
+
+        function updated() {
+            let count = document.getElementById("counter");
+            upto += step; // Tambah lebih dari 1
+
+            // Format angka jika sudah mencapai 1000 atau lebih
+            let formattedNumber = upto >= 1000 ?
+                upto.toString().replace(/^(\d)(\d{3})$/, '$1,$2') :
+                upto;
+
+            count.innerHTML = formattedNumber;
+
+            if (upto >= 1504) {
+                clearInterval(counts);
+                count.innerHTML = "1,504"; // Pastikan format tetap benar saat berhenti
             }
         }
     </script>

@@ -17,6 +17,7 @@ use App\Http\Controllers\Main\TestimonialController;
 use App\Http\Controllers\TeacherPlacementController;
 use App\Http\Controllers\MeetingAttendanceController;
 use App\Http\Controllers\PacketCombinationController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TeacherAttendanceController;
 
 /**
@@ -63,10 +64,9 @@ Route::middleware(['auth'])->group(function () {
         return view('Backend.dashboard');
     })->name('dashboard');
 
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.password');
+    Route::get('/profile', [SettingController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [SettingController::class, 'update'])->name('profile.update');
+    Route::get('/profile/change-password', [SettingController::class, 'changePassword'])->name('profile.password');
 
 });
 

@@ -1,7 +1,7 @@
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Eighth navbar example">
+    <nav class="navbar navbar-expand-lg navbar-dark" aria-label="Eighth navbar example" style="height: 90px">
         <div class="container">
           <a class="navbar-brand" href="#">
-            <img src="{{ asset('img/logo-menu-utama.png') }}" alt="" style="width: 100px">
+            <img src="{{ asset('img/logo-menu-utama.png') }}" alt="" style="width: 100px; height: 40px">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -10,7 +10,7 @@
           <div class="collapse navbar-collapse" id="navbarsExample07">
             <ul class="navbar-nav ms-5 me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Beranda</a>
+                <a class="nav-link" aria-current="page" href="/">Beranda</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('kursus') }}">Kursus</a>
