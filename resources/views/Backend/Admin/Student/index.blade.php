@@ -160,7 +160,7 @@
                 <h1 class="heading">Daftar Siswa</h1>
             </div>
             <div class="">
-                <a href="{{ route('student.create') }}" class="btn btn-info">Tambah Siswa</a>
+                <a href="{{ route('student.create') }}" class="btn btn-violet">Tambah Siswa</a>
             </div>
         </div>
 
@@ -202,13 +202,13 @@
                             <td>
                                 <div class="action-buttons">
                                     <a href="{{ route('student.edit', $student->id) }}"
-                                        class="btn btn-sm btn-warning" >Edit</a>
+                                        class="btn btn-sm btn-warning" ><i class="fas fa-pen-to-square"></i></a>
                                     <form action="{{ route('student.destroy', $student->id) }}" method="POST"
                                         style="display: inline-block;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger"
-                                            onclick="return confirm('Are you sure?')">Delete</button>
+                                            onclick="return confirm('Are you sure?')"><i class="fas fa-trash-can"></i></button>
                                     </form>
                                 </div>
                             </td>

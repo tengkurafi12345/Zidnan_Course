@@ -19,7 +19,6 @@ class ProgramFactory extends Factory
         return [
             'code' => $this->faker->unique()->randomNumber(5),
             'name' => $this->faker->word,
-            'meeting_times' => $this->faker->randomElement([8, 16]),
             'description' => $this->faker->sentence,
         ];
     }

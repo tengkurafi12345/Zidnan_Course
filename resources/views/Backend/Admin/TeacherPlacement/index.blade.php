@@ -161,7 +161,7 @@
                 <h1 class="heading">Penempatan Guru</h1>
             </div>
             <div class="">
-                <a href="{{ route('teacher.placement.create') }}" class="btn btn-info">Tempatkan Guru</a>
+                <a href="{{ route('teacher.placement.create') }}" class="btn btn-violet">Tempatkan Guru</a>
             </div>
         </div>
 
@@ -182,6 +182,7 @@
                         <th>Program</th>
                         <th>Guru</th>
                         <th>Siswa</th>
+                        <th>Jumlah Pertemuan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -197,6 +198,7 @@
                             </td>
                             <td>{{ $teacherPlacement->teacher->name }}</td>
                             <td>{{ $teacherPlacement->student->name }}</td>
+                            <td>{{ $teacherPlacement->meeting_times }}</td>
                             <td>
                                 <div class="action-buttons">
                                     {{-- <a href="{{ route('teacher.placement.edit', $teacherPlacement->id) }}"

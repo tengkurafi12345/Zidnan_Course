@@ -37,6 +37,8 @@ class PacketCombinationController extends Controller
     {
         $validatedData = $request->validated();
 
+        $validatedData['status'] = 1;
+
         PacketCombination::create($validatedData);
 
         return redirect()

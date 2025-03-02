@@ -241,7 +241,7 @@
                                         <p class="mb-4 text-success">{{ $private->packet->class_level }}</p>
                                         <p class="fw-bold mb-1">Mulai</p>
                                         <h2 class="my-2">{{ "Rp." . number_format($private->price, 0, ',', '.') }}</h2>
-                                        <p>Per {{ $private->program->meeting_times }} Kali Pertemuan</p>
+                                        <p>Per Jam</p>
                                         <hr>
                                         <button type="button" onclick="redirectToWhatsApp()"
                                                 class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
@@ -339,8 +339,7 @@
                                         <p class="mb-4 text-success">{{ $bimbel->packet->class_level }}</p>
                                         <p class="fw-bold mb-1">Mulai</p>
                                         <h2 class="my-2">{{ "Rp." . number_format($bimbel->price, 0, ',', '.') }}</h2>
-                                        <p>Per {{ $bimbel->program->meeting_times }} Kali Pertemuan</p>
-                                        <hr>
+                                        <p>Per Jam</p>                                        <hr>
                                         <button type="button" onclick="redirectToWhatsApp()"
                                                 class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
                                             Daftar</button>
@@ -438,7 +437,7 @@
                                         <p class="mb-4 text-success">{{ $santri->packet->class_level }}</p>
                                         <p class="fw-bold mb-1">Mulai</p>
                                         <h2 class="my-2">{{ "Rp." . number_format($santri->price, 0, ',', '.') }}</h2>
-                                        <p>Per {{ $santri->program->meeting_times }} Kali Pertemuan</p>
+                                        <p>Per Jam</p>
                                         <hr>
                                         <button type="button" onclick="redirectToWhatsApp()"
                                                 class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
@@ -538,7 +537,7 @@
                                         <p class="mb-4 text-success">{{ $corporate->packet->class_level }}</p>
                                         <p class="fw-bold mb-1">Mulai</p>
                                         <h2 class="my-2">{{ "Rp." . number_format($corporate->price, 0, ',', '.') }}</h2>
-                                        <p>Per {{ $corporate->program->meeting_times }} Kali Pertemuan</p>
+                                        <p>Per Jam</p>
                                         <hr>
                                         <button type="button" onclick="redirectToWhatsApp()"
                                                 class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>

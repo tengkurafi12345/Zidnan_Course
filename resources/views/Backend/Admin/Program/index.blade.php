@@ -160,7 +160,7 @@
                 <h1 class="heading">Daftar Program</h1>
             </div>
             <div class="">
-                <a href="{{ route('program.create') }}" class="btn btn-info">Tambah Program</a>
+                <a href="{{ route('program.create') }}" class="btn btn-violet">Tambah Program</a>
             </div>
         </div>
 
@@ -179,9 +179,8 @@
                         <th>No</th>
                         <th>Kode</th>
                         <th>Nama</th>
-                        <th>Jumlah Pertemuan</th>
                         <th>Deskripsi</th>
-                        <th>Aksi</th>
+                        <th class="text-center" width="100px">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -190,18 +189,17 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $program->code  }}</td>
                             <td>{{ $program->name }}</td>
-                            <td>{{ $program->meeting_times }}</td>
                             <td>{{ $program->description }}</td>
                             <td>
                                 <div class="action-buttons">
                                     <a href="{{ route('program.edit', $program->id) }}"
-                                        class="btn btn-sm btn-warning" >Edit</a>
+                                        class="btn btn-sm btn-warning" ><i class="fas fa-pen-to-square"></i></a>
                                     <form action="{{ route('program.destroy', $program->id) }}" method="POST"
                                         style="display: inline-block;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger"
-                                            onclick="return confirm('Are you sure?')">Delete</button>
+                                            onclick="return confirm('Are you sure?')"><i class="fas fa-trash-can"></i></button>
                                     </form>
                                 </div>
                             </td>

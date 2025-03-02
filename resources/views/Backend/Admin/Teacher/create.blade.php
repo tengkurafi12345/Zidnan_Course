@@ -70,7 +70,7 @@
             <input type="text" name="domicile" class="box" value="{{ old('domicile') }}">
 
             <p>Jenis Kelamin </p>
-            <select name="gender" id="select">
+            <select name="gender" id="select" class="form-select">
                 <option value="">--Please choose an option--</option>
                 @foreach ($genders as $gender)
                     <option value="{{ $gender->value }}" >{{ $gender->name }}</option>
@@ -88,7 +88,12 @@
             <p>Bio</p>
             <textarea name="bio" placeholder="write your bio" class="box">{{ old('bio') }}</textarea>
 
-            <input type="submit" value="Tambah Guru" class="btn">
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <a href="{{ route('teacher.index') }}" class="btn btn-secondary">Kembali</a>
+                    <button type="submit" class="btn btn-purple">Simpan</button>
+                </div>
+            </div>
         </form>
     </section>
 @endsection

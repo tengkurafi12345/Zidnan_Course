@@ -160,7 +160,7 @@
                 <h1 class="heading">Daftar Paket</h1>
             </div>
             <div class="">
-                <a href="{{ route('packet.create') }}" class="btn btn-info">Tambah Paket</a>
+                <a href="{{ route('packet.create') }}" class="btn btn-violet">Tambah Paket</a>
             </div>
         </div>
 

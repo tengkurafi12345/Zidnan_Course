@@ -67,7 +67,7 @@
             <input type="date" name="birth_date" class="box" value="{{ old('birth_date') }}">
 
             <p>Jenis Kelamin </p>
-            <select name="gender" id="select">
+            <select name="gender" id="select" class="form-select">
                 <option value="">--Please choose an option--</option>
                 @foreach ($genders as $gender)
                     <option value="{{ $gender->value }}" >{{ $gender->name }}</option>
@@ -118,7 +118,12 @@
             <input type="text" name="mother_occupation" placeholder="enter your mother_occupation" class="box"
                 value="{{ old('mother_occupation') }}">
 
-            <input type="submit" value="Tambah Siswa" class="btn">
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <a href="{{ route('student.index') }}" class="btn btn-secondary">Kembali</a>
+                    <button type="submit" class="btn btn-purple">Simpan</button>
+                </div>
+            </div>
         </form>
     </section>
 @endsection

@@ -44,14 +44,14 @@ class TeacherPlacementController extends Controller
             'teacher_id' => 'required|exists:teachers,id',
             'student_id' => 'required|exists:students,id',
             'packet_combination_id' => 'required|exists:packet_combinations,id',
+            'meeting_times' => 'required|numeric'
         ]);
 
         // Buat Package Placement
         $placement = TeacherPlacement::create($validated);
 
         // Ambil jumlah meeting dari program terkait
-        $program = $placement->packetCombination->program;
-        $meetingTimes = $program->meeting_times;
+        $meetingTimes = $validated['meeting_times'];
 
         // Buat data meeting sesuai meeting_times
         $meetings = [];

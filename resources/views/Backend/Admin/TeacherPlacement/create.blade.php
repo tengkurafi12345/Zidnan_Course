@@ -56,7 +56,7 @@
             <select name="packet_combination_id" id="select" class="form-select">
                     <option value="">--Please choose an option--</option>
                     @foreach ($packetCombinations as $packetCombination)
-                        <option value="{{ $packetCombination->id }}" >{{ $packetCombination->packet->name }} - {{ $packetCombination->program->name }} ({{ $packetCombination->program->meeting_times }} Kali)</option>
+                        <option value="{{ $packetCombination->id }}" >{{ $packetCombination->packet->name }} - {{ $packetCombination->program->name }}</option>
                     @endforeach
                 </select>
             <p>Nama Guru</p>
@@ -75,9 +75,14 @@
                 @endforeach
             </select>
 
+            <p>Jumlah Pertemuan</p>
+            <input type="text" name="meeting_times" class="box"
+                   value="{{ old('meeting_times') }}">
+
             <div class="row mt-5">
-                <div class="col">
-                    <input type="submit" value="Simpan" class="btn btn-lg btn-primary">
+                <div class="col-md-12">
+                    <a href="{{ route('teacher.placement.index') }}" class="btn btn-secondary">Kembali</a>
+                    <button type="submit" class="btn btn-purple">Simpan</button>
                 </div>
             </div>
         </form>

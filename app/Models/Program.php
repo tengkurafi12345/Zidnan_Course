@@ -11,7 +11,7 @@ class Program extends Model
     use HasFactory, HasUuids;
 
     protected $table = "programs";
-    protected $fillable = ['code', 'name', 'meeting_times', 'description'];
+    protected $fillable = ['code', 'name', 'description'];
 
     public function packetCombinations()
     {

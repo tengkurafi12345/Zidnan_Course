@@ -9,13 +9,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TeacherPlacement extends Model
 {
-    /** @use HasFactory<\Database\Factories\TeacherPlacementFactory> */
     use HasFactory, HasUuids;
 
     protected $table = 'teacher_placements';
 
     protected $fillable = [
-        'teacher_id', 'student_id', 'packet_combination_id'
+        'teacher_id', 'student_id', 'packet_combination_id', 'meeting_times'
     ];
 
     public function teacher()

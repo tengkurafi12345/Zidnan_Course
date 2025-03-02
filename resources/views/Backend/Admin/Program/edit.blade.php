@@ -61,14 +61,15 @@
             <input type="text" name="name" placeholder="enter your old text" class="box"
                 value="{{ old('name', $program->name) }}">
 
-            <p>Jumlah Pertemuan</p>
-            <input type="text" name="meeting_times" placeholder="enter your old text" class="box"
-                value="{{ old('meeting_times', $program->meeting_times) }}">
-
             <p>Deskripsi</p>
             <input type="text" name="description" class="box" value="{{ old('description', $program->description) }}">
 
-            <input type="submit" value="Update Program" class="btn">
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <a href="{{ route('program.index') }}" class="btn btn-secondary">Kembali</a>
+                    <button type="submit" class="btn btn-purple">Simpan</button>
+                </div>
+            </div>
         </form>
     </section>
 @endsection

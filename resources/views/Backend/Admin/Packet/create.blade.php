@@ -72,7 +72,12 @@
             <p>Deskripsi</p>
             <textarea name="description" placeholder="write your description" class="box">{{ old('description') }}</textarea>
 
-            <input type="submit" value="Buat Paket" class="btn">
+            <div class="row mt-5">
+                <div class="col-md-12">
+                <a href="{{ route('packet.index') }}" class="btn btn-secondary">Kembali</a>
+                    <button type="submit" class="btn btn-purple">Simpan</button>
+                </div>
+            </div>
         </form>
     </section>
 @endsection
