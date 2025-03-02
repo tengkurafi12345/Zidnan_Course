@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah Program')
+@section('title', 'Tambah Paket Kombinasi')
 @section('css')
     <style>
         /* Styling untuk alert */
@@ -53,25 +53,30 @@
             <h3>Tambah Paket Kombinasi</h3>
 
             <p>Nama Paket</p>
-            <select name="packet_id" id="select">
+            <select name="packet_id" id="select" class="form-select">
                 <option value="">--Please choose an option--</option>
                 @foreach ($packets as $packet)
-                    <option value="{{ $packet->id }}" >{{ $packet->name }} - Rp.{{ number_format($packet->price, 0, ',', '.') }}</option>
+                    <option value="{{ $packet->id }}" >{{ $packet->name }}</option>
                 @endforeach
             </select>
 
             <p>Nama Program</p>
-            <select name="program_id" id="select">
+            <select name="program_id" id="select" class="form-select">
                 <option value="">--Please choose an option--</option>
                 @foreach ($programs as $program)
-                    <option value="{{ $program->id }}" >{{ $program->name }} - {{ $program->meeting_times }}Kali</option>
+                    <option value="{{ $program->id }}" >{{ $program->name }}</option>
                 @endforeach
             </select>
 
             <p>Harga</p>
             <input type="number" name="price" id="" value="{{ old('price') }}" class="box">
 
-            <input type="submit" value="Buat Paket" class="btn">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="{{ route('packet.combination.index') }}" class="btn btn-secondary">Kembali</a>
+                    <button type="submit" class="btn btn-purple">Simpan</button>
+                </div>
+            </div>
         </form>
     </section>
 @endsection

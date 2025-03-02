@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah Program')
+@section('title', 'Edit Paket Kombinasi')
 @section('css')
     <style>
         /* Styling untuk alert */
@@ -51,34 +51,47 @@
         <form action="{{ route('packet.combination.update', $packetCombination->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
-            <h3>Tambah Paket Kombinasi</h3>
-
+            <h3>Edit Paket Kombinasi</h3>
             <p>Nama Paket</p>
-            <select name="packet_id" id="select">
+            <select name="packet_id" id="select" class="form-select">
                 @foreach ($packets as $packet)
-                    @if ($packet === $packetCombination->packet)
-                        <option value="{{ $packet->id }}" selected> {{ $packet->code }} - {{ $packet->name }}</option>
+                    @if ($packet->id === $packetCombination->packet->id)
+                        <option value="{{ $packet->id }}" selected>{{ $packet->name }}</option>
                     @endif
-                    <option value="{{ $packet->id }}" >{{ $packet->code }} - {{ $packet->name }}</option>
+                    <option value="{{ $packet->id }}" >{{ $packet->name }}</option>
                 @endforeach
             </select>
 
             <p>Nama Program</p>
-            <select name="program_id" id="select">
+            <select name="program_id" id="select" class="form-select">
                 @foreach ($programs as $program)
-                    @if ($program === $packetCombination->program)
-                    <option value="{{ $program->id }}" selected>{{ $program->name }} - {{ $program->meeting_times }}Kali</option>
+                    @if ($program->id === $packetCombination->program->id)
+                        <option value="{{ $program->id }}" selected>{{ $program->name }}</option>
                     @endif
-                    <option value="{{ $program->id }}" >{{ $program->name }} - {{ $program->meeting_times }}Kali</option>
+                    <option value="{{ $program->id }}" >{{ $program->name }}</option>
                 @endforeach
             </select>
 
             <p>Harga</p>
             <input type="number" name="price" id="" value="{{ old('price', $packetCombination->price) }}" class="box">
 
-            <div class="row mt-4">
-                <div class="col">
-                    <input type="submit" value="Simpan" class="btn btn-lg btn-primary">
+            <p>Status</p>
+            <div class="form-check form-switch fs-4">
+                <input type="hidden" name="status" value="0">
+
+                <input class="form-check-input" type="checkbox" name="status" role="switch"
+                       id="flexSwitchCheckDefault" class="box" value="1"
+                       {{ $packetCombination->status ? 'checked' : '' }}
+                       onchange="toggleStatusText()">
+                <label class="form-check-label" for="flexSwitchCheckDefault" id="statusLabel">
+                    {{ $packetCombination->status ? 'Aktif' : 'Tidak Aktif' }}
+                </label>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <a href="{{ route('packet.combination.index') }}" class="btn btn-secondary">Kembali</a>
+                    <button type="submit" class="btn btn-purple">Simpan</button>
                 </div>
             </div>
         </form>

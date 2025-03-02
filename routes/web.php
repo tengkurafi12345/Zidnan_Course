@@ -111,6 +111,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/packet-combination/{packetCombination}', [PacketCombinationController::class, 'edit'])->name('packet.combination.edit');
     Route::patch('/packet-combination/{packetCombination}', [PacketCombinationController::class, 'update'])->name('packet.combination.update');
     Route::delete('/packet-combination/{packetCombination}/delete', [PacketCombinationController::class, 'destroy'])->name('packet.combination.destroy');
+    Route::patch('/packet-combinations/{id}/publish', [PacketCombinationController::class, 'publish'])->name('packet-combinations.publish');
+    Route::patch('/packet-combinations/{id}/unpublish', [PacketCombinationController::class, 'unpublish'])->name('packet-combinations.unpublish');
 
      // Teacher Placement
     Route::get('/teacher-placement', [TeacherPlacementController::class, 'index'])->name('teacher.placement.index');

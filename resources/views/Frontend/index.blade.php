@@ -138,21 +138,21 @@
         <div class="container mt-4">
             <div class="row g-3"> <!-- Mengurangi jarak antar card -->
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="card h-100"> <!-- Tinggi rata semua card -->
+                    <div class="card h-100">
                         <img src="{{ asset('img/testimonial/testi-1.jpg') }}" alt=""
-                            style="widht: auto; height: 45rem; object-fit: cover;">
+                            class="card-img">
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="card h-100">
                         <img src="{{ asset('img/testimonial/testi-2.jpg') }}" alt=""
-                            style="widht: auto; height: 45rem; object-fit: cover;">
+                            class="card-img">
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="card h-100">
                         <img src="{{ asset('img/testimonial/testi-3.jpg') }}" alt=""
-                            style="widht: auto; height: 45rem; object-fit: cover;">
+                            class="card-img">
                     </div>
                 </div>
             </div>
@@ -213,83 +213,44 @@
         <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">Paket Les Private</p>
         <h1 class="text-dark mb-4 fredoka">Pilih paket yang paling favorit.</h1>
 
-        <!-- Daftar Paket Bimbel -->
+        <!-- Daftar Paket private -->
         <div class="course-container mt-5">
             <div class="container text-center">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-2 g-lg-5 align-items-stretch">
-                    <div class="col">
-                        <div class="card h-100 d-flex flex-column border-0">
-                            <div class="card-body border-purple rounded d-flex flex-column mt-5">
-                                <div class="p-2 flex-grow-1">
-                                    <h2>Tahfidz</h2>
-                                    <p class="mb-4 text-success">TK A - B</p>
-                                    <p class="fw-bold mb-1">Mulai</p>
-                                    <h2 class="my-2">Rp.135,000</h2>
-                                    <p>Per 8 Kali Pertemuan</p>
-                                    <hr>
-                                    <button type="button" onclick="redirectToWhatsApp()"
-                                        class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
-                                        Daftar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                @php
+                    $jumlahData = count($privateLessons);
+                    $cols = 'row-cols-1 row-cols-md-2 ';
 
-                    <div class="col">
-                        <div class="card h-100 d-flex flex-column border-0">
-                            <div class="card-body border-purple rounded d-flex flex-column mt-5">
-                                <div class="p-2 flex-grow-1">
-                                    <h2>Matematika & Sains</h2>
-                                    <p class="mb-4 text-success">SMP Kelas 7 - 9</p>
-                                    <p class="fw-bold mb-1">Mulai</p>
-                                    <h2 class="my-2">Rp.195,000</h2>
-                                    <p>Per 8 Kali Pertemuan</p>
-                                    <hr>
-                                    <button type="button" onclick="redirectToWhatsApp()"
-                                        class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
-                                        Daftar</button>
+                    if ($jumlahData == 4) {
+                        $cols .= 'row-cols-lg-4';
+                    } elseif ($jumlahData == 3) {
+                        $cols .= 'row-cols-lg-3';
+                    } elseif ($jumlahData == 2) {
+                        $cols .= 'row-cols-lg-2';
+                    } else {
+                        $cols .= 'row-cols-lg-1';
+                    }
+                @endphp
+
+                <div class="row {{ $cols }} g-2 g-lg-5 align-items-stretch">
+                    @foreach($privateLessons as $private)
+                        <div class="col">
+                            <div class="card h-100 d-flex flex-column border-0">
+                                <div class="card-body border-purple rounded d-flex flex-column mt-5">
+                                    <div class="p-2 flex-grow-1">
+                                        <h2>{{ $private->program->name }}</h2>
+                                        <p class="mb-4 text-success">{{ $private->packet->class_level }}</p>
+                                        <p class="fw-bold mb-1">Mulai</p>
+                                        <h2 class="my-2">{{ "Rp." . number_format($private->price, 0, ',', '.') }}</h2>
+                                        <p>Per {{ $private->program->meeting_times }} Kali Pertemuan</p>
+                                        <hr>
+                                        <button type="button" onclick="redirectToWhatsApp()"
+                                                class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
+                                            Daftar</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col mt-md-5">
-                        <div class="card border-purple-favorite favorite-card d-flex flex-column mt-md-0 mt-sm-5">
-                            <div class="card-header bg-purple">
-                                <p>Paket Terfavorit</p>
-                            </div>
-                            <div class="card-body d-flex flex-column p-0">
-                                <div class="p-2 flex-grow-1">
-                                    <h2>Bahasa Arab & Bahasa Inggris</h2>
-                                    <p class="mb-4 text-success">SD Kelas 1 - 6</p>
-                                    <p class="fw-bold mb-1">Mulai</p>
-                                    <h2 class="my-2">Rp.165,000</h2>
-                                    <p>Per 8 Kali Pertemuan</p>
-                                    <hr>
-                                    <button type="button" onclick="redirectToWhatsApp()"
-                                        class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
-                                        Daftar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100 d-flex flex-column border-0">
-                            <div class="card-body border-purple rounded d-flex flex-column mt-5">
-                                <div class="p-2 flex-grow-1">
-                                    <h2>Ngaji & Calistung</h2>
-                                    <p class="mb-4 text-success">SMA Kelas 10 - 12</p>
-                                    <p class="fw-bold mb-1">Mulai</p>
-                                    <h2 class="my-2">Rp.250,000</h2>
-                                    <p>Per 8 Kali Pertemuan</p>
-                                    <hr>
-                                    {{-- <img src="{{ asset('img/best-quality.png') }}" alt=""> --}}
-                                    <button type="button" onclick="redirectToWhatsApp()"
-                                        class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
-                                        Daftar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
 
                 <a href="/kursus" class="btn btn-purple rounded-1 mt-5">Lihat Seluruh Paket</a>
@@ -353,80 +314,41 @@
         <h1 class="text-dark mb-4 fredoka">Pilih paket yang paling favorit.</h1>
         <div class="course-container mt-5">
             <div class="container text-center">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-2 g-lg-5 align-items-stretch">
-                    <div class="col">
-                        <div class="card h-100 d-flex flex-column border-0">
-                            <div class="card-body border-purple rounded d-flex flex-column mt-5">
-                                <div class="p-2 flex-grow-1">
-                                    <h2>Calistung</h2>
-                                    <p class="mb-4 text-success">TK A - B</p>
-                                    <p class="fw-bold mb-1">Mulai</p>
-                                    <h2 class="my-2">Rp.135,000</h2>
-                                    <p>Per 8 Kali Pertemuan</p>
-                                    <hr>
-                                    <button type="button" onclick="redirectToWhatsApp()"
-                                        class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
-                                        Daftar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                @php
+                    $jumlahData = count($bimbelLessons);
+                    $cols = 'row-cols-1 row-cols-md-2 ';
 
-                    <div class="col">
-                        <div class="card h-100 d-flex flex-column border-0">
-                            <div class="card-body border-purple rounded d-flex flex-column mt-5">
-                                <div class="p-2 flex-grow-1">
-                                    <h2>Bahasa Arab</h2>
-                                    <p class="mb-4 text-success">SMP Kelas 7 - 9</p>
-                                    <p class="fw-bold mb-1">Mulai</p>
-                                    <h2 class="my-2">Rp.195,000</h2>
-                                    <p>Per 8 Kali Pertemuan</p>
-                                    <hr>
-                                    <button type="button" onclick="redirectToWhatsApp()"
-                                        class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
-                                        Daftar</button>
+                    if ($jumlahData == 4) {
+                        $cols .= 'row-cols-lg-4';
+                    } elseif ($jumlahData == 3) {
+                        $cols .= 'row-cols-lg-3';
+                    } elseif ($jumlahData == 2) {
+                        $cols .= 'row-cols-lg-2';
+                    } else {
+                        $cols .= 'row-cols-lg-1';
+                    }
+                @endphp
+
+                <div class="row {{ $cols }} g-2 g-lg-5 align-items-stretch">
+                    @foreach($bimbelLessons as $bimbel)
+                        <div class="col">
+                            <div class="card h-100 d-flex flex-column border-0">
+                                <div class="card-body border-purple rounded d-flex flex-column mt-5">
+                                    <div class="p-2 flex-grow-1">
+                                        <h2>{{ $bimbel->program->name }}</h2>
+                                        <p class="mb-4 text-success">{{ $bimbel->packet->class_level }}</p>
+                                        <p class="fw-bold mb-1">Mulai</p>
+                                        <h2 class="my-2">{{ "Rp." . number_format($bimbel->price, 0, ',', '.') }}</h2>
+                                        <p>Per {{ $bimbel->program->meeting_times }} Kali Pertemuan</p>
+                                        <hr>
+                                        <button type="button" onclick="redirectToWhatsApp()"
+                                                class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
+                                            Daftar</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col mt-md-5">
-                        <div class="card border-purple-favorite favorite-card d-flex flex-column mt-md-0 mt-sm-5">
-                            <div class="card-header bg-purple">
-                                <p>Paket Terfavorit</p>
-                            </div>
-                            <div class="card-body d-flex flex-column p-0">
-                                <div class="p-2 flex-grow-1">
-                                    <h2>Bahasa Arab & Bahasa Inggris</h2>
-                                    <p class="mb-4 text-success">SD Kelas 1 - 6</p>
-                                    <p class="fw-bold mb-1">Mulai</p>
-                                    <h2 class="my-2">Rp.165,000</h2>
-                                    <p>Per 8 Kali Pertemuan</p>
-                                    <hr>
-                                    <button type="button" onclick="redirectToWhatsApp()"
-                                        class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
-                                        Daftar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100 d-flex flex-column border-0">
-                            <div class="card-body border-purple rounded d-flex flex-column mt-5">
-                                <div class="p-2 flex-grow-1">
-                                    <h2>Ngaji & Calistung</h2>
-                                    <p class="mb-4 text-success">SMA Kelas 10 - 12</p>
-                                    <p class="fw-bold mb-1">Mulai</p>
-                                    <h2 class="my-2">Rp.250,000</h2>
-                                    <p>Per 8 Kali Pertemuan</p>
-                                    <hr>
-                                    {{-- <img src="{{ asset('img/best-quality.png') }}" alt=""> --}}
-                                    <button type="button" onclick="redirectToWhatsApp()"
-                                        class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
-                                        Daftar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
 
                 <a href="/kursus" class="btn btn-purple rounded-1 mt-5">Lihat Seluruh Paket</a>
@@ -451,8 +373,8 @@
                 </div>
             </div>
             <div class="col-md-7 ">
-                <div class="text-start">
-                    <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">Santri Weekend</p>
+                <div class="text-start mt-5">
+                    <p class="text-purple mb-2 mt-sm-4 border-bottom-purple border-2 d-inline-block p-2">Santri Weekend</p>
                     <h1 class="text-dark mb-4 fredoka">Belajar Interaktif dan Kreatif untuk Usia 2-6 Tahun</h1>
                     <p class="pb-2">Program Private ini dirancang untuk mengenalkan konsep dasar dengan cara yang
                         menyenangkan dan interaktif. Anak-anak akan belajar melalui permainan edukatif, cerita, dan kegiatan
@@ -491,62 +413,41 @@
         <!-- Daftar Paket Bimbel -->
         <div class="course-container mt-5">
             <div class="container text-center">
-                <div class="row row-cols-1 row-cols-md-1 row-cols-lg-3 g-2 g-lg-5 align-items-stretch">
-                    <div class="col">
-                        <div class="card h-100 d-flex flex-column border-0">
-                            <div class="card-body border-purple rounded d-flex flex-column mt-5">
-                                <div class="p-2 flex-grow-1">
-                                    <h2>Tahfidz</h2>
-                                    <p class="mb-4 text-success">TK A - B</p>
-                                    <p class="fw-bold mb-1">Mulai</p>
-                                    <h2 class="my-2">Rp.135,000</h2>
-                                    <p>Per 8 Kali Pertemuan</p>
-                                    <hr>
-                                    <button type="button" onclick="redirectToWhatsApp()"
-                                        class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
-                                        Daftar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                @php
+                    $jumlahData = count($santriWeekend);
+                    $cols = 'row-cols-1 row-cols-md-2 ';
 
-                    <div class="col">
-                        <div class="card h-100 d-flex flex-column border-0">
-                            <div class="card-body border-purple rounded d-flex flex-column mt-5">
-                                <div class="p-2 flex-grow-1">
-                                    <h2>Matematika & Sains</h2>
-                                    <p class="mb-4 text-success">SMP Kelas 7 - 9</p>
-                                    <p class="fw-bold mb-1">Mulai</p>
-                                    <h2 class="my-2">Rp.195,000</h2>
-                                    <p>Per 8 Kali Pertemuan</p>
-                                    <hr>
-                                    <button type="button" onclick="redirectToWhatsApp()"
-                                        class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
-                                        Daftar</button>
+                    if ($jumlahData == 4) {
+                        $cols .= 'row-cols-lg-4';
+                    } elseif ($jumlahData == 3) {
+                        $cols .= 'row-cols-lg-3';
+                    } elseif ($jumlahData == 2) {
+                        $cols .= 'row-cols-lg-2';
+                    } else {
+                        $cols .= 'row-cols-lg-1';
+                    }
+                @endphp
+
+                <div class="row {{ $cols }} g-2 g-lg-5 align-items-stretch">
+                    @foreach($santriWeekend as $santri)
+                        <div class="col">
+                            <div class="card h-100 d-flex flex-column border-0">
+                                <div class="card-body border-purple rounded d-flex flex-column mt-5">
+                                    <div class="p-2 flex-grow-1">
+                                        <h2>{{ $santri->program->name }}</h2>
+                                        <p class="mb-4 text-success">{{ $santri->packet->class_level }}</p>
+                                        <p class="fw-bold mb-1">Mulai</p>
+                                        <h2 class="my-2">{{ "Rp." . number_format($santri->price, 0, ',', '.') }}</h2>
+                                        <p>Per {{ $santri->program->meeting_times }} Kali Pertemuan</p>
+                                        <hr>
+                                        <button type="button" onclick="redirectToWhatsApp()"
+                                                class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
+                                            Daftar</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col mt-md-5">
-                        <div class="card border-purple-favorite favorite-card d-flex flex-column mt-md-0 mt-sm-5">
-                            <div class="card-header bg-purple">
-                                <p>Paket Terfavorit</p>
-                            </div>
-                            <div class="card-body d-flex flex-column p-0">
-                                <div class="p-2 flex-grow-1">
-                                    <h2>Bahasa Arab & Bahasa Inggris</h2>
-                                    <p class="mb-4 text-success">SD Kelas 1 - 6</p>
-                                    <p class="fw-bold mb-1">Mulai</p>
-                                    <h2 class="my-2">Rp.165,000</h2>
-                                    <p>Per 8 Kali Pertemuan</p>
-                                    <hr>
-                                    <button type="button" onclick="redirectToWhatsApp()"
-                                        class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
-                                        Daftar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <a href="/kursus" class="btn btn-purple rounded-1 mt-5">Lihat Seluruh Paket</a>
             </div>
@@ -609,27 +510,44 @@
         <h1 class="text-dark mb-4 fredoka">Pilih paket yang paling favorit.</h1>
         <div class="course-container mt-5">
             <div class="container text-center mx-lg-5">
-                <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1 g-2 g-lg-7 mx-lg-5">
-                    <div class="col mt-md-5">
-                        <div class="card border-purple-favorite favorite-card d-flex flex-column mt-md-0 mt-sm-5">
-                            <div class="card-header bg-purple">
-                                <p>Paket Terfavorit</p>
-                            </div>
-                            <div class="card-body d-flex flex-column p-0">
-                                <div class="p-2 flex-grow-1">
-                                    <h2>Bahasa Arab & Bahasa Inggris</h2>
-                                    <p class="mb-4 text-success">SD Kelas 1 - 6</p>
-                                    <p class="fw-bold mb-1">Mulai</p>
-                                    <h2 class="my-2">Rp.165,000</h2>
-                                    <p>Per 8 Kali Pertemuan</p>
-                                    <hr>
-                                    <button type="button" onclick="redirectToWhatsApp()"
-                                        class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
-                                        Daftar</button>
+                @php
+                    $jumlahData = count($corporateQuran);
+                    $cols = 'row-cols-1 row-cols-md-2 ';
+
+                    if ($jumlahData == 4) {
+                        $cols .= 'row-cols-lg-4';
+                    } elseif ($jumlahData == 3) {
+                        $cols .= 'row-cols-lg-3';
+                    } elseif ($jumlahData == 2) {
+                        $cols .= 'row-cols-lg-2';
+                    } else {
+                        $cols .= 'row-cols-lg-1';
+                    }
+                @endphp
+
+                <div class="row {{ $cols }} g-2 g-lg-5 align-items-stretch">
+                    @foreach($corporateQuran as $corporate)
+                        <div class="col mt-md-5">
+                            <div class="card border-purple-favorite favorite-card d-flex flex-column mt-md-0 mt-sm-5">
+                                <div class="card-header bg-purple">
+                                    <p>Paket Terfavorit</p>
+                                </div>
+                                <div class="card-body border-purple rounded d-flex flex-column mt-5">
+                                    <div class="p-2 flex-grow-1">
+                                        <h2>{{ $corporate->program->name }}</h2>
+                                        <p class="mb-4 text-success">{{ $corporate->packet->class_level }}</p>
+                                        <p class="fw-bold mb-1">Mulai</p>
+                                        <h2 class="my-2">{{ "Rp." . number_format($corporate->price, 0, ',', '.') }}</h2>
+                                        <p>Per {{ $corporate->program->meeting_times }} Kali Pertemuan</p>
+                                        <hr>
+                                        <button type="button" onclick="redirectToWhatsApp()"
+                                                class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
+                                            Daftar</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
 
                 <a href="/kursus" class="btn btn-purple rounded-1 mt-5">Lihat Seluruh Paket</a>

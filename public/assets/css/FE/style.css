@@ -330,6 +330,14 @@ footer {
     margin-bottom: 10px;
 }
 
+.card-img {
+    width: 100%;  /* Mengisi lebar card */
+    height: 100%; /* Mengisi tinggi card */
+    object-fit: cover; /* Menampilkan gambar secara utuh tanpa terpotong */
+    background-color: #f8f9fa; /* Memberikan background agar tidak kosong */
+    padding: 2px; /* Opsional, memberi jarak agar tidak menempel */
+}
+
 .rating {
     font-size: 1.2rem;
     color: #FFD700;

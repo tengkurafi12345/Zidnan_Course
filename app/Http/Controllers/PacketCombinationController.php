@@ -26,7 +26,7 @@ class PacketCombinationController extends Controller
     public function create()
     {
         $packets = Packet::all();
-        $programs = Program::all();
+        $programs = Program::all()->sortBy('name');
         return view('Backend.Admin.PacketCombination.create', compact(['packets', 'programs']));
     }
 
@@ -44,6 +44,22 @@ class PacketCombinationController extends Controller
             ->with('success', 'Guru berhasil dibuat.');
     }
 
+    public function publish($id)
+    {
+        $packetCombination = PacketCombination::findOrFail($id);
+        $packetCombination->update(['published_on' => true]);
+
+        return redirect()->back()->with('success', 'Packet successfully published.');
+    }
+
+    public function unpublish($id)
+    {
+        $packetCombination = PacketCombination::findOrFail($id);
+        $packetCombination->update(['published_on' => false]);
+
+        return redirect()->back()->with('success', 'Packet successfully unpublished.');
+    }
+
     /**
      * Display the specified resource.
      */
@@ -58,7 +74,7 @@ class PacketCombinationController extends Controller
     public function edit(PacketCombination $packetCombination)
     {
         $packets = Packet::all();
-        $programs = Program::all();
+        $programs = Program::all()->sortBy('name');
 
         return view('Backend.Admin.PacketCombination.edit', compact(['packets', 'programs', 'packetCombination']));
     }

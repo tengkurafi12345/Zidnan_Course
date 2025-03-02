@@ -75,6 +75,20 @@
                 }, 300);
             });
         });
+
+        function toggleStatusText() {
+            let checkbox = document.getElementById("flexSwitchCheckDefault");
+            let label = document.getElementById("statusLabel");
+
+            if (checkbox.checked) {
+                label.innerText = "Active";
+            } else {
+                label.innerText = "Non Active";
+            }
+        }
+
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     </script>
 </body>
 

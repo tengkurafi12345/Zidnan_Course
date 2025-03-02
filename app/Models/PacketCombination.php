@@ -14,7 +14,7 @@ class PacketCombination extends Model
     protected $table = 'packet_combinations';
 
     protected $fillable = [
-        'packet_id', 'program_id', 'price'
+        'packet_id', 'program_id', 'price', 'published_on', 'status'
     ];
 
     public function packet()

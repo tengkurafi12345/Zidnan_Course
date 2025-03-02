@@ -30,12 +30,13 @@ class UpdatePacketCombinationRequest extends FormRequest
             'program_id' => [
                 'required',
                 'exists:programs,id',
-                Rule::unique('packet_combinations')
-                ->where('packet_id', $this->packet_id)
-                ->where('program_id', $this->program_id)
-                ->ignore($this->route('packet_combination'))
+//                Rule::unique('packet_combinations')
+//                ->where('packet_id', $this->packet_id)
+//                ->where('program_id', $this->program_id)
+//                ->ignore($this->route('packet_combination'))
             ],
             'price' => 'required|numeric',
+            'status' => 'boolean',
         ];
     }
 }

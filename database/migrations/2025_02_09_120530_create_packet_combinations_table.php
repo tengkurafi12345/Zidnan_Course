@@ -16,6 +16,7 @@ return new class extends Migration
             $table->uuid('packet_id');
             $table->uuid('program_id');
             $table->string('price');
+            $table->boolean('published_on')->default('0');
             $table->foreign('packet_id')->references('id')->on('packets')->onDelete('cascade');
             $table->foreign('program_id')->references('id')->on('programs')->onDelete('cascade');
             $table->timestamps();

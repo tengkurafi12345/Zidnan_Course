@@ -160,7 +160,7 @@
                 <h1 class="heading">Daftar Paket Kombinasi</h1>
             </div>
             <div class="">
-                <a href="{{ route('packet.combination.create') }}" class="btn btn-info">Tambah Paket Kombinasi</a>
+                <a href="{{ route('packet.combination.create') }}" class="btn btn-violet">Tambah Paket Kombinasi</a>
             </div>
         </div>
 
@@ -179,9 +179,10 @@
                         <th>No</th>
                         <th>Nama Paket</th>
                         <th>Nama Program</th>
-                        <th>Jumlah Pertemuan</th>
                         <th>Harga</th>
-                        <th>Aksi</th>
+                        <th>Publikasi</th>
+                        <th>Status</th>
+                        <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -190,18 +191,44 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $packetCombination->packet->name  }}</td>
                             <td>{{ $packetCombination->program->name }}</td>
-                            <td>{{ $packetCombination->program->meeting_times }}</td>
                             <td>{{ "Rp." . number_format($packetCombination->price, 0, ',', '.') }}</td>
+                            <td>
+                                @if($packetCombination->published_on)
+                                    <span class="badge bg-primary">Publish</span>
+                                @else
+                                    <span class="badge bg-danger">Unpublish</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if($packetCombination->status)
+                                    <span class="badge bg-success">Active</span>
+                                @else
+                                    <span class="badge bg-danger">Non Active</span>
+                                @endif
+                            </td>
                             <td>
                                 <div class="action-buttons">
                                     <a href="{{ route('packet.combination.edit', $packetCombination->id) }}"
-                                        class="btn btn-sm btn-warning" >Edit</a>
+                                        class="btn btn-sm btn-warning" ><i class="fas fa-pen-to-square"></i></a>
+                                    @if($packetCombination->published_on == false)
+                                        <form action="{{ route('packet-combinations.publish', $packetCombination->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to publish this?');">
+                                            @csrf
+                                            @method('PATCH')
+                                            <button type="submit" class="btn btn-success"><i class="fas fa-eye"></i></button>
+                                        </form>
+                                    @else
+                                        <form action="{{ route('packet-combinations.unpublish', $packetCombination->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to Unpublish this?');">
+                                            @csrf
+                                            @method('PATCH')
+                                            <button type="submit" class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>
+                                        </form>
+                                    @endif
                                     <form action="{{ route('packet.combination.destroy', $packetCombination->id) }}" method="POST"
                                         style="display: inline-block;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger"
-                                            onclick="return confirm('Are you sure?')">Delete</button>
+                                            onclick="return confirm('Are you sure?')"><i class="fas fa-trash-can"></i></button>
                                     </form>
                                 </div>
                             </td>

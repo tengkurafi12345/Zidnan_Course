@@ -47,6 +47,37 @@ body{
    padding-left: 25rem;
 }
 
+/* Customize Color Purple */
+.bg-purple {
+    background-color: #d42acc;
+}
+
+.btn-purple {
+    background-color: #6a1b9a;
+    color: white;
+    border-radius: 10%;
+    padding: 5px 10px;
+}
+
+.btn-purple:hover {
+    background-color: #6a1b9a;
+    color: white;
+    border-radius: 10%;
+}
+
+.btn-secondary {
+    /*background-color: ;*/
+    /*color: white;*/
+    border-radius: 10%;
+    padding: 5px 10px;
+}
+
+.btn-violet {
+    background-color: #d42acc;
+    color: white;
+}
+
+
 body.dark{
    --light-color:#aaa;
    --light-bg:#333;
@@ -81,6 +112,7 @@ section{
 .inline-option-btn,
 .inline-delete-btn,
 .btn-info,
+.btn-violet,
 .delete-btn,
 .option-btn{
    border-radius: .5rem;
@@ -106,10 +138,10 @@ section{
    display: inline-block;
 }
 
-.btn,
-.inline-btn{
-   background-color: var(--main-color);
-}
+/*.btn,*/
+/*.inline-btn{*/
+/*   background-color: var(--main-color);*/
+/*}*/
 
 .option-btn,
 .inline-option-btn{

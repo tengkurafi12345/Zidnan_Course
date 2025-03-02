@@ -9,11 +9,13 @@
         $packetName = $combination->packet->name;
         $programName = $combination->program->name;
         $packetPrice = $combination->price;
+        $status = $combination->status;
 
         if (!isset($groupedCombinations[$packetName])) {
             $groupedCombinations[$packetName] = [
                 'programs' => [],
                 'price' => $packetPrice,
+                'status' => $status
             ];
         }
         $groupedCombinations[$packetName]['programs'][] = $programName;
@@ -24,6 +26,7 @@
     <h1>Halaman Paket Bimbel</h1>
 </header>
 
+
 @foreach ($groupedCombinations as $packetName => $packetData)
     <h2 class="packet-title">{{ $packetName }}</h2>
     <div class="course-container">
@@ -31,7 +34,11 @@
             <div class="course-package">
                 <p class="program-name">{{ $programName }}</p>
                 <p class="price">Harga: Rp.{{ number_format($packetData['price'], 0, ',', '.') }}/bulan</p>
-                <button onclick="redirectToWhatsApp('{{ $programName }}')">Gabung Sekarang!</button>
+                @if($packetData['status'])
+                    <button onclick="redirectToWhatsApp('{{ $programName }}')" >Gabung Sekarang!</button>
+                @else
+                    <button disabled class="btn btn-danger">Paket Tidak Aktif</button>
+                @endif
             </div>
         @endforeach
     </div>
