@@ -62,7 +62,7 @@
             <div class="col h-100 d-flex align-items-start">
                 <div class="d-flex bg-light shadow-sm border-top rounded mb-1" style="padding: 30px">
                     <i class="fas fa-file-pen font-weight-normal text-purple mb-3"
-                        style="font-size: 2.5rem; padding-right:1rem"></i>
+                       style="font-size: 2.5rem; padding-right:1rem"></i>
                     <div class="pl-4">
                         <h4>Legalitas</h4>
                         <p class="m-0">
@@ -76,7 +76,7 @@
             <div class="col h-100 d-flex align-items-start">
                 <div class="d-flex bg-light shadow-sm border-top rounded mb-1" style="padding: 30px">
                     <i class="fas fa-crown font-weight-normal text-purple mb-3"
-                        style="font-size: 2.5rem; padding-right:1rem"></i>
+                       style="font-size: 2.5rem; padding-right:1rem"></i>
                     <div class="pl-4">
                         <h4>Eksklusif</h4>
                         <p class="mb-5">
@@ -88,12 +88,12 @@
             <div class="col h-100 d-flex align-items-start">
                 <div class="d-flex bg-light shadow-sm border-top rounded mb-1" style="padding: 30px">
                     <i class="fas fa-school-circle-check font-weight-normal text-purple mb-3"
-                        style="font-size: 2.5rem; padding-right:1rem"></i>
+                       style="font-size: 2.5rem; padding-right:1rem"></i>
                     <div class="pl-4">
                         <h4>Semua Jenjang / Kalangan</h4>
                         <p class="m-0">
                             Materi les mencakup materi akademik dan non akademik untuk semua jenjang Mulai TK, SD, SMP, SMA,
-                        MAHASISWA DAN UMUM bahkan CORPORATE.
+                            MAHASISWA DAN UMUM bahkan CORPORATE.
                         </p>
                     </div>
                 </div>
@@ -103,12 +103,12 @@
             <div class="col d-flex align-items-start">
                 <div class="d-flex bg-light shadow-sm border-top rounded mb-1" style="padding: 30px">
                     <i class="fas fa-graduation-cap font-weight-normal text-purple mb-3"
-                        style="font-size: 2.5rem; padding-right:1rem"></i>
+                       style="font-size: 2.5rem; padding-right:1rem"></i>
                     <div class="pl-4">
                         <h4>Seleksi Pengajar</h4>
                         <p class="mb-4">
                             Semua pengajar sudah melewati tahap sekelsi yang ketat sesuai dengan kompetensi yang dibutuhkan oleh
-                        siswa.
+                            siswa.
                         </p>
                     </div>
                 </div>
@@ -116,12 +116,12 @@
             <div class="col d-flex align-items-start">
                 <div class="d-flex bg-light shadow-sm border-top rounded mb-1" style="padding: 30px">
                     <i class="fas fa-user-check font-weight-normal text-purple mb-3"
-                        style="font-size: 2.5rem; padding-right:1rem"></i>
+                       style="font-size: 2.5rem; padding-right:1rem"></i>
                     <div class="pl-4">
                         <h4>500++ Member Aktif</h4>
                         <p class="m-0">
                             Zidnan Group sudah dipercaya lebih dari ratusan member aktif, berbagai macam karakter dan gaya
-                        belajar member sudah pernah kami dampingi
+                            belajar member sudah pernah kami dampingi
                         </p>
                     </div>
                 </div>
@@ -140,19 +140,19 @@
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="card h-100">
                         <img src="{{ asset('img/testimonial/testi-1.jpg') }}" alt=""
-                            class="card-img">
+                             class="card-img">
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="card h-100">
                         <img src="{{ asset('img/testimonial/testi-2.jpg') }}" alt=""
-                            class="card-img">
+                             class="card-img">
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="card h-100">
                         <img src="{{ asset('img/testimonial/testi-3.jpg') }}" alt=""
-                            class="card-img">
+                             class="card-img">
                     </div>
                 </div>
             </div>
@@ -164,42 +164,37 @@
             <div class="col-md-5">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <img class="img-fluid w-75 bg-purple p-1" src="https://themewagon.github.io/kider/img/about-2.jpg"
-                            alt="">
+                        <img class="img-fluid w-75 bg-purple p-1" src="{{ asset('assets/image/FE/Private-TK.jpg') }}"
+                             alt="">
                     </div>
                     <div class="col-4"></div>
                     <div class="col-8" style="margin-top: -160px;">
                         <img class="img-fluid w-100 bg-purple p-1"
-                            src="https://themewagon.github.io/kider/img/about-3.jpg" alt="">
+                             src="{{ asset('assets/image/FE/Private-SMP.jpg') }}" alt="">
                     </div>
                 </div>
             </div>
             <div class="col-md-7 ">
                 <div class="text-start">
                     <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">Les Private</p>
-                    <h1 class="text-dark mb-4 fredoka">Belajar Interaktif dan Kreatif untuk Usia 2-6 Tahun</h1>
-                    <p class="pb-2">Program Private ini dirancang untuk mengenalkan konsep dasar dengan cara yang
-                        menyenangkan dan interaktif. Anak-anak akan belajar melalui permainan edukatif, cerita, dan kegiatan
-                        kreatif yang merangsang minat belajar mereka</p>
+                    <h1 class="text-dark mb-4 fredoka">Belajar Lebih Fokus, Guru Datang ke Rumah Anda!</h1>
+                    <p class="pb-2">Les Private adalah solusi ideal bagi siswa yang ingin belajar dengan pendampingan intensif langsung di rumah. Dengan jadwal fleksibel, siswa dari jenjang TK hingga SMA dapat memilih berbagai paket pembelajaran, seperti tahfidz dan mata pelajaran umum. Program ini memungkinkan siswa mendapatkan perhatian penuh dari guru, sehingga pembelajaran lebih efektif dan sesuai dengan kebutuhan individu.</p>
                     <div class="row">
                         <div class="col-5 pe-0">
                             <img src="{{ asset('img/brand/privat.png') }}" alt=""
-                                class="w-75 rounded-circle bg-purple p-1">
+                                 class="w-75 rounded-circle bg-purple p-1">
                         </div>
-                        <div class="col-7 ps-0">
+                        <div class="col-7 ps-0 fs-6">
                             <ul class="list-inline">
                                 <li class="py-2 border-top border-bottom"><i
-                                        class="fa-solid fa-check-double me-2 text-purple"></i> Ada Lesson Plan dan Modul
+                                        class="fa-solid fa-check-double me-2 text-purple"></i> Guru datang ke rumah, lebih nyaman dan fleksibel
                                 </li>
                                 <li class="py-2 border-top border-bottom"><i
-                                        class="fa-solid fa-check-double me-2 text-purple"></i> Permainan Edukatif</li>
+                                        class="fa-solid fa-check-double me-2 text-purple"></i> Fokus penuh pada kebutuhan dan kemampuan siswa</li>
                                 <li class="py-2 border-top border-bottom"><i
-                                        class="fa-solid fa-check-double me-2 text-purple"></i> Aktivitas Belajar
-                                    Menyenangkan</li>
+                                        class="fa-solid fa-check-double me-2 text-purple"></i> Bisa memilih berbagai mata pelajaran, termasuk tahfidz</li>
                                 <li class="py-2 border-top border-bottom"><i
-                                        class="fa-solid fa-check-double me-2 text-purple"></i> Belajar Sambil Bermain</li>
-                                <li class="py-2 border-top border-bottom"><i
-                                        class="fa-solid fa-check-double me-2 text-purple"></i> Stimulasi Minat Belajar</li>
+                                        class="fa-solid fa-check-double me-2 text-purple"></i> Jadwal belajar lebih fleksibel dan menyesuaikan kesibukan siswa</li>
                             </ul>
                         </div>
                     </div>
@@ -264,29 +259,26 @@
             <div class="col-md-7 ">
                 <div class="text-start">
                     <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">Les Bimbel</p>
-                    <h1 class="text-dark mb-4 fredoka">Belajar Interaktif dan Kreatif untuk Usia 2-6 Tahun</h1>
-                    <p class="pb-2">Program TK ini dirancang untuk mengenalkan konsep dasar dengan cara yang menyenangkan
-                        dan interaktif. Anak-anak akan belajar melalui permainan edukatif, cerita, dan kegiatan kreatif yang
-                        merangsang minat belajar mereka</p>
+                    <h1 class="text-dark mb-4 fredoka">Belajar Bersama, Suasana Nyaman, Hasil Maksimal!</h1>
+                    <p class="pb-2">Les Bimbel memberikan pengalaman belajar yang lebih terstruktur dalam suasana kelas di kantor utama Zidnan Group. Dengan fasilitas lengkap dan guru berpengalaman, siswa dari jenjang TK hingga SMA dapat mengikuti pembelajaran yang mencakup tahfidz hingga mata pelajaran umum. Belajar bersama teman sebaya juga meningkatkan semangat dan pemahaman melalui diskusi serta interaksi sosial yang positif.</p>
                     <div class="row">
                         <div class="col-5 pe-0">
                             <img src="{{ asset('img/brand/bimbel.png') }}" alt=""
-                                class="w-75 rounded-circle bg-purple p-1">
+                                 class="w-75 rounded-circle bg-purple p-1">
                         </div>
                         <div class="col-7 ps-0">
-                            <ul class="list-inline">
+                            <ul class="list-inline fs-6">
                                 <li class="py-2 border-top border-bottom"><i
-                                        class="fa-solid fa-check-double me-2 text-purple"></i> Ada Lesson Plan dan Modul
+                                        class="fa-solid fa-check-double me-2 text-purple"></i> Kelas interaktif dengan suasana belajar kondusif
                                 </li>
                                 <li class="py-2 border-top border-bottom"><i
-                                        class="fa-solid fa-check-double me-2 text-purple"></i> Permainan Edukatif</li>
+                                        class="fa-solid fa-check-double me-2 text-purple"></i> Materi terstruktur </li>
                                 <li class="py-2 border-top border-bottom"><i
-                                        class="fa-solid fa-check-double me-2 text-purple"></i> Aktivitas Belajar
-                                    Menyenangkan</li>
+                                        class="fa-solid fa-check-double me-2 text-purple"></i> bimbingan guru berpengalaman
+                                </li>
                                 <li class="py-2 border-top border-bottom"><i
-                                        class="fa-solid fa-check-double me-2 text-purple"></i> Belajar Sambil Bermain</li>
-                                <li class="py-2 border-top border-bottom"><i
-                                        class="fa-solid fa-check-double me-2 text-purple"></i> Stimulasi Minat Belajar</li>
+                                        class="fa-solid fa-check-double me-2 text-purple"></i> Interaksi sosial meningkatkan motivasi belajar
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -296,13 +288,13 @@
             <div class="col-md-5">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <img class="img-fluid w-75 bg-purple p-1" src="https://themewagon.github.io/kider/img/about-2.jpg"
-                            alt="">
+                        <img class="img-fluid w-75 bg-purple p-1" src="{{ asset('assets/image/FE/bimbel-SD.jpg') }}"
+                             alt="">
                     </div>
                     <div class="col-4"></div>
                     <div class="col-8" style="margin-top: -160px;">
                         <img class="img-fluid w-100 bg-purple p-1"
-                            src="https://themewagon.github.io/kider/img/about-3.jpg" alt="">
+                             src="{{ asset('assets/image/FE/Bimbel.jpg') }}" alt="">
                     </div>
                 </div>
             </div>
@@ -361,42 +353,36 @@
             <div class="col-md-5">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <img class="img-fluid w-75 bg-purple p-1" src="https://themewagon.github.io/kider/img/about-2.jpg"
-                            alt="">
+                        <img class="img-fluid w-75 bg-purple p-1" src="{{ asset('assets/image/FE/Santri-weekend-2.jpg') }}"
+                             alt="">
                     </div>
                     <div class="col-4"></div>
                     <div class="col-8" style="margin-top: -160px;">
                         <img class="img-fluid w-100 bg-purple p-1"
-                            src="https://themewagon.github.io/kider/img/about-3.jpg" alt="">
+                             src="{{ asset('assets/image/FE/santri-weekend.jpg') }}" alt="">
                     </div>
                 </div>
             </div>
             <div class="col-md-7 ">
                 <div class="text-start mt-5">
                     <p class="text-purple mb-2 mt-sm-4 border-bottom-purple border-2 d-inline-block p-2">Santri Weekend</p>
-                    <h1 class="text-dark mb-4 fredoka">Belajar Interaktif dan Kreatif untuk Usia 2-6 Tahun</h1>
-                    <p class="pb-2">Program Private ini dirancang untuk mengenalkan konsep dasar dengan cara yang
-                        menyenangkan dan interaktif. Anak-anak akan belajar melalui permainan edukatif, cerita, dan kegiatan
-                        kreatif yang merangsang minat belajar mereka</p>
+                    <h1 class="text-dark mb-4 fredoka">Weekend Seru, Tambah Ilmu Agama dengan Menyenangkan!</h1>
+                    <p class="pb-2">Santri Weekend adalah program akhir pekan yang berfokus pada pembelajaran agama Islam dengan metode interaktif dan seru. Ditujukan untuk siswa TK hingga SMP, program ini menghadirkan kegiatan seperti kajian tematik, permainan edukatif, dan event spesial yang memperkuat nilai-nilai keislaman.</p>
                     <div class="row">
                         <div class="col-5 pe-0">
                             <img src="{{ asset('img/brand/santri-weekend.png') }}" alt=""
-                                class="w-75 rounded-circle bg-purple p-1">
+                                 class="w-75 rounded-circle bg-purple p-1">
                         </div>
                         <div class="col-7 ps-0">
-                            <ul class="list-inline">
+                            <ul class="list-inline fs-6">
                                 <li class="py-2 border-top border-bottom"><i
-                                        class="fa-solid fa-check-double me-2 text-purple"></i> Ada Lesson Plan dan Modul
+                                        class="fa-solid fa-check-double me-2 text-purple"></i> Belajar agama dengan cara yang menyenangkan
                                 </li>
                                 <li class="py-2 border-top border-bottom"><i
-                                        class="fa-solid fa-check-double me-2 text-purple"></i> Permainan Edukatif</li>
+                                        class="fa-solid fa-check-double me-2 text-purple"></i> Banyak event seru setiap akhir pekan
+                                </li>
                                 <li class="py-2 border-top border-bottom"><i
-                                        class="fa-solid fa-check-double me-2 text-purple"></i> Aktivitas Belajar
-                                    Menyenangkan</li>
-                                <li class="py-2 border-top border-bottom"><i
-                                        class="fa-solid fa-check-double me-2 text-purple"></i> Belajar Sambil Bermain</li>
-                                <li class="py-2 border-top border-bottom"><i
-                                        class="fa-solid fa-check-double me-2 text-purple"></i> Stimulasi Minat Belajar</li>
+                                        class="fa-solid fa-check-double me-2 text-purple"></i> Membangun karakter Islami sejak dini</li>
                             </ul>
                         </div>
                     </div>
@@ -459,29 +445,26 @@
             <div class="col-md-7 ">
                 <div class="text-start">
                     <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">Perusahaan Mengaji</p>
-                    <h1 class="text-dark mb-4 fredoka">Belajar Interaktif dan Kreatif untuk Usia 2-6 Tahun</h1>
-                    <p class="pb-2">Program TK ini dirancang untuk mengenalkan konsep dasar dengan cara yang menyenangkan
-                        dan interaktif. Anak-anak akan belajar melalui permainan edukatif, cerita, dan kegiatan kreatif yang
-                        merangsang minat belajar mereka</p>
+                    <h1 class="text-dark mb-4 fredoka">Mengaji Mudah untuk Semua Kalangan, dari Remaja hingga Dewasa!</h1>
+                    <p class="pb-2">Perusahaan Mengaji adalah program terbuka bagi semua usia yang ingin belajar membaca Al-Qur’an, memahami tajwid, dan memperdalam ilmu agama. Dengan jadwal fleksibel dan metode pembelajaran yang mudah dipahami, program ini cocok bagi siapa saja yang ingin meningkatkan kualitas ibadah.</p>
                     <div class="row">
                         <div class="col-5 pe-0">
                             <img src="{{ asset('img/brand/perusahaan-mengaji.png') }}" alt=""
-                                class="w-75 rounded-circle bg-purple p-1">
+                                 class="w-75 rounded-circle bg-purple p-1">
                         </div>
                         <div class="col-7 ps-0">
-                            <ul class="list-inline">
+                            <ul class="list-inline fs-6">
                                 <li class="py-2 border-top border-bottom"><i
-                                        class="fa-solid fa-check-double me-2 text-purple"></i> Ada Lesson Plan dan Modul
+                                        class="fa-solid fa-check-double me-2 text-purple"></i> Terbuka untuk semua usia dan latar belakang pendidikan
                                 </li>
                                 <li class="py-2 border-top border-bottom"><i
-                                        class="fa-solid fa-check-double me-2 text-purple"></i> Permainan Edukatif</li>
+                                        class="fa-solid fa-check-double me-2 text-purple"></i> Jadwal Flexibel
+                                </li>
                                 <li class="py-2 border-top border-bottom"><i
-                                        class="fa-solid fa-check-double me-2 text-purple"></i> Aktivitas Belajar
-                                    Menyenangkan</li>
+                                        class="fa-solid fa-check-double me-2 text-purple"></i> Metode pembelajaran yang mudah</li>
                                 <li class="py-2 border-top border-bottom"><i
-                                        class="fa-solid fa-check-double me-2 text-purple"></i> Belajar Sambil Bermain</li>
-                                <li class="py-2 border-top border-bottom"><i
-                                        class="fa-solid fa-check-double me-2 text-purple"></i> Stimulasi Minat Belajar</li>
+                                        class="fa-solid fa-check-double me-2 text-purple"></i> Membantu meningkatkan spiritualitas dan kecintaan pada Al-Qur’an
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -491,13 +474,13 @@
             <div class="col-md-5">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <img class="img-fluid w-75 bg-purple p-1" src="https://themewagon.github.io/kider/img/about-2.jpg"
-                            alt="">
+                        <img class="img-fluid w-75 bg-purple p-1" src="{{ asset('assets/image/FE/Perusahaan-Mengaji.jpg') }}"
+                             alt="">
                     </div>
                     <div class="col-4"></div>
                     <div class="col-8" style="margin-top: -160px;">
                         <img class="img-fluid w-100 bg-purple p-1"
-                            src="https://themewagon.github.io/kider/img/about-3.jpg" alt="">
+                             src="{{ asset('assets/image/FE/perusahaan-mengaji-2.jpg') }}" alt="">
                     </div>
                 </div>
             </div>

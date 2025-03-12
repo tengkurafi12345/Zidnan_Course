@@ -42,6 +42,11 @@
     <!-- custom js file link  -->
     <script src="{{ asset('assets/js/script.js') }}"></script>
     <script src="{{ asset('assets/bootstrap-5.3.3-dist/js/bootstrap.min.js') }}"></script>
+    <!-- Popper.js -->
+    {{-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script> --}}
+
+    <!-- Bootstrap JS -->
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> --}}
 
     <script>
         // Mendapatkan semua elemen alert dengan close button
@@ -61,14 +66,16 @@
             let masterDataToggle = document.querySelector("[href='#collapseExample']");
             let masterDataIcon = document.getElementById("masterDataIcon");
 
-            console.log(masterDataToggle);
-
             masterDataToggle.addEventListener("click", function() {
                 setTimeout(() => {
                     if (document.getElementById("collapseExample").classList.contains("show")) {
+                        console.log('test up');
+
                         masterDataIcon.classList.remove("fas fa-sort-down");
                         masterDataIcon.classList.add("fas fa-sort-up");
                     } else {
+                        console.log('test down');
+
                         masterDataIcon.classList.remove("fas fa-sort-up");
                         masterDataIcon.classList.add("fas fa-sort-down");
                     }
@@ -90,6 +97,9 @@
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     </script>
+
+    <script src="{{ asset('assets/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js') }}"></script>
+
 </body>
 
 </html>

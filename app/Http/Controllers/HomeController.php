@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index() {
-//        $packets = Packet::whereHas('packetCombinations', function ($query) {
+//        $packets = Packet::whereHas('packe__tCombinations', function ($query) {
 //            $query->where('published_on', true);
 //        })->with('packetCombinations')->get();
 

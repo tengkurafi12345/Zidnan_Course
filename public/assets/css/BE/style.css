@@ -77,6 +77,11 @@ body{
     color: white;
 }
 
+.btn-violet-lite {
+    background-color: #d42acc;
+    color: white;
+}
+
 
 body.dark{
    --light-color:#aaa;

@@ -14,10 +14,64 @@ class PacketCombinationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $packetCombinations = PacketCombination::all()->sortByDesc('created_at');
-        return view('Backend.Admin.PacketCombination.index', compact('packetCombinations'));
+        $query = PacketCombination::with(['packet', 'program']);
+
+        // Pencarian (bekerja sendiri)
+        if ($request->filled('search')) {
+            $query->where(function ($q) use ($request) {
+                $q->whereHas('packet', function ($q) use ($request) {
+                    $q->where('name', 'LIKE', '%' . $request->search . '%');
+                })
+                    ->orWhereHas('program', function ($q) use ($request) {
+                        $q->where('name', 'LIKE', '%' . $request->search . '%');
+                    });
+            });
+        }
+
+        // Filter Paket (bekerja sendiri)
+        if ($request->filled('packet_id')) {
+            $query->where('packet_id', $request->packet_id);
+        }
+
+        // Filter Publish (bekerja sendiri)
+        if ($request->filled('publish')) {
+            $query->where('published_on', $request->publish);
+        }
+
+        // Filter Status (bekerja sendiri)
+        if ($request->filled('filter_status')) {
+            $query->where('status', $request->filter_status);
+        }
+
+        // Sorting
+        $sortBy = $request->input('sort_by', 'created_at'); // Default sort by created_at
+        $sortDirection = $request->input('sort_order', 'asc'); // Default sort direction
+
+        if ($sortBy) {
+            if ($sortBy == 'packet') {
+                $query->join('packets', 'packet_combinations.packet_id', '=', 'packets.id')
+                    ->orderBy('packets.name', $sortDirection);
+            } elseif ($sortBy == 'program') {
+                $query->join('programs', 'packet_combinations.program_id', '=', 'programs.id')
+                    ->orderBy('programs.name', $sortDirection);
+            } elseif ($sortBy == 'price') {
+                $query->orderBy('price', $sortDirection);
+            } elseif ($sortBy == 'published_on') {
+                $query->orderBy('published_on', $sortDirection);
+            } elseif ($sortBy == 'status') {
+                $query->orderBy('status', $sortDirection);
+            }
+        } else {
+            $query->orderBy('created_at', 'desc'); // Default order
+        }
+
+
+        $packetCombinations = $query->paginate(10);
+        $packets = Packet::all();
+
+        return view('Backend.Admin.PacketCombination.index', compact('packetCombinations', 'packets'));
     }
 
     /**
