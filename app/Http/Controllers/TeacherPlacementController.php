@@ -111,6 +111,8 @@ class TeacherPlacementController extends Controller
     public function destroy(TeacherPlacement $teacherPlacement)
     {
         try {
+              // Hapus semua meeting yang terkait dengan teacherPlacement
+            $teacherPlacement->meetings()->delete();
             $teacherPlacement->delete();
             return redirect()->route('teacher.placement.index')
                 ->with('success', 'Data penempatan guru berhasil dihapus!');
