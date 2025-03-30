@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use App\Enums\Gender;
+use Database\Factories\StudentFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-    /** @use HasFactory<\Database\Factories\StudentFactory> */
+    /** @use HasFactory<StudentFactory> */
     use HasFactory, HasUuids;
 
     protected $table = "students";
@@ -36,7 +37,7 @@ class Student extends Model
     /**
      * Write code on Method
      *
-     * @return response()
+     * @return array ()
      */
     protected function casts(): array
     {
@@ -44,6 +45,4 @@ class Student extends Model
             'gender' => Gender::class,
         ];
     }
-
-
 }
