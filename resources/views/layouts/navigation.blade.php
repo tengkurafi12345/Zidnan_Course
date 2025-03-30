@@ -28,7 +28,7 @@
                 <a class="nav-link" href="#">Promo</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Lowongan</a>
+                <a class="nav-link" href="{{ route('lowongan') }}">Lowongan</a>
             </li>
         </ul>
       </div>

@@ -35,6 +35,11 @@ p {
     padding: 10px 20px;
 }
 
+.btn-purple:hover {
+    color: white;
+    background-color: #d42acc;
+}
+
 .btn-violet {
     background-color: #d42acc;
     color: white;
@@ -272,6 +277,23 @@ footer {
     max-width: 100%;
     border-radius: 8px;
     margin-bottom: 10px;
+}
+
+/*** Job Listing ***/
+.nav-pills .nav-item .active {
+    border-bottom: 2px solid #b500fd;
+}
+
+.job-item {
+    border: 1px solid transparent;
+    border-radius: 2px;
+    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+    transition: .5s;
+}
+
+.job-item:hover {
+    border-color: rgba(0, 0, 0, .08);
+    box-shadow: none;
 }
 
 /* Testimonial Sections */

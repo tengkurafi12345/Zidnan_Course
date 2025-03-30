@@ -38,7 +38,14 @@ Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
 
 Route::get('/pendaftaran-guru', [GuruController::class, 'form'])->name('pendaftaran.guru.form');
 Route::post('/pendaftaran-guru', [GuruController::class, 'store'])->name('pendaftaran.guru.store');
-// Siswa
+
+Route::get('/lowongan', function () {
+    return view('frontend.lowongan');
+})->name('lowongan');
+
+Route::get('/lowongan-detail', function () {
+    return view('frontend.lowongan-detail');
+})->name('lowongan.detail');
 
 
 
