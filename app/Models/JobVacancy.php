@@ -13,7 +13,7 @@ class JobVacancy extends Model
 
     protected $table = "job_vacancies";
     protected $fillable = [
-        'title', 'location', 'employment_type', 'job_type',
+        'title', 'location', 'employment_type', 'job_type', 'work_policy',
         'salary_min', 'salary_max', 'currency',
         'job_description', 'date_line', 'published_at'
     ];

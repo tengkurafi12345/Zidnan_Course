@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Main\LowonganController;
+use App\Models\JobVacancy;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -39,15 +41,9 @@ Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
 Route::get('/pendaftaran-guru', [GuruController::class, 'form'])->name('pendaftaran.guru.form');
 Route::post('/pendaftaran-guru', [GuruController::class, 'store'])->name('pendaftaran.guru.store');
 
-Route::get('/lowongan', function () {
-    return view('frontend.lowongan');
-})->name('lowongan');
-
-Route::get('/lowongan-detail', function () {
-    return view('frontend.lowongan-detail');
-})->name('lowongan.detail');
-
-
+// Rute untuk lowongan
+Route::get('/lowongan', [LowonganController::class, 'index'])->name('lowongan');
+Route::get('/lowongan-detail/{jobVacancy}', [LowonganController::class, 'show'])->name('lowongan.detail');
 
 // Test send wa
 Route::get('/send-wa', function () {
