@@ -1,5 +1,8 @@
 <?php
 
+use App\Enums\JobCategory;
+use App\Enums\JobType;
+use App\Enums\WorkPolicy;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,14 +18,13 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('title');
             $table->string('location');
-            $table->enum('employment_type', ['Full Time', 'Part Time', 'Contract']);
-            $table->enum('job_type', ['teacher', 'programmer', 'content creator']);
-            $table->enum('work_policy', ['remote', 'on-site', 'hybrid'])->default('on-site');
+            $table->enum('job_type', JobType::values());
+            $table->enum('category', JobCategory::values());
+            $table->enum('work_policy', WorkPolicy::values())->default(WorkPolicy::ON_SITE->value);
             $table->bigInteger('salary_min')->nullable(); // Menyimpan dalam satuan Rupiah
             $table->bigInteger('salary_max')->nullable(); // Menyimpan dalam satuan Rupiah
-            $table->string('currency', 10)->default('IDR'); // Default ke Rupiah
             $table->text('job_description');
-            $table->timestamp('date_line');
+            $table->date('date_line');
             $table->timestamp('published_at');
             $table->timestamps();
         });

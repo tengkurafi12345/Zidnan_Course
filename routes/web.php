@@ -1,13 +1,12 @@
 <?php
 
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\Main\LowonganController;
-use App\Models\JobVacancy;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PacketController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
@@ -128,6 +127,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/teacher-meeting-attendance', [TeacherAttendanceController::class, 'index'])->name('teacher.meeting.attendance.index');
     Route::get('/teacher-meeting-attendance/{teacherPlacement}', [TeacherAttendanceController::class, 'show'])->name('teacher.meeting.attendance.show');
 
+    // job vacancy
+    Route::get('/job-vacancy', [JobController::class, 'index'])->name('job.vacancy.index');
+    Route::get('/job-vacancy/create', [JobController::class, 'create'])->name('job.vacancy.create');
+    Route::post('/job-vacancy', [JobController::class, 'store'])->name('job.vacancy.store');
+    Route::get('/job-vacancy/{jobVacancy}', [JobController::class, 'edit'])->name('job.vacancy.edit');
+    Route::patch('/job-vacancy/{jobVacancy}', [JobController::class, 'update'])->name('job.vacancy.update');
+    Route::delete('/job-vacancy/{jobVacancy}/delete', [JobController::class, 'destroy'])->name('job.vacancy.destroy');
 });
 
 // Guru

@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Enums\JobCategory;
+use App\Enums\JobType;
+use App\Enums\WorkPolicy;
 use App\Models\JobVacancy;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,12 +23,11 @@ class JobVacancyFactory extends Factory
         return [
             'title' => fake()->jobTitle(),
             'location' => fake()->city(),
-            'employment_type' => fake()->randomElement(['Full Time', 'Part Time', 'Contract']),
-            'job_type' => fake()->randomElement(['teacher', 'programmer', 'content creator']),
-            'work_policy' => fake()->randomElement(['remote', 'on-site', 'hybrid']),
+            'job_type' => fake()->randomElement(JobType::values()),
+            'category' => fake()->randomElement(JobCategory::values()),
+            'work_policy' => fake()->randomElement(WorkPolicy::values()),
             'salary_min' => fake()->numberBetween(5000000, 10000000),
             'salary_max' => fake()->numberBetween(11000000, 20000000),
-            'currency' => 'IDR',
             'job_description' => fake()->paragraph(),
             'date_line' => fake()->date(),
             'published_at' => fake()->dateTime(),

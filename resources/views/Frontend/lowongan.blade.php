@@ -15,11 +15,11 @@
                     <div class="job-item p-4 border rounded">
                         <div class="row g-4">
                             <div class="col-sm-12 col-md-10 d-flex align-items-center">
-                                <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-1.jpg" alt="" style="width: 80px; height: 80px;">
+                                <img class="flex-shrink-0 img-fluid border rounded" src="{{ asset('img/logo-menu-utama.png') }}" alt="" style="width: 80px; height: 80px;">
                                 <div class="text-start ps-4">
                                     <h5 class="mb-3"><a class="text-dark text-decoration-none" href="{{ route('lowongan.detail', $job->id) }}">{{ $job->title }}</a></h5>
                                     <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-purple me-2"></i>{{ $job->location }}</span>
-                                    <span class="text-truncate me-3"><i class="far fa-clock text-purple me-2"></i>{{ $job->employment_type }}</span>
+                                    <span class="text-truncate me-3"><i class="far fa-clock text-purple me-2"></i>{{ $job->job_type }}</span>
                                     <span class="text-truncate me-3"><i class="fa fa-briefcase text-purple me-2"></i>{{ $job->work_policy }}</span>
                                     <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-purple me-2"></i> Rp {{ number_format($job->salary_min, 0, ',', '.') }} - Rp {{ number_format($job->salary_max, 0, ',', '.') }}</span>
                                 </div>

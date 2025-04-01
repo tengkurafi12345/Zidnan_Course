@@ -57,13 +57,9 @@
         <a href="{{ route('packet.combination.index') }}"><i class="fas fa-boxes-packing"></i><span>Paket Kombinasi</span></a>
         <a href="{{ route('teacher.placement.index') }}"><i class="fas fa-person-chalkboard"></i><span>Penempatan Guru</span></a>
         <a href="{{ route('teacher.meeting.attendance.index') }}"><i class="fas fa-clipboard-user"></i><span>Absensi Guru</span></a>
+        <a href="{{ route('job.vacancy.index') }}"><i class="fas fa-user-tie"></i><span>Lowongan</span></a>
 
-        {{-- <a href="{{ route('student.index') }}"><i class="fas fa-child"></i><span>Siswa Berprestasi</span></a>
-        <a href="{{ route('teacher.placement.index') }}"><i class="fas fa-person-chalkboard"></i><span>Promo</span></a>
-        <a href="{{ route('teacher.placement.index') }}"><i class="fas fa-person-chalkboard"></i><span>Lowongan</span></a>
-        <a href="{{ route('teacher.placement.index') }}"><i class="fas fa-person-chalkboard"></i><span>Kritik & Saran</span></a> --}}
     @elseif (auth()->user()->hasRole('teacher'))
-        {{-- <span class="nav-line">Absensi</span> --}}
         <a href="{{ route('meeting.setup.index') }}"><i class="fa-solid fa-clipboard-list"></i><span>Pengaturan Absensi</span></a>
         <a href="{{ route('meeting.attendance.index') }}"><i class="fa-solid fa-clipboard-check"></i><span>Absensi</span></a>
     @endif

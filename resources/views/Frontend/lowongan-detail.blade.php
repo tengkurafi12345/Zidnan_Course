@@ -3,48 +3,49 @@
 @section('title', 'Halaman Detail Lowongan')
 
 @section('content')
-
     <header>
         <h1>Halaman Detail Lowongan</h1>
     </header>
 
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s"
+         style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
         <div class="container">
-           <div class="mb-5">
-               <a href="{{ route('lowongan') }}" class="btn btn-purple rounded-1"><i class="fa fa-reply-all"></i> Back</a>
-           </div>
+            <div class="mb-5">
+                <a href="{{ route('lowongan') }}" class="btn btn-purple rounded-1"><i class="fa fa-reply-all"></i> Back</a>
+            </div>
             <div class="row gy-5 gx-4">
 
                 <div class="col-lg-8">
                     <div class="d-flex align-items-center mb-5">
-                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-2.jpg" alt="" style="width: 80px; height: 80px;">
+                        <img class="flex-shrink-0 img-fluid border rounded" src="{{ asset('img/logo-menu-utama.png') }}" alt=""
+                             style="width: 80px; height: 80px;">
                         <div class="text-start ps-4">
-                            <h3 class="mb-3">{{ $jobVacancy->title }}</h3>
+                            <h3 class="mb-3 fw-bold">{{ $jobVacancy->title }}</h3>
                             <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-purple me-2"></i>{{ $jobVacancy->location }}</span>
-                            <span class="text-truncate me-3"><i class="far fa-clock text-purple me-2"></i>{{ $jobVacancy->employment_type }}</span>
+                            <span class="text-truncate me-3"><i class="far fa-clock text-purple me-2"></i>{{ $jobVacancy->job_type }}</span>
                             <span class="text-truncate me-3"><i class="fa fa-briefcase text-purple me-2"></i>{{ $jobVacancy->work_policy }}</span>
                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-purple me-2"></i> Rp {{ number_format($jobVacancy->salary_min, 0, ',', '.') }} - Rp {{ number_format($jobVacancy->salary_max, 0, ',', '.') }}</span>
                         </div>
                     </div>
 
                     <div class="mb-5">
-                        <h4 class="mb-3">Job description</h4>
+                        <h4 class="mb-3 fw-bold">Deskripsi</h4>
                         <p>{{ $jobVacancy->job_description }}</p>
-                        <h4 class="mb-3">Responsibility</h4>
+                        <h4 class="my-3 fw-bold">Tanggung Jawab Pekerjaan:</h4>
                         @foreach($jobVacancy->responsibilities as $responsibility)
                             <p>{{ $responsibility->description }}</p>
-                            <ul class="list-unstyled">
-                                @foreach($responsibility->items as $item)
+                            <ul class="list-unstyled mt-2">
+                                @foreach(json_decode($responsibility->items, false, 512, JSON_THROW_ON_ERROR) as $item)
                                     <li><i class="fa fa-angle-right text-purple me-2"></i>{{ $item }}</li>
                                 @endforeach
                             </ul>
                         @endforeach
 
-                        <h4 class="mb-3">Qualifications</h4>
+                        <h4 class="mb-3 fw-bold">Kualifikasi </h4>
                         @foreach($jobVacancy->qualifications as $qualification)
                             <p>{{ $qualification->description }}</p>
-                            <ul class="list-unstyled">
-                                @foreach($qualification->items as $item)
+                            <ul class="list-unstyled mt-2">
+                                @foreach(json_decode($qualification->items, false, 512, JSON_THROW_ON_ERROR) as $item)
                                     <li><i class="fa fa-angle-right text-purple me-2"></i>{{ $item }}</li>
                                 @endforeach
                             </ul>
@@ -52,7 +53,7 @@
                     </div>
 
                     <div class="">
-                        <h4 class="mb-4">Apply For The Job</h4>
+                        <h4 class="mb-4 fw-bold">Lamar Pekerjaan Ini</h4>
                         <form>
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
@@ -71,7 +72,7 @@
                                     <textarea class="form-control" rows="5" placeholder="Coverletter"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-purple rounded-1 w-100" type="submit">Apply Now</button>
+                                    <button class="btn btn-purple rounded-1 w-100" type="submit">Lamar Sekarang</button>
                                 </div>
                             </div>
                         </form>
@@ -102,14 +103,23 @@
                             return $formattedMin . ' - ' . $formattedMax;
                         }
                     @endphp
-                    <div class="bg-light rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: slideInUp;">
-                        <h4 class="mb-4">Job Summery</h4>
-                        <p><i class="fa fa-angle-right text-purple me-2"></i>Published On: {{ \Carbon\Carbon::parse($jobVacancy->published_at)->format('d M, Y') }}</p>
-                        <p><i class="fa fa-angle-right text-purple me-2"></i>Vacancy: {{ $jobVacancy->title }}</p>
-                        <p><i class="fa fa-angle-right text-purple me-2"></i>Job Nature: {{ $jobVacancy->employment_type }}</p>
-                        <p><i class="fa fa-angle-right text-purple me-2"></i>Salary: {{ formatSalary($jobVacancy->salary_min, $jobVacancy->salary_max) }}</p>
-                        <p><i class="fa fa-angle-right text-purple me-2"></i>Location: {{ $jobVacancy->location }}</p>
-                        <p class="m-0"><i class="fa fa-angle-right text-purple me-2"></i>Date Line: {{ \Carbon\Carbon::parse($jobVacancy->date_line)->format('d M, Y') }}</p>
+                    <div class="bg-light rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s"
+                         style="visibility: visible; animation-delay: 0.1s; animation-name: slideInUp;">
+                        <h4 class="mb-4 fw-bold">Ringkasan Pekerjaan</h4>
+                        <p><i class="fa fa-angle-right text-purple me-2"></i><span class="text-purple">Dipublikasikan Pada:</span> {{ \Carbon\Carbon::parse($jobVacancy->published_at)->format('d M, Y') }}
+                        </p>
+                        <p><i class="fa fa-angle-right text-purple me-2"></i><span
+                                class="text-purple">Lowongan:</span> {{ $jobVacancy->title }}</p>
+                        <p><i class="fa fa-angle-right text-purple me-2"></i><span
+                                class="text-purple">Kategori:</span> {{ $jobVacancy->category }}</p>
+                        <p><i class="fa fa-angle-right text-purple me-2"></i><span
+                                class="text-purple">Gaji:</span> {{ formatSalary($jobVacancy->salary_min, $jobVacancy->salary_max) }}
+                        </p>
+                        <p><i class="fa fa-angle-right text-purple me-2"></i><span
+                                class="text-purple">Lokasi:</span> {{ $jobVacancy->location }}</p>
+                        <p><i class="fa fa-angle-right text-purple me-2"></i><span
+                                class="text-purple">Tenggat Waktu:</span> {{ \Carbon\Carbon::parse($jobVacancy->date_line)->format('d M, Y') }}
+                        </p>
                     </div>
                 </div>
             </div>
