@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             // StudentSeeder::class,
             // TeacherPlacementSeeder::class,
             UserSeeder::class,
-            JobSeeder::class,
+//            JobSeeder::class,
             // TestimonialSeeder::class,
         ]);
 

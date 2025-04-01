@@ -104,7 +104,7 @@
 
             <p>Tenggat Waktu</p>
             <input type="date" name="date_line" class="form-control box"
-                   value="{{ old('date_line', $jobVacancy->date_line) }}">
+                   value="{{ old('date_line', $jobVacancy->date_line->format('Y-m-d')) }}">
 
             <p>Deskripsi</p>
             <textarea name="job_description" placeholder="Masukkan Deskripsi"
