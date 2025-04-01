@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('job_responsibilities', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->uuid('job_vacancy_id');
             $table->foreign('job_vacancy_id')->references('id')->on('job_vacancies')->onDelete('cascade');
             $table->text('description');
             $table->json('items'); // Disimpan dalam format JSON

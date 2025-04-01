@@ -21,7 +21,7 @@ class JobVacancyFactory extends Factory
             'title' => fake()->jobTitle(),
             'location' => fake()->city(),
             'employment_type' => fake()->randomElement(['Full Time', 'Part Time', 'Contract']),
-            'job_type' => fake()->word(),
+            'job_type' => fake()->randomElement(['teacher', 'programmer', 'content creator']),
             'salary_min' => fake()->numberBetween(5000000, 10000000),
             'salary_max' => fake()->numberBetween(11000000, 20000000),
             'currency' => 'IDR',

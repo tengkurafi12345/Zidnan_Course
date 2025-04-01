@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('job_applications', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->uuid('job_vacancy_id');
+            $table->uuid('job_applicant_id');
             $table->foreign('job_vacancy_id')->references('id')->on('job_vacancies')->onDelete('cascade');
             $table->foreign('job_applicant_id')->references('id')->on('job_applicants')->onDelete('cascade');
             $table->string('resume_url')->nullable();
