@@ -193,7 +193,7 @@
                             <td>{{ $teacherPlacement->packetCombination->packet->name }}</td>
                             <td>
                                 {{ $teacherPlacement->packetCombination->program->name }}
-                                <span class="badge badge-danger">{{ $teacherPlacement->packetCombination->program->meeting_times }} kali</span>
+                                <span class="badge badge-danger">{{ $teacherPlacement->meeting_times }} kali</span>
 
                             </td>
                             <td>{{ $teacherPlacement->teacher->name }}</td>

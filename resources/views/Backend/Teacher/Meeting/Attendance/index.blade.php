@@ -159,9 +159,6 @@
             <div class="">
                 <h1 class="heading">Absensi Pertemuan</h1>
             </div>
-            {{-- <div class="">
-                <a href="{{ route('teacher.create') }}" class="btn btn-info">Tambah Guru</a>
-            </div> --}}
         </div>
 
         <div class="row">
@@ -177,7 +174,7 @@
                                         {{ $selectedPlacementId == $teacherPlacement->id ? 'selected' : '' }}>
                                         {{ $teacherPlacement->packetCombination->packet->name }} |
                                         {{ $teacherPlacement->packetCombination->program->name }} -
-                                        {{ $teacherPlacement->packetCombination->program->meeting_times }}x |
+                                        {{ $teacherPlacement->meeting_times }}x |
                                         {{ $teacherPlacement->student->name }}
                                     </option>
                                 @endforeach

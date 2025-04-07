@@ -12,6 +12,6 @@ class PacketCombinationSeeder extends Seeder
      */
     public function run(): void
     {
-        PacketCombination::factory()->count(10)->create();
+        PacketCombination::factory()->count(30)->create();
     }
 }

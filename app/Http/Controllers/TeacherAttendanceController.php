@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\meeting;
+use App\Models\Meeting;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use App\Models\TeacherPlacement;

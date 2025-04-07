@@ -86,9 +86,10 @@
                 </div>
             @endforeach
 
-            <div class="row">
-                <div class="col">
-                    <input type="submit" value="Update Guru" class="btn btn-primary">
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <a href="{{ route('meeting.setup.index') }}" class="btn btn-secondary">Kembali</a>
+                    <input type="submit" value="Update Guru" class="btn btn-purple">
                 </div>
             </div>
         </form>

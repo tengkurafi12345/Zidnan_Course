@@ -159,9 +159,6 @@
             <div class="">
                 <h1 class="heading">Pengaturan Absensi</h1>
             </div>
-            {{-- <div class="">
-                <a href="{{ route('teacher.create') }}" class="btn btn-info">Tambah Guru</a>
-            </div> --}}
         </div>
 
         <!-- Flash Notification -->
@@ -190,7 +187,7 @@
                             <td>{{ $teacherPlacement->packetCombination->packet->name }}</td>
                             <td>
                                 {{ $teacherPlacement->packetCombination->program->name }}
-                                <span class="badge badge-danger">{{ $teacherPlacement->packetCombination->program->meeting_times }} kali</span>
+                                <span class="badge badge-danger">{{ $teacherPlacement->meeting_times }} kali</span>
 
                             </td>
                             <td>{{ $teacherPlacement->student->name }}</td>

@@ -1342,6 +1342,30 @@ section{
     justify-content: space-between;
 }
 
+.pagination {
+    --bs-pagination-color: rgb(116, 0, 161); /* Primary color */
+    --bs-pagination-bg: var(--bs-body-bg);
+    --bs-pagination-border-width: var(--bs-border-width);
+    --bs-pagination-border-color: rgb(116, 0, 161, 0.5); /* Softer border */
+    --bs-pagination-border-radius: var(--bs-border-radius);
+
+    --bs-pagination-hover-color: rgb(116, 0, 161);
+    --bs-pagination-hover-bg: rgb(116, 0, 161, 0.1); /* Light hover background */
+    --bs-pagination-hover-border-color: rgb(116, 0, 161, 0.7);
+
+    --bs-pagination-focus-color: rgb(116, 0, 161);
+    --bs-pagination-focus-bg: rgb(116, 0, 161, 0.2);
+    --bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(116, 0, 161, 0.5);
+
+    --bs-pagination-active-color: #fff;
+    --bs-pagination-active-bg: rgb(116, 0, 161);
+    --bs-pagination-active-border-color: rgb(116, 0, 161);
+
+    --bs-pagination-disabled-color: rgb(116, 0, 161, 0.4);
+    --bs-pagination-disabled-bg: var(--bs-secondary-bg);
+    --bs-pagination-disabled-border-color: rgb(116, 0, 161, 0.3);
+}
+
 .footer{
    background-color: var(--white);
    border-top: var(--border);

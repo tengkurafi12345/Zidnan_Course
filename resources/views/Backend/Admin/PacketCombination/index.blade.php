@@ -351,5 +351,10 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- Menambahkan pagination -->
+        <div class="d-flex justify-content-center">
+            {{ $packetCombinations->links('vendor.pagination.bootstrap-5') }}
+        </div>
     </section>
 @endsection

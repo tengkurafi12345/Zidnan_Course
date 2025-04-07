@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\Main\LowonganController;
+use App\Http\Controllers\Main\PromoController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -43,6 +44,9 @@ Route::post('/pendaftaran-guru', [GuruController::class, 'store'])->name('pendaf
 // Rute untuk lowongan
 Route::get('/lowongan', [LowonganController::class, 'index'])->name('lowongan');
 Route::get('/lowongan-detail/{jobVacancy}', [LowonganController::class, 'show'])->name('lowongan.detail');
+
+// Promo
+Route::get('/promo', [PromoController::class, 'index'])->name('promo');
 
 // Test send wa
 Route::get('/send-wa', function () {
@@ -134,6 +138,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/job-vacancy/{jobVacancy}', [JobController::class, 'edit'])->name('job.vacancy.edit');
     Route::patch('/job-vacancy/{jobVacancy}', [JobController::class, 'update'])->name('job.vacancy.update');
     Route::delete('/job-vacancy/{jobVacancy}/delete', [JobController::class, 'destroy'])->name('job.vacancy.destroy');
+
+
 });
 
 // Guru
