@@ -17,9 +17,9 @@ return new class extends Migration
             $table->uuid('job_applicant_id');
             $table->foreign('job_vacancy_id')->references('id')->on('job_vacancies')->onDelete('cascade');
             $table->foreign('job_applicant_id')->references('id')->on('job_applicants')->onDelete('cascade');
-            $table->string('resume_url')->nullable();
+            $table->string('resume_file')->nullable();
             $table->text('cover_letter')->nullable();
-            $table->enum('status', ['pending', 'reviewed', 'interview', 'rejected', 'hired'])->default('pending');
+            $table->enum('status', ['pending', 'reviewed', 'interview', 'rejected', 'hired'])->nullable()->default('pending');
             $table->timestamp('applied_at')->useCurrent();
             $table->timestamps();
         });

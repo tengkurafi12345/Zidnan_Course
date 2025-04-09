@@ -14,12 +14,13 @@ class JobApplication extends Model
     protected $table = 'job_applications';
 
     protected $fillable = [
-        'job_vacancy_id', 'job_applicant_id', 'resume_url',
+        'job_vacancy_id', 'job_applicant_id', 'resume_file',
         'cover_letter', 'status', 'applied_at'
     ];
 
     protected $casts = [
         'applied_at' => 'datetime',
+        'resume_file' => 'string'
     ];
 
     /**

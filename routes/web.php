@@ -44,6 +44,7 @@ Route::post('/pendaftaran-guru', [GuruController::class, 'store'])->name('pendaf
 // Rute untuk lowongan
 Route::get('/lowongan', [LowonganController::class, 'index'])->name('lowongan');
 Route::get('/lowongan-detail/{jobVacancy}', [LowonganController::class, 'show'])->name('lowongan.detail');
+Route::post('/lowongan', [LowonganController::class, 'store'])->name('lowongan.store');
 
 // Promo
 Route::get('/promo', [PromoController::class, 'index'])->name('promo');

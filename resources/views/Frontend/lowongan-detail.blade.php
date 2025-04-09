@@ -10,6 +10,27 @@
     <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s"
          style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
         <div class="container">
+            <!-- Flash Notification -->
+            @if (session('success'))
+                <div class="alert alert-success mb-4">
+                    {{ session('success') }}
+                    <span class="closebtn">&times;</span>
+                </div>
+            @elseif(session('error'))
+                <div class="alert alert-danger mb-4">
+                    {{ session('error') }}
+                    <span class="closebtn">&times;</span>
+                </div>
+            @endif
+
+            <!-- Flash Notification -->
+            {{-- Menampilkan semua error validasi --}}
+            @if ($errors->any())
+                <div class="alert alert-danger mb-4">
+                    Terjadi Error Dalam Mengisi Formulir
+                    <span class="closebtn">&times;</span>
+                </div>
+            @endif
             <div class="mb-5">
                 <a href="{{ route('lowongan') }}" class="btn btn-purple rounded-1"><i class="fa fa-reply-all"></i> Back</a>
             </div>
@@ -54,22 +75,52 @@
 
                     <div class="">
                         <h4 class="mb-4 fw-bold">Lamar Pekerjaan Ini</h4>
-                        <form>
+
+                        <form action="{{ route('lowongan.store') }}" method="post" enctype="multipart/form-data">
+                            @csrf
                             <div class="row g-3">
+                                <input type="hidden" class="form-control" name="job_vacancy_id" value="{{ $jobVacancy->id }}">
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control" placeholder="Your Name">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Your Name">
+                                    @error('name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control" placeholder="Your Email">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Your Email">
+                                    @error('email')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control" placeholder="Portfolio Website">
+                                    <label>No Whatsapp</label>
+                                    <input type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="Your Number Whatsapp">
+                                    @error('phone')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="file" class="form-control bg-white">
+                                    <label>Alamat Domisili</label>
+                                    <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" placeholder="Your Address">
+                                    @error('address')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control" rows="5" placeholder="Coverletter"></textarea>
+                                    <label>Upload CV / Resume</label>
+                                    <input type="file" class="form-control bg-white @error('resume_file') is-invalid @enderror" name="resume_file" placeholder="upload your CV">
+                                    @error('resume_file')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-12">
+                                    <label>Cover Letter</label>
+                                    <textarea class="form-control @error('cover_letter') is-invalid @enderror" rows="5" name="cover_letter" placeholder="Coverletter"></textarea>
+                                    @error('cover_letter')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-12">
                                     <button class="btn btn-purple rounded-1 w-100" type="submit">Lamar Sekarang</button>
@@ -77,6 +128,7 @@
                             </div>
                         </form>
                     </div>
+
                 </div>
 
                 <div class="col-lg-4">

@@ -16,7 +16,7 @@ class JobSeeder extends Seeder
         \App\Models\JobVacancy::factory(5)->create();
         \App\Models\JobResponsibility::factory(5)->create();
         \App\Models\JobQualification::factory(5)->create();
-        \App\Models\JobApplicant::factory(5)->create();
-        \App\Models\JobApplication::factory(5)->create();
+//        \App\Models\JobApplicant::factory(5)->create();
+//        \App\Models\JobApplication::factory(5)->create();
     }
 }
