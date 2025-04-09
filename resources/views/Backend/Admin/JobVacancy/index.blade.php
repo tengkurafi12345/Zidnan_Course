@@ -185,7 +185,7 @@
                         <th>Nama Lowongan</th>
                         <th>Kategori</th>
                         <th>Tipe Pekerjaan</th>
-                        <th>Kebijakan Kerja</th>
+                        <th>Penempatan Kerja</th>
                         <th style="width:100px">Gaji</th>
                         <th>Deskripsi</th>
                         <th>Tenggat Waktu</th>

@@ -36,9 +36,9 @@ class UpdateJobVacancyRequest extends FormRequest
             'date_line' => 'required|date_format:Y-m-d',
             'job_description' => 'required|string|max:255',
             'responsibilities.*' => 'required|string|max:255',
-            'responsibility_description' => 'required|string|max:255',
+            'responsibility_description' => 'nullable|string|max:255',
             'qualifications.*' => 'required|string|max:255',
-            'qualification_description' => 'required|string|max:255',
+            'qualification_description' => 'nullable|string|max:255',
         ];
     }
 }

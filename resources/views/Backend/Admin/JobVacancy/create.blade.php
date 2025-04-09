@@ -74,7 +74,7 @@
                 @endforeach
             </select>
 
-            <p>Kebijakan Kerja</p>
+            <p>Penempatan Kerja</p>
             <select name="work_policy" id="select" class="form-select box">
                 <option value="">--Please choose an option--</option>
                 @foreach ($workPolicies as $workPolicy)

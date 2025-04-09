@@ -36,9 +36,9 @@ class StoreJobVacancyRequest extends FormRequest
             'date_line' => 'required|date_format:Y-m-d',
             'job_description' => 'required|string',
             'responsibilities.*' => 'required|string|max:255',
-            'responsibility_description' => 'required|string',
+            'responsibility_description' => 'nullable|string',
             'qualifications.*' => 'required|string|max:255',
-            'qualification_description' => 'required|string',
+            'qualification_description' => 'nullable|string',
         ];
     }
 }

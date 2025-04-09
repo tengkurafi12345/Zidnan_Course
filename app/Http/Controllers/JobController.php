@@ -60,7 +60,7 @@ class JobController extends Controller
         // Simpan sebagai JSON
         if (!empty($responsibilities)) {
             $jobVacancy->responsibilities()->create([
-                'description' => $validatedData['responsibility_description'],
+                'description' => $validatedData['responsibility_description'] ?? null,
                 'items' => json_encode($responsibilities, JSON_THROW_ON_ERROR)
             ]);
         }
@@ -75,7 +75,7 @@ class JobController extends Controller
         // Simpan sebagai JSON
         if (!empty($qualifications)) {
             $jobVacancy->qualifications()->create([
-                'description' => $validatedData['qualification_description'],
+                'description' => $validatedData['qualification_description'] ?? null,
                 'items' => json_encode($qualifications, JSON_THROW_ON_ERROR)
             ]);
         }
@@ -136,7 +136,7 @@ class JobController extends Controller
             // Simpan sebagai JSON jika ada tanggung jawab
             if (!empty($responsibilities)) {
                 $jobVacancy->responsibilities()->create([
-                    'description' => $request->responsibility_description,
+                    'description' => $request->responsibility_description ?? null,
                     'items' => json_encode($responsibilities, JSON_THROW_ON_ERROR)
                 ]);
             }
@@ -156,7 +156,7 @@ class JobController extends Controller
             // Simpan sebagai JSON jika ada kualifikasi
             if (!empty($qualifications)) {
                 $jobVacancy->qualifications()->create([
-                    'description' => $request->qualification_description,
+                    'description' => $request->qualification_description ?? null,
                     'items' => json_encode($qualifications, JSON_THROW_ON_ERROR)
                 ]);
             }

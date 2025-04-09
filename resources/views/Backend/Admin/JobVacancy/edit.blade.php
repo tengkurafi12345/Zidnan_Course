@@ -82,7 +82,7 @@
                 @endforeach
             </select>
 
-            <p>Kebijakan Kerja</p>
+            <p>Penempatan Kerja</p>
             <select name="work_policy" id="select" class="form-select box">
                 @foreach ($workPolicies as $workPolicy)
                     @if($workPolicy->value === $jobVacancy->work_policy->value)

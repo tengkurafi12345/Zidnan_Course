@@ -59,7 +59,7 @@ class StudentController extends Controller
     {
         $genders = Gender::cases();
 
-        return view('Backend.Admin.student.edit', compact('student', 'genders'));
+        return view('Backend.Admin.Student.edit', compact('student', 'genders'));
     }
 
     /**

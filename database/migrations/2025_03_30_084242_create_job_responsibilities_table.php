@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->uuid('job_vacancy_id');
             $table->foreign('job_vacancy_id')->references('id')->on('job_vacancies')->onDelete('cascade');
-            $table->text('description');
+            $table->text('description')->nullable(); // TODO : Hapus kolom deskirpsi
             $table->json('items'); // Disimpan dalam format JSON
             $table->timestamps();
         });
