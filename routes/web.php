@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\Main\LowonganController;
 use App\Http\Controllers\Main\PromoController;
@@ -140,7 +141,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::patch('/job-vacancy/{jobVacancy}', [JobController::class, 'update'])->name('job.vacancy.update');
     Route::delete('/job-vacancy/{jobVacancy}/delete', [JobController::class, 'destroy'])->name('job.vacancy.destroy');
 
-
+    // Job Application
+    Route::get('/job-application', [JobApplicationController::class, 'index'])->name('job.application.index');
+    Route::get('/job-application/{jobApplication}/edit', [JobApplicationController::class, 'edit'])->name('job.application.edit');
+    Route::patch('/job-application/{jobApplication}', [JobApplicationController::class, 'update'])->name('job.application.update');
+    Route::delete('/job-application/{jobApplication}/delete', [JobApplicationController::class, 'destroy'])->name('job.application.destroy');
 });
 
 // Guru

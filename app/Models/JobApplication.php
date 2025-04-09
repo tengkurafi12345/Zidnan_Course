@@ -20,7 +20,8 @@ class JobApplication extends Model
 
     protected $casts = [
         'applied_at' => 'datetime',
-        'resume_file' => 'string'
+        'resume_file' => 'string',
+        'status' => 'string',
     ];
 
     /**

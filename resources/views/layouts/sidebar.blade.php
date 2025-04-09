@@ -1,10 +1,7 @@
 <header class="header">
     <section class="flex">
         <a href="{{ route('dashboard') }}" class="logo">Zidnan Course</a>
-        <form action="search.html" method="post" class="search-form">
-            <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
-            <button type="submit" class="fas fa-search"></button>
-        </form>
+
 
         <div class="icons">
             <div id="menu-btn" class="fas fa-bars"></div>
@@ -58,6 +55,7 @@
         <a href="{{ route('teacher.placement.index') }}"><i class="fas fa-person-chalkboard"></i><span>Penempatan Guru</span></a>
         <a href="{{ route('teacher.meeting.attendance.index') }}"><i class="fas fa-clipboard-user"></i><span>Absensi Guru</span></a>
         <a href="{{ route('job.vacancy.index') }}"><i class="fas fa-user-tie"></i><span>Lowongan</span></a>
+        <a href="{{ route('job.application.index') }}"><i class="fas fa-person-walking-arrow-right"></i><span>Pelamar</span></a>
 
     @elseif (auth()->user()->hasRole('teacher'))
         <a href="{{ route('meeting.setup.index') }}"><i class="fa-solid fa-clipboard-list"></i><span>Pengaturan Absensi</span></a>

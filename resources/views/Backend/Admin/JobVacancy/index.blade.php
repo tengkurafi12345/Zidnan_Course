@@ -2,12 +2,6 @@
 
 @section('title', 'Daftar Lowongan')
 
-@section('css')
-    <style>
-
-    </style>
-@endsection
-
 @section('content')
     <section class="courses">
         <div class="flex-container">
