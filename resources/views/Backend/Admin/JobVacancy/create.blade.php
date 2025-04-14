@@ -117,7 +117,7 @@
 
             <div class="row mt-5">
                 <div class="col-md-12">
-                    <a href="{{ route('packet.index') }}" class="btn btn-secondary">Kembali</a>
+                    <a href="{{ route('job.vacancy.index') }}" class="btn btn-secondary">Kembali</a>
                     <button type="submit" class="btn btn-purple">Simpan</button>
                 </div>
             </div>
