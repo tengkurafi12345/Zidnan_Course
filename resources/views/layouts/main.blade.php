@@ -70,22 +70,22 @@
         let step = 5; // Tambahkan angka per iterasi
         let counts = setInterval(updated, 10); // Interval tetap 10 ms
 
-        // function updated() {
-        //     let count = document.getElementById("counter");
-        //     upto += step; // Tambah lebih dari 1
-        //
-        //     // Format angka jika sudah mencapai 1000 atau lebih
-        //     let formattedNumber = upto >= 1000 ?
-        //         upto.toString().replace(/^(\d)(\d{3})$/, '$1,$2') :
-        //         upto;
-        //
-        //     count.innerHTML = formattedNumber;
-        //
-        //     if (upto >= 1504) {
-        //         clearInterval(counts);
-        //         count.innerHTML = "1,504"; // Pastikan format tetap benar saat berhenti
-        //     }
-        // }
+        function updated() {
+            let count = document.getElementById("counter");
+            upto += step; // Tambah lebih dari 1
+
+            // Format angka jika sudah mencapai 1000 atau lebih
+            let formattedNumber = upto >= 1000 ?
+                upto.toString().replace(/^(\d)(\d{3})$/, '$1,$2') :
+                upto;
+
+            count.innerHTML = formattedNumber;
+
+            if (upto >= 1504) {
+                clearInterval(counts);
+                count.innerHTML = "1,504"; // Pastikan format tetap benar saat berhenti
+            }
+        }
     </script>
 </body>
 

@@ -4,6 +4,7 @@ use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\Main\LowonganController;
 use App\Http\Controllers\Main\PromoController;
+use App\Http\Controllers\promotionController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -146,6 +147,15 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/job-application/{jobApplication}/edit', [JobApplicationController::class, 'edit'])->name('job.application.edit');
     Route::patch('/job-application/{jobApplication}', [JobApplicationController::class, 'update'])->name('job.application.update');
     Route::delete('/job-application/{jobApplication}/delete', [JobApplicationController::class, 'destroy'])->name('job.application.destroy');
+
+
+    // promotion
+    Route::get('/promotion', [promotionController::class, 'index'])->name('promotion.index');
+    Route::get('/promotion/create', [promotionController::class, 'create'])->name('promotion.create');
+    Route::post('/promotion', [promotionController::class, 'store'])->name('promotion.store');
+    Route::get('/promotion/{promotion}', [promotionController::class, 'edit'])->name('promotion.edit');
+    Route::patch('/promotion/{promotion}', [promotionController::class, 'update'])->name('promotion.update');
+    Route::delete('/promotion/{promotion}/delete', [promotionController::class, 'destroy'])->name('promotion.destroy');
 });
 
 // Guru

@@ -123,4 +123,39 @@
             </div>
         </form>
     </section>
+
+    {{--  JS  --}}
+    <script>
+        // Add Button for responsibility and Qualification Job
+        document.querySelector('.add-responsibility').addEventListener('click', function() {
+            const responsibilitiesDiv = document.getElementById('responsibilities');
+            const newResponsibility = document.createElement('div');
+            newResponsibility.classList.add('input-group', 'mb-3');
+            newResponsibility.innerHTML = `
+                <input type="text" name="responsibilities[]" class="form-control" placeholder="Tanggung jawab" aria-label="Tanggung jawab">
+                <button type="button" class="btn btn-danger remove-responsibility"><i class="fas fa-xmark"></i></button>
+            `;
+            responsibilitiesDiv.appendChild(newResponsibility);
+        });
+
+        document.querySelector('.add-qualification').addEventListener('click', function() {
+            const qualificationsDiv = document.getElementById('qualifications');
+            const newQualification = document.createElement('div');
+            newQualification.classList.add('input-group', 'mb-3');
+            newQualification.innerHTML = `
+                <input type="text" name="qualifications[]" class="form-control" placeholder="Kualifikasi" aria-label="Kualifikasi">
+                <button type="button" class="btn btn-danger remove-qualification"><i class="fas fa-xmark"></i></button>
+            `;
+            qualificationsDiv.appendChild(newQualification);
+        });
+
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('remove-responsibility')) {
+                e.target.parentElement.remove();
+            }
+            if (e.target.classList.contains('remove-qualification')) {
+                e.target.parentElement.remove();
+            }
+        });
+    </script>
 @endsection

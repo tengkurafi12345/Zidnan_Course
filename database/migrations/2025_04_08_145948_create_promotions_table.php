@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->string('name');
             $table->date('start_date');
             $table->date('end_date');
-            $table->string('img_poster');
+            $table->string('img_poster')->nullable();
             $table->json('term_and_conditions');
             $table->integer('discount')->nullable();
             $table->timestamps();

@@ -56,6 +56,7 @@
         <a href="{{ route('teacher.meeting.attendance.index') }}"><i class="fas fa-clipboard-user"></i><span>Absensi Guru</span></a>
         <a href="{{ route('job.vacancy.index') }}"><i class="fas fa-user-tie"></i><span>Lowongan</span></a>
         <a href="{{ route('job.application.index') }}"><i class="fas fa-person-walking-arrow-right"></i><span>Pelamar</span></a>
+        <a href="{{ route('promotion.index') }}"><i class="fas fa-bullhorn"></i><span>Promosi</span></a>
 
     @elseif (auth()->user()->hasRole('teacher'))
         <a href="{{ route('meeting.setup.index') }}"><i class="fa-solid fa-clipboard-list"></i><span>Pengaturan Absensi</span></a>
