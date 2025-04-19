@@ -14,6 +14,8 @@ return new class extends Migration {
             $table->date('start_date');
             $table->date('end_date');
             $table->string('img_poster')->nullable();
+            $table->enum('header_position', ['left', 'right', 'none'])->default('none');
+            $table->boolean('is_header')->default(false);
             $table->json('term_and_conditions');
             $table->integer('discount')->nullable();
             $table->timestamps();

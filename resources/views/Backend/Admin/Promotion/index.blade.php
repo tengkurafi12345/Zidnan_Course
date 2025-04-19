@@ -29,47 +29,60 @@
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama</th>
-                        <th>Kode Voucher</th>
-                        <th>Tanggal</th>
-                        <th>Diskon</th>
-                        <th>Syarat Dan Ketentuan</th>
-                        <th>Aksi</th>
-                    </tr>
+                <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Kode Voucher</th>
+                    <th>Tanggal</th>
+                    <th>Diskon</th>
+                    <th>Header (Posisi)</th> {{-- Kolom baru yang digabung --}}
+                    <th>Syarat Dan Ketentuan</th>
+                    <th>Aksi</th>
+                </tr>
                 </thead>
                 <tbody>
-                    @forelse($promotions as $promotion)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $promotion->name }}</td>
-                            <td>{{ $promotion->code_voucher }}</td>
-                            <td>{{ \Carbon\Carbon::parse($promotion->start_date)->format('d/m/Y') }} -  {{ \Carbon\Carbon::parse($promotion->end_date)->format('d/m/Y') }} </td>
-                            <td> Rp. {{ number_format($promotion->discount, 0, ',', '.') }}</td>
-                            <td>
-                                {!! is_array($promotion->term_and_conditions)
-                                    ? implode('<br> ', array_map(fn($item) => '- ' . $item, $promotion->term_and_conditions))
-                                    : $promotion->term_and_conditions !!}
-                            </td>                            <td>
-                                <div class="action-buttons">
-                                    <a href="{{ route('promotion.edit', $promotion->id) }}"
-                                        class="btn btn-sm btn-warning" >Edit</a>
-                                    <form action="{{ route('promotion.destroy', $promotion->id) }}" method="POST"
-                                        style="display: inline-block;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger"
-                                            onclick="return confirm('Are you sure?')">Delete</button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="10" class="text-center">No Packet available.</td>
-                        </tr>
-                    @endforelse
+                @forelse($promotions as $promotion)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $promotion->name }}</td>
+                        <td>{{ $promotion->code_voucher }}</td>
+                        <td>{{ \Carbon\Carbon::parse($promotion->start_date)->format('d/m/Y') }}
+                            - {{ \Carbon\Carbon::parse($promotion->end_date)->format('d/m/Y') }} </td>
+                        <td> Rp. {{ number_format($promotion->discount, 0, ',', '.') }}</td>
+                        <td>
+                            @if ($promotion->is_header)
+                                <span class="badge bg-success">
+                                    Ya ({{ $promotion->header_position === 'left' ? 'Kiri' : 'Kanan' }})
+                                </span>
+                            @else
+                                <span class="badge bg-secondary">Tidak Ditampilkan</span>
+                            @endif
+                        </td>
+                        <td>
+                            {!! is_array($promotion->term_and_conditions)
+                                ? implode('<br> ', array_map(fn($item) => '- ' . $item, $promotion->term_and_conditions))
+                                : $promotion->term_and_conditions !!}
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <a href="{{ route('promotion.edit', $promotion->id) }}"
+                                   class="btn btn-sm btn-warning">Edit</a>
+                                <form action="{{ route('promotion.destroy', $promotion->id) }}" method="POST"
+                                      style="display: inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger"
+                                            onclick="return confirm('Are you sure?')">Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="10" class="text-center">No Packet available.</td>
+                    </tr>
+                @endforelse
                 </tbody>
             </table>
 

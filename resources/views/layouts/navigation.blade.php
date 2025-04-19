@@ -25,7 +25,7 @@
                 <a class="nav-link" href="{{ route('testimoni') }}">Testimoni</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('promo') }}">Promo</a>
+                <a class="nav-link" href="{{ route('promo.index') }}">Promo</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('lowongan') }}">Lowongan</a>

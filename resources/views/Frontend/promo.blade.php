@@ -54,21 +54,19 @@
         }
     </style>
     <header>
-        <div class="container">
-            <div class="row split-container">
+        <div class="container py-4">
+            <div class="row g-3 align-items-stretch">
                 <!-- Left 60% -->
-                <div class="col-md-7">
-                    <div id="promoCarousel" class="carousel slide flex-grow-1" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="{{ asset('img/Template-Image-Carousel-Custom.png') }}" alt="Hall of Friends">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('img/Template-Image-Carousel-Custom2.png') }}" alt="Promo Buku Anak">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('img/Template-Image-Carousel-Custom.png') }}" alt="Voucher Bank">
-                            </div>
+                <div class="col-lg-7 col-md-12">
+                    <div id="promoCarousel" class="carousel slide h-100" data-bs-ride="carousel">
+                        <div class="carousel-inner h-100 rounded overflow-hidden border border-purple">
+                            @foreach($leftHeaders as $index => $item)
+                                <div class="carousel-item {{ $index === 0 ? 'active' : '' }} h-100">
+                                    <a href="{{ route('promo.show', $item->id) }}">
+                                        <img src="{{ asset('img/Template-Image-Carousel-Custom.png') }}" class="d-block w-100 h-100 object-fit-cover" alt="{{ $item->name }}">
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#promoCarousel" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon"></span>
@@ -80,10 +78,15 @@
                 </div>
 
                 <!-- Right 40% -->
-                <div class="col-md-5">
-                    <div class="left-container">
-                        <img src="{{ asset('img/atas.png') }}" alt="Promo Buku Anak">
-                        <img src="{{ asset('img/bawah.png') }}" alt="Voucher Bank">
+                <div class="col-lg-5 col-md-12">
+                    <div class="d-flex flex-column gap-3 h-100">
+                        @foreach($rightHeaders as $item)
+                            <a href="{{ route('promo.show', $item->id) }}" class="h-50">
+                                <div class="ratio ratio-21x9 h-100 rounded overflow-hidden shadow-sm border border-purple">
+                                    <img src="{{ asset('img/atas.png') }}" class="w-100 h-100 object-fit-cover" alt="{{ $item->name }}">
+                                </div>
+                            </a>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -94,46 +97,21 @@
     <section class="testimonial-section">
         <h2 class="fw-bold">Promo & Info</h2>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <div class="col">
-                <div class="card shadow-sm border">
-                    <img src="{{ asset('img/Template-Image-Carousel-Custom.png') }}" class="bd-placeholder-img card-img-top" width="100%" height="225">
-                    <div class="card-body text-start">
-                        <a href="" class="text-decoration-none text-purple"> <p class="card-text fw-bold">Special Offer Fate Strange Fake</p></a>
-                        <small class="text-body-secondary">24 Maret - 9 April 2025</small>
+            @foreach($promotions as $promo)
+                <div class="col">
+                    <div class="card shadow-sm border">
+                        <img src="{{ asset('img/Template-Image-Carousel-Custom.png') }}" class="bd-placeholder-img card-img-top" width="100%" height="225">
+                        <div class="card-body text-start">
+                            <a href="{{ route('promo.show', $promo->id) }}" class="text-decoration-none text-purple"> <p class="card-text fw-bold"> {{ $promo->name }}</p></a>
+                            <small class="text-body-secondary">{{ $promo->start_date }} - {{ $promo->end_date }}</small>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card shadow-sm border">
-                    <img src="{{ asset('img/Template-Image-Carousel-Custom.png') }}" class="bd-placeholder-img card-img-top" width="100%" height="225">
-                    <div class="card-body text-start">
-                        <a href="" class="text-decoration-none text-purple"> <p class="card-text fw-bold">Special Offer Fate Strange Fake</p></a>
-                        <small class="text-body-secondary">24 Maret - 9 April 2025</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card shadow-sm border">
-                    <img src="{{ asset('img/Template-Image-Carousel-Custom.png') }}" class="bd-placeholder-img card-img-top" width="100%" height="225">
-                    <div class="card-body text-start">
-                        <a href="" class="text-decoration-none text-purple"> <p class="card-text fw-bold">Special Offer Fate Strange Fake</p></a>
-                        <small class="text-body-secondary">24 Maret - 9 April 2025</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card shadow-sm border">
-                    <img src="{{ asset('img/Template-Image-Carousel-Custom.png') }}" class="bd-placeholder-img card-img-top" width="100%" height="225">
-                    <div class="card-body text-start">
-                        <a href="" class="text-decoration-none text-purple"> <p class="card-text fw-bold">Special Offer Fate Strange Fake</p></a>
-                        <small class="text-body-secondary">24 Maret - 9 April 2025</small>
-                    </div>
-                </div>
-            </div>
-
+            @endforeach
         </div>
-        <div class="mt-4">
-            <button type="button" class="btn btn-sm btn-purple">Muat Lebih Banyak</button>
+        <!-- Menambahkan pagination -->
+        <div class="d-flex justify-content-center mt-5">
+            {{ $promotions->links('vendor.pagination.bootstrap-5') }}
         </div>
     </section>
 @endsection

@@ -4,7 +4,7 @@ use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\Main\LowonganController;
 use App\Http\Controllers\Main\PromoController;
-use App\Http\Controllers\promotionController;
+use App\Http\Controllers\PromotionController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -49,7 +49,8 @@ Route::get('/lowongan-detail/{jobVacancy}', [LowonganController::class, 'show'])
 Route::post('/lowongan', [LowonganController::class, 'store'])->name('lowongan.store');
 
 // Promo
-Route::get('/promo', [PromoController::class, 'index'])->name('promo');
+Route::get('/promo', [PromoController::class, 'index'])->name('promo.index');
+Route::get('/promo/{promotion}', [PromoController::class, 'show'])->name('promo.show');
 
 // Test send wa
 Route::get('/send-wa', function () {
@@ -150,12 +151,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 
     // promotion
-    Route::get('/promotion', [promotionController::class, 'index'])->name('promotion.index');
-    Route::get('/promotion/create', [promotionController::class, 'create'])->name('promotion.create');
-    Route::post('/promotion', [promotionController::class, 'store'])->name('promotion.store');
-    Route::get('/promotion/{promotion}', [promotionController::class, 'edit'])->name('promotion.edit');
-    Route::patch('/promotion/{promotion}', [promotionController::class, 'update'])->name('promotion.update');
-    Route::delete('/promotion/{promotion}/delete', [promotionController::class, 'destroy'])->name('promotion.destroy');
+    Route::get('/promotion', [PromotionController::class, 'index'])->name('promotion.index');
+    Route::get('/promotion/create', [PromotionController::class, 'create'])->name('promotion.create');
+    Route::post('/promotion', [PromotionController::class, 'store'])->name('promotion.store');
+    Route::get('/promotion/{promotion}', [PromotionController::class, 'edit'])->name('promotion.edit');
+    Route::patch('/promotion/{promotion}', [PromotionController::class, 'update'])->name('promotion.update');
+    Route::delete('/promotion/{promotion}/delete', [PromotionController::class, 'destroy'])->name('promotion.destroy');
 });
 
 // Guru

@@ -23,10 +23,11 @@ class StorePromotionRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'code_voucher' => 'required|string|unique:promotions,code_voucher',
+            'code_voucher' => 'required|string|unique:promotions,code_voucher|max:10',
             'discount' => 'required|numeric',
             'start_date' => 'required|date_format:Y-m-d',
             'end_date' => 'required|date_format:Y-m-d',
+            'is_header' => 'nullable|boolean',
             'term_and_conditions.*' => 'required|string|max:255',
         ];
     }

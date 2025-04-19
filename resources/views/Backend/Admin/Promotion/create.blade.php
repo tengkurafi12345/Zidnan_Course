@@ -68,6 +68,30 @@
                 <input type="date" class="form-control" name="end_date" placeholder="Sampai" aria-label="Sampai">
             </div>
 
+            <p>Tampilkan Sebagai Header?</p>
+            <div class="form-check mb-3">
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="1"
+                    id="is_header"
+                    name="is_header"
+                    {{ old('is_header') ? 'checked' : '' }}
+                >
+                <label class="form-check-label" for="is_header">
+                    Ya, tampilkan di header
+                </label>
+            </div>
+
+            <div id="header_position_container" class="mb-3" style="display: {{ old('is_header') ? 'block' : 'none' }};">
+                <p>Posisi Header</p>
+                <select name="header_position" class="form-control box">
+                    <option value="">--Please choose an option--</option>
+                    <option value="left" {{ old('header_position') == 'left' ? 'selected' : '' }}>Kiri</option>
+                    <option value="right" {{ old('header_position') == 'right' ? 'selected' : '' }}>Kanan</option>
+                </select>
+            </div>
+
             <p>Syarat Dan Ketentuan</p>
             <div id="term_and_conditions">
                 <div class="input-group mb-3">
@@ -103,6 +127,15 @@
             if (e.target.classList.contains('remove-term-condition')) {
                 e.target.parentElement.remove();
             }
+        });
+
+
+        // checkbox header
+        const isHeaderCheckbox = document.getElementById('is_header');
+        const headerPositionContainer = document.getElementById('header_position_container');
+
+        isHeaderCheckbox.addEventListener('change', function () {
+            headerPositionContainer.style.display = this.checked ? 'block' : 'none';
         });
     </script>
 @endsection

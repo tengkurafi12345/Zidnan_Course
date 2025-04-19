@@ -27,11 +27,13 @@ class UpdatePromotionRequest extends FormRequest
             'code_voucher' => [
                 'required',
                 'string',
+                'max:10',
                 Rule::unique('promotions', 'code_voucher')->ignore($this->promotion),
             ],
             'discount' => 'required|numeric',
             'start_date' => 'required|date_format:Y-m-d',
             'end_date' => 'required|date_format:Y-m-d',
+            'is_header' => 'nullable|boolean',
             'term_and_conditions.*' => 'required|string|max:255',
         ];
     }

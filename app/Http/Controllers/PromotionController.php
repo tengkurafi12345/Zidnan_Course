@@ -8,7 +8,7 @@ use App\Models\promotion;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
-class promotionController extends Controller
+class PromotionController extends Controller
 {
     public function index()
     {
@@ -33,6 +33,13 @@ class promotionController extends Controller
     {
         $validatedData = $request->validated();
         $validatedData['img_poster'] = "asdasdsa";
+        $validatedData['is_header'] = $request->has('is_header');
+
+        if ($validatedData['is_header']) {
+            $validatedData['header_position'] = $request->header_position;
+        } else {
+            $validatedData['header_position'] = "none";
+        }
 
         // Menyimpan term and condition
         $termConditions = [];
@@ -71,8 +78,17 @@ class promotionController extends Controller
     public function update(UpdatePromotionRequest $request, Promotion $promotion): RedirectResponse
     {
         $validatedData = $request->validated();
-
         try {
+
+            $validatedData['is_header'] = $request->has('is_header');
+
+            if ($validatedData['is_header']) {
+                $validatedData['header_position'] = $request->header_position;
+            } else {
+                $validatedData['header_position'] = "none";
+            }
+
+
             // Menyimpan term and condition
             $termConditions = [];
             foreach ($request->term_and_conditions as $_termCondition) {

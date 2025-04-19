@@ -18,6 +18,8 @@ class PromotionFactory extends Factory
             'start_date' => Carbon::now(),
             'end_date' => Carbon::now(),
             'img_poster' => $this->faker->word(),
+            'is_header' => false,
+            'header_position' => "none",
             'term_and_conditions' => $this->faker->words(),
             'discount' => $this->faker->randomNumber(),
             'created_at' => Carbon::now(),
