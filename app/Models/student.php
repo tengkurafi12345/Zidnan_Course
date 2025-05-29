@@ -7,6 +7,8 @@ use Database\Factories\StudentFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Student extends Model
 {
@@ -44,5 +46,13 @@ class Student extends Model
         return [
             'gender' => Gender::class,
         ];
+    }
+
+    /**
+     * @return HasOne
+     */
+    public function guardians(): HasOne
+    {
+        return $this->hasOne(Guardians::class);
     }
 }

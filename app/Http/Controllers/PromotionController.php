@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePromotionRequest;
 use App\Http\Requests\UpdatePromotionRequest;
-use App\Models\promotion;
+use App\Models\Promotion;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -12,7 +12,7 @@ class PromotionController extends Controller
 {
     public function index()
     {
-        $promotions = promotion::query()->orderByDesc('created_at')->paginate(10);
+        $promotions = Promotion::query()->orderByDesc('created_at')->paginate(10);
 
         return view('Backend.Admin.Promotion.index', compact('promotions'));
     }

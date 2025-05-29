@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Enums\Gender;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
+use App\Models\Guardians;
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
@@ -32,12 +35,27 @@ class StudentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreStudentRequest $request)
+    public function store(StoreStudentRequest $request): \Illuminate\Http\RedirectResponse
     {
         $validatedData = $request->validated();
 
         $validatedData['status'] = 1;
-        Student::create($validatedData);
+        $student = Student::create($validatedData->except('email'));
+
+        // create guardians
+        Guardians::create([
+            'student_id' => $student->id,
+            'name' => $validatedData['mother_name'],
+            'phone_number' => $validatedData['phone_number'],
+            'email' => $validatedData['email'],
+        ]);
+
+        // create user account
+        User::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make('password')
+        ]);
 
         return redirect()
             ->route('student.index') // Arahkan ke halaman index

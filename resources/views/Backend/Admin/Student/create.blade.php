@@ -94,9 +94,13 @@
             <input type="text" name="district" placeholder="enter your district" class="box"
                 value="{{ old('district') }}">
 
-            <p>Nomor Whats App (WA)</p>
+            <p>Nomor Whats App (WA Wali)</p>
             <input type="text" name="phone_number" placeholder="enter your phone_number" class="box"
                 value="{{ old('phone_number') }}">
+
+            <p>Email (Wali)</p>
+            <input type="email" name="email" placeholder="enter your email" class="box"
+                   value="{{ old('email') }}">
 
             <p>Golongan Darah</p>
             <input type="text" name="blood_type" placeholder="enter your blood_type" class="box"
