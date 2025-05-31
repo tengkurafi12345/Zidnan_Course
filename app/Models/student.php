@@ -7,6 +7,7 @@ use Database\Factories\StudentFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -18,6 +19,7 @@ class Student extends Model
     protected $table = "students";
 
     protected $fillable = [
+        'id',
         'name',
         'registration_number',
         'birth_date',
@@ -46,6 +48,14 @@ class Student extends Model
         return [
             'gender' => Gender::class,
         ];
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'id', "id");
     }
 
     /**

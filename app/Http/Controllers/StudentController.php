@@ -10,6 +10,7 @@ use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class StudentController extends Controller
 {
@@ -40,7 +41,7 @@ class StudentController extends Controller
         $validatedData = $request->validated();
 
         $validatedData['status'] = 1;
-        $student = Student::create($validatedData->except('email'));
+        $student = Student::create($validatedData);
 
         // create guardians
         Guardians::create([
@@ -50,12 +51,18 @@ class StudentController extends Controller
             'email' => $validatedData['email'],
         ]);
 
-        // create user account
-        User::create([
-            'name' => $validatedData['name'],
+        $guardianRole = Role::firstOrCreate(['name' => 'guardian']);
+
+        // create user account for guardian
+        $user = User::create([
+            'name' => $validatedData['mother_name'],
+            'username' =>  $validatedData['mother_name'],
+            'phone' => $validatedData['phone_number'],
             'email' => $validatedData['email'],
             'password' => Hash::make('password')
         ]);
+
+        $user->assignRole($guardianRole);
 
         return redirect()
             ->route('student.index') // Arahkan ke halaman index

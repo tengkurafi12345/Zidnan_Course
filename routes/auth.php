@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\AuthenticateGuardianController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
@@ -33,6 +34,14 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.store');
+});
+
+/**
+ * Routing untuk guardian
+ */
+Route::prefix('guardian')->middleware('guest')->group(function () {
+    Route::get('login', [AuthenticateGuardianController::class, 'showLoginForm'])->name('guardian.login');
+    Route::post('login', [AuthenticateGuardianController::class, 'login'])->name('guardian.login.store');
 });
 
 Route::middleware('auth')->group(function () {

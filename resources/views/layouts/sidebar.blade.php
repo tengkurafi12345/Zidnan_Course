@@ -38,8 +38,8 @@
 </div>
 
 <nav class="navbar">
-    <a href="{{ route('dashboard') }}"><i class="fas fa-home"></i><span>Dashboard</span></a>
     @if (auth()->user()->hasRole('admin'))
+        <a href="{{ route('dashboard') }}"><i class="fas fa-home"></i><span>Dashboard</span></a>
         <a class="d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
             href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             <span><i class="fas fa-boxes-stacked"></i> Master Data</span>
@@ -59,9 +59,15 @@
         <a href="{{ route('promotion.index') }}"><i class="fas fa-bullhorn"></i><span>Promosi</span></a>
 
     @elseif (auth()->user()->hasRole('teacher'))
+        <a href="{{ route('dashboard') }}"><i class="fas fa-home"></i><span>Dashboard</span></a>
         <a href="{{ route('meeting.setup.index') }}"><i class="fa-solid fa-clipboard-list"></i><span>Pengaturan Absensi</span></a>
         <a href="{{ route('meeting.attendance.index') }}"><i class="fa-solid fa-clipboard-check"></i><span>Absensi</span></a>
     @endif
 
+    @if(auth()->user()->hasRole('guardian'))
+        <a href="{{ route('guardian.dashboard') }}"><i class="fas fa-home"></i><span>Dashboard</span></a>
+        <a href="{{ route('guardian.dashboard') }}"><i class="fas fa-clipboard-list"></i><span>Laporan pembelajaran</span></a>
+        <a href="{{ route('guardian.dashboard') }}"><i class="fas fa-clipboard-list"></i><span>Laporan pembayaran</span></a>
+    @endif
 </nav>
 </div>

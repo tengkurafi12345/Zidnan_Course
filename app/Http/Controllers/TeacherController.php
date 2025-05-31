@@ -45,6 +45,8 @@ class TeacherController extends Controller
         $teacherRole = Role::firstOrCreate(['name' => 'teacher']);
         $user = User::create([
             'name' => $validatedData['name'],
+            'username' => $validatedData['name'],
+            'phone' => $validatedData['phone'],
             'email' => $validatedData['email'], // Email unik
             'password' => Hash::make('password'), // Password default
         ]);

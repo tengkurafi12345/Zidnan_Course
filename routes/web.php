@@ -69,11 +69,11 @@ Route::get('/send-wa', function () {
  * Routing Untuk Halaman Dashboard
  */
 // Dashboard
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('Backend.dashboard');
-    })->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('Backend.dashboard');
+})->middleware(['auth', 'role:admin|teacher'])->name('dashboard');
 
+Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [SettingController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [SettingController::class, 'update'])->name('profile.update');
     Route::get('/profile/change-password', [SettingController::class, 'changePassword'])->name('profile.password');
@@ -182,6 +182,12 @@ Route::middleware(['auth', 'role:teacher'])->group(function () {
     Route::get('/meeting/attendance/keluar/{meeting}', [MeetingAttendanceController::class, 'keluar'])->name('meeting.attendance.keluar');
 });
 
+// Guardian
+Route::middleware(['auth', 'role:guardian'])->group(function () {
+    Route::get('/guardian/dashboard', function () {
+        return view('Backend.Guardian.dashboard');
+    })->name('guardian.dashboard');
+});
 
 /**
  * Routing for artisan
