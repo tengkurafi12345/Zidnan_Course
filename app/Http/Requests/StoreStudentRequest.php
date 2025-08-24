@@ -25,7 +25,7 @@ class StoreStudentRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'registration_number' => 'required|string|max:255',
+            'registration_number' => ["required", "string", "max:255", "unique:students,registration_number"],
             'birth_place' => 'required|string|max:255',
             'birth_date' => 'required|date_format:Y-m-d',
             'gender' => [

@@ -94,8 +94,51 @@ class StudentController extends Controller
     {
         $validatedData = $request->validated();
 
+
         try {
             $student->update($validatedData);
+
+            // update guardians, but if not exist, create new
+            $guardian = Guardians::where('student_id', $student->id)->first();
+            if ($guardian) {
+                $guardian->update([
+                    'name' => $validatedData['mother_name'],
+                    'phone_number' => $validatedData['phone_number'],
+                    'email' => $validatedData['email'],
+                ]);
+            } else {
+                Guardians::create([
+                    'student_id' => $student->id,
+                    'name' => $validatedData['mother_name'],
+                    'phone_number' => $validatedData['phone_number'],
+                    'email' => $validatedData['email'],
+                ]);
+            }
+
+            // update user account for guardian, but if not exist, create new
+            $user = User::where('email', $guardian->email)->first();
+            if ($user) {
+                $user->update([
+                    'name' => $validatedData['mother_name'],
+                    'username' =>  $validatedData['mother_name'],
+                    'phone' => $validatedData['phone_number'],
+                    'email' => $validatedData['email'],
+                ]);
+            } else {
+                $guardianRole = Role::firstOrCreate(['name' => 'guardian']);
+
+                // create user account for guardian
+                $user = User::create([
+                    'name' => $validatedData['mother_name'],
+                    'username' =>  $validatedData['mother_name'],
+                    'phone' => $validatedData['phone_number'],
+                    'email' => $validatedData['email'],
+                    'password' => Hash::make('password')
+                ]);
+
+                $user->assignRole($guardianRole);
+            }
+
             return redirect()->route('student.index')
                 ->with('success', 'Data siswa berhasil diperbarui!');
         } catch (\Exception $e) {
@@ -111,6 +154,14 @@ class StudentController extends Controller
     {
         try {
             $student->delete();
+            // delete guardians & user account if exist
+            $guardian = Guardians::where('student_id', $student->id)->first();
+            if ($guardian) {
+                $user = User::where('email', $guardian->email)->first();
+                $user?->delete();
+                $guardian->delete();
+            }
+
             return redirect()->route('student.index')
                 ->with('success', 'Data guru berhasil dihapus!');
         } catch (\Exception $e) {

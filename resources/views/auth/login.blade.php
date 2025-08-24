@@ -64,6 +64,7 @@
                     <button type="submit" class="btn btn-purple w-100">Submit</button>
                 </form>
             </div>
+            <a class="link-underline-primary text-center pb-2" href="{{ route('guardian.login') }}">Masuk Sebagai Wali Murid</a>
         </div>
     </div>
 </body>

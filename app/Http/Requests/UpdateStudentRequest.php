@@ -38,6 +38,7 @@ class UpdateStudentRequest extends FormRequest
             'address' => 'required|string|max:255',
             'district' => 'required|string|max:255',
             'phone_number' => 'required',
+            'email' => 'required|email',
             'blood_type' => 'required|string|max:255',
             'father_name' => 'required|string|max:255',
             'mother_name' => 'required|string|max:255',

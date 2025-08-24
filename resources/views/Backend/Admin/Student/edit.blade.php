@@ -102,6 +102,10 @@
             <input type="text" name="phone_number" placeholder="enter your phone_number" class="box"
                 value="{{ old('phone_number', $student->phone_number) }}">
 
+            <p>Email</p>
+            <input type="email" name="email" placeholder="enter your email" class="box"
+                value="{{ old('email', $student->guardian->email) }}">
+
             <p>Golongan Darah</p>
             <input type="text" name="blood_type" placeholder="enter your blood_type" class="box"
                 value="{{ old('blood_type', $student->blood_type) }}">

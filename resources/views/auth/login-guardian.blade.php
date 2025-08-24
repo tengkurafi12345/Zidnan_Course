@@ -29,7 +29,7 @@
                     {{ session('status') }}
                   </div>
                 @endsession
-                <h2 class="text-center">Login Form</h2>
+                <h2 class="text-center">Masuk Sebagai <br> Wali Murid</h2>
                 <form method="POST" action="{{ route('guardian.login') }}">
                     @csrf
                     <div class="mb-3 mt-3">
@@ -52,16 +52,7 @@
                             @endforeach
                         </ul>
                     </div>
-                    <div class="form-check mb-3 d-flex justify-content-between">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" id="remember_me" name="remember"> Remember
-                            me
-                        </label>
-                        @if (Route::has('password.request'))
-                            <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{ route('password.request') }}">Forgot Password</a>
-                        @endif
-                    </div>
-                    <button type="submit" class="btn btn-purple w-100">Submit</button>
+                    <button type="submit" class="btn btn-purple w-100 mt-3">Submit</button>
                 </form>
             </div>
         </div>
