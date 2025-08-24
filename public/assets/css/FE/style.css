@@ -410,8 +410,8 @@ footer {
 /* Card Siswa */
 .card-siswa {
     box-shadow: 0 4px 8px 0 rgba(169, 12, 155, 0.2);
-    transition: 0.3s;
-    width: 40%;
+    /*transition: 0.3s;*/
+    /*width: 40%;*/
     border: #7400a1 3px solid;
     border-radius: 10px;
 }
@@ -419,6 +419,15 @@ footer {
 .card-siswa:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
+
+.avatar-cover {
+    width: 100%;
+    height: 180px; /* bisa disesuaikan */
+    object-fit: cover;
+    object-position: center;
+    background-color: #f8f9fa; /* fallback bg */
+}
+
 /*
 .container {
     padding: 2px 16px;

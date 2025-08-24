@@ -11,7 +11,7 @@
         <div class="testimonial-container">
             @foreach ($teachers as $teacher )
             <div class="testimonial-item">
-                <img src="{{ asset('assets/image/FE/mr.e.jpg') }}" alt="Foto Instruktur" class="testimonial-img">
+                <img src="{{ Avatar::create($teacher->name)->toBase64() }}" alt="Foto Instruktur {{ $teacher->name  }}" class="testimonial-img">
                 <h3>{{ $teacher->name }}</h3>
                 <h4>{{ $teacher->role }}</h4>
                 <p>"{{ $teacher->bio }}"</p>

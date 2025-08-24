@@ -54,11 +54,11 @@
 
             <p>Nama</p>
             <input type="text" name="name" placeholder="enter your old text" class="box"
-                value="{{ old('name') }}">
+                   value="{{ old('name') }}">
 
             <p>Nomor Pendaftaran</p>
             <input type="text" name="registration_number" placeholder="enter your registration_number" class="box"
-                value="{{ old('registration_number') }}">
+                   value="{{ old('registration_number') }}">
 
             <p>Tempat Lahir</p>
             <input type="text" name="birth_place" class="box" value="{{ old('birth_place') }}">
@@ -76,27 +76,28 @@
 
             <p>Umur</p>
             <input type="text" name="age" placeholder="enter your age" class="box"
-                value="{{ old('age') }}">
+                   value="{{ old('age') }}">
 
             <p>Kelas</p>
             <input type="text" name="class_status" placeholder="enter your class_status" class="box"
-                value="{{ old('class_status') }}">
+                   value="{{ old('class_status') }}">
 
             <p>Nama Sekolah</p>
             <input type="text" name="school_name" placeholder="enter your school_name" class="box"
-                value="{{ old('school_name') }}">
+                   value="{{ old('school_name') }}">
 
             <p>Alamat</p>
             <input type="text" name="address" placeholder="enter your address" class="box"
-                value="{{ old('address') }}">
+                   value="{{ old('address') }}">
 
             <p>Kabupaten</p>
             <input type="text" name="district" placeholder="enter your district" class="box"
-                value="{{ old('district') }}">
+                   value="{{ old('district') }}">
 
-            <p>Nomor Whats App (WA Wali)</p>
-            <input type="text" name="phone_number" placeholder="enter your phone_number" class="box"
-                value="{{ old('phone_number') }}">
+            <p>Nomor WhatsApp (WA Wali)</p>
+            <small class="text-primary fs-5">Format: dimulai dengan 08xxx, contoh: 081234567890</small>
+            <input type="number" name="phone_number" placeholder="Masukkan nomor WA, contoh: 081234567890" class="box"
+                   value="{{ old('phone_number') }}">
 
             <p>Email (Wali)</p>
             <input type="email" name="email" placeholder="enter your email" class="box"
@@ -104,23 +105,23 @@
 
             <p>Golongan Darah</p>
             <input type="text" name="blood_type" placeholder="enter your blood_type" class="box"
-                value="{{ old('blood_type') }}">
+                   value="{{ old('blood_type') }}">
 
             <p>Nama Ayah</p>
             <input type="text" name="father_name" placeholder="enter your father_name" class="box"
-                value="{{ old('father_name') }}">
+                   value="{{ old('father_name') }}">
 
             <p>Nama Ibu</p>
             <input type="text" name="mother_name" placeholder="enter your mother_name" class="box"
-                value="{{ old('mother_name') }}">
+                   value="{{ old('mother_name') }}">
 
             <p>Pekerjaan Ayah</p>
             <input type="text" name="father_occupation" placeholder="enter your father_occupation" class="box"
-                value="{{ old('father_occupation') }}">
+                   value="{{ old('father_occupation') }}">
 
             <p>Pekerjaan Ibu</p>
             <input type="text" name="mother_occupation" placeholder="enter your mother_occupation" class="box"
-                value="{{ old('mother_occupation') }}">
+                   value="{{ old('mother_occupation') }}">
 
             <div class="row mt-5">
                 <div class="col-md-12">

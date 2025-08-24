@@ -22,6 +22,8 @@ class TeacherSeeder extends Seeder
             // Buat akun user berdasarkan data teacher
             $user = User::create([
                 'name' => $teacher->name,
+                'username' =>  $teacher->name,
+                'phone' => $teacher->phone,
                 'email' => strtolower(str_replace(' ', '', $teacher->name)) . '@example.com', // Email unik
                 'password' => Hash::make('password'), // Password default
             ]);

@@ -184,6 +184,7 @@
                         <th>Kelas</th>
                         <th>Nama Sekolah</th>
                         <th>Kabupaten</th>
+                        <th>Nomor Telpon</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -199,6 +200,7 @@
                             <td>{{ $student->class_status }}</td>
                             <td>{{ $student->school_name }}</td>
                             <td>{{ $student->district }}</td>
+                            <td>{{ $student->phone_number }}</td>
                             <td>
                                 <div class="action-buttons">
                                     <a href="{{ route('student.edit', $student->id) }}"

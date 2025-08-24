@@ -9,6 +9,7 @@
         "archtechx/enums": "^1.1",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
+        "laravolt/avatar": "^6.2",
         "spatie/laravel-permission": "^6.13"
     },
     "require-dev": {
