@@ -60,7 +60,7 @@ class Student extends Model
     /**
      * @return HasOne
      */
-    public function guardians(): HasOne
+    public function guardian(): HasOne
     {
         return $this->hasOne(Guardians::class);
     }
