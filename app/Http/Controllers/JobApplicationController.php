@@ -24,6 +24,15 @@ class JobApplicationController extends Controller
      * @param JobApplication $jobApplication
      * @return View
      */
+    public function show(JobApplication $jobApplication): View
+    {
+        return view('Backend.Admin.JobApplication.show', compact('jobApplication'));
+    }
+
+    /**
+     * @param JobApplication $jobApplication
+     * @return View
+     */
     public function edit(JobApplication $jobApplication): View
     {
         $statuses = StatusApplicant::cases();

@@ -66,6 +66,7 @@
                             <td>{{ \Carbon\Carbon::parse($job->applied_at)->format('d M, Y') }}</td>
                             <td>
                                 <div class="action-buttons">
+                                    <a href="{{ route('job.application.show', $job->id) }}" class="btn btn-sm btn-primary">Lihat</a>
                                     <a href="{{ route('job.application.edit', $job->id) }}"
                                         class="btn btn-sm btn-warning" >Edit</a>
                                     <form action="{{ route('job.application.destroy', $job->id) }}" method="POST"

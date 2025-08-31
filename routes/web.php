@@ -145,6 +145,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     // Job Application
     Route::get('/job-application', [JobApplicationController::class, 'index'])->name('job.application.index');
+    Route::get('/job-application/{jobApplication}', [JobApplicationController::class, 'show'])->name('job.application.show');
     Route::get('/job-application/{jobApplication}/edit', [JobApplicationController::class, 'edit'])->name('job.application.edit');
     Route::patch('/job-application/{jobApplication}', [JobApplicationController::class, 'update'])->name('job.application.update');
     Route::delete('/job-application/{jobApplication}/delete', [JobApplicationController::class, 'destroy'])->name('job.application.destroy');
