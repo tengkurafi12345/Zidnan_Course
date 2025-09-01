@@ -1,10 +1,10 @@
 /* Gaya Umum */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Poppins, sans-serif;
     margin: 0;
     padding: 0;
     color: #333;
-    background-color: #f5f5f5;
+    background-color: #ffffff;
 }
 
 h1,
@@ -14,9 +14,10 @@ p {
     padding: 0;
 }
 
-/* Font Google */
+/*!* Font Google *!*/
 .fredoka {
     font-family: "Fredoka", serif;
+    /*font-family: Poppins, sans-serif;*/
 }
 
 /* Custom Color */
@@ -52,7 +53,7 @@ p {
 }
 
 .border-bottom-purple {
-    border-bottom: 1px solid #dee2e6 ;
+    border-bottom: 1px solid #dee2e6;
     border-color:#d42acc !important;
     border-radius: 10% 30%
 }
@@ -130,13 +131,23 @@ h2 {
 header {
     padding-top: 6rem;
     padding-bottom: 50px;
+    text-align: center;
+    color: black;
+    height: auto;
+}
+
+header h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 120px;
+}
+/* id reason */
+#reason {
     background-image: url(../../../img/bg-utama.png);
     background-size: cover; /* Menyesuaikan ukuran asli gambar */
     background-repeat: no-repeat; /* Mencegah gambar diulang */
     background-position: center; /* Menempatkan gambar di tengah */
-    text-align: center;
-    color: black;
-    height: auto;
 }
 
 /* Kontainer Utama */
@@ -299,7 +310,7 @@ footer {
 .testimonial-section {
     padding: 100px 6rem;
     text-align: center;
-    background-color: white;
+    background-color: #f5f5f5;
     margin-bottom: 2px;
 }
 

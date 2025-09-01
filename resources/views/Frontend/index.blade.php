@@ -7,18 +7,13 @@
 @section('content')
     <!-- Header -->
     <header>
-        <img src="{{ asset('img/logo-menu-utama.png') }}" alt="" style="width: 200px" class="mb-4">
-        <h1 class="mb-1 fredoka"> Solusi Bimbel Keluarga Nusantara!</h1>
-        <h2 class="fredoka">Lebih dari </h2>
-        <h1 class="fredoka" id="counter">0</h1>
-        <p>Siswa TK - SMA dan UMUM</p>
-        <h1 class="mb-1 fredoka"> Terdaftar di Bimbel Zidnan</h1>
-        <p>Les Privat dan Bimbel Eksklusif.</p>
-        <p>Santri weekend dan Perusahaan mengaji</p>
-        <p>Dari guru terbaik untuk Indonesia lebih cerah</p>
-        <p>Siap mendampingi anda belajar</p>
-        <button type="button" onclick="redirectToWhatsApp()" class="btn btn-success px-5 py-3 fs-4 mt-2 mb-3"><i
-                class="fab fa-whatsapp"></i> Daftar Sekarang</button>
+        <img src="{{ asset('img/logo-menu-utama.png') }}" alt="Logo Zidnan" style="width: 400px" class="my-5">
+        <h1 class="fw-bold mb-3 mt-2">Solusi Bimbel & Tahfidz untuk Keluarga Indonesia</h1>
+        <p class="fs-5 mb-2">Program Les Privat, Bimbel Eksklusif, dan Rumah Tahfidz</p>
+        <p class="fs-6 mb-4">Dipercaya lebih dari <span id="counter">0</span> siswa TK – SMA & Umum</p>
+        <button type="button" onclick="redirectToWhatsApp()" class="btn btn-success px-5 py-3 fs-5">
+            <i class="fab fa-whatsapp"></i> Daftar Sekarang
+        </button>
         {{-- Perbaiki Gambarnya --}}
         <div class="container mt-5 text-center">
             <div class="col-8 mx-auto"> <!-- Membuat col-8 di tengah -->
@@ -28,7 +23,7 @@
                             <div class="circle" style="--circle-color: #ff0000;">
                                 <i class="fas fa-child-reaching text-white"></i>
                             </div>
-                            <h2 class="fw-normal fredoka">Fun Learning</h2>
+                            <h2 class="fw-normal">Fun Learning</h2>
                         </div>
                     </div>
                     <div class="col-4 col-md-3 text-center">
@@ -36,7 +31,7 @@
                             <div class="circle" style="--circle-color: #6a1b9a;">
                                 <i class="fas fa-user-clock text-white"></i>
                             </div>
-                            <h2 class="fw-normal fredoka">Flexible Timing</h2>
+                            <h2 class="fw-normal">Flexible Timing</h2>
                         </div>
                     </div>
                     <div class="col-4 col-md-3 text-center">
@@ -44,7 +39,7 @@
                             <div class="circle" style="--circle-color: #198754;">
                                 <i class="fas fa-file-contract text-white"></i>
                             </div>
-                            <h2 class="fw-normal fredoka">Progress Report</h2>
+                            <h2 class="fw-normal">Progress Report</h2>
                         </div>
                     </div>
                 </div>
@@ -53,12 +48,12 @@
     </header>
 
     {{-- Section Alasan kenapa harus zidnan --}}
-    <div class="container-fluid mt-5 py-5" id="hanging-icons">
+    <div class="container-fluid mt-5 py-5" id="reason">
         <div class="text-center">
             <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">Alasan</p>
-            <h1 class="text-dark mb-4 fredoka">Kenapa Harus Zidnan</h1>
+            <h1 class="text-dark mb-4">Kenapa Harus Zidnan</h1>
         </div>
-        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <div class="row g-4 pt-5 pb-4 row-cols-1 row-cols-lg-3">
             <div class="col h-100 d-flex align-items-start">
                 <div class="d-flex bg-light shadow-sm border-top rounded mb-1" style="padding: 30px">
                     <i class="fas fa-file-pen font-weight-normal text-purple mb-3"
@@ -133,7 +128,7 @@
     <section class="testimonial-section">
         <div class="text-center">
             <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">Testimoni</p>
-            <h1 class="text-dark mb-4 fredoka">Yang Membuktikan Kualitas Kami</h1>
+            <h1 class="text-dark mb-4">Yang Membuktikan Kualitas Kami</h1>
         </div>
         <div class="container mt-4">
             <div class="row g-3"> <!-- Mengurangi jarak antar card -->
@@ -177,7 +172,7 @@
             <div class="col-md-7 ">
                 <div class="text-start">
                     <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">Les Private</p>
-                    <h1 class="text-dark mb-4 fredoka">Belajar Lebih Fokus, Guru Datang ke Rumah Anda!</h1>
+                    <h1 class="text-dark mb-4">Belajar Lebih Fokus, Guru Datang ke Rumah Anda!</h1>
                     <p class="pb-2">Les Private adalah solusi ideal bagi siswa yang ingin belajar dengan pendampingan intensif langsung di rumah. Dengan jadwal fleksibel, siswa dari jenjang TK hingga SMA dapat memilih berbagai paket pembelajaran, seperti tahfidz dan mata pelajaran umum. Program ini memungkinkan siswa mendapatkan perhatian penuh dari guru, sehingga pembelajaran lebih efektif dan sesuai dengan kebutuhan individu.</p>
                     <div class="row">
                         <div class="col-5 pe-0">
@@ -206,7 +201,7 @@
     <!-- Konten daftar paket privat -->
     <div class="testimonial-section " id="home">
         <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">Paket Les Private</p>
-        <h1 class="text-dark mb-4 fredoka">Pilih paket yang paling favorit.</h1>
+        <h1 class="text-dark mb-4">Pilih paket yang paling favorit.</h1>
 
         <!-- Daftar Paket private -->
         <div class="course-container mt-5">
@@ -229,8 +224,8 @@
                 <div class="row {{ $cols }} g-2 g-lg-5 align-items-stretch">
                     @foreach($privateLessons as $private)
                         <div class="col">
-                            <div class="card h-100 d-flex flex-column border-0">
-                                <div class="card-body border-purple rounded d-flex flex-column mt-5">
+                            <div class="card h-100 d-flex flex-column border-purple rounded">
+                                <div class="card-body d-flex flex-column mt-5">
                                     <div class="p-2 flex-grow-1">
                                         <h2>{{ $private->program->name }}</h2>
                                         <p class="mb-4 text-success">{{ $private->packet->class_level }}</p>
@@ -259,7 +254,7 @@
             <div class="col-md-7 ">
                 <div class="text-start">
                     <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">Les Bimbel</p>
-                    <h1 class="text-dark mb-4 fredoka">Belajar Bersama, Suasana Nyaman, Hasil Maksimal!</h1>
+                    <h1 class="text-dark mb-4">Belajar Bersama, Suasana Nyaman, Hasil Maksimal!</h1>
                     <p class="pb-2">Les Bimbel memberikan pengalaman belajar yang lebih terstruktur dalam suasana kelas di kantor utama Zidnan Group. Dengan fasilitas lengkap dan guru berpengalaman, siswa dari jenjang TK hingga SMA dapat mengikuti pembelajaran yang mencakup tahfidz hingga mata pelajaran umum. Belajar bersama teman sebaya juga meningkatkan semangat dan pemahaman melalui diskusi serta interaksi sosial yang positif.</p>
                     <div class="row">
                         <div class="col-5 pe-0">
@@ -303,7 +298,7 @@
     <!-- Konten daftar paket bimbel -->
     <div class="testimonial-section" id="home">
         <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">Paket Les Bimbel</p>
-        <h1 class="text-dark mb-4 fredoka">Pilih paket yang paling favorit.</h1>
+        <h1 class="text-dark mb-4">Pilih paket yang paling favorit.</h1>
         <div class="course-container mt-5">
             <div class="container text-center">
                 @php
@@ -324,8 +319,8 @@
                 <div class="row {{ $cols }} g-2 g-lg-5 align-items-stretch">
                     @foreach($bimbelLessons as $bimbel)
                         <div class="col">
-                            <div class="card h-100 d-flex flex-column border-0">
-                                <div class="card-body border-purple rounded d-flex flex-column mt-5">
+                            <div class="card h-100 d-flex flex-column border-purple rounded">
+                                <div class="card-body d-flex flex-column mt-5">
                                     <div class="p-2 flex-grow-1">
                                         <h2>{{ $bimbel->program->name }}</h2>
                                         <p class="mb-4 text-success">{{ $bimbel->packet->class_level }}</p>
@@ -366,7 +361,7 @@
             <div class="col-md-7 ">
                 <div class="text-start mt-5">
                     <p class="text-purple mb-2 mt-sm-4 border-bottom-purple border-2 d-inline-block p-2">Santri Weekend</p>
-                    <h1 class="text-dark mb-4 fredoka">Weekend Seru, Tambah Ilmu Agama dengan Menyenangkan!</h1>
+                    <h1 class="text-dark mb-4">Weekend Seru, Tambah Ilmu Agama dengan Menyenangkan!</h1>
                     <p class="pb-2">Santri Weekend adalah program akhir pekan yang berfokus pada pembelajaran agama Islam dengan metode interaktif dan seru. Ditujukan untuk siswa TK hingga SMP, program ini menghadirkan kegiatan seperti kajian tematik, permainan edukatif, dan event spesial yang memperkuat nilai-nilai keislaman.</p>
                     <div class="row">
                         <div class="col-5 pe-0">
@@ -394,7 +389,7 @@
     <!-- Konten daftar paket santri weekend -->
     <div class="testimonial-section " id="home">
         <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">Paket Santri Weekend</p>
-        <h1 class="text-dark mb-4 fredoka">Pilih paket yang paling favorit.</h1>
+        <h1 class="text-dark mb-4">Pilih paket yang paling favorit.</h1>
         <!-- Daftar Paket Bimbel -->
         <div class="course-container mt-5">
             <div class="container text-center">
@@ -416,8 +411,8 @@
                 <div class="row {{ $cols }} g-2 g-lg-5 align-items-stretch">
                     @foreach($santriWeekend as $santri)
                         <div class="col">
-                            <div class="card h-100 d-flex flex-column border-0">
-                                <div class="card-body border-purple rounded d-flex flex-column mt-5">
+                            <div class="card h-100 d-flex flex-column border-purple rounded">
+                                <div class="card-body d-flex flex-column mt-5">
                                     <div class="p-2 flex-grow-1">
                                         <h2>{{ $santri->program->name }}</h2>
                                         <p class="mb-4 text-success">{{ $santri->packet->class_level }}</p>
@@ -445,7 +440,7 @@
             <div class="col-md-7 ">
                 <div class="text-start">
                     <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">Perusahaan Mengaji</p>
-                    <h1 class="text-dark mb-4 fredoka">Mengaji Mudah untuk Semua Kalangan, dari Remaja hingga Dewasa!</h1>
+                    <h1 class="text-dark mb-4">Mengaji Mudah untuk Semua Kalangan, dari Remaja hingga Dewasa!</h1>
                     <p class="pb-2">Perusahaan Mengaji adalah program terbuka bagi semua usia yang ingin belajar membaca Al-Qur’an, memahami tajwid, dan memperdalam ilmu agama. Dengan jadwal fleksibel dan metode pembelajaran yang mudah dipahami, program ini cocok bagi siapa saja yang ingin meningkatkan kualitas ibadah.</p>
                     <div class="row">
                         <div class="col-5 pe-0">
@@ -489,7 +484,7 @@
     <!-- Konten daftar paket bimbel -->
     <div class="testimonial-section " id="home">
         <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">Paket Perusahaan Mengaji</p>
-        <h1 class="text-dark mb-4 fredoka">Pilih paket yang paling favorit.</h1>
+        <h1 class="text-dark mb-4">Pilih paket yang paling favorit.</h1>
         <div class="course-container mt-5">
             <div class="container text-center mx-lg-5">
                 @php
@@ -514,7 +509,7 @@
                                 <div class="card-header bg-purple">
                                     <p>Paket Terfavorit</p>
                                 </div>
-                                <div class="card-body border-purple rounded d-flex flex-column mt-5">
+                                <div class="card-body d-flex flex-column mt-5">
                                     <div class="p-2 flex-grow-1">
                                         <h2>{{ $corporate->program->name }}</h2>
                                         <p class="mb-4 text-success">{{ $corporate->packet->class_level }}</p>
@@ -540,7 +535,7 @@
     <div class="map-container">
         <div class="text-center">
             <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">Lokasi Kami</p>
-            <h1 class="text-dark mb-4 fredoka">Temukan Kami Segera</h1>
+            <h1 class="text-dark mb-4">Temukan Kami Segera</h1>
         </div>
         <div class="map">
             <iframe
