@@ -56,7 +56,7 @@
             <select name="packet_combination_id" id="select" class="form-select">
                     <option value="">--Please choose an option--</option>
                     @foreach ($packetCombinations as $packetCombination)
-                        <option value="{{ $packetCombination->id }}" >{{ $packetCombination->packet->name }} - {{ $packetCombination->program->name }}</option>
+                        <option value="{{ $packetCombination->id }}" >{{ $packetCombination->lessonLevel->name }} - {{ $packetCombination->program->name }}</option>
                     @endforeach
                 </select>
             <p>Nama Guru</p>

@@ -52,13 +52,13 @@
             @csrf
             @method('PATCH')
             <h3>Edit Paket Kombinasi</h3>
-            <p>Nama Paket</p>
+            <p>Nama Jenjang Level</p>
             <select name="packet_id" id="select" class="form-select">
-                @foreach ($packets as $packet)
-                    @if ($packet->id === $packetCombination->packet->id)
-                        <option value="{{ $packet->id }}" selected>{{ $packet->name }}</option>
+                @foreach ($lessonLevels as $lessonLevel)
+                    @if ($lessonLevel->id === $packetCombination->packet->id)
+                        <option value="{{ $lessonLevel->id }}" selected>{{ $lessonLevel->name }}</option>
                     @endif
-                    <option value="{{ $packet->id }}" >{{ $packet->name }}</option>
+                    <option value="{{ $lessonLevel->id }}" >{{ $lessonLevel->name }}</option>
                 @endforeach
             </select>
 

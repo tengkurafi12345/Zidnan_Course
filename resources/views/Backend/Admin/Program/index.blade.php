@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Daftar Program')
+@section('title', 'Daftar Program Les')
 
 @section('css')
     <style>
@@ -157,10 +157,10 @@
     <section class="courses">
         <div class="flex-container">
             <div class="">
-                <h1 class="heading">Daftar Program</h1>
+                <h1 class="heading">Daftar Program Les</h1>
             </div>
             <div class="">
-                <a href="{{ route('program.create') }}" class="btn btn-violet">Tambah Program</a>
+                <a href="{{ route('program.create') }}" class="btn btn-violet">Tambah Program Les</a>
             </div>
         </div>
 

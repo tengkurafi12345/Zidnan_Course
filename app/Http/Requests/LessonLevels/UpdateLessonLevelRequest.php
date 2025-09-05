@@ -4,7 +4,7 @@ namespace App\Http\Requests\LessonLevels;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateLessonLevelRequest extends FormRequest
+class UpdatePacketRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

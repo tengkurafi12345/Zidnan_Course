@@ -52,11 +52,11 @@
             @csrf
             <h3>Tambah Paket Kombinasi</h3>
 
-            <p>Nama Paket</p>
-            <select name="packet_id" id="select" class="form-select">
+            <p>Nama Jenjang Les</p>
+            <select name="lesson_level_id" id="select" class="form-select">
                 <option value="">--Please choose an option--</option>
-                @foreach ($packets as $packet)
-                    <option value="{{ $packet->id }}" >{{ $packet->name }}</option>
+                @foreach ($lessonLevels as $lessonLevel)
+                    <option value="{{ $lessonLevel->id }}" >{{ $lessonLevel->name }}</option>
                 @endforeach
             </select>
 

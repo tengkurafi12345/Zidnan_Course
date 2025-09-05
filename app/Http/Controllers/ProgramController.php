@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Program;
 use App\Http\Requests\StoreProgramRequest;
 use App\Http\Requests\UpdateProgramRequest;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class ProgramController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @return View
      */
-    public function index()
+    public function index(): View
     {
         $programs = Program::all()->sortByDesc('created_at');
 
@@ -19,17 +21,18 @@ class ProgramController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * @return View
      */
-    public function create()
+    public function create(): View
     {
         return view('Backend.Admin.Program.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @param StoreProgramRequest $request
+     * @return RedirectResponse
      */
-    public function store(StoreProgramRequest $request)
+    public function store(StoreProgramRequest $request): RedirectResponse
     {
         $validatedData = $request->validated();
 
@@ -42,25 +45,29 @@ class ProgramController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @param Program $program
+     * @return void
      */
-    public function show(Program $program)
+    public function show(Program $program): void
     {
-        //
+        return;
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * @param Program $program
+     * @return View
      */
-    public function edit(Program $program)
+    public function edit(Program $program): View
     {
         return view('Backend.Admin.Program.edit', compact('program'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * @param UpdateProgramRequest $request
+     * @param Program $program
+     * @return RedirectResponse
      */
-    public function update(UpdateProgramRequest $request, Program $program)
+    public function update(UpdateProgramRequest $request, Program $program): RedirectResponse
     {
         $validatedData = $request->validated();
 
@@ -75,9 +82,10 @@ class ProgramController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @param Program $program
+     * @return RedirectResponse
      */
-    public function destroy(Program $program)
+    public function destroy(Program $program): RedirectResponse
     {
         try {
             $program->delete();

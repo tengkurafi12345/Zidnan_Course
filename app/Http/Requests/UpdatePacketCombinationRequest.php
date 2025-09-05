@@ -23,9 +23,9 @@ class UpdatePacketCombinationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'packet_id' => [
+            'lesson_level_id' => [
                 'required',
-                'exists:packets,id',
+                'exists:lesson_levels,id',
             ],
             'program_id' => [
                 'required',

@@ -16,12 +16,12 @@ class PacketCombinationController extends Controller
      */
     public function index(Request $request)
     {
-        $query = PacketCombination::with(['packet', 'program']);
+        $query = PacketCombination::with(['lessonLevel', 'program']);
 
         // Pencarian (bekerja sendiri)
         if ($request->filled('search')) {
             $query->where(function ($q) use ($request) {
-                $q->whereHas('packet', function ($q) use ($request) {
+                $q->whereHas('lessonLevel', function ($q) use ($request) {
                     $q->where('name', 'LIKE', '%' . $request->search . '%');
                 })
                     ->orWhereHas('program', function ($q) use ($request) {
@@ -31,8 +31,8 @@ class PacketCombinationController extends Controller
         }
 
         // Filter Paket (bekerja sendiri)
-        if ($request->filled('packet_id')) {
-            $query->where('packet_id', $request->packet_id);
+        if ($request->filled('lesson_level_id')) {
+            $query->where('lesson_level_id', $request->lesson_level_id);
         }
 
         // Filter Publish (bekerja sendiri)
@@ -50,17 +50,17 @@ class PacketCombinationController extends Controller
         $sortDirection = $request->input('sort_order', 'asc'); // Default sort direction
 
         if ($sortBy) {
-            if ($sortBy == 'packet') {
-                $query->join('packets', 'packet_combinations.packet_id', '=', 'packets.id')
-                    ->orderBy('packets.name', $sortDirection);
-            } elseif ($sortBy == 'program') {
+            if ($sortBy === 'lesson_level') {
+                $query->join('lesson_levels', 'packet_combinations.lesson_level_id', '=', 'lesson_levels.id')
+                    ->orderBy('lesson_levels.name', $sortDirection);
+            } elseif ($sortBy === 'program') {
                 $query->join('programs', 'packet_combinations.program_id', '=', 'programs.id')
                     ->orderBy('programs.name', $sortDirection);
-            } elseif ($sortBy == 'price') {
+            } elseif ($sortBy === 'price') {
                 $query->orderBy('price', $sortDirection);
-            } elseif ($sortBy == 'published_on') {
+            } elseif ($sortBy === 'published_on') {
                 $query->orderBy('published_on', $sortDirection);
-            } elseif ($sortBy == 'status') {
+            } elseif ($sortBy === 'status') {
                 $query->orderBy('status', $sortDirection);
             }
         } else {
@@ -69,9 +69,9 @@ class PacketCombinationController extends Controller
 
 
         $packetCombinations = $query->paginate(10);
-        $packets = LessonLevel::all();
+        $lessonLevels = LessonLevel::all();
 
-        return view('Backend.Admin.PacketCombination.index', compact('packetCombinations', 'packets'));
+        return view('Backend.Admin.PacketCombination.index', compact('packetCombinations', 'lessonLevels'));
     }
 
     /**
@@ -79,9 +79,9 @@ class PacketCombinationController extends Controller
      */
     public function create()
     {
-        $packets = LessonLevel::all();
+        $lessonLevels = LessonLevel::all();
         $programs = Program::all()->sortBy('name');
-        return view('Backend.Admin.PacketCombination.create', compact(['packets', 'programs']));
+        return view('Backend.Admin.PacketCombination.create', compact(['lessonLevels', 'programs']));
     }
 
     /**
@@ -113,7 +113,7 @@ class PacketCombinationController extends Controller
         $packetCombination = PacketCombination::findOrFail($id);
         $packetCombination->update(['published_on' => false]);
 
-        return redirect()->back()->with('success', 'LessonLevel successfully unpublished.');
+        return redirect()->back()->with('success', 'lesson level successfully unpublished.');
     }
 
     /**
@@ -129,10 +129,10 @@ class PacketCombinationController extends Controller
      */
     public function edit(PacketCombination $packetCombination)
     {
-        $packets = LessonLevel::all();
+        $lessonLevels = LessonLevel::all();
         $programs = Program::all()->sortBy('name');
 
-        return view('Backend.Admin.PacketCombination.edit', compact(['packets', 'programs', 'packetCombination']));
+        return view('Backend.Admin.PacketCombination.edit', compact(['lessonLevels', 'programs', 'packetCombination']));
     }
 
     /**

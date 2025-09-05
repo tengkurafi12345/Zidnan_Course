@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Program')
+@section('title', 'Edit Program Les')
 @section('css')
     <style>
         /* Styling untuk alert */
@@ -51,7 +51,7 @@
         <form action="{{ route('program.update', $program->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
-            <h3>Edit Program</h3>
+            <h3>Edit Program Les</h3>
 
             <p>Kode</p>
             <input type="text" name="code" placeholder="enter your code" class="box"

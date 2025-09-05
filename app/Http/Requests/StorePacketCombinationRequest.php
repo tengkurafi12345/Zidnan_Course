@@ -22,7 +22,7 @@ class StorePacketCombinationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'packet_id' => 'required|exists:packets,id',
+            'lesson_level_id' => 'required|exists:lesson_levels,id',
             'program_id' => 'required|exists:programs,id',
             'price' => 'required|numeric',
         ];

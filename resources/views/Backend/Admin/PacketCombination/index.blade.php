@@ -182,13 +182,13 @@
                         </button>
                         <div class="dropdown-menu rounded-3 p-3" style="width: 300px;">
                             <div class="mb-2">
-                                <label for="filter-paket" class="form-label">Nama Paket</label>
-                                <select name="packet_id" class="form-control" id="filter-paket">
-                                    <option value="">Pilih Paket</option>
-                                    @foreach ($packets as $packet)
-                                        <option value="{{ $packet->id }}"
-                                            {{ request('packet_id') == $packet->id ? 'selected' : '' }}>
-                                            {{ $packet->name }}
+                                <label for="filter-jenjang-les" class="form-label">Nama Jenjang Les</label>
+                                <select name="lesson_level_id" class="form-control" id="filter-jenjang-les">
+                                    <option value="">Pilih Jenjang Les</option>
+                                    @foreach ($lessonLevels as $lessonLevel)
+                                        <option value="{{ $lessonLevel->id }}"
+                                            {{ request('lesson_level_id') == $lessonLevel->id ? 'selected' : '' }}>
+                                            {{ $lessonLevel->name }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -226,7 +226,7 @@
                                 <div class="col">
                                     <select name="sort_by" class="form-control" id="sort-by">
                                         <option value="">Pilih Kolom</option>
-                                        <option value="packet" {{ request('sort_by') == 'packet' ? 'selected' : '' }}>Nama
+                                        <option value="lesson_level" {{ request('sort_by') == 'lesson_level' ? 'selected' : '' }}>Nama
                                             Paket
                                         </option>
                                         <option value="program" {{ request('sort_by') == 'program' ? 'selected' : '' }}>
@@ -291,7 +291,7 @@
                     @forelse($packetCombinations as $packetCombination)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $packetCombination->packet->name }}</td>
+                            <td>{{ $packetCombination->lessonLevel->name }}</td>
                             <td>{{ $packetCombination->program->name }}</td>
                             <td>{{ 'Rp.' . number_format($packetCombination->price, 0, ',', '.') }}</td>
                             <td>

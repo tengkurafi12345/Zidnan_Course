@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah Program')
+@section('title', 'Tambah Program Les')
 @section('css')
     <style>
         /* Styling untuk alert */
@@ -50,7 +50,7 @@
 
         <form action="{{ route('program.store') }}" method="post" enctype="multipart/form-data">
             @csrf
-            <h3>Tambah Program</h3>
+            <h3>Tambah Program Les</h3>
 
             <p>Kode</p>
             <input type="text" name="code" placeholder="enter your code" class="box"
