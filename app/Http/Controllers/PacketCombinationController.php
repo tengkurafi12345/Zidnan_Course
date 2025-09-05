@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePacketCombinationRequest;
 use App\Http\Requests\UpdatePacketCombinationRequest;
-use App\Models\Packet;
+use App\Models\LessonLevel;
 use App\Models\PacketCombination;
 use App\Models\Program;
 use Illuminate\Http\Request;
@@ -69,7 +69,7 @@ class PacketCombinationController extends Controller
 
 
         $packetCombinations = $query->paginate(10);
-        $packets = Packet::all();
+        $packets = LessonLevel::all();
 
         return view('Backend.Admin.PacketCombination.index', compact('packetCombinations', 'packets'));
     }
@@ -79,7 +79,7 @@ class PacketCombinationController extends Controller
      */
     public function create()
     {
-        $packets = Packet::all();
+        $packets = LessonLevel::all();
         $programs = Program::all()->sortBy('name');
         return view('Backend.Admin.PacketCombination.create', compact(['packets', 'programs']));
     }
@@ -105,7 +105,7 @@ class PacketCombinationController extends Controller
         $packetCombination = PacketCombination::findOrFail($id);
         $packetCombination->update(['published_on' => true]);
 
-        return redirect()->back()->with('success', 'Packet successfully published.');
+        return redirect()->back()->with('success', 'LessonLevel successfully published.');
     }
 
     public function unpublish($id)
@@ -113,7 +113,7 @@ class PacketCombinationController extends Controller
         $packetCombination = PacketCombination::findOrFail($id);
         $packetCombination->update(['published_on' => false]);
 
-        return redirect()->back()->with('success', 'Packet successfully unpublished.');
+        return redirect()->back()->with('success', 'LessonLevel successfully unpublished.');
     }
 
     /**
@@ -129,7 +129,7 @@ class PacketCombinationController extends Controller
      */
     public function edit(PacketCombination $packetCombination)
     {
-        $packets = Packet::all();
+        $packets = LessonLevel::all();
         $programs = Program::all()->sortBy('name');
 
         return view('Backend.Admin.PacketCombination.edit', compact(['packets', 'programs', 'packetCombination']));

@@ -47,7 +47,7 @@
         </a>
         <div class="collapse" id="collapseExample">
             <a href="{{ route('program.class.index') }}" class="navbar-child"><i class="fas fa-cube"></i><span>Kelas Program</span></a>
-            <a href="{{ route('packet.index') }}" class="navbar-child"><i class="fas fa-sitemap"></i><span>Paket</span></a>
+            <a href="{{ route('lesson.level.index') }}" class="navbar-child"><i class="fas fa-sitemap"></i><span>Jenjang Les</span></a>
             <a href="{{ route('program.index') }}" class="navbar-child"><i class="fas fa-table"></i><span>Program</span></a>
             <a href="{{ route('teacher.index') }}" class="navbar-child"><i class="fas fa-chalkboard-user"></i><span>Guru</span></a>
             <a href="{{ route('student.index') }}" class="navbar-child"><i class="fas fa-child"></i><span>Siswa</span></a>

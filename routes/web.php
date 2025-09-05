@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PacketController;
+use App\Http\Controllers\LessonLevelController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
@@ -91,13 +91,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::patch('/program-class/{programClass}', [ProgramClassController::class, 'update'])->name('program.class.update');
     Route::delete('/program-class/{programClass}/delete', [ProgramClassController::class, 'destroy'])->name('program.class.destroy');
 
-    // Packet
-    Route::get('/packet', [PacketController::class, 'index'])->name('packet.index');
-    Route::get('/packet/create', [PacketController::class, 'create'])->name('packet.create');
-    Route::post('/packet', [PacketController::class, 'store'])->name('packet.store');
-    Route::get('/packet/{packet}', [PacketController::class, 'edit'])->name('packet.edit');
-    Route::patch('/packet/{packet}', [PacketController::class, 'update'])->name('packet.update');
-    Route::delete('/packet/{packet}/delete', [PacketController::class, 'destroy'])->name('packet.destroy');
+    // LessonLevel
+    Route::get('/lesson-level', [LessonLevelController::class, 'index'])->name('lesson.level.index');
+    Route::get('/lesson-level/create', [LessonLevelController::class, 'create'])->name('lesson.level.create');
+    Route::post('/lesson-level', [LessonLevelController::class, 'store'])->name('lesson.level.store');
+    Route::get('/lesson-level/{lessonLevel}', [LessonLevelController::class, 'edit'])->name('lesson.level.edit');
+    Route::patch('/lesson-level/{lessonLevel}', [LessonLevelController::class, 'update'])->name('lesson.level.update');
+    Route::delete('/lesson-level/{lessonLevel}/delete', [LessonLevelController::class, 'destroy'])->name('lesson.level.destroy');
 
     // Program
     Route::get('/program', [ProgramController::class, 'index'])->name('program.index');
@@ -123,7 +123,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::patch('/student/{student}', [StudentController::class, 'update'])->name('student.update');
     Route::delete('/student/{student}/delete', [StudentController::class, 'destroy'])->name('student.destroy');
 
-    // Packet Combination
+    // LessonLevel Combination
     Route::get('/packet-combination', [PacketCombinationController::class, 'index'])->name('packet.combination.index');
     Route::get('/packet-combination/create', [PacketCombinationController::class, 'create'])->name('packet.combination.create');
     Route::post('/packet-combination', [PacketCombinationController::class, 'store'])->name('packet.combination.store');

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Packet;
+use App\Models\LessonLevel;
 use App\Models\PacketCombination;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index() {
-//        $packets = Packet::whereHas('packe__tCombinations', function ($query) {
+//        $packets = LessonLevel::whereHas('packe__tCombinations', function ($query) {
 //            $query->where('published_on', true);
 //        })->with('packetCombinations')->get();
 
@@ -40,7 +40,7 @@ class HomeController extends Controller
 
 
     public function mengaji() {
-        $packets = Packet::all()->sortByDesc('created_at');
+        $packets = LessonLevel::all()->sortByDesc('created_at');
         $students = Student::orderBy('created_at', 'desc')->limit(3)->get();
 
         return view('Frontend.mengaji', compact(['packets', 'students']));

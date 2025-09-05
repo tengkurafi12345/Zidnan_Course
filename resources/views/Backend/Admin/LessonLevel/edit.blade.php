@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah Paket')
+@section('title', 'Edit Jenjang Les')
 @section('css')
     <style>
         /* Styling untuk alert */
@@ -48,33 +48,34 @@
             </div>
         @endif
 
-        <form action="{{ route('packet.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('lesson.level.update', $lessonLevel->id) }}" method="post" enctype="multipart/form-data">
             @csrf
-            <h3>Tambah Paket</h3>
+            @method('PATCH')
+            <h3>Edit Jenjang Les</h3>
 
             <p>Kode</p>
             <input type="text" name="code" placeholder="enter your code" class="box"
-                value="{{ old('code') }}">
+                value="{{ old('code', $lessonLevel->code) }}">
 
             <p>Nama</p>
             <input type="text" name="name" placeholder="enter your old text" class="box"
-                value="{{ old('name') }}">
+                value="{{ old('name', $lessonLevel->name) }}">
 
             <p>Tingkatan Kelas</p>
-            <input type="text" name="class_level" class="box" value="{{ old('class_level') }}">
+            <input type="text" name="class_level" class="box" value="{{ old('class_level', $lessonLevel->class_level) }}">
 
             <p>Tanggal Mulai</p>
-            <input type="date" name="start_date" class="box" value="{{ old('start_date') }}">
+            <input type="date" name="start_date" class="box" value="{{ old('start_date', $lessonLevel->start_date) }}">
 
             <p>Tanggal Berakhir</p>
-            <input type="date" name="end_date" class="box" value="{{ old('end_date') }}">
+            <input type="date" name="end_date" class="box" value="{{ old('end_date', $lessonLevel->end_date) }}">
 
             <p>Deskripsi</p>
-            <textarea name="description" placeholder="write your description" class="box">{{ old('description') }}</textarea>
+            <textarea name="description" placeholder="write your description" class="box">{{ old('description', $lessonLevel->description) }}</textarea>
 
             <div class="row mt-5">
                 <div class="col-md-12">
-                <a href="{{ route('packet.index') }}" class="btn btn-secondary">Kembali</a>
+                    <a href="{{ route('lesson.level.index') }}" class="btn btn-secondary">Kembali</a>
                     <button type="submit" class="btn btn-purple">Simpan</button>
                 </div>
             </div>

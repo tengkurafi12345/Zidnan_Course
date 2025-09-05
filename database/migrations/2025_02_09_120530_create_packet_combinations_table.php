@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('packet_combinations', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('packet_id');
+            $table->uuid('lesson_level_id');
             $table->uuid('program_id');
             $table->string('price');
             $table->boolean('published_on')->default('0');
             $table->boolean('status')->default('1');
-            $table->foreign('packet_id')->references('id')->on('packets')->onDelete('cascade');
+            $table->foreign('lesson_level_id')->references('id')->on('lesson_levels')->onDelete('cascade');
             $table->foreign('program_id')->references('id')->on('programs')->onDelete('cascade');
             $table->timestamps();
 
-            $table->unique(['packet_id', 'program_id']); // Prevent duplicate combinations
+            $table->unique(['lesson_level_id', 'program_id']); // Prevent duplicate combinations
         });
     }
 

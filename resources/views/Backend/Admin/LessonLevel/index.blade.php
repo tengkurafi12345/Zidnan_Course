@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Daftar Paket')
+@section('title', 'Daftar Jenjang Les')
 
 @section('css')
     <style>
@@ -157,10 +157,10 @@
     <section class="courses">
         <div class="flex-container">
             <div class="">
-                <h1 class="heading">Daftar Paket</h1>
+                <h1 class="heading">Daftar Jenjang Les</h1>
             </div>
             <div class="">
-                <a href="{{ route('packet.create') }}" class="btn btn-violet">Tambah Paket</a>
+                <a href="{{ route('lesson.level.create') }}" class="btn btn-violet">Tambah Jenjang Les</a>
             </div>
         </div>
 
@@ -187,16 +187,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($packets as $packet)
+                    @forelse($lessonLevels as $lesson_level)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $packet->code  }}</td>
-                            <td>{{ $packet->name }}</td>
-                            <td>{{ $packet->class_level }}</td>
-                            <td>{{ $packet->start_date }}</td>
-                            <td>{{ $packet->end_date }}</td>
+                            <td>{{ $lesson_level->code  }}</td>
+                            <td>{{ $lesson_level->name }}</td>
+                            <td>{{ $lesson_level->class_level }}</td>
+                            <td>{{ $lesson_level->start_date }}</td>
+                            <td>{{ $lesson_level->end_date }}</td>
                             <td>
-                                @if ($packet->status == 1)
+                                @if ($lesson_level->status == 1)
                                 <p class="badge badge-success">Aktif</p>
                                 @else
                                 <p class="badge badge-danger">Tidak Aktif</p>
@@ -204,9 +204,9 @@
                             </td>
                             <td>
                                 <div class="action-buttons">
-                                    <a href="{{ route('packet.edit', $packet->id) }}"
+                                    <a href="{{ route('lesson.level.edit', $lesson_level->id) }}"
                                         class="btn btn-sm btn-warning" >Edit</a>
-                                    <form action="{{ route('packet.destroy', $packet->id) }}" method="POST"
+                                    <form action="{{ route('lesson.level.destroy', $lesson_level->id) }}" method="POST"
                                         style="display: inline-block;">
                                         @csrf
                                         @method('DELETE')

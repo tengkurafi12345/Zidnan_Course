@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Packet;
+use App\Models\LessonLevel;
 use App\Models\Program;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,7 +19,7 @@ class PacketCombinationFactory extends Factory
     public function definition(): array
     {
         return [
-            'packet_id' => Packet::factory(),
+            'lesson_level_id' => LessonLevel::factory(),
             'program_id' => Program::factory(),
             'price' => $this->faker->randomFloat(2, 100),
         ];

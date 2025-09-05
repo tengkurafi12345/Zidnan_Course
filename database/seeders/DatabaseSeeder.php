@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         $this->call([
-//            PacketSeeder::class,
+//            LessonLevelSeeder::class,
 //            ProgramSeeder::class,
 //            PacketCombinationSeeder::class,
 //            TeacherSeeder::class,

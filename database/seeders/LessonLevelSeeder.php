@@ -2,16 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\Packet;
+use App\Models\LessonLevel;
 use Illuminate\Database\Seeder;
 
-class PacketSeeder extends Seeder
+class LessonLevelSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Packet::factory()->count(10)->create();
+        LessonLevel::factory()->count(10)->create();
     }
 }

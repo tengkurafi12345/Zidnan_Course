@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\LessonLevels;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdatePacketRequest extends FormRequest
+class StoreLessonLevelRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,6 @@ class UpdatePacketRequest extends FormRequest
             'start_date' => 'required|date_format:Y-m-d',
             'end_date' => 'required|date_format:Y-m-d',
             'description' => 'required|string|max:255',
-
         ];
     }
 }

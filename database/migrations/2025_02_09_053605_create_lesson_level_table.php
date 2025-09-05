@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('packets', function (Blueprint $table) {
+        Schema::create('lesson_levels', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('code');
             $table->string('name');

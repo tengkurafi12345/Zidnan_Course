@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Packet extends Model
+class LessonLevel extends Model
 {
     use HasFactory, HasUuids;
 
-    protected $table = "packets";
+    protected $table = "lesson_levels";
     protected $fillable = [
         'code',
         'name',
@@ -23,9 +24,14 @@ class Packet extends Model
         'updated_at'
     ];
 
-    public function packetCombinations()
+    /**
+     * Get all of the packetCombinations for the LessonLevel
+     *
+     * @return HasMany
+     */
+    public function packetCombinations(): HasMany
     {
-        return $this->hasMany(PacketCombination::class, 'packet_id');
+        return $this->hasMany(PacketCombination::class, 'lesson_level_id');
     }
 
 }

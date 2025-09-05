@@ -14,12 +14,12 @@ class PacketCombination extends Model
     protected $table = 'packet_combinations';
 
     protected $fillable = [
-        'packet_id', 'program_id', 'price', 'published_on', 'status'
+        'lesson_level_id', 'program_id', 'price', 'published_on', 'status'
     ];
 
-    public function packet()
+    public function lessonLevel()
     {
-        return $this->belongsTo(Packet::class, 'packet_id');
+        return $this->belongsTo(LessonLevel::class, 'lesson_level_id');
     }
 
     public function program()
