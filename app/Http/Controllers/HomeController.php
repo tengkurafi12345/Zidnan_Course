@@ -11,29 +11,29 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index() {
-//        $packets = LessonLevel::whereHas('packe__tCombinations', function ($query) {
+//        $lessonLevel = LessonLevel::whereHas('packe__tCombinations', function ($query) {
 //            $query->where('published_on', true);
 //        })->with('packetCombinations')->get();
 
-        $packetCombination = PacketCombination::where('published_on', true)->with('program', 'packet')->get();
+        $packetCombination = PacketCombination::where('published_on', true)->with('program', 'lessonLevel')->get();
 //        dd($packetCombination);
         // Kelompokkan berdasarkan nama paket
         $groupedPackets = $packetCombination->groupBy('packet.name');
 //
 ////        dd($groupedPackets->keys());
 //        // Ambil data sesuai kriteria
-        $privateLessons = $groupedPackets->filter(fn($packets, $key) => str_contains($key, 'Private'))->flatten()->take(4);
-        $bimbelLessons = $groupedPackets->filter(fn($packets, $key) => str_contains($key, 'Bimbel'))->flatten()->take(4);
-        $santriWeekend = $groupedPackets->filter(fn($packets, $key) => str_contains($key, 'Santri Weekend'))->flatten()->take(3);
-        $corporateQuran = $groupedPackets->filter(fn($packets, $key) => str_contains($key, 'Perusahaan Mengaji'))->flatten()->take(1);
+//        $privateLessons = $groupedPackets->filter(fn($lessonLevel, $key) => str_contains($key, 'Private'))->flatten()->take(4);
+//        $bimbelLessons = $groupedPackets->filter(fn($lessonLevel, $key) => str_contains($key, 'Bimbel'))->flatten()->take(4);
+//        $santriWeekend = $groupedPackets->filter(fn($lessonLevel, $key) => str_contains($key, 'Santri Weekend'))->flatten()->take(3);
+//        $corporateQuran = $groupedPackets->filter(fn($lessonLevel, $key) => str_contains($key, 'Perusahaan Mengaji'))->flatten()->take(1);
 
         $students = Student::orderBy('created_at', 'desc')->limit(3)->get();
 
         return view('Frontend.index', compact([
-            'privateLessons',
-            'bimbelLessons',
-            'santriWeekend',
-            'corporateQuran',
+//            'privateLessons',
+//            'bimbelLessons',
+//            'santriWeekend',
+//            'corporateQuran',
             'students'
         ]));
     }
