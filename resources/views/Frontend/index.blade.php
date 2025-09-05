@@ -153,6 +153,366 @@
             </div>
     </section>
 
+    <!-- Paket Private -->
+    <div class="container-fluid mt-5 py-5">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <img class="img-fluid w-75 bg-purple p-1" src="{{ asset('assets/image/FE/Private-TK.jpg') }}"
+                             alt="">
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="col-8" style="margin-top: -160px;">
+                        <img class="img-fluid w-100 bg-purple p-1"
+                             src="{{ asset('assets/image/FE/Private-SMP.jpg') }}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7 ">
+                <div class="text-start">
+                    <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">{{ $programPrivate->name }}</p>
+                    <h1 class="text-dark mb-4">{{ $programPrivate->caption }}</h1>
+                    <p class="pb-2">{{ $programPrivate->description }}</p>
+                    <div class="row">
+                        <div class="col-5 pe-0">
+                            <img src="{{ asset('img/brand/privat.png') }}" alt=""
+                                 class="w-75 rounded-circle bg-purple p-1">
+                        </div>
+                        <div class="col-7 ps-0 fs-6">
+                            <ul class="list-inline">
+                                @foreach($programPrivate->list_of_feature as $feature)
+                                    <li class="py-2 border-top border-bottom"><i
+                                            class="fa-solid fa-check-double me-2 text-purple"></i> {{ $feature }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="/kursus" class="btn btn-violet rounded-1 mt-1 mb-4">Daftar Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Konten daftar paket privat -->
+    <div class="testimonial-section " id="home">
+        <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">Paket Les Private</p>
+        <h1 class="text-dark mb-4">Pilih paket yang paling favorit.</h1>
+
+        <!-- Daftar Paket private -->
+        <div class="course-container mt-5">
+            <div class="container text-center">
+                @php
+                    $jumlahData = count($privateLessons);
+                    $cols = 'row-cols-1 row-cols-md-2 ';
+
+                    if ($jumlahData == 4) {
+                        $cols .= 'row-cols-lg-4';
+                    } elseif ($jumlahData == 3) {
+                        $cols .= 'row-cols-lg-3';
+                    } elseif ($jumlahData == 2) {
+                        $cols .= 'row-cols-lg-2';
+                    } else {
+                        $cols .= 'row-cols-lg-1';
+                    }
+                @endphp
+
+                <div class="row {{ $cols }} g-2 g-lg-5 align-items-stretch">
+                    @foreach($privateLessons as $private)
+                        <div class="col">
+                            <div class="card h-100 d-flex flex-column border-purple rounded">
+                                <div class="card-body d-flex flex-column mt-5">
+                                    <div class="p-2 flex-grow-1">
+                                        <h2>{{ $private->program->name }}</h2>
+                                        <p class="mb-4 text-success">{{ $private->lessonLevel->class_level }}</p>
+                                        <p class="fw-bold mb-1">Mulai</p>
+                                        <h2 class="my-2">{{ "Rp." . number_format($private->price, 0, ',', '.') }}</h2>
+                                        <p>Per Jam</p>
+                                        <hr>
+                                        <button type="button" onclick="redirectToWhatsApp()"
+                                                class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
+                                            Daftar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <a href="/kursus" class="btn btn-purple rounded-1 mt-5">Lihat Seluruh Paket</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paket Bimbel -->
+    <div class="container-fluid py-5 mt-5">
+        <div class="row">
+            <div class="col-md-7 ">
+                <div class="text-start">
+                    <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">{{ $programBimbel->name }}</p>
+                    <h1 class="text-dark mb-4">{{ $programBimbel->caption }}</h1>
+                    <p class="pb-2">{{ $programBimbel->description }}</p>
+                    <div class="row">
+                        <div class="col-5 pe-0">
+                            <img src="{{ asset('img/brand/bimbel.png') }}" alt=""
+                                 class="w-75 rounded-circle bg-purple p-1">
+                        </div>
+                        <div class="col-7 ps-0">
+                            <ul class="list-inline fs-6">
+                                @foreach($programBimbel->list_of_feature as $feature)
+                                    <li class="py-2 border-top border-bottom"><i
+                                            class="fa-solid fa-check-double me-2 text-purple"></i> {{ $feature }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="/kursus" class="btn btn-violet rounded-1 mt-1 mb-4">Daftar Sekarang</a>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <img class="img-fluid w-75 bg-purple p-1" src="{{ asset('assets/image/FE/bimbel-SD.jpg') }}"
+                             alt="">
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="col-8" style="margin-top: -160px;">
+                        <img class="img-fluid w-100 bg-purple p-1"
+                             src="{{ asset('assets/image/FE/Bimbel.jpg') }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Konten daftar paket bimbel -->
+    <div class="testimonial-section" id="home">
+        <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">Paket Les Bimbel</p>
+        <h1 class="text-dark mb-4">Pilih paket yang paling favorit.</h1>
+        <div class="course-container mt-5">
+            <div class="container text-center">
+                @php
+                    $jumlahData = count($bimbelLessons);
+                    $cols = 'row-cols-1 row-cols-md-2 ';
+
+                    if ($jumlahData == 4) {
+                        $cols .= 'row-cols-lg-4';
+                    } elseif ($jumlahData == 3) {
+                        $cols .= 'row-cols-lg-3';
+                    } elseif ($jumlahData == 2) {
+                        $cols .= 'row-cols-lg-2';
+                    } else {
+                        $cols .= 'row-cols-lg-1';
+                    }
+                @endphp
+
+                <div class="row {{ $cols }} g-2 g-lg-5 align-items-stretch">
+                    @foreach($bimbelLessons as $bimbel)
+                        <div class="col">
+                            <div class="card h-100 d-flex flex-column border-purple rounded">
+                                <div class="card-body d-flex flex-column mt-5">
+                                    <div class="p-2 flex-grow-1">
+                                        <h2>{{ $bimbel->program->name }}</h2>
+                                        <p class="mb-4 text-success">{{ $bimbel->lessonLevel->class_level }}</p>
+                                        <p class="fw-bold mb-1">Mulai</p>
+                                        <h2 class="my-2">{{ "Rp." . number_format($bimbel->price, 0, ',', '.') }}</h2>
+                                        <p>Per Jam</p>                                        <hr>
+                                        <button type="button" onclick="redirectToWhatsApp()"
+                                                class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
+                                            Daftar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <a href="/kursus" class="btn btn-purple rounded-1 mt-5">Lihat Seluruh Paket</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paket Santri Weekend -->
+    <div class="container-fluid mt-5 py-5">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <img class="img-fluid w-75 bg-purple p-1" src="{{ asset('assets/image/FE/Santri-weekend-2.jpg') }}"
+                             alt="">
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="col-8" style="margin-top: -160px;">
+                        <img class="img-fluid w-100 bg-purple p-1"
+                             src="{{ asset('assets/image/FE/santri-weekend.jpg') }}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7 ">
+                <div class="text-start mt-5">
+                    <p class="text-purple mb-2 mt-sm-4 border-bottom-purple border-2 d-inline-block p-2">{{ $programSantriWeekend->name }}</p>
+                    <h1 class="text-dark mb-4">{{ $programSantriWeekend->caption }}</h1>
+                    <p class="pb-2">{{ $programSantriWeekend->description }}</p>
+                    <div class="row">
+                        <div class="col-5 pe-0">
+                            <img src="{{ asset('img/brand/santri-weekend.png') }}" alt=""
+                                 class="w-75 rounded-circle bg-purple p-1">
+                        </div>
+                        <div class="col-7 ps-0">
+                            <ul class="list-inline fs-6">
+                                @foreach($programSantriWeekend->list_of_feature as $feature)
+                                    <li class="py-2 border-top border-bottom"><i
+                                            class="fa-solid fa-check-double me-2 text-purple"></i> {{ $feature }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="/kursus" class="btn btn-violet rounded-1 mt-1 mb-4">Daftar Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Konten daftar paket santri weekend -->
+    <div class="testimonial-section " id="home">
+        <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">Paket Santri Weekend</p>
+        <h1 class="text-dark mb-4">Pilih paket yang paling favorit.</h1>
+        <!-- Daftar Paket Bimbel -->
+        <div class="course-container mt-5">
+            <div class="container text-center">
+                @php
+                    $jumlahData = count($santriWeekend);
+                    $cols = 'row-cols-1 row-cols-md-2 ';
+
+                    if ($jumlahData == 4) {
+                        $cols .= 'row-cols-lg-4';
+                    } elseif ($jumlahData == 3) {
+                        $cols .= 'row-cols-lg-3';
+                    } elseif ($jumlahData == 2) {
+                        $cols .= 'row-cols-lg-2';
+                    } else {
+                        $cols .= 'row-cols-lg-1';
+                    }
+                @endphp
+
+                <div class="row {{ $cols }} g-2 g-lg-5 align-items-stretch">
+                    @foreach($santriWeekend as $santri)
+                        <div class="col">
+                            <div class="card h-100 d-flex flex-column border-purple rounded">
+                                <div class="card-body d-flex flex-column mt-5">
+                                    <div class="p-2 flex-grow-1">
+                                        <h2>{{ $santri->program->name }}</h2>
+                                        <p class="mb-4 text-success">{{ $santri->lessonLevel->class_level }}</p>
+                                        <p class="fw-bold mb-1">Mulai</p>
+                                        <h2 class="my-2">{{ "Rp." . number_format($santri->price, 0, ',', '.') }}</h2>
+                                        <p>Per Jam</p>
+                                        <hr>
+                                        <button type="button" onclick="redirectToWhatsApp()"
+                                                class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
+                                            Daftar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <a href="/kursus" class="btn btn-purple rounded-1 mt-5">Lihat Seluruh Paket</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paket Perusahaan Mengaji -->
+    <div class="container-fluid mt-5 py-5">
+        <div class="row">
+            <div class="col-md-7 ">
+                <div class="text-start">
+                    <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">{{ $programCorporateQuran->name }}</p>
+                    <h1 class="text-dark mb-4">{{ $programCorporateQuran->caption }}</h1>
+                    <p class="pb-2">{{ $programCorporateQuran->description }}</p>
+                    <div class="row">
+                        <div class="col-5 pe-0">
+                            <img src="{{ asset('img/brand/perusahaan-mengaji.png') }}" alt=""
+                                 class="w-75 rounded-circle bg-purple p-1">
+                        </div>
+                        <div class="col-7 ps-0">
+                            <ul class="list-inline fs-6">
+                                @foreach($programCorporateQuran->list_of_feature as $feature)
+                                    <li class="py-2 border-top border-bottom"><i
+                                            class="fa-solid fa-check-double me-2 text-purple"></i> {{ $feature }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="/kursus" class="btn btn-violet rounded-1 mt-1 mb-4">Daftar Sekarang</a>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <img class="img-fluid w-75 bg-purple p-1" src="{{ asset('assets/image/FE/Perusahaan-Mengaji.jpg') }}"
+                             alt="">
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="col-8" style="margin-top: -160px;">
+                        <img class="img-fluid w-100 bg-purple p-1"
+                             src="{{ asset('assets/image/FE/perusahaan-mengaji-2.jpg') }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Konten daftar paket bimbel -->
+    <div class="testimonial-section " id="home">
+        <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">Paket Perusahaan Mengaji</p>
+        <h1 class="text-dark mb-4">Pilih paket yang paling favorit.</h1>
+        <div class="course-container mt-5">
+            <div class="container text-center mx-lg-5">
+                @php
+                    $jumlahData = count($corporateQuran);
+                    $cols = 'row-cols-1 row-cols-md-2 ';
+
+                    if ($jumlahData == 4) {
+                        $cols .= 'row-cols-lg-4';
+                    } elseif ($jumlahData == 3) {
+                        $cols .= 'row-cols-lg-3';
+                    } elseif ($jumlahData == 2) {
+                        $cols .= 'row-cols-lg-2';
+                    } else {
+                        $cols .= 'row-cols-lg-1';
+                    }
+                @endphp
+
+                <div class="row {{ $cols }} g-2 g-lg-5 align-items-stretch">
+                    @foreach($corporateQuran as $corporate)
+                        <div class="col mt-md-5">
+                            <div class="card border-purple-favorite favorite-card d-flex flex-column mt-md-0 mt-sm-5">
+                                <div class="card-header bg-purple">
+                                    <p>Paket Terfavorit</p>
+                                </div>
+                                <div class="card-body d-flex flex-column mt-5">
+                                    <div class="p-2 flex-grow-1">
+                                        <h2>{{ $corporate->program->name }}</h2>
+                                        <p class="mb-4 text-success">{{ $corporate->lessonLevel->class_level }}</p>
+                                        <p class="fw-bold mb-1">Mulai</p>
+                                        <h2 class="my-2">{{ "Rp." . number_format($corporate->price, 0, ',', '.') }}</h2>
+                                        <p>Per Jam</p>
+                                        <hr>
+                                        <button type="button" onclick="redirectToWhatsApp()"
+                                                class="btn btn-purple rounded-1 mt-5"><i class="fab fa-whatsapp"></i>
+                                            Daftar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <a href="/kursus" class="btn btn-purple rounded-1 mt-5">Lihat Seluruh Paket</a>
+            </div>
+        </div>
+    </div>
+
     <div class="map-container">
         <div class="text-center">
             <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">Lokasi Kami</p>

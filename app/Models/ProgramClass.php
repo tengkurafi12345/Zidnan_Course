@@ -22,7 +22,7 @@ class ProgramClass extends Model
     ];
 
     protected $casts = [
-        'list_of_content' => 'array',
+        'list_of_feature' => 'array',
     ];
 
     /**

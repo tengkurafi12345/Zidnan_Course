@@ -35,10 +35,18 @@
             <p class="mt-4">List Keunggulan</p>
             <div id="list_features">
                 @php
-                    $features = old('list_of_feature', $programClass->list_of_content ?? []);
+                    $features = old('list_of_feature', $programClass->list_of_content ?? '[]');
+
+                    // Kalau sudah array (misalnya hasil old()), langsung pakai
+                    if (is_array($features)) {
+                        $decodedFeatures = $features;
+                    } else {
+                        // Kalau masih string JSON dari DB, decode dulu
+                        $decodedFeatures = json_decode($features, true, 512, JSON_THROW_ON_ERROR);
+                    }
                 @endphp
 
-                @foreach($features as $feature)
+                @foreach($decodedFeatures as $feature)
                     <div class="input-group mb-3">
                         <input type="text" name="list_of_feature[]" class="form-control"
                                value="{{ $feature }}" placeholder="List Keunggulan">

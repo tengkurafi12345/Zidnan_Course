@@ -205,7 +205,7 @@
                             <td>
                                 @if($programClass->list_of_feature)
                                     <ul style="padding-left: 18px;">
-                                        @foreach(json_decode($programClass->list_of_feature, false, 512, JSON_THROW_ON_ERROR) as $feature)
+                                        @foreach($programClass->list_of_feature as $feature)
                                             <li>{{ $feature }}</li>
                                         @endforeach
                                     </ul>

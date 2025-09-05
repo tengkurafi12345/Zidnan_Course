@@ -13,7 +13,7 @@
                 <a class="nav-link" aria-current="page" href="/">Beranda</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('kursus') }}">Kursus</a>
+                <a class="nav-link" href="#">Kursus</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('siswa') }}">Siswa</a>
