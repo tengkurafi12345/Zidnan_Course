@@ -22,6 +22,7 @@ class StoreLessonLevelRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'program_class_id' => 'required|exists:program_classes,id',
             'code' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'class_level' => 'required|string',

@@ -4,7 +4,7 @@ namespace App\Http\Requests\LessonLevels;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdatePacketRequest extends FormRequest
+class UpdateLessonLevelRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,6 +22,7 @@ class UpdatePacketRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'program_class_id' => 'required|exists:program_classes,id',
             'code' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'class_level' => 'required|string',

@@ -52,6 +52,15 @@
             @csrf
             <h3>Tambah Jenjang Les</h3>
 
+            <p>kelas Program</p>
+            <select name="program_class_id" class="form-select" required>
+                <option value="" disabled selected>-- Pilih Kelas Program --</option>
+                @foreach ($programClasses as $programClass)
+                    <option value="{{ $programClass->id }}" {{ old('program_class_id') == $programClass->id ? 'selected' : '' }}>
+                        {{ $programClass->name }}</option>
+                @endforeach
+            </select>
+
             <p>Kode</p>
             <input type="text" name="code" placeholder="enter your code" class="box"
                 value="{{ old('code') }}">

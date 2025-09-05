@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('lesson_levels', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->uuid('program_class_id');
             $table->string('code');
             $table->string('name');
             $table->string('description');
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->boolean('status')->default('1');
             $table->date('start_date');
             $table->date('end_date');
+            $table->foreign('program_class_id')->references('id')->on('program_classes')->onDelete('cascade');
             $table->timestamps();
         });
     }

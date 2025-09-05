@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LessonLevels\StoreLessonLevelRequest;
 use App\Http\Requests\LessonLevels\UpdateLessonLevelRequest;
 use App\Models\LessonLevel;
+use App\Models\ProgramClass;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
@@ -25,7 +26,8 @@ class LessonLevelController extends Controller
      */
     public function create(): View
     {
-        return view('Backend.Admin.LessonLevel.create');
+        $programClasses = ProgramClass::all();
+        return view('Backend.Admin.LessonLevel.create', compact('programClasses'));
     }
 
     /**
@@ -59,7 +61,9 @@ class LessonLevelController extends Controller
      */
     public function edit(LessonLevel $lessonLevel): View
     {
-        return view('Backend.Admin.LessonLevel.edit', compact('lessonLevel'));
+        $programClasses = ProgramClass::all();
+
+        return view('Backend.Admin.LessonLevel.edit', compact('lessonLevel', 'programClasses'));
     }
 
     /**

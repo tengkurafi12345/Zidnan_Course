@@ -53,6 +53,16 @@
             @method('PATCH')
             <h3>Edit Jenjang Les</h3>
 
+            <p>Kelas Program</p>
+            <select name="program_class_id" class="form-select" required>
+                @foreach ($programClasses as $programClass)
+                    @if ($programClass->id === $lessonLevel->$programClass->id)
+                        <option value="{{ $programClass->id }}" selected>{{ $programClass->name }}</option>
+                    @endif
+                    <option value="{{ $programClass->id }}" >{{ $programClass->name }}</option>
+                @endforeach
+            </select>
+
             <p>Kode</p>
             <input type="text" name="code" placeholder="enter your code" class="box"
                 value="{{ old('code', $lessonLevel->code) }}">

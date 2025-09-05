@@ -177,6 +177,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Kelas Program</th>
                         <th>Kode</th>
                         <th>Nama</th>
                         <th>Tingkatan Kelas</th>
@@ -190,6 +191,7 @@
                     @forelse($lessonLevels as $lesson_level)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
+                            <td>{{ $lesson_level->programClass->name }}</td>
                             <td>{{ $lesson_level->code  }}</td>
                             <td>{{ $lesson_level->name }}</td>
                             <td>{{ $lesson_level->class_level }}</td>

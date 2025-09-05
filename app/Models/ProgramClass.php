@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ProgramClass extends Model
 {
@@ -23,5 +24,15 @@ class ProgramClass extends Model
     protected $casts = [
         'list_of_content' => 'array',
     ];
+
+    /**
+     * Get all of the lessonLevels for the programClass
+     *
+     * @return HasMany
+     */
+    public function lessonLevels(): HasMany
+    {
+        return $this->hasMany(LessonLevel::class, 'lesson_level_id');
+    }
 
 }
