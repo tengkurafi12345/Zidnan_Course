@@ -4,6 +4,7 @@ use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\Main\LowonganController;
 use App\Http\Controllers\Main\PromoController;
+use App\Http\Controllers\ProgramClassController;
 use App\Http\Controllers\PromotionController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
@@ -82,6 +83,14 @@ Route::middleware(['auth'])->group(function () {
 
 // Admin
 Route::middleware(['auth', 'role:admin'])->group(function () {
+    // Program Class
+    Route::get('/program-class', [ProgramClassController::class, 'index'])->name('program.class.index');
+    Route::get('/program-class/create', [ProgramClassController::class, 'create'])->name('program.class.create');
+    Route::post('/program-class', [ProgramClassController::class, 'store'])->name('program.class.store');
+    Route::get('/program-class/{programClass}', [ProgramClassController::class, 'edit'])->name('program.class.edit');
+    Route::patch('/program-class/{programClass}', [ProgramClassController::class, 'update'])->name('program.class.update');
+    Route::delete('/program-class/{programClass}/delete', [ProgramClassController::class, 'destroy'])->name('program.class.destroy');
+
     // Packet
     Route::get('/packet', [PacketController::class, 'index'])->name('packet.index');
     Route::get('/packet/create', [PacketController::class, 'create'])->name('packet.create');
