@@ -11,7 +11,7 @@ class Promotion extends Model
     use HasFactory, HasUuids;
 
     protected $table = "promotions";
-    protected $fillable = ['name', 'code_voucher', 'start_date', 'end_date', 'img_poster', 'is_header', 'header_position', 'term_and_conditions', 'discount'];
+    protected $fillable = ['name', 'code_voucher', 'start_date', 'end_date', 'img_poster', 'is_header', 'header_position', 'term_and_conditions', 'discount', 'quota', 'used_quota'];
     protected function casts(): array
     {
         return [

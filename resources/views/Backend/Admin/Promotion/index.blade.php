@@ -33,6 +33,8 @@
                     <th>No</th>
                     <th>Nama</th>
                     <th>Kode Voucher</th>
+                    <th>Kouta</th>
+                    <th>Kouta Terpakai</th>
                     <th>Tanggal</th>
                     <th>Diskon</th>
                     <th>Header (Posisi)</th> {{-- Kolom baru yang digabung --}}
@@ -46,6 +48,8 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $promotion->name }}</td>
                         <td>{{ $promotion->code_voucher }}</td>
+                        <td>{{ $promotion->quota }}</td>
+                        <td>{{ $promotion->used_quota }}</td>
                         <td>{{ \Carbon\Carbon::parse($promotion->start_date)->format('d/m/Y') }}
                             - {{ \Carbon\Carbon::parse($promotion->end_date)->format('d/m/Y') }} </td>
                         <td> Rp. {{ number_format($promotion->discount, 0, ',', '.') }}</td>

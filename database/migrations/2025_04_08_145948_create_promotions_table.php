@@ -18,6 +18,8 @@ return new class extends Migration {
             $table->boolean('is_header')->default(false);
             $table->json('term_and_conditions');
             $table->integer('discount')->nullable();
+            $table->integer('quota')->nullable();
+            $table->string('used_quota')->default('0');
             $table->timestamps();
         });
     }

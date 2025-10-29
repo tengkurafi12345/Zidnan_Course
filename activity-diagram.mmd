@@ -1,0 +1,13 @@
+flowchart TD
+
+    A[Start] --> B[Tentor Login ke Sistem]
+    B --> C[Masuk ke Menu Pengaturan Absensi]
+    C --> D[Pilih salah satu paket kombinasi yang ada]
+    D --> E[Isi Form Penjadwalan Pertemuan]
+    E --> F[Kirim Form ke Sistem]
+    F --> G[Kirim Form ke Sistem]
+    G --> H[Sistem Kirim Notifikasi ke Admin]
+    H --> I{Permintaan Revisi dari Admin?}
+    I -->|Ya| F
+    I -->|Tidak| J[Selesai]
+    J --> K[End]

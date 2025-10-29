@@ -29,6 +29,7 @@ class StorePromotionRequest extends FormRequest
             'end_date' => 'required|date_format:Y-m-d',
             'is_header' => 'nullable|boolean',
             'term_and_conditions.*' => 'required|string|max:255',
+            'quota' => 'nullable|integer|min:1',
         ];
     }
 }

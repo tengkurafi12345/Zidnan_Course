@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
 use App\Models\Promotion;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class PromoController extends Controller
@@ -11,9 +12,14 @@ class PromoController extends Controller
     /**
      * @return View
      */
-    public function index(): View
+    public function index(Request $request): View
     {
+        $month = $request->query('month');
+
         $promotions = Promotion::query()
+            ->when($month, function ($query) use ($month) {
+                return $query->whereMonth('end_date', $month);
+            })
             ->orderByDesc('created_at')
             ->paginate(9);
 
@@ -29,7 +35,7 @@ class PromoController extends Controller
             ->limit(2)
             ->get();
 
-        return view('Frontend.promo', compact(['promotions', 'leftHeaders', 'rightHeaders']));
+        return view('Frontend.promo', compact(['promotions', 'leftHeaders', 'rightHeaders', 'month']));
     }
 
     /**

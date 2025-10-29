@@ -1,0 +1,126 @@
+/* ---------- Theme colors ---------- */
+:root{
+    --ungu: #d42acc;
+    --ungu-2: #a66bbe;
+    --abu-soft: #b5b5b5;
+    --glass-bg: rgba(255,255,255,0.6);
+}
+
+/* Carousel & header */
+/* ---------- Sidebar Filter (dropdown) ---------- */
+.filter-toggle { cursor: pointer; }
+.filter-toggle .icon { transition: transform .3s ease; }
+.filter-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all .42s cubic-bezier(.2,.9,.2,1);
+}
+.filter-content.show {
+    max-height: 720px; /* cukup besar untuk daftar bulan + reset */
+    opacity: 1;
+}
+.bg-purple { background-color: var(--ungu) !important; color: #fff; }
+.text-purple { color: var(--ungu) !important; }
+
+/* ---------- Promo cards ---------- */
+.promo-card {
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform .28s ease, box-shadow .28s ease, filter .28s ease, opacity .28s ease;
+    border: 1px solid rgba(0,0,0,0.04);
+    background: #fff;
+}
+/* hover effect for active cards */
+.promo-card.active:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 30px rgba(100, 75, 140, 0.12);
+}
+
+.promo-img-wrap {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+.promo-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .6s ease;
+}
+.promo-card.active .promo-img-wrap img {
+    transform: scale(1);
+}
+.promo-card.active:hover .promo-img-wrap img {
+    transform: scale(1.03);
+}
+
+/* ---------- Ribbon R3 (glossy premium) ---------- */
+.ribbon {
+    position: absolute;
+    top: 12px;
+    left: -36px; /* adjust for diagonal */
+    transform: rotate(-45deg);
+    width: 200px;
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 8px 0;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+.ribbon.aktif {
+    background: linear-gradient(180deg, #a66bbe 0%, var(--ungu) 100%);
+}
+.ribbon.berakhir {
+    background: linear-gradient(180deg,#d0d0d0 0%, var(--abu-soft) 100%);
+}
+.ribbon.akan {
+    background: linear-gradient(180deg, #c9a3e0 0%, #bba0d9 100%);
+    color: #fff;
+}
+
+/* badge top-right small */
+.status-badge {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    z-index: 12;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 11px;
+    color: #fff;
+    backdrop-filter: blur(6px);
+}
+.status-badge.aktif { background: rgba(38,166,91,0.95); } /* small green accent */
+.status-badge.berakhir { background: rgba(0,0,0,0.6); }
+.status-badge.akan { background: rgba(255,193,7,0.95); color:#111; } /* amber for coming soon */
+
+/* ---------- Non active card visual (D - blur) ---------- */
+.promo-card.inactive {
+    filter: grayscale(.100) blur(1px);
+    opacity: .50;
+    pointer-events: none; /* non clickable */
+}
+
+/* make link inside still readable (we'll disable pointer on anchor wrapper) */
+.promo-body { padding: 12px; }
+
+.card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #2b2340;
+}
+.card-sub {
+    font-size: .88rem;
+    color: #6b6b6b;
+}
+
+/* responsive tweaks */
+@media(max-width: 767px){
+    .promo-img-wrap { height: 150px; }
+    .ribbon { left: -30px; width: 170px; top: 8px; padding: 6px 0; font-size: 11px; }
+}

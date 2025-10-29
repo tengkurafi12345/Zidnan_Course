@@ -68,6 +68,9 @@
                 <input type="date" class="form-control" name="end_date" placeholder="Sampai" aria-label="Sampai">
             </div>
 
+            <p>Kuota</p>
+            <input type="number" name="quota" class="form-control" value="{{ old('quota') }}">
+
             <p>Tampilkan Sebagai Header?</p>
             <div class="form-check mb-3">
                 <input

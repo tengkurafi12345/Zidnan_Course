@@ -69,6 +69,9 @@
                 <input type="date" class="form-control" name="end_date" placeholder="Sampai" aria-label="Sampai" value="{{ old('end_date', $promotion->end_date->format('Y-m-d')) }}">
             </div>
 
+            <p>Kuota</p>
+            <input type="number" name="quota" class="form-control box" value="{{ old('quota', $promotion->quota) }}">
+
             <p>Tampilkan Sebagai Header?</p>
             <div class="form-check mb-3">
                 <input
