@@ -119,6 +119,29 @@
     color: #6b6b6b;
 }
 
+/* ---------- Buttons - promo detail ---------- */
+.btn-purple {
+    background-color: var(--ungu);
+    border: none;
+    transition: all 0.3s ease;
+}
+.btn-purple:hover {
+    background-color: #b91fb0;
+    transform: translateY(-2px);
+}
+.btn-outline-purple {
+    color: var(--ungu);
+    border: 2px solid var(--ungu);
+    background: transparent;
+    transition: all 0.3s ease;
+}
+.btn-outline-purple:hover {
+    background-color: var(--ungu);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+
 /* responsive tweaks */
 @media(max-width: 767px){
     .promo-img-wrap { height: 150px; }

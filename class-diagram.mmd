@@ -1,0 +1,267 @@
+classDiagram
+%% ========================================
+%% 🧩 Zidnan Course - Class Diagram (ERD + Use Case)
+%% ========================================
+
+%% ========== USER & ROLE SYSTEM ==========
+    class User {
+        +bigint id
+        +string name
+        +string username
+        +string phone
+        +string email
+        +string password
+        +timestamp email_verified_at
+        +timestamp created_at
+        +timestamp updated_at
+
+        +login()
+        +logout()
+        +updateProfile()
+        +manageMasterData()
+        +approveReport()
+        +sendMonthlyReport()
+    }
+
+    class Role {
+        +bigint id
+        +string name
+        +string guard_name
+        +timestamp created_at
+        +timestamp updated_at
+
+        +assignPermission()
+        +removePermission()
+    }
+
+    class Permission {
+        +bigint id
+        +string name
+        +string guard_name
+        +timestamp created_at
+        +timestamp updated_at
+
+        +updatePermission()
+    }
+
+    User "1" -- "*" Role : "has roles"
+    Role "*" -- "*" Permission : "grants"
+
+%% ========== AKADEMIK SYSTEM ==========
+    class Student {
+        +char(36) id
+        +string name
+        +string registration_number
+        +date birth_date
+        +string birth_place
+        +string gender
+        +int age
+        +string class_status
+        +string school_name
+        +text address
+        +string district
+        +string phone_number
+        +string blood_type
+        +string father_name
+        +string mother_name
+        +string father_occupation
+        +string mother_occupation
+        +timestamp created_at
+        +timestamp updated_at
+
+        +viewReport()
+        +viewHistory()
+        +updateStudentData()
+    }
+
+    class Guardian {
+        +char(36) id
+        +string name
+        +string email
+        +string phone_number
+        +char(36) student_id
+        +timestamp created_at
+        +timestamp updated_at
+
+        +receiveNotification()
+        +payInvoice()
+        +downloadReport()
+    }
+
+    Guardian "1" --> "1" Student : "has child"
+
+    class Teacher {
+        +char(36) id
+        +string name
+        +string email
+        +string phone
+        +string address
+        +string gender
+        +date birthday
+        +string birthplace
+        +string domicile
+        +tinyint status
+        +date start_joining
+        +text bio
+        +timestamp created_at
+        +timestamp updated_at
+
+        +createMeeting()
+        +markAttendance()
+        +fillDailyReport()
+        +fillMonthlyEvaluation()
+        +viewSchedule()
+    }
+
+    class ProgramClass {
+        +char(36) id
+        +string name
+        +string caption
+        +text description
+        +longtext list_of_feature
+        +string logo
+        +char(36) created_by_id
+        +timestamp created_at
+        +timestamp updated_at
+
+        +addProgramClass()
+        +updateProgramClass()
+    }
+
+    class LessonLevel {
+        +char(36) id
+        +char(36) program_class_id
+        +string code
+        +string name
+        +string description
+        +string class_level
+        +tinyint status
+        +date start_date
+        +date end_date
+        +char(36) created_by_id
+        +timestamp created_at
+        +timestamp updated_at
+
+        +updateLessonLevel()
+        +activateLevel()
+        +deactivateLevel()
+    }
+
+    ProgramClass "1" --> "*" LessonLevel : "has levels"
+
+    class Program {
+        +char(36) id
+        +string code
+        +string name
+        +string description
+        +char(36) created_by_id
+        +timestamp created_at
+        +timestamp updated_at
+
+        +createProgram()
+        +updateProgram()
+    }
+
+    class PacketCombination {
+        +char(36) id
+        +char(36) lesson_level_id
+        +char(36) program_id
+        +string price
+        +tinyint published_on
+        +tinyint status
+        +char(36) created_by_id
+        +timestamp created_at
+        +timestamp updated_at
+
+        +combineProgramAndProgram()
+        +makePrice()
+        +publishPacket()
+        +updatePacket()
+    }
+
+    LessonLevel "1" --> "*" PacketCombination : "combines"
+    Program "1" --> "*" PacketCombination : "included in"
+
+    class TeacherPlacement {
+        +char(36) id
+        +char(36) teacher_id
+        +char(36) student_id
+        +char(36) packet_combination_id
+        +float meeting_times
+        +char(36) created_by_id
+        +timestamp created_at
+        +timestamp updated_at
+
+        +assignTeacherToStudent(teacher_id, student_id, packet_combination_id)
+        +updatePlacement(teacher_id, student_id, packet_combination_id)
+        +checkScheduleConflict(teacher_id)
+        +validateAvailability(teacher_id)
+        +removePlacement(placement_id)
+    }
+
+    Teacher "1" --> "*" TeacherPlacement : "teaches"
+    Student "1" --> "*" TeacherPlacement : "assigned to"
+    PacketCombination "1" --> "*" TeacherPlacement : "belongs to"
+
+    class Meeting {
+        +char(36) id
+        +char(36) teacher_placement_id
+        +string code
+        +timestamp scheduled_start_time
+        +timestamp scheduled_end_time
+        +timestamp actual_start_time
+        +timestamp actual_end_time
+        +AttendanceStatus attendance_status
+        +string location
+        +text daily_report
+        +char(36) created_by_id
+        +timestamp created_at
+        +timestamp updated_at
+
+        +scheduleMeeting(teacher_id, student_id, date, time)
+        +markAttendance()
+        +recordActualTime()
+        +fillDailyReport()
+        +getMeetingSummary()
+        +createDailyReport(meeting_id, data)
+        +submitReport(meeting_id)
+        +getReportHistory(student_id)
+    }
+
+    TeacherPlacement "1" --> "*" Meeting : "includes"
+
+%% ========== PAYMENT SYSTEM ==========
+    class PaymentProcessor {
+        +char(36) invoice_id
+        +char(36) guardian_id
+        +decimal amount
+        +string payment_status
+        +string payment_method
+        +timestamp transaction_date
+
+        +createInvoice(guardian_id, amount)
+        +confirmPayment(invoice_id)
+        +processOfflinePayment(invoice_id, proof_file)
+        +updatePaymentStatus(invoice_id, status)
+        +getPaymentHistory(guardian_id)
+    }
+
+    Guardian "1" --> "*" PaymentProcessor : "makes payments"
+
+%% ========== NOTIFICATION SYSTEM ==========
+    class WhatsAppNotifier {
+        +string phone_number
+        +text message_content
+        +string attachment_url
+        +string send_status
+        +text error_log
+
+        +sendReportNotification(guardian_id, report_link)
+        +sendPaymentReminder(guardian_id, amount, due_date)
+        +retryFailedMessages()
+        +logError(message)
+    }
+
+    Guardian "1" --> "*" WhatsAppNotifier : "receives messages"
+    WhatsAppNotifier --> PaymentProcessor : "notifies payment status"
+    WhatsAppNotifier --> Meeting : "sends meeting updates"

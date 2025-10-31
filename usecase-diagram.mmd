@@ -1,0 +1,65 @@
+flowchart TB
+%% === Aktor ===
+subgraph LeftSide[ ]
+direction TB
+Admin(["👨‍💼 Admin\nLembaga"])
+Tutor(["👨‍🏫 Tentor\n(Guru Les)"])
+end
+
+subgraph RightSide[ ]
+direction TB
+Parent(["👨‍👩‍👧 Wali Siswa"])
+end
+
+%% === Sistem ===
+subgraph System["📘 Sistem Rapot Digital Zidnan Course"]
+direction TB
+
+%% --- Admin ---
+A1["Kelola Data Master"]
+A2["Penempatan Guru & Siswa"]
+A3["Monitoring Data Akademik"]
+A4["Review & Approve Rapot Bulanan\n(include: Generate PDF)"]
+A5["Distribusi Laporan & Tagihan"]
+
+%% --- Tentor ---
+T1["Manajemen Pertemuan & Absensi"]
+T2["Isi Laporan Harian"]
+T3["Isi Evaluasi Bulanan\n(include: Ajukan Rapot)\n(extend: Revisi Rapot)"]
+
+%% --- Wali Siswa ---
+W1["Akses Laporan & Riwayat Belajar"]
+W2["Notifikasi & Pembayaran\n(extend: Konfirmasi Pembayaran)"]
+
+end
+
+%% === Relasi Aktor ===
+Admin --> A1
+Admin --> A2
+Admin --> A3
+Admin --> A4
+Admin --> A5
+
+Tutor --> T1
+Tutor --> T2
+Tutor --> T3
+
+Parent --> W1
+Parent --> W2
+
+%% === Relasi antar Use Case (Include & Extend) ===
+A2 --> A1:::include
+A4 --> A3:::include
+A5 --> A4:::include
+A5 -.-> W2:::extend
+
+T2 --> T1:::include
+T3 --> T2:::include
+T3 --> A3:::include
+T3 -.-> |"Jika laporan ditolak"| A4:::extend
+
+W2 -.-> |"Jika belum bayar,\nrapot tidak dikirim via WA,\nnamun bisa dilihat di web"| W1:::extend
+
+%% === Style ===
+classDef include stroke:#7a73ff,stroke-width:2px,stroke-dasharray:5 5;
+classDef extend stroke:#d42acc,stroke-width:2px,stroke-dasharray:5 5;

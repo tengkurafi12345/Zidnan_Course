@@ -15,7 +15,7 @@ class MeetingSetupController extends Controller
     public function index()
     {
         $teacher = Teacher::where('email', Auth::user()->email)->first();
-        $teacherPlacements = TeacherPlacement::where('teacher_id', $teacher->id)->get();
+        $teacherPlacements = TeacherPlacement::where('teacher_id', $teacher->id)->with(["packetCombination.lessonLevel", "packetCombination.program"])->get();
 
         // dd($placementTeachers);
         return view('Backend.Teacher.Meeting.Setup.index', compact('teacherPlacements'));
