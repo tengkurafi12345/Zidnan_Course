@@ -222,35 +222,31 @@
                             </td>
                             <td style="width: 6rem">
                                 @php
-                                    $status = 'Belum'; // Status default
-                                    $statusClass = 'secondary'; // Warna default
+                                    $status = 'Tidak Hadir';
+                                    $statusClass = 'secondary';
+                            
+                                    if (
+                                        $meeting->actual_start_time &&
+                                        $meeting->actual_end_time &&
+                                        $meeting->scheduled_start_time &&
+                                        $meeting->scheduled_end_time
+                                    ) {
+                                        $scheduledDuration = strtotime($meeting->scheduled_end_time) - strtotime($meeting->scheduled_start_time);
+                                        $actualDuration = strtotime($meeting->actual_end_time) - strtotime($meeting->actual_start_time);
 
-                                    if ($meeting->actual_start_time && $meeting->actual_end_time) {
-                                        $scheduledStart = \Carbon\Carbon::parse($meeting->scheduled_start_time);
-                                        $scheduledEnd = \Carbon\Carbon::parse($meeting->scheduled_end_time);
-                                        $actualStart = \Carbon\Carbon::parse($meeting->actual_start_time);
-                                        $actualEnd = \Carbon\Carbon::parse($meeting->actual_end_time);
-
-                                        $scheduledDuration = $scheduledEnd->diffInMinutes($scheduledStart);
-                                        $actualDuration = $actualEnd->diffInMinutes($actualStart);
-
-                                        if ($actualStart->eq($scheduledStart) && $actualEnd->eq($scheduledEnd)) {
+                                        if ($actualDuration === $scheduledDuration) {
                                             $status = 'Hadir';
-                                            $statusClass = 'success'; // Hijau
+                                            $statusClass = 'success';
                                         } elseif ($actualDuration < $scheduledDuration) {
                                             $status = 'Kurang';
-                                            $statusClass = 'danger'; // Merah
-                                        } elseif ($actualStart->gt($scheduledStart)) {
-                                            $status = 'Mundur';
-                                            $statusClass = 'warning'; // Kuning
+                                            $statusClass = 'danger';
+                                        } else {
+                                            $status = 'Lebih';
+                                            $statusClass = 'warning';
                                         }
                                     }
-
-                                    if ($meeting->attendance_status == 'Hangus') {
-                                        $status = 'Hangus';
-                                        $statusClass = 'secondary'; // Abu-abu
-                                    }
                                 @endphp
+                            
                                 <span class="badge text-bg-{{ $statusClass }}">{{ $status }}</span>
                             </td>
                             <td style="width: 5rem">

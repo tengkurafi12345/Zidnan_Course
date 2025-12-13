@@ -8,11 +8,12 @@ use App\Models\Teacher;
 use App\Models\meetings;
 use Illuminate\Http\Request;
 use App\Models\TeacherPlacement;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
 class MeetingAttendanceController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
@@ -49,10 +50,7 @@ class MeetingAttendanceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(meetings $meetings)
-    {
-
-    }
+    public function show(meetings $meetings) {}
 
     /**
      * Show the form for editing the specified resource.
@@ -70,7 +68,6 @@ class MeetingAttendanceController extends Controller
         $meeting->update($request->all());
 
         return redirect()->route('meeting.attendance.index')->with('success', 'Meeting updated successfully');
-
     }
 
     public function masuk(Meeting $meeting)
@@ -88,34 +85,55 @@ class MeetingAttendanceController extends Controller
         $meeting->attendance_status = $this->tentukanStatusAbsensi($meeting); // Set status
         $meeting->save();
 
+        $meeting->refresh();
+
+
         return redirect()->route('meeting.attendance.index')
             ->with('success', 'Berhasil melakukan absensi keluar!');
     }
 
     // TODO: Masih perlu didiskusikan lagi
-    private function tentukanStatusAbsensi(Meeting $meeting)
+    private function tentukanStatusAbsensi(Meeting $meeting): string
     {
-        if (!$meeting->actual_start_time || !$meeting->actual_end_time) {
-            return 'Tidak Hadir';
+        $status = 'Tidak Hadir';
+        if (
+            !$meeting->actual_start_time ||
+            !$meeting->actual_end_time ||
+            !$meeting->scheduled_start_time ||
+            !$meeting->scheduled_end_time
+        ) {
+            $status = 'Tidak Hadir';
         }
 
-        $scheduledStart = Carbon::parse($meeting->scheduled_start_time);
-        $scheduledEnd = Carbon::parse($meeting->scheduled_end_time);
-        $actualStart = Carbon::parse($meeting->actual_start_time);
-        $actualEnd = Carbon::parse($meeting->actual_end_time);
 
-        $scheduledDuration = $scheduledEnd->diffInMinutes($scheduledStart);
-        $actualDuration = $actualEnd->diffInMinutes($actualStart);
+        $scheduledDuration = strtotime($meeting->scheduled_end_time) - strtotime($meeting->scheduled_start_time);
 
-        if ($actualStart->eq($scheduledStart) && $actualEnd->eq($scheduledEnd)) {
-            return 'Hadir';
-        } elseif ($actualDuration < $scheduledDuration) {
-            return 'Kurang';
-        } elseif ($actualStart->gt($scheduledStart)) {
-            return 'Mundur';
+        $actualDuration = strtotime($meeting->actual_end_time) - strtotime($meeting->actual_start_time);
+
+        Log::info('ABSENSI DEBUG', [
+            'scheduled' => $scheduledDuration,
+            'actual' => $actualDuration
+        ]);
+
+
+        // dd($scheduledDuration, $actualDuration, $actualDuration < $scheduledDuration);
+
+
+        if ($scheduledDuration <= 0) {
+            $status = 'Tidak Hadir';
         }
 
-        // Jika tidak memenuhi kondisi di atas, kembalikan status default
-        return 'Tidak Hadir';
+        if ($actualDuration === $scheduledDuration) {
+            $status = 'Hadir';
+        }
+
+        if ($actualDuration < $scheduledDuration) {
+            $status = 'Kurang';
+        }
+        if ($actualDuration > $scheduledDuration) {
+            $status = 'Lebih';
+        }
+
+        return $status;
     }
 }
