@@ -24,6 +24,7 @@ class LessonLevelFactory extends Factory
             'class_level' => $this->faker->numberBetween(1, 10),
             'start_date' => $this->faker->date(),
             'end_date' => $this->faker->date(),
+            'program_class_id' => \App\Models\ProgramClass::factory(),
         ];
     }
 }

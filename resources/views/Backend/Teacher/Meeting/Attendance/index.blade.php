@@ -172,7 +172,7 @@
                                 @foreach ($teacherPlacements as $teacherPlacement)
                                     <option value="{{ $teacherPlacement->id }}"
                                         {{ $selectedPlacementId == $teacherPlacement->id ? 'selected' : '' }}>
-                                        {{ $teacherPlacement->packetCombination->packet->name }} |
+                                        {{ $teacherPlacement->packetCombination->lessonLevel->name }} |
                                         {{ $teacherPlacement->packetCombination->program->name }} -
                                         {{ $teacherPlacement->meeting_times }}x |
                                         {{ $teacherPlacement->student->name }}
@@ -242,10 +242,11 @@
 
                             <td style="width: 6rem">
                                 @php
-                                    $status = 'Belum'; // Status default
+                                    $status = 'Tidak Hadir'; // Status default
                                     $statusClass = 'secondary'; // Warna default
 
                                     if ($meeting->actual_start_time && $meeting->actual_end_time) {
+                                        
                                         $scheduledStart = \Carbon\Carbon::parse($meeting->scheduled_start_time);
                                         $scheduledEnd = \Carbon\Carbon::parse($meeting->scheduled_end_time);
                                         $actualStart = \Carbon\Carbon::parse($meeting->actual_start_time);

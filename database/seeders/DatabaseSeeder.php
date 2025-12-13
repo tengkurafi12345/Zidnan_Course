@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\App;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,13 +17,19 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        if (App::environment('production')) {
+            $this->command?->warn('Database seeding skipped in production environment.');
+            return;
+        }
+        
         $this->call([
-//            LessonLevelSeeder::class,
-//            ProgramSeeder::class,
-//            PacketCombinationSeeder::class,
-//            TeacherSeeder::class,
-//            StudentSeeder::class,
-//            TeacherPlacementSeeder::class,
+            ProgramClassSeeder::class,
+            LessonLevelSeeder::class,
+            ProgramSeeder::class,
+            PacketCombinationSeeder::class,
+            TeacherSeeder::class,
+            StudentSeeder::class,
+            TeacherPlacementSeeder::class,
             UserSeeder::class,
             PromotionSeeder::class,
             JobSeeder::class,

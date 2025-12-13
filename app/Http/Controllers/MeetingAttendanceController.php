@@ -96,7 +96,7 @@ class MeetingAttendanceController extends Controller
     private function tentukanStatusAbsensi(Meeting $meeting)
     {
         if (!$meeting->actual_start_time || !$meeting->actual_end_time) {
-            return 'Belum';
+            return 'Tidak Hadir';
         }
 
         $scheduledStart = Carbon::parse($meeting->scheduled_start_time);
@@ -116,6 +116,6 @@ class MeetingAttendanceController extends Controller
         }
 
         // Jika tidak memenuhi kondisi di atas, kembalikan status default
-        return 'Belum';
+        return 'Tidak Hadir';
     }
 }

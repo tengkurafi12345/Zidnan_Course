@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class LessonLevel extends Model
 {
-    use HasFactory, HasUuids;
+    use HasUuids;
 
     protected $table = "lesson_levels";
     protected $fillable = [

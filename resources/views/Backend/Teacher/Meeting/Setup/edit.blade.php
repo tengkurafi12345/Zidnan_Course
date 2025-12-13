@@ -55,7 +55,7 @@
             <h3 class="mb-5">Pengaturan Waktu Pertemuan</h3>
 
             {{-- <h3>Edit Guru</h3> --}}
-            <p class="fs-5 p-0 m-0 ">Nama Paket: {{ $teacherPlacement->packetCombination->packet->name }}</p>
+            <p class="fs-5 p-0 m-0 ">Nama Paket: {{ $teacherPlacement->packetCombination->lessonLevel->name }}</p>
             <p class="fs-5 p-0 m-0">Nama Program: {{ $teacherPlacement->packetCombination->program->name }}</p>
             <p class="fs-5 p-0 m-0">Nama Siswa: {{ $teacherPlacement->student->name }} - {{  $teacherPlacement->student->class_status  }}</p>
 

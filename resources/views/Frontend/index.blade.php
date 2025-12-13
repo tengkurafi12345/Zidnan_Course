@@ -170,27 +170,29 @@
                 </div>
             </div>
             <div class="col-md-7 ">
-                <div class="text-start">
-                    <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">{{ $programPrivate->name }}</p>
-                    <h1 class="text-dark mb-4">{{ $programPrivate->caption }}</h1>
-                    <p class="pb-2">{{ $programPrivate->description }}</p>
-                    <div class="row">
-                        <div class="col-5 pe-0">
-                            <img src="{{ asset('img/brand/privat.png') }}" alt=""
-                                 class="w-75 rounded-circle bg-purple p-1">
+                @if ($programPrivate)
+                    <div class="text-start">
+                        <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">{{ $programPrivate->name }}</p>
+                        <h1 class="text-dark mb-4">{{ $programPrivate->caption }}</h1>
+                        <p class="pb-2">{{ $programPrivate->description }}</p>
+                        <div class="row">
+                            <div class="col-5 pe-0">
+                                <img src="{{ asset('img/brand/privat.png') }}" alt=""
+                                    class="w-75 rounded-circle bg-purple p-1">
+                            </div>
+                            <div class="col-7 ps-0 fs-6">
+                                <ul class="list-inline">
+                                    @foreach($programPrivate->list_of_feature as $feature)
+                                        <li class="py-2 border-top border-bottom"><i
+                                                class="fa-solid fa-check-double me-2 text-purple"></i> {{ $feature }}
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
-                        <div class="col-7 ps-0 fs-6">
-                            <ul class="list-inline">
-                                @foreach($programPrivate->list_of_feature as $feature)
-                                    <li class="py-2 border-top border-bottom"><i
-                                            class="fa-solid fa-check-double me-2 text-purple"></i> {{ $feature }}
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
+                        <a href="/kursus" class="btn btn-violet rounded-1 mt-1 mb-4">Daftar Sekarang</a>
                     </div>
-                    <a href="/kursus" class="btn btn-violet rounded-1 mt-1 mb-4">Daftar Sekarang</a>
-                </div>
+                @endif
             </div>
         </div>
     </div>
@@ -248,27 +250,29 @@
     <div class="container-fluid py-5 mt-5">
         <div class="row">
             <div class="col-md-7 ">
-                <div class="text-start">
-                    <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">{{ $programBimbel->name }}</p>
-                    <h1 class="text-dark mb-4">{{ $programBimbel->caption }}</h1>
-                    <p class="pb-2">{{ $programBimbel->description }}</p>
-                    <div class="row">
-                        <div class="col-5 pe-0">
-                            <img src="{{ asset('img/brand/bimbel.png') }}" alt=""
-                                 class="w-75 rounded-circle bg-purple p-1">
+                @if ($programBimbel)
+                    <div class="text-start">
+                        <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">{{ $programBimbel->name }}</p>
+                        <h1 class="text-dark mb-4">{{ $programBimbel->caption }}</h1>
+                        <p class="pb-2">{{ $programBimbel->description }}</p>
+                        <div class="row">
+                            <div class="col-5 pe-0">
+                                <img src="{{ asset('img/brand/bimbel.png') }}" alt=""
+                                    class="w-75 rounded-circle bg-purple p-1">
+                            </div>
+                            <div class="col-7 ps-0">
+                                <ul class="list-inline fs-6">
+                                    @foreach($programBimbel->list_of_feature as $feature)
+                                        <li class="py-2 border-top border-bottom"><i
+                                                class="fa-solid fa-check-double me-2 text-purple"></i> {{ $feature }}
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
-                        <div class="col-7 ps-0">
-                            <ul class="list-inline fs-6">
-                                @foreach($programBimbel->list_of_feature as $feature)
-                                    <li class="py-2 border-top border-bottom"><i
-                                            class="fa-solid fa-check-double me-2 text-purple"></i> {{ $feature }}
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
+                        <a href="/kursus" class="btn btn-violet rounded-1 mt-1 mb-4">Daftar Sekarang</a>
                     </div>
-                    <a href="/kursus" class="btn btn-violet rounded-1 mt-1 mb-4">Daftar Sekarang</a>
-                </div>
+                @endif
             </div>
             <div class="col-md-5">
                 <div class="row">
@@ -349,27 +353,29 @@
                 </div>
             </div>
             <div class="col-md-7 ">
-                <div class="text-start mt-5">
-                    <p class="text-purple mb-2 mt-sm-4 border-bottom-purple border-2 d-inline-block p-2">{{ $programSantriWeekend->name }}</p>
-                    <h1 class="text-dark mb-4">{{ $programSantriWeekend->caption }}</h1>
-                    <p class="pb-2">{{ $programSantriWeekend->description }}</p>
-                    <div class="row">
-                        <div class="col-5 pe-0">
-                            <img src="{{ asset('img/brand/santri-weekend.png') }}" alt=""
-                                 class="w-75 rounded-circle bg-purple p-1">
+                @if ($programSantriWeekend)
+                    <div class="text-start mt-5">
+                        <p class="text-purple mb-2 mt-sm-4 border-bottom-purple border-2 d-inline-block p-2">{{ $programSantriWeekend->name }}</p>
+                        <h1 class="text-dark mb-4">{{ $programSantriWeekend->caption }}</h1>
+                        <p class="pb-2">{{ $programSantriWeekend->description }}</p>
+                        <div class="row">
+                            <div class="col-5 pe-0">
+                                <img src="{{ asset('img/brand/santri-weekend.png') }}" alt=""
+                                    class="w-75 rounded-circle bg-purple p-1">
+                            </div>
+                            <div class="col-7 ps-0">
+                                <ul class="list-inline fs-6">
+                                    @foreach($programSantriWeekend->list_of_feature as $feature)
+                                        <li class="py-2 border-top border-bottom"><i
+                                                class="fa-solid fa-check-double me-2 text-purple"></i> {{ $feature }}
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
-                        <div class="col-7 ps-0">
-                            <ul class="list-inline fs-6">
-                                @foreach($programSantriWeekend->list_of_feature as $feature)
-                                    <li class="py-2 border-top border-bottom"><i
-                                            class="fa-solid fa-check-double me-2 text-purple"></i> {{ $feature }}
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
+                        <a href="/kursus" class="btn btn-violet rounded-1 mt-1 mb-4">Daftar Sekarang</a>
                     </div>
-                    <a href="/kursus" class="btn btn-violet rounded-1 mt-1 mb-4">Daftar Sekarang</a>
-                </div>
+                @endif
             </div>
         </div>
     </div>
@@ -425,27 +431,29 @@
     <div class="container-fluid mt-5 py-5">
         <div class="row">
             <div class="col-md-7 ">
-                <div class="text-start">
-                    <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">{{ $programCorporateQuran->name }}</p>
-                    <h1 class="text-dark mb-4">{{ $programCorporateQuran->caption }}</h1>
-                    <p class="pb-2">{{ $programCorporateQuran->description }}</p>
-                    <div class="row">
-                        <div class="col-5 pe-0">
-                            <img src="{{ asset('img/brand/perusahaan-mengaji.png') }}" alt=""
-                                 class="w-75 rounded-circle bg-purple p-1">
+                @if ($programCorporateQuran)
+                    <div class="text-start">
+                        <p class="text-purple mb-2 border-bottom-purple border-2 d-inline-block p-2">{{ $programCorporateQuran->name }}</p>
+                        <h1 class="text-dark mb-4">{{ $programCorporateQuran->caption }}</h1>
+                        <p class="pb-2">{{ $programCorporateQuran->description }}</p>
+                        <div class="row">
+                            <div class="col-5 pe-0">
+                                <img src="{{ asset('img/brand/perusahaan-mengaji.png') }}" alt=""
+                                    class="w-75 rounded-circle bg-purple p-1">
+                            </div>
+                            <div class="col-7 ps-0">
+                                <ul class="list-inline fs-6">
+                                    @foreach($programCorporateQuran->list_of_feature as $feature)
+                                        <li class="py-2 border-top border-bottom"><i
+                                                class="fa-solid fa-check-double me-2 text-purple"></i> {{ $feature }}
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
-                        <div class="col-7 ps-0">
-                            <ul class="list-inline fs-6">
-                                @foreach($programCorporateQuran->list_of_feature as $feature)
-                                    <li class="py-2 border-top border-bottom"><i
-                                            class="fa-solid fa-check-double me-2 text-purple"></i> {{ $feature }}
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
+                        <a href="/kursus" class="btn btn-violet rounded-1 mt-1 mb-4">Daftar Sekarang</a>
                     </div>
-                    <a href="/kursus" class="btn btn-violet rounded-1 mt-1 mb-4">Daftar Sekarang</a>
-                </div>
+                @endif
             </div>
             <div class="col-md-5">
                 <div class="row">
