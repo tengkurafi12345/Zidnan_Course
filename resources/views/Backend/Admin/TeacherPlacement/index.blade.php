@@ -191,8 +191,8 @@
                     @forelse($teacherPlacements as $teacherPlacement)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $teacherPlacement->packetCombination->lessonLevel->name }}</td>
-                            <td>{{ $teacherPlacement->packetCombination->program->name }}</td>
+                            <td>{{ $teacherPlacement->packetCombination?->lessonLevel->name }}</td>
+                            <td>{{ $teacherPlacement->packetCombination?->program->name }}</td>
                             <td>{{ $teacherPlacement->teacher->name }}</td>
                             <td>{{ $teacherPlacement->student->name }}</td>
                             <td>{{ $teacherPlacement->meeting_times }}</td>

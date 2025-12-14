@@ -1518,6 +1518,10 @@ table.table .btn-danger:hover {
     table.table .btn {
         font-size: 12px;
     }
+
+    .form-container form {
+        width: 50rem;
+    }
 }
 
 .footer{

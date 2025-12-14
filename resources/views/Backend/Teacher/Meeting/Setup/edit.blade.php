@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Guru')
+@section('title', 'Pengaturan Jadwal Pertemuan')
 @section('css')
     <style>
         /* Styling untuk alert */
@@ -68,7 +68,7 @@
                             <h5>Pertemuan Ke-{{ $key + 1 }}</h5>
 
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-6 mb-3">
                                     <label>Waktu Mulai</label>
                                     <input type="datetime-local" name="meetings[{{ $key }}][scheduled_start_time]"
                                         class="form-control"
