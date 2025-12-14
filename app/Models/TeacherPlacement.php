@@ -14,7 +14,7 @@ class TeacherPlacement extends Model
     protected $table = 'teacher_placements';
 
     protected $fillable = [
-        'teacher_id', 'student_id', 'packet_combination_id', 'meeting_times'
+        'teacher_id', 'student_id', 'packet_combination_id', 'meeting_times', 'duration_minutes'
     ];
 
     public function teacher()

@@ -1307,10 +1307,10 @@ section{
    background-color: var(--white);
    border-radius: .5rem;
    padding: 2rem;
-   width: 50rem;
+   width: 80rem;
 }
 
-.form-container form h3{
+.form-container form h3, h2{
    font-size: 2.5rem;
    text-transform: capitalize;
    color: var(--black);
@@ -1330,9 +1330,10 @@ section{
 .form-container form .box{
    font-size: 1.8rem;
    color: var(--black);
+   border: var(--border);
    border-radius: .5rem;
    padding: 1.4rem;
-   background-color: var(--light-bg);
+   background-color: var(--white);
    width: 100%;
    margin: 1rem 0;
 }

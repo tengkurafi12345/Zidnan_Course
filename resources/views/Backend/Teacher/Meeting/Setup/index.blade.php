@@ -193,10 +193,10 @@
                             <td>{{ $teacherPlacement->student->name }}</td>
                             <td style="width: 5rem">
                                 <div class="row">
-                                    {{-- <div class="col">
+                                    <div class="col">
                                         <a href="{{ route('meeting.setup.show', $teacherPlacement->id) }}"
                                             class="btn btn-primary mb-1"><i class="fas fa-eye"></i></a>
-                                    </div> --}}
+                                    </div>
                                     <div class="col">
                                         <a href="{{ route('meeting.setup.edit', $teacherPlacement->id) }}"
                                             class="btn btn-warning"><i class="fas fa-pen"></i></a>

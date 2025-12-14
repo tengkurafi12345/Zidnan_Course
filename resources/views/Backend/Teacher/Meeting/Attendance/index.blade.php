@@ -250,34 +250,20 @@
 
                             <td style="width: 6rem">
                                 @php
-                                    $status = 'Tidak Hadir';
-                                    $statusClass = 'secondary';
+                                    $status = $meeting->attendance_status;
 
-                                    if (
-                                        $meeting->actual_start_time &&
-                                        $meeting->actual_end_time &&
-                                        $meeting->scheduled_start_time &&
-                                        $meeting->scheduled_end_time
-                                    ) {
-                                        $scheduledDuration = strtotime($meeting->scheduled_end_time) - strtotime($meeting->scheduled_start_time);
-                                        $actualDuration = strtotime($meeting->actual_end_time) - strtotime($meeting->actual_start_time);
+                                    if ($status == 'Hadir') {
+                                        $statusClass = 'success';
 
-                                        if ($actualDuration === $scheduledDuration) {
-                                            $status = 'Hadir';
-                                            $statusClass = 'success';
-                                        } elseif ($actualDuration < $scheduledDuration) {
-                                            $status = 'Kurang';
-                                            $statusClass = 'danger';
-                                        } else {
-                                            $status = 'Lebih';
-                                            $statusClass = 'warning';
-                                        }
-                                    }
+                                    } elseif ($status == 'Kurang') {
+                                        $statusClass = 'danger';
 
-                                    // Override jika status diset manual dari DB
-                                    if ($meeting->attendance_status === 'Tidak Hadir') {
-                                        $status = 'Tidak Hadir';
+                                    } elseif ($status == 'Lebih') {
+                                        $statusClass = 'primary';
+
+                                    } else {
                                         $statusClass = 'secondary';
+                                        
                                     }
                                 @endphp
 

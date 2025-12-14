@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->uuid('teacher_placement_id');
             $table->string('code', 50)->unique();
+            $table->integer('duration_minutes')->default(60);
             $table->timestamp('scheduled_start_time')->nullable();
             $table->timestamp('scheduled_end_time')->nullable();
             $table->timestamp('actual_start_time')->nullable();

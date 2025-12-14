@@ -35,55 +35,44 @@
 @endsection
 
 @section('content')
-    <section class="form-container">
-        {{-- Menampilkan semua error validasi --}}
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-                <span class="closebtn">&times;</span>
-            </div>
-        @endif
+<section class="courses">
+    <h1 class="heading">Detail Jadwal Pertemuan</h1>
 
+    <a href="{{ route('meeting.setup.edit', $teacherPlacement->id) }}"
+       class="btn btn-warning mb-3">
+        <i class="fas fa-pen"></i> Edit Jadwal
+    </a>
 
-        <form action="{{ route('meeting.setup.update', $teacherPlacement->id) }}" method="post" enctype="multipart/form-data">
-            @csrf
-            @method('PATCH')
-            {{-- <h3>Edit Guru</h3> --}}
-            <p>Nama Paket: {{ $teacherPlacement->packetCombination->packet->name }}</p>
-            <p>Nama Program: {{ $teacherPlacement->packetCombination->program->name }}</p>
-            <p>Nama Siswa: {{ $teacherPlacement->student->name }} - {{  $teacherPlacement->student->class_status  }}</p>
+    <div class="card p-3">
+        <p><strong>Paket:</strong> {{ $teacherPlacement->packetCombination->lessonLevel->name }}</p>
+        <p><strong>Program:</strong> {{ $teacherPlacement->packetCombination->program->name }}</p>
+        <p><strong>Siswa:</strong> {{ $teacherPlacement->student->name }}</p>
+        <p><strong>Durasi:</strong> {{ $teacherPlacement->duration_minutes }} menit</p>
+    </div>
 
-            <span>Detail Pertemuan:</span>
+    <hr>
 
-            @php
-                $no = 1;
-            @endphp
-            {{-- Looping untuk setiap pertemuan --}}
-            @foreach ($teacherPlacement->meetings as $key => $meeting)
-                <div class="row">
-                    <div class="col-md-2">
-                        <p>Ke-{{ $key + 1 }}</p>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="mb-3">
-                            <label for="scheduled_start_time_{{ $key }}" class="form-label">Waktu Mulai:</label>
-                            <input class="form-control" type="date" id="scheduled_start_time_{{ $key }}" name="meetings[{{ $key }}][scheduled_start_time]" value="{{ \Carbon\Carbon::parse($meeting->scheduled_start_time)->format('d/m/Y') }}" required>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="mb-3">
-                            <label for="scheduled_end_time_{{ $key }}" class="form-label">Waktu Berakhir:</label>
-                            <input class="form-control" type="date" id="scheduled_end_time_{{ $key }}" name="meetings[{{ $key }}][scheduled_end_time]" value="{{ \Carbon\Carbon::parse($meeting->scheduled_end_time)->format('d/m/Y') }}" required>
-                        </div>
-                    </div>
-                </div>
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Pertemuan</th>
+                <th>Mulai (Terjadwal)</th>
+                <th>Berakhir (Terjadwal)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($teacherPlacement->meetings as $meeting)
+                <tr>
+                    <td>Ke-{{ $loop->iteration }}</td>
+                    <td>{{ optional($meeting->scheduled_start_time)->format('d M Y H:i') ?? '-' }} </td>
+                    <td>{{ optional($meeting->scheduled_end_time)->format('d M Y H:i') ?? '-' }}</td>
+                </tr>
             @endforeach
+        </tbody>
+    </table>
 
-            <input type="submit" value="Update Guru" class="btn">
-        </form>
-    </section>
+    <a href="{{ route('meeting.setup.index') }}" class="btn btn-secondary mt-3">
+        Kembali
+    </a>
+</section>
 @endsection

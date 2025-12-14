@@ -115,24 +115,31 @@ class MeetingAttendanceController extends Controller
             'actual' => $actualDuration
         ]);
 
+        $tolerance = 60; // 1 menit (detik)
 
-        // dd($scheduledDuration, $actualDuration, $actualDuration < $scheduledDuration);
-
-
-        if ($scheduledDuration <= 0) {
+        $minAcceptable = $scheduledDuration - $tolerance;
+        $maxAcceptable = $scheduledDuration + $tolerance;
+       
+        if ($minAcceptable <= 0) {
             $status = 'Tidak Hadir';
         }
 
-        if ($actualDuration === $scheduledDuration) {
+        if ($actualDuration >= $minAcceptable && $actualDuration <= $maxAcceptable) {
             $status = 'Hadir';
-        }
-
-        if ($actualDuration < $scheduledDuration) {
+        } elseif ($actualDuration < $minAcceptable) {
             $status = 'Kurang';
-        }
-        if ($actualDuration > $scheduledDuration) {
+        } elseif ($actualDuration > $minAcceptable) {
             $status = 'Lebih';
         }
+
+        Log::info('ABSENSI DEBUG', [
+            'min_acceptable' => $minAcceptable,
+            'max_acceptable' => $maxAcceptable,
+            'scheduled' => $scheduledDuration,
+            'actual' => $actualDuration,
+            'tolerance' => $tolerance,
+            'status' => $status
+        ]);
 
         return $status;
     }

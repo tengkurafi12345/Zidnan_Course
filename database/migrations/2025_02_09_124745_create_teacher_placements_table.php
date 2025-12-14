@@ -17,6 +17,7 @@ return new class extends Migration
             $table->uuid('student_id');
             $table->uuid('packet_combination_id');
             $table->float('meeting_times')->default(8);
+            $table->integer('duration_minutes')->default(60);
             $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->foreign('packet_combination_id')->references('id')->on('packet_combinations')->onDelete('cascade');

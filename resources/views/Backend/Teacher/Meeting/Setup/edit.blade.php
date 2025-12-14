@@ -36,6 +36,8 @@
 
 @section('content')
     <section class="form-container">
+        <h3 class="heading">Pengaturan Jadwal Pertemuan</h3>
+
         {{-- Menampilkan semua error validasi --}}
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -48,50 +50,73 @@
             </div>
         @endif
 
-
-        <form action="{{ route('meeting.setup.update', $teacherPlacement->id) }}" method="post" enctype="multipart/form-data">
-            @csrf
-            @method('PATCH')
-            <h3 class="mb-5">Pengaturan Waktu Pertemuan</h3>
-
-            {{-- <h3>Edit Guru</h3> --}}
-            <p class="fs-5 p-0 m-0 ">Nama Paket: {{ $teacherPlacement->packetCombination->lessonLevel->name }}</p>
-            <p class="fs-5 p-0 m-0">Nama Program: {{ $teacherPlacement->packetCombination->program->name }}</p>
-            <p class="fs-5 p-0 m-0">Nama Siswa: {{ $teacherPlacement->student->name }} - {{  $teacherPlacement->student->class_status  }}</p>
-
-            <hr>
-            <span >Detail Pertemuan (Waktu yang dijadwalkan):</span>
-
-            @php
-                $no = 1;
-            @endphp
-            {{-- Looping untuk setiap pertemuan --}}
-            @foreach ($teacherPlacement->meetings as $key => $meeting)
-                <div class="row mt-2">
-                    <div class="col-md-2">
-                        <p class="fs-5 p-0 m-0">Ke-{{ $key + 1 }}</p>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="mb-3">
-                            <label for="scheduled_start_time_{{ $key }}" class="form-label">Waktu Mulai:</label>
-                            <input class="form-control" type="datetime-local" id="scheduled_start_time_{{ $key }}" name="meetings[{{ $key }}][scheduled_start_time]" value="{{ \Carbon\Carbon::parse($meeting->scheduled_start_time)->format('d/m/Y') }}">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="mb-3">
-                            <label for="scheduled_end_time_{{ $key }}" class="form-label">Waktu Berakhir:</label>
-                            <input class="form-control" type="datetime-local" id="scheduled_end_time_{{ $key }}" name="meetings[{{ $key }}][scheduled_end_time]" value="{{ \Carbon\Carbon::parse($meeting->scheduled_end_time)->format('d/m/Y') }}">
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-
-            <div class="row mt-2">
-                <div class="col-md-12">
-                    <a href="{{ route('meeting.setup.index') }}" class="btn btn-secondary">Kembali</a>
-                    <input type="submit" value="Update Guru" class="btn btn-purple">
-                </div>
+        <div class="card">
+            <div class="card-header bg-white ps-5 mt-3">
+                <p><strong>Paket:</strong> {{ $teacherPlacement->packetCombination->lessonLevel->name }}</p>
+                <p><strong>Program:</strong> {{ $teacherPlacement->packetCombination->program->name }}</p>
+                <p><strong>Siswa:</strong> {{ $teacherPlacement->student->name }}</p>
+                <p><strong>Durasi:</strong> {{ $teacherPlacement->duration_minutes }} menit</p>
             </div>
-        </form>
+
+            <div class="card-body">
+                <form action="{{ route('meeting.setup.update', $teacherPlacement->id) }}" method="POST" class="mt-3">
+                    @csrf
+                    @method('PATCH')
+
+                    @foreach ($teacherPlacement->meetings as $key => $meeting)
+                        <div class="card p-3 mb-3">
+                            <h5>Pertemuan Ke-{{ $key + 1 }}</h5>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Waktu Mulai</label>
+                                    <input type="datetime-local" name="meetings[{{ $key }}][scheduled_start_time]"
+                                        class="form-control"
+                                        value="{{ optional($meeting->scheduled_start_time)->format('Y-m-d\TH:i') }}">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>Waktu Berakhir (Otomatis)</label>
+                                    <input type="text" class="form-control"
+                                        value="{{ optional($meeting->scheduled_end_time)->format('d M Y H:i') }}" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+                    <div class="mt-3">
+                        <a href="{{ route('meeting.setup.show', $teacherPlacement->id) }}" class="btn btn-secondary">
+                            Batal
+                        </a>
+                        <button type="submit" name="clear_all" value="true" id="clear-all-btn" class="btn btn-warning">
+                            Kosongkan Semua Jadwal
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            Simpan Jadwal
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
     </section>
+
+    <script>
+        document.getElementById('clear-all-btn').addEventListener('click', function(event) {
+            event.preventDefault(); // Cegah submit form dulu
+            
+            // Tampilkan popup konfirmasi
+            var confirmed = confirm('Apakah Anda yakin ingin mengosongi semua jadwal? Tindakan ini tidak dapat dibatalkan.');
+            
+            if (confirmed) {
+                // Jika konfirmasi, kosongi semua input datetime-local
+                document.querySelectorAll('input[name*="scheduled_start_time"]').forEach(input => input.value = '');
+                
+                // Submit form setelah kosongi input
+                document.getElementById('meeting-form').submit();
+            }
+            // Jika tidak konfirmasi, tidak lakukan apa-apa
+        });
+    </script>
 @endsection

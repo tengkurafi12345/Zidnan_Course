@@ -15,6 +15,7 @@ class Meeting extends Model
     protected $fillable = [
         "teacher_placement_id",
         "code",
+        "duration_minutes",
         "scheduled_start_time",
         "scheduled_end_time",
         "actual_start_time",

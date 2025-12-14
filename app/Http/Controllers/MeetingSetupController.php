@@ -6,65 +6,96 @@ use App\Models\Teacher;
 use App\Models\TeacherPlacement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class MeetingSetupController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $teacher = Teacher::where('email', Auth::user()->email)->first();
-        $teacherPlacements = TeacherPlacement::where('teacher_id', $teacher->id)->with(["packetCombination.lessonLevel", "packetCombination.program"])->get();
+        $teacher = Teacher::where('email', Auth::user()->email)->firstOrFail();
 
-        // dd($placementTeachers);
+        $teacherPlacements = TeacherPlacement::where('teacher_id', $teacher->id)
+            ->with([
+                'student',
+                'packetCombination.lessonLevel',
+                'packetCombination.program',
+            ])
+            ->get();
+
         return view('Backend.Teacher.Meeting.Setup.index', compact('teacherPlacements'));
     }
 
-
-    /**
-     * Display the specified resource.
-     */
     public function show(TeacherPlacement $teacherPlacement)
     {
-        return view('Backend.Teacher.Meeting.Setup.edit', compact('teacherPlacement'));
+        $teacherPlacement->load('meetings');
+        $meeting = $teacherPlacement->meetings()->orderBy('id')->first();
+
+
+        return view('Backend.Teacher.Meeting.Setup.show', compact(['teacherPlacement', 'meeting']));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(TeacherPlacement $teacherPlacement)
     {
-        return view('Backend.Teacher.Meeting.Setup.edit', compact('teacherPlacement'));
+        $teacherPlacement->load('meetings');
+        $meeting = $teacherPlacement->meetings()->orderBy('id')->first();
+
+        return view('Backend.Teacher.Meeting.Setup.edit', compact(['teacherPlacement', 'meeting']));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, TeacherPlacement $teacherPlacement)
     {
-        // dd($request->all());
-        // Validasi input
         $request->validate([
-            'meetings.*.scheduled_start_time' => 'nullable',
-            'meetings.*.scheduled_end_time' => 'nullable',
+            'meetings.*.scheduled_start_time' => 'nullable|date',
         ]);
 
-        // Loop melalui data pertemuan yang dikirimkan
-        foreach ($request->input('meetings') as $key => $meetingData) {
-            // Ambil model Meeting yang sesuai (misalnya, berdasarkan ID jika ada, atau buat baru)
+        $meetingsData = $request->input('meetings');
+        $clearAll = $request->input('clear_all') === 'true'; // Cek jika tombol clear_all diklik
+
+        // Loop melalui data pertemuan
+        foreach ($meetingsData as $key => $meetingData) {
             $meeting = $teacherPlacement->meetings[$key];
 
-            // Update atribut-atribut model Meeting
-            $meeting->scheduled_start_time = $meetingData['scheduled_start_time'];
-            $meeting->scheduled_end_time = $meetingData['scheduled_end_time'];
+            if ($clearAll) {
+                // Jika tombol "Kosongkan Semua" diklik, kosongi semua jadwal
+                $meeting->update([
+                    'scheduled_start_time' => null,
+                    'scheduled_end_time' => null,
+                ]);
+            } else {
+                // Logika normal: cek apakah semua kosong atau update sebagian
+                $allEmpty = true;
+                foreach ($meetingsData as $data) {
+                    if (!empty($data['scheduled_start_time'])) {
+                        $allEmpty = false;
+                        break;
+                    }
+                }
 
-            // Simpan perubahan pada model Meeting
-            $meeting->save();
+                if ($allEmpty) {
+                    // Jika semua input kosong (tanpa klik tombol), kosongi semua
+                    $meeting->update([
+                        'scheduled_start_time' => null,
+                        'scheduled_end_time' => null,
+                    ]);
+                } else {
+                    // Update hanya yang ada nilai
+                    if (!empty($meetingData['scheduled_start_time'])) {
+                        $start = Carbon::parse($meetingData['scheduled_start_time']);
+                        $end = $start->copy()->addMinutes($teacherPlacement->duration_minutes);
+
+                        $meeting->update([
+                            'scheduled_start_time' => $start->toDateTimeString(),
+                            'scheduled_end_time' => $end->toDateTimeString(),
+                        ]);
+                    }
+                    // Jika kosong, skip
+                }
+            }
         }
 
-        // Redirect atau berikan response sesuai kebutuhan
+        // Redirect dengan pesan sukses
+        $message = $clearAll ? 'Semua jadwal berhasil dikosongi.' : 'Data pertemuan berhasil diatur.';
         return redirect()->route('meeting.setup.index')
-            ->with('success', 'Data pertemuan berhasil diatur.');
+            ->with('success', $message);
     }
 }

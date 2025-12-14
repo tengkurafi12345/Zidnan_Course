@@ -183,6 +183,7 @@
                         <th>Guru</th>
                         <th>Siswa</th>
                         <th>Jumlah Pertemuan</th>
+                        <th>Durasi Mengajar</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -191,14 +192,11 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $teacherPlacement->packetCombination->lessonLevel->name }}</td>
-                            <td>
-                                {{ $teacherPlacement->packetCombination->program->name }}
-                                <span class="badge badge-danger">{{ $teacherPlacement->meeting_times }} kali</span>
-
-                            </td>
+                            <td>{{ $teacherPlacement->packetCombination->program->name }}</td>
                             <td>{{ $teacherPlacement->teacher->name }}</td>
                             <td>{{ $teacherPlacement->student->name }}</td>
                             <td>{{ $teacherPlacement->meeting_times }}</td>
+                            <td>{{ $teacherPlacement->duration_minutes }} Menit</td>
                             <td>
                                 <div class="action-buttons">
                                     {{-- <a href="{{ route('teacher.placement.edit', $teacherPlacement->id) }}"

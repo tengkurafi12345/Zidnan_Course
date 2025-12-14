@@ -44,7 +44,8 @@ class TeacherPlacementController extends Controller
             'teacher_id' => 'required|exists:teachers,id',
             'student_id' => 'required|exists:students,id',
             'packet_combination_id' => 'required|exists:packet_combinations,id',
-            'meeting_times' => 'required|numeric'
+            'meeting_times' => 'required|numeric',
+            'duration_minutes' => 'required|numeric',
         ]);
 
         // Buat Package Placement
@@ -59,6 +60,7 @@ class TeacherPlacementController extends Controller
             $meetings[] = [
                 'id' => Str::uuid()->toString(),
                 'code' => Str::random(10),
+                'duration_minutes' => $validated['duration_minutes'],
                 'teacher_placement_id' => $placement->id,
                 'scheduled_start_time' => null,
                 'scheduled_end_time' => null,
