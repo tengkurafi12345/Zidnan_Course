@@ -25,6 +25,7 @@ class Meeting extends Model
         "daily_report",
         "actual_start_location", // Baru: Lokasi saat masuk (JSON: {"lat": ..., "lng": ...})
         "actual_end_location",   // Baru: Lokasi saat keluar (JSON: {"lat": ..., "lng": ...})
+        "order",
     ];
 
     protected $casts = [

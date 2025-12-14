@@ -25,6 +25,7 @@ return new class extends Migration
             $table->enum('attendance_status', ['Hadir', 'Tidak Hadir', 'Kurang', 'Lebih'])->nullable()->default('Tidak Hadir');
             $table->string('location', 255)->nullable();
             $table->text('daily_report')->nullable();
+            $table->integer('order')->default(0);
             $table->timestamps();
 
             $table->foreign('teacher_placement_id')->references('id')->on('teacher_placements')->onDelete('cascade');

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\TeacherPlacement;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class MeetingAttendanceController extends Controller
 {
@@ -25,7 +26,7 @@ class MeetingAttendanceController extends Controller
         $meetings = [];
 
         if ($selectedPlacementId) {
-            $meetings = Meeting::where('teacher_placement_id', $selectedPlacementId)->get();
+            $meetings = Meeting::where('teacher_placement_id', $selectedPlacementId)->orderBy('order')->get();
         }
 
         return view('Backend.Teacher.Meeting.Attendance.index', compact('teacherPlacements', 'meetings', 'selectedPlacementId'));
@@ -87,7 +88,36 @@ class MeetingAttendanceController extends Controller
             'browser_info' => $request->header('User-Agent'),
             'timestamp' => Carbon::now()->setTimezone('Asia/Jakarta')->toDateTimeString(),
         ];
+
         $meeting->save();
+
+        $now = Carbon::now()->timezone('Asia/Jakarta');
+
+        /** =========================
+         * DATA KONTEKS
+         * ========================= */
+        $placement = $meeting->teacherPlacement;
+        $teacherName = $placement->teacher->name ?? '-';
+        $studentName = $placement->student->name ?? '-';
+        $programName = $placement->packetCombination->program->name ?? '-';
+        $levelName = $placement->packetCombination->lessonLevel->name ?? '-';
+
+        /** =========================
+         * KIRIM NOTIFIKASI
+         * ========================= */
+        $message =
+            "✅ *ABSENSI MASUK GURU*\n\n" .
+            "👤 Guru: *{$teacherName}*\n" .
+            "📘 Program: {$programName} ({$levelName})\n" .
+            "👨‍🎓 Siswa: {$studentName}\n\n" .
+            "Pertemuan ke: {$meeting->order}\n" .
+            "📅 Tanggal: {$now->translatedFormat('l, d F Y')}\n" .
+            "🕒 Jam Masuk: {$now->format('H:i:s')}\n" .
+            "Durasi pertemuan: {$meeting->duration_minutes} menit\n\n" .
+            "Absensi masuk berhasil dicatat.";
+
+        $this->sendWhatsappNotification($message);
+
         return response()->json(['success' => 'Berhasil melakukan absensi masuk!']);
     }
 
@@ -99,6 +129,8 @@ class MeetingAttendanceController extends Controller
             'longitude' => 'required|numeric',
         ]);
         $meeting->actual_end_time = Carbon::now()->setTimezone('Asia/Jakarta');
+        $now = Carbon::now()->timezone('Asia/Jakarta');
+
         $meeting->actual_end_location = [
             'lat' => $request->latitude,
             'lng' => $request->longitude,
@@ -111,6 +143,34 @@ class MeetingAttendanceController extends Controller
         $meeting->attendance_status = $this->tentukanStatusAbsensi($meeting);
         $meeting->save();
         $meeting->refresh();
+
+
+        /** =========================
+         * DATA KONTEKS
+         * ========================= */
+        $placement = $meeting->teacherPlacement;
+        $teacherName = $placement->teacher->name ?? '-';
+        $studentName = $placement->student->name ?? '-';
+        $programName = $placement->packetCombination->program->name ?? '-';
+        $levelName = $placement->packetCombination->lessonLevel->name ?? '-';
+
+        /** =========================
+         * KIRIM NOTIFIKASI
+         * ========================= */
+        $message =
+            "📌 *ABSENSI KELUAR GURU*\n\n" .
+            "👤 Guru: *{$teacherName}*\n" .
+            "📘 Program: {$programName} ({$levelName})\n" .
+            "👨‍🎓 Siswa: {$studentName}\n\n" .
+            "Pertemuan ke: {$meeting->order}\n" .
+            "Durasi pertemuan: {$meeting->duration_minutes} menit\n\n" .
+            "📅 Tanggal: {$now->translatedFormat('l, d F Y')}\n" .
+            "🕒 Jam Masuk : {$meeting->actual_start_time->format('H:i:s')}\n" .
+            "🕒 Jam Keluar: {$now->format('H:i:s')}\n\n" .
+            "📊 Status Absensi: *{$meeting->attendance_status}*";
+
+        $this->sendWhatsappNotification($message);
+
         return response()->json(['success' => 'Berhasil melakukan absensi keluar!']);
     }
 
@@ -141,7 +201,7 @@ class MeetingAttendanceController extends Controller
 
         $minAcceptable = $scheduledDuration - $tolerance;
         $maxAcceptable = $scheduledDuration + $tolerance;
-       
+
         if ($minAcceptable <= 0) {
             $status = 'Tidak Hadir';
         }
@@ -164,5 +224,23 @@ class MeetingAttendanceController extends Controller
         ]);
 
         return $status;
+    }
+
+    private function sendWhatsappNotification(string $message): void
+    {
+        try {
+            $response = Http::withHeaders([
+                'Authorization' => 'HmGYsX489W2hjzAjv7ce',
+            ])->post('https://api.fonnte.com/send', [
+                'target' => '082127236220',
+                'message' => $message,
+            ]);
+
+            Log::info('WHATSAPP SENT', $response->json());
+        } catch (\Throwable $e) {
+            Log::error('WHATSAPP ERROR', [
+                'message' => $e->getMessage()
+            ]);
+        }
     }
 }

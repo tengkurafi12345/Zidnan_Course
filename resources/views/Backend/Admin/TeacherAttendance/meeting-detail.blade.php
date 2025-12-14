@@ -72,6 +72,10 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="info-row">
+                            <div class="info-label">Pertemuan Ke :</div>
+                            <div class="info-value">{{ $meeting->order ?? '-' }}</div>
+                        </div>
+                        <div class="info-row">
                             <div class="info-label">Kode Pertemuan</div>
                             <div class="info-value">{{ $meeting->code ?? '-' }}</div>
                         </div>
@@ -101,25 +105,25 @@
                         <div class="info-row">
                             <div class="info-label">Jadwal Mulai</div>
                             <div class="info-value">
-                                {{ $meeting->scheduled_start_time?->locale('id')->translatedFormat('l, d-m-Y H:i:s') ?? '-' }}
+                                {{ $meeting->scheduled_start_time?->locale('id')->translatedFormat('l, d-M-Y H:i:s') ?? '-' }}
                             </div>
                         </div>
                         <div class="info-row">
                             <div class="info-label">Jadwal Berakhir</div>
                             <div class="info-value">
-                                {{ $meeting->scheduled_end_time?->locale('id')->translatedFormat('l, d-m-Y H:i:s') ?? '-' }}
+                                {{ $meeting->scheduled_end_time?->locale('id')->translatedFormat('l, d-M-Y H:i:s') ?? '-' }}
                             </div>
                         </div>
                         <div class="info-row">
                             <div class="info-label">Waktu Aktual Mulai</div>
                             <div class="info-value">
-                                {{ $meeting->actual_start_time?->locale('id')->translatedFormat('l, d-m-Y H:i:s') ?? '-' }}
+                                {{ $meeting->actual_start_time?->locale('id')->translatedFormat('l, d-M-Y H:i:s') ?? '-' }}
                             </div>
                         </div>
                         <div class="info-row">
                             <div class="info-label">Waktu Aktual Berakhir</div>
                             <div class="info-value">
-                                {{ $meeting->actual_end_time?->locale('id')->translatedFormat('l, d-m-Y H:i:s') ?? '-' }}
+                                {{ $meeting->actual_end_time?->locale('id')->translatedFormat('l, d-M-Y H:i:s') ?? '-' }}
                             </div>
                         </div>
                     </div>

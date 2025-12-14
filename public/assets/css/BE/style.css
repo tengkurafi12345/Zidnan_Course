@@ -1520,7 +1520,7 @@ table.table .btn-danger:hover {
     }
 
     .form-container form {
-        width: 50rem;
+        width: 100%;
     }
 }
 

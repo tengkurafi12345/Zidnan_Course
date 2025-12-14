@@ -63,14 +63,14 @@
                     @csrf
                     @method('PATCH')
 
-                    @foreach ($teacherPlacement->meetings as $key => $meeting)
+                    @foreach ($meetings as $meeting)
                         <div class="card p-3 mb-3">
-                            <h5>Pertemuan Ke-{{ $key + 1 }}</h5>
+                            <h5>Pertemuan Ke-{{ $meeting->order }}</h5>
 
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label>Waktu Mulai</label>
-                                    <input type="datetime-local" name="meetings[{{ $key }}][scheduled_start_time]"
+                                    <input type="datetime-local" name="meetings[{{ $meeting->id }}][scheduled_start_time]"
                                         class="form-control"
                                         value="{{ optional($meeting->scheduled_start_time)->format('Y-m-d\TH:i') }}">
                                 </div>
@@ -78,7 +78,7 @@
                                 <div class="col-md-6">
                                     <label>Waktu Berakhir (Otomatis)</label>
                                     <input type="text" class="form-control"
-                                        value="{{ optional($meeting->scheduled_end_time)->format('d M Y H:i') }}" disabled>
+                                        value="{{ optional($meeting->scheduled_end_time)->format('d M Y H:i') ? \Carbon\Carbon::parse($meeting->scheduled_end_time)->locale('id')->translatedFormat('l, d M Y H:i:s') : '-' }}" disabled>
                                 </div>
                             </div>
                         </div>

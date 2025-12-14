@@ -47,7 +47,7 @@ class TeacherAttendanceController extends Controller
      */
     public function show(TeacherPlacement $teacherPlacement)
     {
-        $meetings = Meeting::where('teacher_placement_id', $teacherPlacement->id)->get();
+        $meetings = Meeting::where('teacher_placement_id', $teacherPlacement->id)->get()->sortBy('order');
 
         return view('Backend.Admin.TeacherAttendance.show', compact('meetings'));
     }

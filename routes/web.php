@@ -55,12 +55,11 @@ Route::get('/promo/{promotion}', [PromoController::class, 'show'])->name('promo.
 
 // Test send wa
 Route::get('/send-wa', function () {
-
     $response = Http::withHeaders([
-        'Authorization' => 'BGvVTFueiRAj5cZbUSJm',
+        'Authorization' => 'HmGYsX489W2hjzAjv7ce',
     ])->post('https://api.fonnte.com/send', [
-        'target' => '082127236220',
-        'message' => 'test message',
+        'target' => '088268251479',
+        'message' => 'test message from fonnte api',
     ]);
 
     dd(json_decode($response, true));

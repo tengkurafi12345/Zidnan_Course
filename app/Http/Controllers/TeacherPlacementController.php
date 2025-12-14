@@ -69,6 +69,7 @@ class TeacherPlacementController extends Controller
                 'attendance_status' => null,
                 'location' => null,
                 'daily_report' => null,
+                'order' => $i + 1,
                 'created_at' => now(),
                 'updated_at' => now(),
             ];

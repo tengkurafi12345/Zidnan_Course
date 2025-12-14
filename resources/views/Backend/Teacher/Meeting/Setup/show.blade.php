@@ -61,11 +61,11 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($teacherPlacement->meetings as $meeting)
+            @foreach ($meetings as $meeting)
                 <tr>
-                    <td>Ke-{{ $loop->iteration }}</td>
-                    <td>{{ optional($meeting->scheduled_start_time)->format('d M Y H:i') ?? '-' }} </td>
-                    <td>{{ optional($meeting->scheduled_end_time)->format('d M Y H:i') ?? '-' }}</td>
+                    <td>Ke-{{ $meeting->order }}</td>
+                    <td>{{ optional($meeting->scheduled_start_time)->format('d M Y H:i') ? \Carbon\Carbon::parse($meeting->scheduled_start_time)->locale('id')->translatedFormat('l, d M Y H:i:s') : '-' }} </td>
+                    <td>{{ optional($meeting->scheduled_end_time)->format('d M Y H:i') ? \Carbon\Carbon::parse($meeting->scheduled_end_time)->locale('id')->translatedFormat('l, d M Y H:i:s') : '-' }}</td>
                 </tr>
             @endforeach
         </tbody>

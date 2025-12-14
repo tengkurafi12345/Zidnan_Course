@@ -228,7 +228,7 @@
                 <tbody>
                     @forelse($meetings as $meeting)
                         <tr>
-                            <td class="text-center">{{ $loop->iteration }}</td>
+                            <td class="text-center">{{ $meeting->order }}</td>
                             <td class="sub-time-column">
                                 {{ $meeting->scheduled_start_time ? \Carbon\Carbon::parse($meeting->scheduled_start_time)->locale('id')->translatedFormat('l, d-m-Y H:i:s') : '-' }}
                             </td>

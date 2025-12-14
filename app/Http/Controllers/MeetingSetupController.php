@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Teacher;
-use App\Models\TeacherPlacement;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Models\Meeting;
+use App\Models\Teacher;
+use Illuminate\Http\Request;
+use App\Models\TeacherPlacement;
+use Illuminate\Support\Facades\Auth;
 
 class MeetingSetupController extends Controller
 {
@@ -27,19 +28,16 @@ class MeetingSetupController extends Controller
 
     public function show(TeacherPlacement $teacherPlacement)
     {
-        $teacherPlacement->load('meetings');
-        $meeting = $teacherPlacement->meetings()->orderBy('id')->first();
+        $meetings = Meeting::where('teacher_placement_id', $teacherPlacement->id)->get()->sortBy('order');
 
-
-        return view('Backend.Teacher.Meeting.Setup.show', compact(['teacherPlacement', 'meeting']));
+        return view('Backend.Teacher.Meeting.Setup.show', compact(['teacherPlacement', 'meetings']));
     }
 
     public function edit(TeacherPlacement $teacherPlacement)
     {
-        $teacherPlacement->load('meetings');
-        $meeting = $teacherPlacement->meetings()->orderBy('id')->first();
+        $meetings = Meeting::where('teacher_placement_id', $teacherPlacement->id)->get()->sortBy('order');
 
-        return view('Backend.Teacher.Meeting.Setup.edit', compact(['teacherPlacement', 'meeting']));
+        return view('Backend.Teacher.Meeting.Setup.edit', compact(['teacherPlacement', 'meetings']));
     }
 
     public function update(Request $request, TeacherPlacement $teacherPlacement)
@@ -53,7 +51,9 @@ class MeetingSetupController extends Controller
 
         // Loop melalui data pertemuan
         foreach ($meetingsData as $key => $meetingData) {
-            $meeting = $teacherPlacement->meetings[$key];
+            $meeting = Meeting::where('id', $key)
+                ->where('teacher_placement_id', $teacherPlacement->id)
+                ->firstOrFail();
 
             if ($clearAll) {
                 // Jika tombol "Kosongkan Semua" diklik, kosongi semua jadwal
