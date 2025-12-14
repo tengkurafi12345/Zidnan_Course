@@ -20,6 +20,8 @@ return new class extends Migration
             $table->timestamp('scheduled_end_time')->nullable();
             $table->timestamp('actual_start_time')->nullable();
             $table->timestamp('actual_end_time')->nullable();
+            $table->json('actual_start_location')->nullable();
+            $table->json('actual_end_location')->nullable();
             $table->enum('attendance_status', ['Hadir', 'Tidak Hadir', 'Kurang', 'Lebih'])->nullable()->default('Tidak Hadir');
             $table->string('location', 255)->nullable();
             $table->text('daily_report')->nullable();

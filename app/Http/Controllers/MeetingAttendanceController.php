@@ -70,26 +70,48 @@ class MeetingAttendanceController extends Controller
         return redirect()->route('meeting.attendance.index')->with('success', 'Meeting updated successfully');
     }
 
-    public function masuk(Meeting $meeting)
+    public function masuk(Request $request, Meeting $meeting)
     {
-        $meeting->actual_start_time = Carbon::now()->setTimezone('Asia/Jakarta'); // Waktu saat ini
+        // Validasi lokasi (opsional, tapi disarankan)
+        $request->validate([
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+        ]);
+        $meeting->actual_start_time = Carbon::now()->setTimezone('Asia/Jakarta');
+        $meeting->actual_start_location = [
+            'lat' => $request->latitude,
+            'lng' => $request->longitude,
+            'accuracy' => $request->accuracy,
+            'device_info' => $request->device_info,
+            'ip_address' => $request->ip(),
+            'browser_info' => $request->header('User-Agent'),
+            'timestamp' => Carbon::now()->setTimezone('Asia/Jakarta')->toDateTimeString(),
+        ];
         $meeting->save();
-
-        return redirect()->route('meeting.attendance.index')
-            ->with('success', 'Berhasil melakukan absensi masuk!');
+        return response()->json(['success' => 'Berhasil melakukan absensi masuk!']);
     }
 
-    public function keluar(Meeting $meeting)
+    public function keluar(Request $request, Meeting $meeting)
     {
-        $meeting->actual_end_time = Carbon::now()->setTimezone('Asia/Jakarta'); // Waktu saat ini
-        $meeting->attendance_status = $this->tentukanStatusAbsensi($meeting); // Set status
+        // Validasi lokasi
+        $request->validate([
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+        ]);
+        $meeting->actual_end_time = Carbon::now()->setTimezone('Asia/Jakarta');
+        $meeting->actual_end_location = [
+            'lat' => $request->latitude,
+            'lng' => $request->longitude,
+            'accuracy' => $request->accuracy,
+            'device_info' => $request->device_info,
+            'ip_address' => $request->ip(),
+            'browser_info' => $request->header('User-Agent'),
+            'timestamp' => Carbon::now()->setTimezone('Asia/Jakarta')->toDateTimeString(),
+        ];
+        $meeting->attendance_status = $this->tentukanStatusAbsensi($meeting);
         $meeting->save();
-
         $meeting->refresh();
-
-
-        return redirect()->route('meeting.attendance.index')
-            ->with('success', 'Berhasil melakukan absensi keluar!');
+        return response()->json(['success' => 'Berhasil melakukan absensi keluar!']);
     }
 
     // TODO: Masih perlu didiskusikan lagi

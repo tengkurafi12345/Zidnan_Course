@@ -143,7 +143,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('/teacher-meeting-attendance', [TeacherAttendanceController::class, 'index'])->name('teacher.meeting.attendance.index');
     Route::get('/teacher-meeting-attendance/{teacherPlacement}', [TeacherAttendanceController::class, 'show'])->name('teacher.meeting.attendance.show');
-
+    Route::get('/admin/teacher-attendance/meeting/{meeting}', [TeacherAttendanceController::class, 'meetingDetail'])->name('teacher.attendance.meeting.show');
     // job vacancy
     Route::get('/job-vacancy', [JobController::class, 'index'])->name('job.vacancy.index');
     Route::get('/job-vacancy/create', [JobController::class, 'create'])->name('job.vacancy.create');
@@ -188,8 +188,8 @@ Route::middleware(['auth', 'role:teacher'])->group(function () {
     Route::get('/meeting-attendance/{meeting}/edit', [MeetingAttendanceController::class, 'edit'])->name('meeting.attendance.edit');
     Route::patch('/meeting-attendance/{meeting}', [MeetingAttendanceController::class, 'update'])->name('meeting.attendance.update');
     Route::delete('/meeting-attendance/{meeting}/delete', [MeetingAttendanceController::class, 'destroy'])->name('meeting.attendance.destroy');
-    Route::get('/meeting/attendance/masuk/{meeting}', [MeetingAttendanceController::class, 'masuk'])->name('meeting.attendance.masuk');
-    Route::get('/meeting/attendance/keluar/{meeting}', [MeetingAttendanceController::class, 'keluar'])->name('meeting.attendance.keluar');
+    Route::post('/meeting/attendance/masuk/{meeting}', [MeetingAttendanceController::class, 'masuk'])->name('meeting.attendance.masuk');
+    Route::post('/meeting/attendance/keluar/{meeting}', [MeetingAttendanceController::class, 'keluar'])->name('meeting.attendance.keluar');
 });
 
 // Guardian

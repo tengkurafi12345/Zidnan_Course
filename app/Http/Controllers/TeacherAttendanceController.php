@@ -52,6 +52,11 @@ class TeacherAttendanceController extends Controller
         return view('Backend.Admin.TeacherAttendance.show', compact('meetings'));
     }
 
+    public function meetingDetail(Meeting $meeting)
+    {
+        return view('Backend.Admin.TeacherAttendance.meeting-detail', compact('meeting'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

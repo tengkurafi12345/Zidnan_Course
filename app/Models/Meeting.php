@@ -23,6 +23,8 @@ class Meeting extends Model
         "attendance_status",
         "location",
         "daily_report",
+        "actual_start_location", // Baru: Lokasi saat masuk (JSON: {"lat": ..., "lng": ...})
+        "actual_end_location",   // Baru: Lokasi saat keluar (JSON: {"lat": ..., "lng": ...})
     ];
 
     protected $casts = [
@@ -30,6 +32,8 @@ class Meeting extends Model
         'scheduled_end_time' => 'datetime',
         'actual_start_time' => 'datetime',
         'actual_end_time' => 'datetime',
+        'actual_start_location' => 'array', // Cast sebagai array untuk mudah akses
+        'actual_end_location' => 'array',
     ];
 
     public function teacherPlacement()
