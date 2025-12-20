@@ -161,7 +161,7 @@
                 <h1 class="heading">Penempatan Guru</h1>
             </div>
             <div class="">
-                <a href="{{ route('teacher.placement.create') }}" class="btn btn-violet">Tempatkan Guru</a>
+                <a href="{{ route('teacher-placement.create') }}" class="btn btn-violet">Tempatkan Guru</a>
             </div>
         </div>
 
@@ -173,11 +173,65 @@
             </div>
         @endif
 
+        <form method="GET" class="row g-3 mb-4">
+
+            {{-- Academic Period --}}
+            <div class="col-md-4">
+                <label class="form-label">Periode Akademik</label>
+                <select name="academic_period_id" class="form-select">
+                    <option value="">Semua Periode</option>
+                    @foreach($academicPeriods as $period)
+                        <option value="{{ $period->id }}"
+                            {{ $selectedPeriod == $period->id ? 'selected' : '' }}>
+                            {{ $period->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+        
+            {{-- Guru --}}
+            <div class="col-md-4">
+                <label class="form-label">Guru</label>
+                <select name="teacher_id" class="form-select">
+                    <option value="">Semua Guru</option>
+                    @foreach($teachers as $teacher)
+                        <option value="{{ $teacher->id }}"
+                            {{ $selectedTeacher == $teacher->id ? 'selected' : '' }}>
+                            {{ $teacher->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+        
+            {{-- Siswa --}}
+            <div class="col-md-4">
+                <label class="form-label">Siswa</label>
+                <select name="student_id" class="form-select">
+                    <option value="">Semua Siswa</option>
+                    @foreach($students as $student)
+                        <option value="{{ $student->id }}"
+                            {{ $selectedStudent == $student->id ? 'selected' : '' }}>
+                            {{ $student->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+        
+            <div class="col-12 text-end">
+                <button class="btn btn-primary">Filter</button>
+                <a href="{{ route('teacher-placement.index') }}" class="btn btn-secondary">
+                    Reset
+                </a>
+            </div>
+        </form>
+        
+
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Periode</th>
                         <th>Paket</th>
                         <th>Program</th>
                         <th>Guru</th>
@@ -191,6 +245,7 @@
                     @forelse($teacherPlacements as $teacherPlacement)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
+                            <td>{{ $teacherPlacement->academicPeriod->name }}</td>
                             <td>{{ $teacherPlacement->packetCombination?->lessonLevel->name }}</td>
                             <td>{{ $teacherPlacement->packetCombination?->program->name }}</td>
                             <td>{{ $teacherPlacement->teacher->name }}</td>
@@ -201,7 +256,7 @@
                                 <div class="action-buttons">
                                     {{-- <a href="{{ route('teacher.placement.edit', $teacherPlacement->id) }}"
                                         class="btn btn-sm btn-warning" >Edit</a> --}}
-                                    <form action="{{ route('teacher.placement.destroy', $teacherPlacement->id) }}" method="POST"
+                                    <form action="{{ route('teacher-placement.destroy', $teacherPlacement->id) }}" method="POST"
                                         style="display: inline-block;">
                                         @csrf
                                         @method('DELETE')

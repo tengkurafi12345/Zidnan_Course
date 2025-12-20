@@ -48,10 +48,20 @@
             </div>
         @endif
 
-        <form action="{{ route('teacher.placement.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('teacher-placement.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-5">
                 <h2>Penempatan Guru</h2>
+            </div>
+
+            <div class="mb-5">
+                <label class="form-label fs-4">Periode</label>
+                <select name="academic_period_id" class="form-select form-select-lg mb-5">
+                    <option value="">--Please choose an option--</option>
+                    @foreach ($academicPeriods as $period)
+                        <option value="{{ $period->id }}">{{ $period->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="mb-5">
@@ -97,7 +107,7 @@
 
             <div class="row mt-5">
                 <div class="col-md-12">
-                    <a href="{{ route('teacher.placement.index') }}" class="btn btn-lg btn-secondary">Kembali</a>
+                    <a href="{{ route('teacher-placement.index') }}" class="btn btn-lg btn-secondary">Kembali</a>
                     <button type="submit" class="btn btn-lg btn-purple">Simpan</button>
                 </div>
             </div>

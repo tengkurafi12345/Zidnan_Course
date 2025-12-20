@@ -20,8 +20,58 @@
     <!-- bootstrap 5.3.3 -->
 
     @yield('css')
+    <style>
+        .header {
+            z-index: 1000;
+        }
+
+        .side-bar {
+            z-index: 900;
+        }
+
+        .footer { 
+            z-index: 800;
+        }
+        .navbar a.active {
+            background-color: rgb(116, 0, 161);
+            color: #fff;
+        }
+
+        .navbar a.active i {
+            color: #fff;
+        }
+
+        .navbar a.active span {
+            color: #fff
+        }
+
+        .navbar a.active:hover {
+            background-color: rgb(116, 0, 161);
+            color: #fff;
+        }
+
+        .navbar-child {
+            padding-left: 35px;
+            font-size: 14px;
+        }
+
+        .navbar a .fa-sort-down {
+            transition: transform 0.2s ease;
+        }
+
+        .navbar a[aria-expanded="true"] .fa-sort-down {
+            transform: rotate(180deg);
+        }
+
+        @media (max-width: 768px) {
+            .side-bar {
+                z-index: 950;
+                /* tetap di bawah header */
+            }
+        }
+    </style>
     <!-- Scripts -->
-{{--    @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
+    {{--    @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 </head>
 
 <body>
@@ -96,10 +146,9 @@
 
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-
-
     </script>
 
     <script src="{{ asset('assets/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js') }}"></script>
 </body>
+
 </html>

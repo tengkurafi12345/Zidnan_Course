@@ -7,6 +7,7 @@ use App\Models\Student;
 use App\Models\Teacher;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\AcademicPeriod;
 use App\Models\TeacherPlacement;
 use App\Models\PacketCombination;
 
@@ -15,23 +16,51 @@ class TeacherPlacementController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $teacherPlacements = TeacherPlacement::all()->sortByDesc('created_at');
+        $periodId  = $request->get('academic_period_id');
+        $teacherId = $request->get('teacher_id');
+        $studentId = $request->get('student_id');
 
-        return view('Backend.Admin.TeacherPlacement.index', compact('teacherPlacements'));
+        $teacherPlacements = TeacherPlacement::query()
+            ->when($periodId, function ($q) use ($periodId) {
+                $q->where('academic_period_id', $periodId);
+            })
+            ->when($teacherId, function ($q) use ($teacherId) {
+                $q->where('teacher_id', $teacherId);
+            })
+            ->when($studentId, function ($q) use ($studentId) {
+                $q->where('student_id', $studentId);
+            })
+            ->with(['teacher', 'student', 'academicPeriod'])
+            ->orderByDesc('created_at')
+            ->get();
+
+        return view('Backend.Admin.TeacherPlacement.index', [
+            'teacherPlacements' => $teacherPlacements,
+            'academicPeriods'   => AcademicPeriod::orderByDesc('start_date')->get(),
+            'teachers'          => Teacher::orderBy('name')->get(),
+            'students'          => Student::orderBy('name')->get(),
+
+            // preserve selected
+            'selectedPeriod'  => $periodId,
+            'selectedTeacher' => $teacherId,
+            'selectedStudent' => $studentId,
+        ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
+        $academicPeriods = AcademicPeriod::where('status', 'active')->get();
         $packetCombinations = PacketCombination::all();
         $teachers = Teacher::all();
         $students = Student::all();
 
-        return view('Backend.Admin.TeacherPlacement.create', compact(['packetCombinations', 'teachers', 'students']));
+        return view('Backend.Admin.TeacherPlacement.create', compact(['academicPeriods', 'packetCombinations', 'teachers', 'students']));
     }
 
     /**
@@ -41,6 +70,7 @@ class TeacherPlacementController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'academic_period_id' => 'required|exists:academic_periods,id',
             'teacher_id' => 'required|exists:teachers,id',
             'student_id' => 'required|exists:students,id',
             'packet_combination_id' => 'required|exists:packet_combinations,id',
@@ -61,6 +91,7 @@ class TeacherPlacementController extends Controller
                 'id' => Str::uuid()->toString(),
                 'code' => Str::random(10),
                 'duration_minutes' => $validated['duration_minutes'],
+                'academic_period_id' => $placement->academic_period_id,
                 'teacher_placement_id' => $placement->id,
                 'scheduled_start_time' => null,
                 'scheduled_end_time' => null,
@@ -79,7 +110,7 @@ class TeacherPlacementController extends Controller
         Meeting::insert($meetings);
 
         return redirect()
-            ->route('teacher.placement.index') // Arahkan ke halaman index
+            ->route('teacher-placement.index') // Arahkan ke halaman index
             ->with('success', 'Penempatan Guru berhasil dibuat.');
     }
 
@@ -114,13 +145,13 @@ class TeacherPlacementController extends Controller
     public function destroy(TeacherPlacement $teacherPlacement)
     {
         try {
-              // Hapus semua meeting yang terkait dengan teacherPlacement
+            // Hapus semua meeting yang terkait dengan teacherPlacement
             $teacherPlacement->meetings()->delete();
             $teacherPlacement->delete();
-            return redirect()->route('teacher.placement.index')
+            return redirect()->route('teacher-placement.index')
                 ->with('success', 'Data penempatan guru berhasil dihapus!');
         } catch (\Exception $e) {
-            return redirect()->route('teacher.placement.index')
+            return redirect()->route('teacher-placement.index')
                 ->with('error', 'Terjadi kesalahan saat menghapus data.');
         }
     }

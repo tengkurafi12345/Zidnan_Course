@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Absensi Pertemuan')
+@section('title', 'Daftar Periode Akademik')
 
 @section('css')
     <style>
@@ -157,33 +157,13 @@
     <section class="courses">
         <div class="flex-container">
             <div class="">
-                <h1 class="heading">Absensi Pertemuan Guru</h1>
+                <h1 class="heading">Daftar Periode Akademik</h1>
             </div>
-            {{-- <div class="">
-                <a href="{{ route('teacher.create') }}" class="btn btn-info">Tambah Guru</a>
-            </div> --}}
+            <div class="">
+                <a href="{{ route('academic.period.create') }}" class="btn btn-violet">Tambah Periode</a>
+            </div>
         </div>
 
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <form action="{{ route('teacher-meeting-attendance.index') }}" method="GET">
-                            <p>Pilih Guru:</p>
-                            <select class="form-select" name="teacher_id" onchange="this.form.submit()">
-                                <option value="">Pilih Guru</option>
-                                @foreach ($teachers as $teacher)
-                                    <option value="{{ $teacher->id }}"
-                                        {{ $seletTeacherId == $teacher->id ? 'selected' : '' }}>
-                                        {{ $teacher->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- Flash Notification -->
         @if (session('success'))
             <div class="alert alert-success">
@@ -193,47 +173,56 @@
         @endif
 
         <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
                     <tr>
                         <th>No</th>
-                        <th>Periode</th>
-                        <th>Paket</th>
-                        <th>Program</th>
-                        <th>Guru</th>
-                        <th>Siswa</th>
-                        <th class="text-center">Aksi</th>
+                        <th>Nama</th>
+                        <th>Tanggal Mulai</th>
+                        <th>Tanggal Berakhir</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
                     </tr>
-                </thead>
-                <tbody>
-                    @forelse($teacherPlacements as $teacherPlacement)
+                    </thead>
+                    <tbody>
+                    @forelse($academicPeriods as $period)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $teacherPlacement->academicPeriod->name }}</td>
-                            <td>{{ $teacherPlacement->packetCombination->lessonLevel->name }}</td>
+                            <td>{{ $period->name }}</td>
+                            <td>{{ $period->start_date }}</td>
+                            <td>{{ $period->end_date }}</td>
                             <td>
-                                {{ $teacherPlacement->packetCombination->program->name }}
-                                <span
-                                    class="badge badge-danger">{{ $teacherPlacement->meeting_times }}
-                                    kali</span>
-
+                                @if($period->status == 'active')
+                                    <span class="badge-success">Active</span>
+                                @else
+                                    <span class="badge-danger">Inactive</span>
+                                @endif
                             </td>
-                            <td>{{ $teacherPlacement->teacher->name }}</td>
-                            <td>{{ $teacherPlacement->student->name }}</td>
-                            <td style="width: 15rem">
+                            
+                            <td>
                                 <div class="action-buttons">
-                                    <a href="{{ route('teacher-meeting-attendance.show', $teacherPlacement->id) }}"
-                                    class="btn btn-sm btn-primary" >Show Detail</a>
+                                    <a href="{{ route('academic.period.edit', $period->id) }}"
+                                       class="btn btn-sm btn-warning">Edit</a>
+                                    <form action="{{ route('academic.period.destroy', $period->id) }}" method="POST"
+                                          style="display: inline-block;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger"
+                                                onclick="return confirm('Are you sure?')">Delete</button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="10" class="text-center">No Teacher Placement available.</td>
+                            <td colspan="10" class="text-center">No Period available.</td>
                         </tr>
                     @endforelse
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </section>
 @endsection

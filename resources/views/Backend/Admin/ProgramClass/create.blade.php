@@ -49,7 +49,7 @@
             </div>
         @endif
 
-        <form action="{{ route('program.class.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('program-class.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <h3>Tambah Kelas Program</h3>
 
@@ -82,7 +82,7 @@
 
             <div class="row mt-5">
                 <div class="col-md-12">
-                <a href="{{ route('program.class.index') }}" class="btn btn-secondary">Kembali</a>
+                <a href="{{ route('program-class.index') }}" class="btn btn-secondary">Kembali</a>
                     <button type="submit" class="btn btn-purple">Simpan</button>
                 </div>
             </div>

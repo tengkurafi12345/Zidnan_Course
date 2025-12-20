@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('meetings', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->uuid('academic_period_id');
             $table->uuid('teacher_placement_id');
             $table->string('code', 50)->unique();
             $table->integer('duration_minutes')->default(60);
@@ -28,6 +29,7 @@ return new class extends Migration
             $table->integer('order')->default(0);
             $table->timestamps();
 
+            $table->foreign('academic_period_id')->references('id')->on('academic_periods')->onDelete('cascade');
             $table->foreign('teacher_placement_id')->references('id')->on('teacher_placements')->onDelete('cascade');
         });
     }

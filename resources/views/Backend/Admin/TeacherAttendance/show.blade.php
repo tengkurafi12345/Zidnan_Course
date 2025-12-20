@@ -150,7 +150,7 @@
         <div class="container text-start">
             <div class="row row-cols-1 row-cols-lg-4 g-2 g-lg-5">
                 <div class="col">
-                    <a href="{{ route('teacher.meeting.attendance.index') }}" class="btn btn-lg btn-primary">Kembali</a>
+                    <a href="{{ route('teacher-meeting-attendance.index') }}" class="btn btn-lg btn-primary">Kembali</a>
                 </div>
             </div>
         </div>
@@ -216,7 +216,7 @@
                                 <span class="badge fs-3 text-bg-{{ $statusClass }}">{{ $status ?? 'Belum Absen' }}</span>
                             </td>
                             <td class="text-center">
-                                <a href="{{ route('teacher.attendance.meeting.show', $meeting->id) }}" class="btn btn-primary">
+                                <a href="{{ route('teacher-meeting-attendance.meeting.show', $meeting->id) }}" class="btn btn-primary">
                                     <i class="fas fa-eye"></i>
                                 </a>
                             </td>

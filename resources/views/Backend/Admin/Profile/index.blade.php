@@ -11,10 +11,23 @@
 
                 <h2>{{ $user->name }}</h2>
                 <h3>{{ $user->email }}</h3>
-                <p>Admin</p>
-                <a href="{{ route('profile.password') }}" class="inline-btn">Change Password</a>
+                <p style="text-transform: uppercase;">
+                    {{ $user->roles->first()->name ?? '-' }}
+                </p>
+                <a href="{{ route('profile.password') }}" class="btn btn-purple">Change Password</a>
             </div>
 
+             {{-- Menampilkan semua error validasi --}}
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                    <span class="closebtn">&times;</span>
+                </div>
+            @endif
             <div class="form-container form-container-profile">
                 <form action="{{ route('profile.update') }}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -33,7 +46,7 @@
                     <p>Email</p>
                     <input type="email" name="email" value="{{ old('email', $user->email) }}" maxlength="50" class="box">
 
-                    <input type="submit" value="Update Profile" class="btn">
+                    <input type="submit" value="Update Profile" class="btn btn-primary">
                 </form>
             </div>
         </div>

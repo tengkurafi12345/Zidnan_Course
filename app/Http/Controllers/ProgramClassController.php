@@ -50,7 +50,7 @@ class ProgramClassController extends Controller
         }
 
         return redirect()
-            ->route('program.class.index') // Arahkan ke halaman index
+            ->route('program-class.index') // Arahkan ke halaman index
             ->with('success', 'Kelas Program berhasil dibuat.');
     }
 
@@ -98,10 +98,10 @@ class ProgramClassController extends Controller
 
             $programClass->update($validatedData);
 
-            return redirect()->route('program.class.index')
+            return redirect()->route('program-class.index')
                 ->with('success', 'Data kelas program berhasil diperbarui!');
         } catch (\Exception $e) {
-            return redirect()->route('program.class.edit', $programClass->id)
+            return redirect()->route('program-class.edit', $programClass->id)
                 ->with('error', 'Terjadi kesalahan saat memperbarui data.');
         }
     }
@@ -120,10 +120,10 @@ class ProgramClassController extends Controller
 
             $programClass->delete();
 
-            return redirect()->route('program.class.index')
+            return redirect()->route('program-class.index')
                 ->with('success', 'Data Kelas Program berhasil dihapus!');
         } catch (\Exception $e) {
-            return redirect()->route('program.class.index')
+            return redirect()->route('program-class.index')
                 ->with('error', 'Terjadi kesalahan saat menghapus data.');
         }
     }

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Meeting extends Model
 {
@@ -13,6 +14,7 @@ class Meeting extends Model
 
     protected $table = "meetings";
     protected $fillable = [
+        "academic_period_id",
         "teacher_placement_id",
         "code",
         "duration_minutes",
@@ -37,8 +39,24 @@ class Meeting extends Model
         'actual_end_location' => 'array',
     ];
 
-    public function teacherPlacement()
+
+    /**
+     * Get the teacherPlacement that owns the Meeting
+     *
+     * @return BelongsTo
+     */
+    public function teacherPlacement(): BelongsTo
     {
         return $this->belongsTo(TeacherPlacement::class);
+    }
+
+    /**
+     * Get the academicPeriod that owns the Meeting
+     *
+     * @return BelongsTo
+     */
+    public function academicPeriod(): BelongsTo
+    {
+        return $this->belongsTo(AcademicPeriod::class);
     }
 }

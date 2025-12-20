@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TeacherPlacement extends Model
 {
@@ -14,8 +15,18 @@ class TeacherPlacement extends Model
     protected $table = 'teacher_placements';
 
     protected $fillable = [
-        'teacher_id', 'student_id', 'packet_combination_id', 'meeting_times', 'duration_minutes'
+       'academic_period_id', 'teacher_id', 'student_id', 'packet_combination_id', 'meeting_times', 'duration_minutes'
     ];
+
+    /**
+     * Get the academicPeriod that owns the TeacherPlacement
+     *
+     * @return BelongsTo
+     */
+    public function academicPeriod(): BelongsTo
+    {
+        return $this->belongsTo(AcademicPeriod::class, 'academic_period_id');
+    }
 
     public function teacher()
     {

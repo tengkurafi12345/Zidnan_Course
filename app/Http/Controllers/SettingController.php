@@ -34,7 +34,6 @@ class SettingController extends Controller
      */
     public function update(ProfileUpdateRequest $request)
     {
-        dd('asdasdsa');
         $request->user()->fill($request->validated());
 
         if ($request->user()->isDirty('email')) {

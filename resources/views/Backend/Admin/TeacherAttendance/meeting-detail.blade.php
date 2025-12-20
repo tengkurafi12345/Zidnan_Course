@@ -60,7 +60,7 @@
         <div class="detail-container">
             <h1 class="heading">Detail Pertemuan</h1>
 
-            <a href="{{ route('teacher.meeting.attendance.show', $meeting->teacher_placement_id) }}"
+            <a href="{{ route('teacher-meeting-attendance.show', $meeting->teacher_placement_id) }}"
                 class="btn btn-primary mb-3">
                 <i class="fas fa-arrow-left"></i> Kembali
             </a>

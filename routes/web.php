@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AcademicPeriodController;
 use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\Main\LowonganController;
@@ -82,13 +83,21 @@ Route::middleware(['auth'])->group(function () {
 
 // Admin
 Route::middleware(['auth', 'role:admin'])->group(function () {
+    // Academic Period
+    Route::get('/academic-period', [AcademicPeriodController::class, 'index'])->name('academic.period.index');
+    Route::get('/academic-period/create', [AcademicPeriodController::class, 'create'])->name('academic.period.create');
+    Route::post('/academic-period', [AcademicPeriodController::class, 'store'])->name('academic.period.store');
+    Route::get('/academic-period/{academicPeriod}', [AcademicPeriodController::class, 'edit'])->name('academic.period.edit');
+    Route::patch('/academic-period/{academicPeriod}', [AcademicPeriodController::class, 'update'])->name('academic.period.update');
+    Route::delete('/academic-period/{academicPeriod}/delete', [AcademicPeriodController::class, 'destroy'])->name('academic.period.destroy');
+    
     // Program Class
-    Route::get('/program-class', [ProgramClassController::class, 'index'])->name('program.class.index');
-    Route::get('/program-class/create', [ProgramClassController::class, 'create'])->name('program.class.create');
-    Route::post('/program-class', [ProgramClassController::class, 'store'])->name('program.class.store');
-    Route::get('/program-class/{programClass}', [ProgramClassController::class, 'edit'])->name('program.class.edit');
-    Route::patch('/program-class/{programClass}', [ProgramClassController::class, 'update'])->name('program.class.update');
-    Route::delete('/program-class/{programClass}/delete', [ProgramClassController::class, 'destroy'])->name('program.class.destroy');
+    Route::get('/program-class', [ProgramClassController::class, 'index'])->name('program-class.index');
+    Route::get('/program-class/create', [ProgramClassController::class, 'create'])->name('program-class.create');
+    Route::post('/program-class', [ProgramClassController::class, 'store'])->name('program-class.store');
+    Route::get('/program-class/{programClass}', [ProgramClassController::class, 'edit'])->name('program-class.edit');
+    Route::patch('/program-class/{programClass}', [ProgramClassController::class, 'update'])->name('program-class.update');
+    Route::delete('/program-class/{programClass}/delete', [ProgramClassController::class, 'destroy'])->name('program-class.destroy');
 
     // LessonLevel
     Route::get('/lesson-level', [LessonLevelController::class, 'index'])->name('lesson.level.index');
@@ -133,16 +142,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::patch('/packet-combinations/{id}/unpublish', [PacketCombinationController::class, 'unpublish'])->name('packet-combinations.unpublish');
 
      // Teacher Placement
-    Route::get('/teacher-placement', [TeacherPlacementController::class, 'index'])->name('teacher.placement.index');
-    Route::get('/teacher-placement/create', [TeacherPlacementController::class, 'create'])->name('teacher.placement.create');
-    Route::post('/teacher-placement', [TeacherPlacementController::class, 'store'])->name('teacher.placement.store');
-    Route::get('/teacher-placement/{teacherPlacement}', [TeacherPlacementController::class, 'edit'])->name('teacher.placement.edit');
-    Route::patch('/teacher-placement/{teacherPlacement}', [TeacherPlacementController::class, 'update'])->name('teacher.placement.update');
-    Route::delete('/teacher-placement/{teacherPlacement}/delete', [TeacherPlacementController::class, 'destroy'])->name('teacher.placement.destroy');
+    Route::get('/teacher-placement', [TeacherPlacementController::class, 'index'])->name('teacher-placement.index');
+    Route::get('/teacher-placement/create', [TeacherPlacementController::class, 'create'])->name('teacher-placement.create');
+    Route::post('/teacher-placement', [TeacherPlacementController::class, 'store'])->name('teacher-placement.store');
+    Route::get('/teacher-placement/{teacherPlacement}', [TeacherPlacementController::class, 'edit'])->name('teacher-placement.edit');
+    Route::patch('/teacher-placement/{teacherPlacement}', [TeacherPlacementController::class, 'update'])->name('teacher-placement.update');
+    Route::delete('/teacher-placement/{teacherPlacement}/delete', [TeacherPlacementController::class, 'destroy'])->name('teacher-placement.destroy');
 
-    Route::get('/teacher-meeting-attendance', [TeacherAttendanceController::class, 'index'])->name('teacher.meeting.attendance.index');
-    Route::get('/teacher-meeting-attendance/{teacherPlacement}', [TeacherAttendanceController::class, 'show'])->name('teacher.meeting.attendance.show');
-    Route::get('/admin/teacher-attendance/meeting/{meeting}', [TeacherAttendanceController::class, 'meetingDetail'])->name('teacher.attendance.meeting.show');
+    Route::get('/teacher-meeting-attendance', [TeacherAttendanceController::class, 'index'])->name('teacher-meeting-attendance.index');
+    Route::get('/teacher-meeting-attendance/{teacherPlacement}', [TeacherAttendanceController::class, 'show'])->name('teacher-meeting-attendance.show');
+    Route::get('/teacher-meeting-attendance/meeting/{meeting}', [TeacherAttendanceController::class, 'meetingDetail'])->name('teacher-meeting-attendance.meeting.show');
     // job vacancy
     Route::get('/job-vacancy', [JobController::class, 'index'])->name('job.vacancy.index');
     Route::get('/job-vacancy/create', [JobController::class, 'create'])->name('job.vacancy.create');

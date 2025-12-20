@@ -160,7 +160,7 @@
                 <h1 class="heading">Daftar kelas Program</h1>
             </div>
             <div class="">
-                <a href="{{ route('program.class.create') }}" class="btn btn-violet">Tambah Kelas Program</a>
+                <a href="{{ route('program-class.create') }}" class="btn btn-violet">Tambah Kelas Program</a>
             </div>
         </div>
 
@@ -215,9 +215,9 @@
                             </td>
                             <td>
                                 <div class="action-buttons">
-                                    <a href="{{ route('program.class.edit', $programClass->id) }}"
+                                    <a href="{{ route('program-class.edit', $programClass->id) }}"
                                        class="btn btn-sm btn-warning">Edit</a>
-                                    <form action="{{ route('program.class.destroy', $programClass->id) }}" method="POST"
+                                    <form action="{{ route('program-class.destroy', $programClass->id) }}" method="POST"
                                           style="display: inline-block;">
                                         @csrf
                                         @method('DELETE')

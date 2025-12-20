@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\AcademicPeriod;
 use App\Models\Teacher;
 use App\Models\Student;
 use App\Models\PacketCombination;
@@ -21,6 +22,7 @@ class TeacherPlacementSeeder extends Seeder
         $teachers = Teacher::all();
         $students = Student::all();
         $packetCombinations = PacketCombination::all();
+        $academicPeriod = AcademicPeriod::first();
 
         if ($teachers->isEmpty() || $students->isEmpty() || $packetCombinations->isEmpty()) {
             $this->command->warn('TeacherPlacementSeeder skipped: required data is missing.');
@@ -49,6 +51,7 @@ class TeacherPlacementSeeder extends Seeder
 
             $data[] = [
                 'id' => Str::uuid(),
+                'academic_period_id' => $academicPeriod->id,
                 'teacher_id' => $teacher->id,
                 'student_id' => $student->id,
                 'packet_combination_id' => $packet->id,
